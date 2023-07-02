@@ -18,7 +18,16 @@ namespace capaNegocios
         {
             pacientesDao.InsertarPaciente(nuevoPaciente);
         }
-        
+
+        public void ActualizarPaciente(Paciente upPaciente)
+        {
+            pacientesDao.ActualizarPaciente(upPaciente);
+        }
+
+        public List<Paciente> ObtenerListaPacientes()
+        { 
+           return pacientesDao.ObtenerListaPacientes();
+        }
 
 
 

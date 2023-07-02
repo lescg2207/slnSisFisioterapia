@@ -35,6 +35,9 @@
             txtDireccion = new TextBox();
             txtCelular = new TextBox();
             dtpFechaNacimiento = new DateTimePicker();
+            btnActualizar = new Button();
+            dgvPaciente = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvPaciente).BeginInit();
             SuspendLayout();
             // 
             // btnInsertar
@@ -92,11 +95,32 @@
             dtpFechaNacimiento.Size = new Size(135, 23);
             dtpFechaNacimiento.TabIndex = 7;
             // 
+            // btnActualizar
+            // 
+            btnActualizar.Location = new Point(401, 253);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(135, 35);
+            btnActualizar.TabIndex = 8;
+            btnActualizar.Text = "ACTUALIZAR";
+            btnActualizar.UseVisualStyleBackColor = true;
+            btnActualizar.Click += btnActualizar_Click;
+            // 
+            // dgvPaciente
+            // 
+            dgvPaciente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPaciente.Location = new Point(647, 116);
+            dgvPaciente.Name = "dgvPaciente";
+            dgvPaciente.RowTemplate.Height = 25;
+            dgvPaciente.Size = new Size(675, 244);
+            dgvPaciente.TabIndex = 9;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(678, 450);
+            ClientSize = new Size(1410, 450);
+            Controls.Add(dgvPaciente);
+            Controls.Add(btnActualizar);
             Controls.Add(dtpFechaNacimiento);
             Controls.Add(txtCelular);
             Controls.Add(txtDireccion);
@@ -106,6 +130,8 @@
             Controls.Add(btnInsertar);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPaciente).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -119,5 +145,7 @@
         private TextBox txtDireccion;
         private TextBox txtCelular;
         private DateTimePicker dtpFechaNacimiento;
+        private Button btnActualizar;
+        private DataGridView dgvPaciente;
     }
 }

@@ -22,5 +22,27 @@ namespace capaDatos
             _dbContext.Set<Paciente>().Add(Pacientes);
             _dbContext.SaveChanges();
         }
+
+        public void ActualizarPaciente(Paciente paciente)
+        {
+            
+            var pacienteExistente = _dbContext.Set<Paciente>().Find(paciente.dniPaciente);
+
+            if (pacienteExistente != null)
+            {
+                
+                pacienteExistente.Nombres = paciente.Nombres;
+                pacienteExistente.Apellidos = paciente.Apellidos;
+                pacienteExistente.Direccion = paciente.Direccion;
+                pacienteExistente.FNacimiento = paciente.FNacimiento;
+                pacienteExistente.Celular = paciente.Celular;
+
+                _dbContext.SaveChanges();
+            }
+        }
+        public List<Paciente> ObtenerListaPacientes()
+        {
+            return _dbContext.Set<Paciente>().ToList();
+        }
     }
 }
