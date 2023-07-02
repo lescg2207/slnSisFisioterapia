@@ -19,7 +19,15 @@ namespace capaDatos
 
         public void InsertarPaciente(Paciente Pacientes)
         {
+            
             _dbContext.Set<Paciente>().Add(Pacientes);
+            _dbContext.SaveChanges();
+        }
+
+        public void InsertarPacienteHistoria(HistoriaClinica historiaClinica)
+        {
+            historiaClinica.GenerateIdHistoria();
+            _dbContext.Set<HistoriaClinica>().Add(historiaClinica);
             _dbContext.SaveChanges();
         }
 

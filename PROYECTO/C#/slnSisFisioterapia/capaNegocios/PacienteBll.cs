@@ -33,5 +33,10 @@ namespace capaNegocios
             pacientesDao.InsertarPacienteConHistoriaClinica(paciente, historiaClinica);
 
         }
+
+        public void InsertarPacienteHistoria(HistoriaClinica historia)
+        {
+            pacientesDao.InsertarPacienteHistoria(historia);
+        }
     }
 }

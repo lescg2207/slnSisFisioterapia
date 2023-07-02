@@ -29,7 +29,7 @@ namespace capaPresentacion
 
             var historia = new HistoriaClinica
             {
-                dniPaciente = txtDniPaciente.Text,
+                dniPaciente=txtDniPaciente.Text,
                 antecedentes = txtAntecedentes.Text,
                 peso = decimal.Parse(txtPeso.Text),
                 talla = decimal.Parse(txtTalla.Text),
@@ -37,7 +37,8 @@ namespace capaPresentacion
                 observaciones = txtObserva.Text,
             };
 
-            _pacientebll.InsertarPacientHistoria(paciente, historia);
+            //_pacientebll.InsertarPaciente(paciente);
+            _pacientebll.InsertarPacienteHistoria(historia);
 
             MessageBox.Show("Paciente guardado correctamente.");
 
