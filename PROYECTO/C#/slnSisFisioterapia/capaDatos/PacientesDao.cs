@@ -44,5 +44,31 @@ namespace capaDatos
         {
             return _dbContext.Set<Paciente>().ToList();
         }
+
+        public void InsertarPacienteConHistoriaClinica(Paciente paciente, HistoriaClinica historiaClinica)
+        {
+            using (var dbContext = new BDFisioContext())
+            {
+                using (var transaction = dbContext.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        dbContext.Pacientes.Add(paciente);
+                        dbContext.SaveChanges();
+
+                        historiaClinica.dniPaciente = paciente.dniPaciente;
+                        dbContext.HistoriaClinica.Add(historiaClinica);
+                        dbContext.SaveChanges();
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
     }
 }

@@ -37,12 +37,17 @@
             dtpFechaNacimiento = new DateTimePicker();
             btnActualizar = new Button();
             dgvPaciente = new DataGridView();
+            txtAntecedentes = new TextBox();
+            txtPeso = new TextBox();
+            txtTalla = new TextBox();
+            txtImc = new TextBox();
+            txtObserva = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvPaciente).BeginInit();
             SuspendLayout();
             // 
             // btnInsertar
             // 
-            btnInsertar.Location = new Point(401, 193);
+            btnInsertar.Location = new Point(511, 30);
             btnInsertar.Name = "btnInsertar";
             btnInsertar.Size = new Size(135, 35);
             btnInsertar.TabIndex = 1;
@@ -52,35 +57,35 @@
             // 
             // txtDniPaciente
             // 
-            txtDniPaciente.Location = new Point(100, 47);
+            txtDniPaciente.Location = new Point(41, 31);
             txtDniPaciente.Name = "txtDniPaciente";
             txtDniPaciente.Size = new Size(142, 23);
             txtDniPaciente.TabIndex = 2;
             // 
             // txtNombres
             // 
-            txtNombres.Location = new Point(100, 127);
+            txtNombres.Location = new Point(41, 74);
             txtNombres.Name = "txtNombres";
             txtNombres.Size = new Size(142, 23);
             txtNombres.TabIndex = 3;
             // 
             // txtApellidos
             // 
-            txtApellidos.Location = new Point(100, 205);
+            txtApellidos.Location = new Point(41, 119);
             txtApellidos.Name = "txtApellidos";
             txtApellidos.Size = new Size(142, 23);
             txtApellidos.TabIndex = 4;
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(100, 291);
+            txtDireccion.Location = new Point(41, 168);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(142, 23);
             txtDireccion.TabIndex = 5;
             // 
             // txtCelular
             // 
-            txtCelular.Location = new Point(100, 361);
+            txtCelular.Location = new Point(41, 218);
             txtCelular.MaxLength = 9;
             txtCelular.Name = "txtCelular";
             txtCelular.Size = new Size(142, 23);
@@ -90,14 +95,14 @@
             // 
             dtpFechaNacimiento.CustomFormat = "dd/MM/yyyy";
             dtpFechaNacimiento.Format = DateTimePickerFormat.Short;
-            dtpFechaNacimiento.Location = new Point(401, 47);
+            dtpFechaNacimiento.Location = new Point(41, 267);
             dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            dtpFechaNacimiento.Size = new Size(135, 23);
+            dtpFechaNacimiento.Size = new Size(142, 23);
             dtpFechaNacimiento.TabIndex = 7;
             // 
             // btnActualizar
             // 
-            btnActualizar.Location = new Point(401, 253);
+            btnActualizar.Location = new Point(511, 89);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(135, 35);
             btnActualizar.TabIndex = 8;
@@ -108,17 +113,57 @@
             // dgvPaciente
             // 
             dgvPaciente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPaciente.Location = new Point(647, 116);
+            dgvPaciente.Location = new Point(41, 324);
             dgvPaciente.Name = "dgvPaciente";
             dgvPaciente.RowTemplate.Height = 25;
-            dgvPaciente.Size = new Size(675, 244);
+            dgvPaciente.Size = new Size(605, 244);
             dgvPaciente.TabIndex = 9;
+            // 
+            // txtAntecedentes
+            // 
+            txtAntecedentes.Location = new Point(270, 31);
+            txtAntecedentes.Name = "txtAntecedentes";
+            txtAntecedentes.Size = new Size(152, 23);
+            txtAntecedentes.TabIndex = 10;
+            // 
+            // txtPeso
+            // 
+            txtPeso.Location = new Point(270, 74);
+            txtPeso.Name = "txtPeso";
+            txtPeso.Size = new Size(152, 23);
+            txtPeso.TabIndex = 11;
+            // 
+            // txtTalla
+            // 
+            txtTalla.Location = new Point(270, 119);
+            txtTalla.Name = "txtTalla";
+            txtTalla.Size = new Size(152, 23);
+            txtTalla.TabIndex = 12;
+            // 
+            // txtImc
+            // 
+            txtImc.Location = new Point(270, 168);
+            txtImc.Name = "txtImc";
+            txtImc.Size = new Size(152, 23);
+            txtImc.TabIndex = 13;
+            // 
+            // txtObserva
+            // 
+            txtObserva.Location = new Point(270, 218);
+            txtObserva.Name = "txtObserva";
+            txtObserva.Size = new Size(152, 23);
+            txtObserva.TabIndex = 14;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1410, 450);
+            ClientSize = new Size(683, 617);
+            Controls.Add(txtObserva);
+            Controls.Add(txtImc);
+            Controls.Add(txtTalla);
+            Controls.Add(txtPeso);
+            Controls.Add(txtAntecedentes);
             Controls.Add(dgvPaciente);
             Controls.Add(btnActualizar);
             Controls.Add(dtpFechaNacimiento);
@@ -147,5 +192,10 @@
         private DateTimePicker dtpFechaNacimiento;
         private Button btnActualizar;
         private DataGridView dgvPaciente;
+        private TextBox txtAntecedentes;
+        private TextBox txtPeso;
+        private TextBox txtTalla;
+        private TextBox txtImc;
+        private TextBox txtObserva;
     }
 }

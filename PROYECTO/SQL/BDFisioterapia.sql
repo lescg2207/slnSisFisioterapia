@@ -1,4 +1,4 @@
-drop database BDFisio
+create database BDFisio
 use BDFisio
 go
 
@@ -13,7 +13,7 @@ celular char(10)
 
 
 create table HistoriaClinica(
-idHistoria char(10) primary key,
+idHistoria char(10),
 dniPaciente char(8) foreign key references Pacientes(dniPaciente),
 antecedentes varchar(200),
 peso decimal(5,2),
@@ -99,3 +99,5 @@ precioU money,
 subtotal money,
 idImpuesto int foreign key references Impuesto(idImpuesto)
 )
+
+SELECT*FROM HistoriaClinica

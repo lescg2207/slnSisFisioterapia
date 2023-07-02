@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace capaNegocios
 {
-    public class PacienteBll: DbContext
+    public class PacienteBll : DbContext
     {
         PacientesDao pacientesDao = new PacientesDao(new BDFisioContext());
 
@@ -25,11 +25,13 @@ namespace capaNegocios
         }
 
         public List<Paciente> ObtenerListaPacientes()
-        { 
-           return pacientesDao.ObtenerListaPacientes();
+        {
+            return pacientesDao.ObtenerListaPacientes();
         }
+        public void InsertarPacientHistoria(Paciente paciente, HistoriaClinica historiaClinica)
+        {
+            pacientesDao.InsertarPacienteConHistoriaClinica(paciente, historiaClinica);
 
-
-
+        }
     }
 }

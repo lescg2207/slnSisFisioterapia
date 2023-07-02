@@ -27,7 +27,17 @@ namespace capaPresentacion
                 Celular = txtCelular.Text
             };
 
-            _pacientebll.InsertarPaciente(paciente);
+            var historia = new HistoriaClinica
+            {
+                dniPaciente = txtDniPaciente.Text,
+                antecedentes = txtAntecedentes.Text,
+                peso = decimal.Parse(txtPeso.Text),
+                talla = decimal.Parse(txtTalla.Text),
+                imc = decimal.Parse(txtImc.Text),
+                observaciones = txtObserva.Text,
+            };
+
+            _pacientebll.InsertarPacientHistoria(paciente, historia);
 
             MessageBox.Show("Paciente guardado correctamente.");
 

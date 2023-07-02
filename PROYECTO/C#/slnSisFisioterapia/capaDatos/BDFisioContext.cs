@@ -19,7 +19,12 @@ namespace capaDatos
         {
             optionsBuilder.UseSqlServer("Server=localhost;Database=BDFisio;User Id=sa;Password=les123;TrustServerCertificate=true;");
         }
-
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<HistoriaClinica>()
+                .HasNoKey();
+            modelBuilder.Entity<HistoriaClinica>().Property(h => h.idHistoria).HasComputedColumnSql("CONCAT('HC', RIGHT('00000' + CAST(ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS VARCHAR(5)), 5))");
+        }
     }
+    
 }
