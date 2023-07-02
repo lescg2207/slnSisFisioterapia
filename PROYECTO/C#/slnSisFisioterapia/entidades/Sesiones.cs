@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace entidades
 {
-    public class Servicios
+    public class Sesiones
     {
         [Key]
-        public int IdServ { get; set; }
-        public string servicio { get; set; } = null!;
+        public int idSesion { get; set; }
+        public int idTipo { get; set; } = 0!;
+        public int sesiones { get; set; } = 0!;
         public decimal precio { get; set; }
     }
 }
