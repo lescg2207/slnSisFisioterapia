@@ -28,11 +28,7 @@ namespace capaNegocios
         {
             return pacientesDao.ObtenerListaPacientes();
         }
-        public void InsertarPacientHistoria(Paciente paciente, HistoriaClinica historiaClinica)
-        {
-            pacientesDao.InsertarPacienteConHistoriaClinica(paciente, historiaClinica);
-
-        }
+        
 
         public void InsertarPacienteHistoria(HistoriaClinica historia)
         {

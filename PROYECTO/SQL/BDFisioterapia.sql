@@ -13,6 +13,7 @@ celular char(10)
 
 
 create table HistoriaClinica(
+Id int primary key identity,
 idHistoria char(10),
 dniPaciente char(8) foreign key references Pacientes(dniPaciente),
 antecedentes varchar(200),
@@ -100,4 +101,3 @@ subtotal money,
 idImpuesto int foreign key references Impuesto(idImpuesto)
 )
 
-SELECT*FROM HistoriaClinica

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace entidades
 {
     public class HistoriaClinica
@@ -21,16 +22,9 @@ namespace entidades
 
         private static int counter = 0;
 
-        public void GenerateIdHistoria()
-        {
-            idHistoria = "HC" + GenerateUniqueNumber().ToString().PadLeft(5, '0');
-        }
+        
 
-        private int GenerateUniqueNumber()
-        {
-            // Incrementa el contador y devuelve su valor
-            return ++counter;
-        }
+        
 
     }
 }

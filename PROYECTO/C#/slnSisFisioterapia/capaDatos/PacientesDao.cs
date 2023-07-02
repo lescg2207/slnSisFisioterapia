@@ -26,7 +26,7 @@ namespace capaDatos
 
         public void InsertarPacienteHistoria(HistoriaClinica historiaClinica)
         {
-            historiaClinica.GenerateIdHistoria();
+            historiaClinica.idHistoria = GenerateUniqueNumber();
             _dbContext.Set<HistoriaClinica>().Add(historiaClinica);
             _dbContext.SaveChanges();
         }
@@ -53,30 +53,20 @@ namespace capaDatos
             return _dbContext.Set<Paciente>().ToList();
         }
 
-        public void InsertarPacienteConHistoriaClinica(Paciente paciente, HistoriaClinica historiaClinica)
+        private string GenerateUniqueNumber()
         {
-            using (var dbContext = new BDFisioContext())
+            var lastRecord = _dbContext.Set<HistoriaClinica>()
+                .OrderByDescending(h => h.Id)
+                .FirstOrDefault();
+
+            if (lastRecord != null)
             {
-                using (var transaction = dbContext.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        dbContext.Pacientes.Add(paciente);
-                        dbContext.SaveChanges();
-
-                        historiaClinica.dniPaciente = paciente.dniPaciente;
-                        dbContext.HistoriaClinica.Add(historiaClinica);
-                        dbContext.SaveChanges();
-
-                        transaction.Commit();
-                    }
-                    catch
-                    {
-                        transaction.Rollback();
-                        throw;
-                    }
-                }
+                int lastNumber = int.Parse(lastRecord.idHistoria.Substring(2));
+                int newNumber = lastNumber + 1;
+                return $"HC{newNumber.ToString().PadLeft(5, '0')}";
             }
+
+            return "HC00001";
         }
     }
 }

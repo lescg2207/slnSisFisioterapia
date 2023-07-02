@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             btnInsertar = new Button();
             txtDniPaciente = new TextBox();
             txtNombres = new TextBox();
@@ -42,7 +43,9 @@
             txtTalla = new TextBox();
             txtImc = new TextBox();
             txtObserva = new TextBox();
+            pbxConsurDni = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvPaciente).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbxConsurDni).BeginInit();
             SuspendLayout();
             // 
             // btnInsertar
@@ -154,11 +157,23 @@
             txtObserva.Size = new Size(152, 23);
             txtObserva.TabIndex = 14;
             // 
+            // pbxConsurDni
+            // 
+            pbxConsurDni.Cursor = Cursors.Hand;
+            pbxConsurDni.Image = (Image)resources.GetObject("pbxConsurDni.Image");
+            pbxConsurDni.Location = new Point(189, 30);
+            pbxConsurDni.Name = "pbxConsurDni";
+            pbxConsurDni.Size = new Size(41, 48);
+            pbxConsurDni.TabIndex = 15;
+            pbxConsurDni.TabStop = false;
+            pbxConsurDni.Click += pbxConsurDni_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(690, 617);
+            ClientSize = new Size(702, 623);
+            Controls.Add(pbxConsurDni);
             Controls.Add(txtObserva);
             Controls.Add(txtImc);
             Controls.Add(txtTalla);
@@ -177,6 +192,7 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPaciente).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbxConsurDni).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -197,5 +213,6 @@
         private TextBox txtTalla;
         private TextBox txtImc;
         private TextBox txtObserva;
+        private PictureBox pbxConsurDni;
     }
 }
