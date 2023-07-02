@@ -161,9 +161,9 @@
             // 
             pbxConsurDni.Cursor = Cursors.Hand;
             pbxConsurDni.Image = (Image)resources.GetObject("pbxConsurDni.Image");
-            pbxConsurDni.Location = new Point(189, 30);
+            pbxConsurDni.Location = new Point(189, 31);
             pbxConsurDni.Name = "pbxConsurDni";
-            pbxConsurDni.Size = new Size(41, 48);
+            pbxConsurDni.Size = new Size(41, 42);
             pbxConsurDni.TabIndex = 15;
             pbxConsurDni.TabStop = false;
             pbxConsurDni.Click += pbxConsurDni_Click;
