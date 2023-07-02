@@ -10,7 +10,8 @@ namespace entidades
 {
     public class Paciente
     {
-      
+
+        [Key]
         public string dniPaciente { get; set; } = null!;
         
         public string Nombres { get; set; } = null!;
