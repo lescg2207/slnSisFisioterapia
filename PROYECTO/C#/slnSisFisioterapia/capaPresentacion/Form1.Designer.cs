@@ -50,7 +50,7 @@
             // 
             // btnInsertar
             // 
-            btnInsertar.Location = new Point(511, 30);
+            btnInsertar.Location = new Point(511, 31);
             btnInsertar.Name = "btnInsertar";
             btnInsertar.Size = new Size(135, 35);
             btnInsertar.TabIndex = 1;
@@ -105,7 +105,7 @@
             // 
             // btnActualizar
             // 
-            btnActualizar.Location = new Point(511, 89);
+            btnActualizar.Location = new Point(511, 145);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(135, 35);
             btnActualizar.TabIndex = 8;
