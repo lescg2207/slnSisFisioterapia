@@ -1,7 +1,4 @@
-create database BDFisio
-use BDFisio
-go
-
+create database bdFisioterapia
 create table Pacientes(
 dniPaciente char(8) primary key,
 nombres varchar(100),
@@ -29,7 +26,7 @@ cargo varchar(50)
 )
 
 create table Empleado(
-idEmpleado int primary key,
+idEmpleado int primary key identity,
 nombres varchar(100),
 apellidos varchar(100),
 usuario varchar(50),
@@ -57,7 +54,7 @@ precio money
 )
 
 create table Citas(
-idCita int primary key,
+idCita int primary key identity,
 dniPaciente char(8) foreign key references Pacientes(dniPaciente),
 idEmpleado int foreign key references Empleado(idEmpleado),
 fCita date,
@@ -70,7 +67,7 @@ estadoCita varchar(20)
 )
 
 create table Pago(
-idPago int primary key,
+idPago int primary key identity,
 idCita int foreign key references Citas(idCita),
 metodoPago varchar(50),
 monto money,
@@ -78,7 +75,7 @@ fpago datetime
 )
 
 create table Productos(
-idProducto int primary key,
+idProducto int primary key identity,
 nomProducto varchar(100),
 precio money,
 stock int
@@ -91,7 +88,7 @@ porcentaje decimal(4,2)
 )
 
 create table DetalleCita(
-idDetalle int primary key,
+idDetalle int primary key identity,
 idCita int foreign key references Citas(idCita),
 idServicio int foreign key references Servicio(idServicio),
 idProducto int foreign key references Productos(idProducto),
