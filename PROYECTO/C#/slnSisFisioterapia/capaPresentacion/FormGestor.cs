@@ -53,30 +53,25 @@ namespace capaPresentacion
             string server = textBoxServer.Text;
             string database = textBoxDatabase.Text;
             string username = textBoxUsername.Text;
-            string password = textBoxPassword.Text;
-            //_gestorSeleccionado = cbxGestor.SelectedItem.ToString();
-            //connectionString = GetConnectionString(_gestorSeleccionado, server, database, username, password);
+            string password = textBoxPassword.Text;           
 
             if (cbxGestor.SelectedItem == "SqlServer")
             {
                 _gestorSeleccionado = "SqlServer";
-                //connectionString = "Server=localhost;Database=BDFisio;User Id=sa;Password=les123;TrustServerCertificate=true;";
+               
             }
             else if (cbxGestor.SelectedItem == "MySql")
             {
                 _gestorSeleccionado = "MySql";
-                // connectionString = "Server=localhost;Database=BDFisio;User Id=sa;Password=les123;TrustServerCertificate=true;";
+                
             }
-            connectionString = GetConnectionString(_gestorSeleccionado, server, database, username, password);
-            
+
+            connectionString = GetConnectionString(_gestorSeleccionado, server, database, username, password);            
             FrmPaciente paciente = new FrmPaciente(_gestorSeleccionado, connectionString);
             paciente.ShowDialog();
             this.Hide();
 
         }
-        public string ObtenerGestorSeleccionado()
-        {
-            return _gestorSeleccionado;
-        }
+      
     }
 }
