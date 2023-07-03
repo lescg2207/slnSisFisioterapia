@@ -28,18 +28,18 @@ namespace capaPresentacion
                 Celular = txtCelular.Text
             };
 
-            var historia = new HistoriaClinica
-            {
-                dniPaciente = txtDniPaciente.Text,
-                antecedentes = txtAntecedentes.Text,
-                peso = decimal.Parse(txtPeso.Text),
-                talla = decimal.Parse(txtTalla.Text),
-                imc = decimal.Parse(txtImc.Text),
-                observaciones = txtObserva.Text,
-            };
+            //var historia = new HistoriaClinica
+            //{
+            //    dniPaciente = txtDniPaciente.Text,
+            //    antecedentes = txtAntecedentes.Text,
+            //    peso = decimal.Parse(txtPeso.Text),
+            //    talla = decimal.Parse(txtTalla.Text),
+            //    imc = decimal.Parse(txtImc.Text),
+            //    observaciones = txtObserva.Text,
+            //};
 
             _pacientebll.InsertarPaciente(paciente);
-            _pacientebll.InsertarPacienteHistoria(historia);
+            //_pacientebll.InsertarPacienteHistoria(historia);
             listarPacientes();
 
             MessageBox.Show("Paciente guardado correctamente.");
