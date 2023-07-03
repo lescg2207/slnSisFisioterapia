@@ -101,3 +101,4 @@ subtotal money,
 idImpuesto int foreign key references Impuesto(idImpuesto)
 )
 
+SELECT*FROM HistoriaClinica
