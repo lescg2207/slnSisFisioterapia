@@ -17,7 +17,9 @@ namespace capaDatos
    
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=BDFisio;User Id=sa;Password=les123;TrustServerCertificate=true;");
+            //optionsBuilder.UseSqlServer("Server=localhost;Database=BDFisio;User Id=sa;Password=les123;TrustServerCertificate=true;");
+            optionsBuilder.UseMySql("Server=localhost;Uid=root;Pwd=admin;Database=bdfisio",
+                        new MySqlServerVersion(new Version(8, 0, 32)));
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
