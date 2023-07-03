@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using entidades;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
 using static entidades.Enums;
 
 namespace capaDatos
@@ -17,6 +20,7 @@ namespace capaDatos
         public DbSet<HistoriaClinica> HistoriaClinica { get; set; }
         public DbSet<Empleado> Empleado { get; set; }
         public DbSet<Cita> Citas { get; set; }
+
 
         public BDFisioContext(DbContextOptions<BDFisioContext> options, string providerName) : base(options)
         {
@@ -43,8 +47,6 @@ namespace capaDatos
                     break;
             }
         }
-
-       
 
     }
     

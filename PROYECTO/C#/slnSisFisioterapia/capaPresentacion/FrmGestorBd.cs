@@ -59,7 +59,7 @@ namespace capaPresentacion
             }
 
             connectionString = GetConnectionString(_gestorSeleccionado, server, database, username, password);
-            FrmPaciente paciente = new FrmPaciente(_gestorSeleccionado, connectionString);
+            FrmLogin paciente = new FrmLogin(_gestorSeleccionado, connectionString);
             paciente.ShowDialog();
             this.Hide();
         }

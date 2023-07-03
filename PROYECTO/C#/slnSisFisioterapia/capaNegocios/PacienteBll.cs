@@ -61,5 +61,10 @@ namespace capaNegocios
         {
             _pacientesDao.InsertarPacienteHistoria(historia);
         }
+
+        public bool ValidarCredenciales(string usuario, string contraseña)
+        {
+            return _pacientesDao.ValidarCredenciales(usuario,contraseña);
+        }
     }
 }
