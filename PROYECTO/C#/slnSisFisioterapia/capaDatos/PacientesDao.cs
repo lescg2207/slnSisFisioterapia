@@ -1,9 +1,4 @@
 ﻿using entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -12,7 +7,7 @@ namespace capaDatos
     public class PacientesDao
     {
         private readonly DbContext _dbContext;
-        
+
 
         public PacientesDao(DbContext dbContext)
         {
@@ -67,24 +62,24 @@ namespace capaDatos
 
             return "HC00001";
         }
-        public List<ListaPacienteHistoria> ObtenerListaPacientes()
+        public List<ListaPacienteHistoria> ObtenerListaPacientes(string providerName)
         {
-            var pacientesConHistoriaClinica = (from p in _dbContext.Set<Paciente>()
-                                               join h in _dbContext.Set<HistoriaClinica>() on p.dniPaciente equals h.dniPaciente
-                                               select new ListaPacienteHistoria
-                                               {
-                                                   HISTORIA=h.idHistoria,
-                                                   DNI=p.dniPaciente,
-                                                   NOMBRES=p.Nombres,
-                                                   APELLIDOS=p.Apellidos,
-                                                   DIRECCION=p.Direccion,
-                                                   FNACIMIENTO=p.FNacimiento,
-                                                   CELULAR=p.Celular,
-                                                   ANTECEDENTES=h.antecedentes,
-                                                   PESO=h.peso,
-                                                   TALLA=h.talla,
-                                                   IMC=h.imc
-                                               }).ToList();
+            var pacientesConHistoriaClinica = _dbContext.Set<Paciente>()
+                .Join(_dbContext.Set<HistoriaClinica>(), p => p.dniPaciente, h => h.dniPaciente, (p, h) => new ListaPacienteHistoria
+                {
+                    HISTORIA = h.idHistoria,
+                    DNI = p.dniPaciente,
+                    NOMBRES = p.Nombres,
+                    APELLIDOS = p.Apellidos,
+                    DIRECCION = p.Direccion,
+                    FNACIMIENTO = p.FNacimiento,
+                    CELULAR = p.Celular,
+                    ANTECEDENTES = h.antecedentes,
+                    PESO = h.peso,
+                    TALLA = h.talla,
+                    IMC = h.imc
+                })
+                .ToList();
 
             return pacientesConHistoriaClinica;
         }

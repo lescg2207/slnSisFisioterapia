@@ -1,30 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using entidades;
+﻿using entidades;
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace capaDatos
 {
     public class BDFisioContext: DbContext
     {
+        private readonly string _connectionString;
+        private readonly string _providerName;
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<HistoriaClinica> HistoriaClinica { get; set; }
         public DbSet<Empleado> Empleado { get; set; }
         public DbSet<Cita> Citas { get; set; }
-   
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        public BDFisioContext(DbContextOptions<BDFisioContext> options, string providerName) : base(options)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=BDFisio;User Id=sa;Password=les123;TrustServerCertificate=true;");
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-           
+            _providerName = providerName;
         }
 
-        
+        public BDFisioContext(DbContextOptions<BDFisioContext> options, string providerName, string connectionString) : base(options)
+        {
+            _providerName = providerName;
+            _connectionString = connectionString;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            switch (_providerName)
+            {
+                case "SqlServer":
+                    optionsBuilder.UseSqlServer(_connectionString);
+                    break;
+                case "MySql":
+                    optionsBuilder.UseMySql(_connectionString, new MySqlServerVersion(new Version(8, 0, 32)));
+                    break;
+                default:
+                    // Configuración predeterminada para otros proveedores
+                    break;
+            }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Configuración específica del modelo
+        }
+
+
     }
     
 }
