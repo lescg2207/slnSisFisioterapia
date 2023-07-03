@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace entidades
 {
-    public class Servicios
+    public class Impuesto
     {
         [Key]
-        public int IdServ { get; set; }
-        public string servicio { get; set; } = null!;
-        public decimal precio { get; set; }
+        public int idImpuesto { get; set; }
+        public string impuesto { get; set; } = null!;
+        public decimal porcentaje { get; set; }
     }
 }
