@@ -24,7 +24,7 @@ namespace capaNegocios
             pacientesDao.ActualizarPaciente(upPaciente);
         }
 
-        public List<Paciente> ObtenerListaPacientes()
+        public List<ListaPacienteHistoria> ObtenerListaPacientes()
         {
             return pacientesDao.ObtenerListaPacientes();
         }

@@ -19,12 +19,6 @@ namespace entidades
         public decimal talla { get; set; }
         public decimal imc { get; set; }
         public string? observaciones { get; set; }
-
-        private static int counter = 0;
-
-        
-
-        
-
+      
     }
 }

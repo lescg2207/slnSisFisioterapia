@@ -23,7 +23,7 @@ namespace entidades
         public DateTime FNacimiento { get; set; }
         
         public string Celular { get; set; } = null!;
+      
 
-        
     }
 }

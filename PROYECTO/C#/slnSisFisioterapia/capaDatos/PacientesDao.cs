@@ -6,11 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace capaDatos
 {
     public class PacientesDao
     {
         private readonly DbContext _dbContext;
+        
 
         public PacientesDao(DbContext dbContext)
         {
@@ -48,10 +50,10 @@ namespace capaDatos
                 _dbContext.SaveChanges();
             }
         }
-        public List<Paciente> ObtenerListaPacientes()
+        /*public List<Paciente> ObtenerListaPacientes()
         {
-            return _dbContext.Set<Paciente>().ToList();
-        }
+            //return _dbContext.Set<Paciente>().Include(p => p.HistoriaClinica).ToList();
+        }*/
 
         private string GenerateUniqueNumber()
         {
@@ -67,6 +69,18 @@ namespace capaDatos
             }
 
             return "HC00001";
+        }
+        public List<ListaPacienteHistoria> ObtenerListaPacientes()
+        {
+            var pacientesConHistoriaClinica = (from p in _dbContext.Set<Paciente>()
+                                               join h in _dbContext.Set<HistoriaClinica>() on p.dniPaciente equals h.dniPaciente
+                                               select new ListaPacienteHistoria
+                                               {
+                                                   Pacientes = p,
+                                                   HistoriaClinica = h
+                                               }).ToList();
+
+            return pacientesConHistoriaClinica;
         }
     }
 }
