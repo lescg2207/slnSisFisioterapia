@@ -66,5 +66,14 @@ namespace capaNegocios
         {
             return _pacientesDao.BuscarPacientePorDNI(dni);
         }
+
+        public List<ListaPacienteHistoria> BuscarPacientePorNombre(string nombre)
+        {
+            return _pacientesDao.BuscarPacientePorNombre(nombre);
+        }
+        public List<ListaPacienteHistoria> BuscarPacientePorApellido(string apellido)
+        {
+            return _pacientesDao.BuscarPacientePorApellido(apellido);
+        }
     }
 }

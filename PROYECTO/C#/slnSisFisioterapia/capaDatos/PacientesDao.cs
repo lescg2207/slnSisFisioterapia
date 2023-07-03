@@ -88,11 +88,58 @@ namespace capaDatos
 
             return pacientesConHistoriaClinica;
         }
+
         public List<ListaPacienteHistoria> BuscarPacientePorDNI(string dni)
         {
             var pacientesConHistoriaClinica = (from p in _dbContext.Set<Paciente>()
                                                join h in _dbContext.Set<HistoriaClinica>() on p.dniPaciente equals h.dniPaciente
                                                where p.dniPaciente.StartsWith(dni)
+                                               select new ListaPacienteHistoria
+                                               {
+                                                   HISTORIA = h.idHistoria,
+                                                   DNI = p.dniPaciente,
+                                                   NOMBRES = p.Nombres,
+                                                   APELLIDOS = p.Apellidos,
+                                                   DIRECCION = p.Direccion,
+                                                   FNACIMIENTO = p.FNacimiento,
+                                                   CELULAR = p.Celular,
+                                                   ANTECEDENTES = h.antecedentes,
+                                                   PESO = h.peso,
+                                                   TALLA = h.talla,
+                                                   IMC = h.imc
+                                               }).ToList();
+
+            return pacientesConHistoriaClinica;
+        }
+
+        public List<ListaPacienteHistoria> BuscarPacientePorNombre(string nombre)
+        {
+            var pacientesConHistoriaClinica = (from p in _dbContext.Set<Paciente>()
+                                               join h in _dbContext.Set<HistoriaClinica>() on p.dniPaciente equals h.dniPaciente
+                                               where p.Nombres.StartsWith(nombre)
+                                               select new ListaPacienteHistoria
+                                               {
+                                                   HISTORIA = h.idHistoria,
+                                                   DNI = p.dniPaciente,
+                                                   NOMBRES = p.Nombres,
+                                                   APELLIDOS = p.Apellidos,
+                                                   DIRECCION = p.Direccion,
+                                                   FNACIMIENTO = p.FNacimiento,
+                                                   CELULAR = p.Celular,
+                                                   ANTECEDENTES = h.antecedentes,
+                                                   PESO = h.peso,
+                                                   TALLA = h.talla,
+                                                   IMC = h.imc
+                                               }).ToList();
+
+            return pacientesConHistoriaClinica;
+        }
+
+        public List<ListaPacienteHistoria> BuscarPacientePorApellido(string apellido)
+        {
+            var pacientesConHistoriaClinica = (from p in _dbContext.Set<Paciente>()
+                                               join h in _dbContext.Set<HistoriaClinica>() on p.dniPaciente equals h.dniPaciente
+                                               where p.Apellidos.StartsWith(apellido)
                                                select new ListaPacienteHistoria
                                                {
                                                    HISTORIA = h.idHistoria,

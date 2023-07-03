@@ -166,31 +166,27 @@ namespace capaPresentacion
 
             try
             {
-                using (var dbContext = new BDFisioContext())
+                List<ListaPacienteHistoria> pacientes = null;
+
+                // Realizar la búsqueda según el criterio seleccionado
+                switch (criterio)
                 {
-                    var pacientesDao = new PacientesDao(dbContext);
-                    List<ListaPacienteHistoria> pacientes = null;
-
-                    // Realizar la búsqueda según el criterio seleccionado
-                    switch (criterio)
-                    {
-                        case "DNI":
-                            pacientes = pacientesDao.BuscarPacientePorDNI(valorBusqueda);
-                            break;
-                        //case "Nombre":
-                        //    pacientes = pacientesDao.BuscarPacientePorNombre(valorBusqueda);
-                        //    break;
-                        //case "Apellido":
-                        //    pacientes = pacientesDao.BuscarPacientePorApellido(valorBusqueda);
-                        //    break;
-                    }
-
-                    // Mostrar los resultados en una lista, DataGridView o cualquier otro control
-                    // según la estructura de tu interfaz de usuario
-
-                    // Por ejemplo, asumiendo que tienes un DataGridView llamado dataGridViewPacientes
-                    dgvPaciente.DataSource = pacientes;
+                    case "DNI":
+                        pacientes = _pacientebll.BuscarPacientePorDNI(valorBusqueda);
+                        break;
+                    case "Nombre":
+                        pacientes = _pacientebll.BuscarPacientePorNombre(valorBusqueda);
+                        break;
+                    case "Apellido":
+                        pacientes = _pacientebll.BuscarPacientePorApellido(valorBusqueda);
+                        break;
                 }
+
+                // Mostrar los resultados en una lista, DataGridView o cualquier otro control
+                // según la estructura de tu interfaz de usuario
+
+                // Por ejemplo, asumiendo que tienes un DataGridView llamado dataGridViewPacientes
+                dgvPaciente.DataSource = pacientes;
             }
             catch (Exception ex)
             {

@@ -368,7 +368,6 @@
             // CCriterioBusqueda
             // 
             CCriterioBusqueda.FormattingEnabled = true;
-            CCriterioBusqueda.Items.AddRange(new object[] { "Seleccione", "DNI", "Nombre", "Apellido" });
             CCriterioBusqueda.Location = new Point(173, 38);
             CCriterioBusqueda.Name = "CCriterioBusqueda";
             CCriterioBusqueda.Size = new Size(130, 23);
