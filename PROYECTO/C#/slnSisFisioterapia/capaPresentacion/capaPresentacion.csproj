@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\capaDatos\capaDatos.csproj" />
     <ProjectReference Include="..\capaNegocios\capaNegocios.csproj" />
     <ProjectReference Include="..\entidades\entidades.csproj" />
   </ItemGroup>

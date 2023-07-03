@@ -40,15 +40,11 @@ namespace capaDatos
                     optionsBuilder.UseMySql(_connectionString, new MySqlServerVersion(new Version(8, 0, 32)));
                     break;
                 default:
-                    // Configuración predeterminada para otros proveedores
                     break;
             }
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            // Configuración específica del modelo
-        }
+       
 
     }
     
