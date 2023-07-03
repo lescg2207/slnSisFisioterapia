@@ -50,10 +50,7 @@ namespace capaDatos
                 _dbContext.SaveChanges();
             }
         }
-        /*public List<Paciente> ObtenerListaPacientes()
-        {
-            //return _dbContext.Set<Paciente>().Include(p => p.HistoriaClinica).ToList();
-        }*/
+
 
         private string GenerateUniqueNumber()
         {
@@ -76,8 +73,17 @@ namespace capaDatos
                                                join h in _dbContext.Set<HistoriaClinica>() on p.dniPaciente equals h.dniPaciente
                                                select new ListaPacienteHistoria
                                                {
-                                                   Pacientes = p,
-                                                   HistoriaClinica = h
+                                                   HISTORIA=h.idHistoria,
+                                                   DNI=p.dniPaciente,
+                                                   NOMBRES=p.Nombres,
+                                                   APELLIDOS=p.Apellidos,
+                                                   DIRECCION=p.Direccion,
+                                                   FNACIMIENTO=p.FNacimiento,
+                                                   CELULAR=p.Celular,
+                                                   ANTECEDENTES=h.antecedentes,
+                                                   PESO=h.peso,
+                                                   TALLA=h.talla,
+                                                   IMC=h.imc
                                                }).ToList();
 
             return pacientesConHistoriaClinica;

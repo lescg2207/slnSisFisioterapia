@@ -54,7 +54,7 @@
             label11 = new Label();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
-            button1 = new Button();
+            btnLimpiar = new Button();
             textBox1 = new TextBox();
             comboBox1 = new ComboBox();
             label12 = new Label();
@@ -347,14 +347,15 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Datos Clinicos";
             // 
-            // button1
+            // btnLimpiar
             // 
-            button1.Location = new Point(640, 31);
-            button1.Name = "button1";
-            button1.Size = new Size(135, 35);
-            button1.TabIndex = 29;
-            button1.Text = "ELIMINAR";
-            button1.UseVisualStyleBackColor = true;
+            btnLimpiar.Location = new Point(640, 31);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(135, 35);
+            btnLimpiar.TabIndex = 29;
+            btnLimpiar.Text = "LIMPIAR";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // textBox1
             // 
@@ -391,7 +392,7 @@
             panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(btnActualizar);
             panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(btnLimpiar);
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 268);
             panel1.Name = "panel1";
@@ -460,7 +461,7 @@
         private Label label11;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private Button button1;
+        private Button btnLimpiar;
         private TextBox textBox1;
         private ComboBox comboBox1;
         private Label label12;

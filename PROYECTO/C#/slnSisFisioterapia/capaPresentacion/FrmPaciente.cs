@@ -14,10 +14,12 @@ namespace capaPresentacion
         {
             InitializeComponent();
             _pacientebll = new PacienteBll();
+            txtNombres.Enabled = false;
+            txtApellidos.Enabled = false;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-           listarPacientes();
+            listarPacientes();
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -73,7 +75,7 @@ namespace capaPresentacion
             List<ListaPacienteHistoria> pacientes = _pacientebll.ObtenerListaPacientes();
             dgvPaciente.DataSource = pacientes;
 
-           
+
         }
         private void Limpiar()
         {
@@ -87,6 +89,7 @@ namespace capaPresentacion
             txtImc.Text = "";
             txtCelular.Text = "";
             txtDireccion.Text = "";
+            txtDniPaciente.Enabled = true;
         }
 
         private void consultarCliente()
@@ -123,13 +126,25 @@ namespace capaPresentacion
 
         private void dgvPaciente_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtDniPaciente.Text = dgvPaciente.CurrentRow.Cells[0].Value.ToString();
-            txtNombres.Text = dgvPaciente.CurrentRow.Cells[1].Value.ToString();
-            txtApellidos.Text = dgvPaciente.CurrentRow.Cells[2].Value.ToString();
-            txtDireccion.Text = dgvPaciente.CurrentRow.Cells[3].Value.ToString();
-            dtpFechaNacimiento.Text = dgvPaciente.CurrentRow.Cells[4].Value.ToString();
-            txtCelular.Text = dgvPaciente.CurrentRow.Cells[5].Value.ToString();
+            txtDniPaciente.Text = dgvPaciente.CurrentRow.Cells[1].Value.ToString();
+            txtNombres.Text = dgvPaciente.CurrentRow.Cells[2].Value.ToString();
+            txtApellidos.Text = dgvPaciente.CurrentRow.Cells[3].Value.ToString();
+            txtDireccion.Text = dgvPaciente.CurrentRow.Cells[4].Value.ToString();
+            dtpFechaNacimiento.Text = dgvPaciente.CurrentRow.Cells[5].Value.ToString();
+            txtCelular.Text = dgvPaciente.CurrentRow.Cells[6].Value.ToString();
+            txtAntecedentes.Text = dgvPaciente.CurrentRow.Cells[7].Value.ToString();
+            txtPeso.Text = dgvPaciente.CurrentRow.Cells[8].Value.ToString();
+            txtTalla.Text = dgvPaciente.CurrentRow.Cells[9].Value.ToString();
+            txtImc.Text = dgvPaciente.CurrentRow.Cells[10].Value.ToString();
+            txtDniPaciente.Enabled = false;
 
+
+
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
         }
     }
 }

@@ -8,7 +8,24 @@ namespace entidades
 {
     public class ListaPacienteHistoria
     {
-        public Paciente Pacientes { get; set; }
-        public HistoriaClinica HistoriaClinica { get; set; }
+        public string HISTORIA { get; set; } = null!;
+
+        public string DNI { get; set; } = null!;
+
+        public string NOMBRES { get; set; } = null!;
+
+        public string APELLIDOS { get; set; } = null!;
+
+        public string DIRECCION { get; set; } = null!;
+
+        public DateTime FNACIMIENTO { get; set; }
+
+        public string CELULAR { get; set; } = null!;
+     
+        public string? ANTECEDENTES { get; set; }
+        public decimal PESO { get; set; }
+        public decimal TALLA { get; set; }
+        public decimal IMC { get; set; }
+
     }
 }
