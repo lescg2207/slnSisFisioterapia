@@ -62,7 +62,7 @@ namespace capaDatos
 
             return "HC00001";
         }
-        public List<ListaPacienteHistoria> ObtenerListaPacientes(string providerName)
+        public List<ListaPacienteHistoria> ObtenerListaPacientes()
         {
             var pacientesConHistoriaClinica = _dbContext.Set<Paciente>()
                 .Join(_dbContext.Set<HistoriaClinica>(), p => p.dniPaciente, h => h.dniPaciente, (p, h) => new ListaPacienteHistoria

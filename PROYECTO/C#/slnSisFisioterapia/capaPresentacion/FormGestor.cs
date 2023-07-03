@@ -13,6 +13,7 @@ namespace capaPresentacion
     public partial class FormGestor : Form
     {
         private string _gestorSeleccionado;
+        public string connectionString;
         public FormGestor()
         {
             InitializeComponent();
@@ -23,13 +24,55 @@ namespace capaPresentacion
             cbxGestor.Items.Add("SqlServer");
             cbxGestor.Items.Add("MySql");
         }
+        private string GetConnectionString(string selectedDatabase, string server, string database, string username, string password)
+        {
 
+            if (selectedDatabase == "SqlServer")
+            {
+                connectionString = $"Data Source={server};Initial Catalog={database};User ID={username};Password={password};TrustServerCertificate=true;";
+            }
+            else if (selectedDatabase == "MySql")
+            {
+                connectionString = $"Server={server};Database={database};Uid={username};Pwd={password}";
+            }
+            else if (selectedDatabase == "Oracle")
+            {
+                connectionString = $"Data Source={server};User ID={username};Password={password}";
+
+            }
+            else if (selectedDatabase == "Access")
+            {
+
+                connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={database};Persist Security Info=False;";
+            }
+
+            return connectionString;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            _gestorSeleccionado = cbxGestor.SelectedItem.ToString();
+            string server = textBoxServer.Text;
+            string database = textBoxDatabase.Text;
+            string username = textBoxUsername.Text;
+            string password = textBoxPassword.Text;
+            //_gestorSeleccionado = cbxGestor.SelectedItem.ToString();
+            //connectionString = GetConnectionString(_gestorSeleccionado, server, database, username, password);
 
-            // Cerrar el formulario
-            this.Close();
+            if (cbxGestor.SelectedItem == "SqlServer")
+            {
+                _gestorSeleccionado = "SqlServer";
+                //connectionString = "Server=localhost;Database=BDFisio;User Id=sa;Password=les123;TrustServerCertificate=true;";
+            }
+            else if (cbxGestor.SelectedItem == "MySql")
+            {
+                _gestorSeleccionado = "MySql";
+                // connectionString = "Server=localhost;Database=BDFisio;User Id=sa;Password=les123;TrustServerCertificate=true;";
+            }
+            connectionString = GetConnectionString(_gestorSeleccionado, server, database, username, password);
+            
+            FrmPaciente paciente = new FrmPaciente(_gestorSeleccionado, connectionString);
+            paciente.ShowDialog();
+            this.Hide();
+
         }
         public string ObtenerGestorSeleccionado()
         {

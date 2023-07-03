@@ -29,8 +29,7 @@ namespace capaNegocios
                 case "MySql":
                     optionsBuilder.UseMySql(_connectionString, new MySqlServerVersion(new Version(8, 0, 32)));
                     break;
-                default:
-                    // Configuración predeterminada para otros proveedores
+                default:                 
                     break;
             }
 
@@ -50,7 +49,7 @@ namespace capaNegocios
 
         public List<ListaPacienteHistoria> ObtenerListaPacientes()
         {
-            return _pacientesDao.ObtenerListaPacientes(_providerName);
+            return _pacientesDao.ObtenerListaPacientes();
         }
         
 
