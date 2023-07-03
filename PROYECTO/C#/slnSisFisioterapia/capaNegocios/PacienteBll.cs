@@ -61,5 +61,10 @@ namespace capaNegocios
         {
             _pacientesDao.InsertarPacienteHistoria(historia);
         }
+
+        public List<ListaPacienteHistoria> BuscarPacientePorDNI(string dni)
+        {
+            return _pacientesDao.BuscarPacientePorDNI(dni);
+        }
     }
 }
