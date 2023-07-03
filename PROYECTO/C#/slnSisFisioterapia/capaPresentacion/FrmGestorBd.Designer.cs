@@ -112,11 +112,13 @@
             comboBoxDatabase.Name = "comboBoxDatabase";
             comboBoxDatabase.Size = new Size(144, 23);
             comboBoxDatabase.TabIndex = 9;
+            comboBoxDatabase.SelectedIndexChanged += comboBoxDatabase_SelectedIndexChanged;
             // 
             // textBoxPassword
             // 
             textBoxPassword.Location = new Point(175, 155);
             textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.PasswordChar = '*';
             textBoxPassword.Size = new Size(144, 23);
             textBoxPassword.TabIndex = 8;
             textBoxPassword.TextAlign = HorizontalAlignment.Center;
@@ -136,7 +138,7 @@
             textBoxDatabase.Name = "textBoxDatabase";
             textBoxDatabase.Size = new Size(144, 23);
             textBoxDatabase.TabIndex = 6;
-            textBoxDatabase.Text = "BDFisio";
+            textBoxDatabase.Text = "bdFisioterapia";
             textBoxDatabase.TextAlign = HorizontalAlignment.Center;
             // 
             // textBoxServer

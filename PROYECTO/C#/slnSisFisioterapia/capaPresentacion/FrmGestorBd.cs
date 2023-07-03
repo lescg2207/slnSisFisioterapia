@@ -45,7 +45,7 @@ namespace capaPresentacion
             string server = textBoxServer.Text;
             string database = textBoxDatabase.Text;
             string username = textBoxUsername.Text;
-            string password = textBoxPassword.Text;
+            string password = textBoxPassword.Text.Trim();
 
             if (comboBoxDatabase.SelectedItem.ToString() == "SqlServer")
             {
@@ -60,8 +60,21 @@ namespace capaPresentacion
 
             connectionString = GetConnectionString(_gestorSeleccionado, server, database, username, password);
             FrmPaciente paciente = new FrmPaciente(_gestorSeleccionado, connectionString);
-            paciente.ShowDialog();
+            paciente.Show();
             this.Hide();
+        }
+
+        private void comboBoxDatabase_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxUsername.Text = "sis";
+            textBoxServer.Text = "bdfisioterapia.database.windows.net";
+            textBoxPassword.Text = "proyFisio22";
+            textBoxDatabase.Text = "bdFisioterapia";
+            textBoxServer.Enabled = true;
+            textBoxUsername.Enabled = true;
+            textBoxPassword.Enabled = true;
+            textBoxDatabase.Enabled = false;
+            textBoxPassword.Focus();
         }
     }
 }

@@ -1,4 +1,3 @@
-using capaDatos;
 using capaNegocios;
 using entidades;
 using System.Windows.Forms;
