@@ -1,3 +1,4 @@
+using capaDatos;
 using capaNegocios;
 using entidades;
 using System.Windows.Forms;
@@ -20,6 +21,8 @@ namespace capaPresentacion
         private void Form1_Load(object sender, EventArgs e)
         {
             listarPacientes();
+            CCriterioBusqueda.Items.AddRange(new string[] { "Seleccione", "DNI", "Nombre", "Apellido" });
+            CCriterioBusqueda.SelectedIndex = 0; // Establecer la opción por defecto
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -145,6 +148,54 @@ namespace capaPresentacion
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string criterio = CCriterioBusqueda.SelectedItem.ToString();
+            string valorBusqueda = textBox1.Text;
+
+            // Validar que se haya ingresado un valor de búsqueda
+            if (string.IsNullOrWhiteSpace(valorBusqueda))
+            {
+                // Si el valor de búsqueda está vacío, puedes limpiar la lista de resultados o
+                // realizar alguna otra acción en la interfaz de usuario
+                dgvPaciente.DataSource = null;
+                return;
+            }
+
+            try
+            {
+                using (var dbContext = new BDFisioContext())
+                {
+                    var pacientesDao = new PacientesDao(dbContext);
+                    List<ListaPacienteHistoria> pacientes = null;
+
+                    // Realizar la búsqueda según el criterio seleccionado
+                    switch (criterio)
+                    {
+                        case "DNI":
+                            pacientes = pacientesDao.BuscarPacientePorDNI(valorBusqueda);
+                            break;
+                        //case "Nombre":
+                        //    pacientes = pacientesDao.BuscarPacientePorNombre(valorBusqueda);
+                        //    break;
+                        //case "Apellido":
+                        //    pacientes = pacientesDao.BuscarPacientePorApellido(valorBusqueda);
+                        //    break;
+                    }
+
+                    // Mostrar los resultados en una lista, DataGridView o cualquier otro control
+                    // según la estructura de tu interfaz de usuario
+
+                    // Por ejemplo, asumiendo que tienes un DataGridView llamado dataGridViewPacientes
+                    dgvPaciente.DataSource = pacientes;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar los pacientes: " + ex.Message);
+            }
         }
     }
 }

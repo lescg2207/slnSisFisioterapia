@@ -56,7 +56,7 @@
             groupBox2 = new GroupBox();
             btnLimpiar = new Button();
             textBox1 = new TextBox();
-            comboBox1 = new ComboBox();
+            CCriterioBusqueda = new ComboBox();
             label12 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
@@ -363,14 +363,16 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(234, 23);
             textBox1.TabIndex = 30;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
-            // comboBox1
+            // CCriterioBusqueda
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(173, 38);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(130, 23);
-            comboBox1.TabIndex = 31;
+            CCriterioBusqueda.FormattingEnabled = true;
+            CCriterioBusqueda.Items.AddRange(new object[] { "Seleccione", "DNI", "Nombre", "Apellido" });
+            CCriterioBusqueda.Location = new Point(173, 38);
+            CCriterioBusqueda.Name = "CCriterioBusqueda";
+            CCriterioBusqueda.Size = new Size(130, 23);
+            CCriterioBusqueda.TabIndex = 31;
             // 
             // label12
             // 
@@ -389,7 +391,7 @@
             panel1.Controls.Add(dgvPaciente);
             panel1.Controls.Add(label12);
             panel1.Controls.Add(btnInsertar);
-            panel1.Controls.Add(comboBox1);
+            panel1.Controls.Add(CCriterioBusqueda);
             panel1.Controls.Add(btnActualizar);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(btnLimpiar);
@@ -463,7 +465,7 @@
         private GroupBox groupBox2;
         private Button btnLimpiar;
         private TextBox textBox1;
-        private ComboBox comboBox1;
+        private ComboBox CCriterioBusqueda;
         private Label label12;
         private Panel panel1;
         private Panel panel2;
