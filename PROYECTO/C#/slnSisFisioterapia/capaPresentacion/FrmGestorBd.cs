@@ -17,7 +17,7 @@ namespace capaPresentacion
         public FrmGestorBd()
         {
             InitializeComponent();
-            comboBoxDatabase.Items.AddRange(new object[] { "Seleccione...", "SQL Server", "MySQL", "Oracle", "Access" });
+            comboBoxDatabase.Items.AddRange(new object[] { "Seleccione...", "SqlServer", "MySQL", "Oracle", "Access" });
             comboBoxDatabase.SelectedIndex = 0;
         }
 
