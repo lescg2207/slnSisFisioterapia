@@ -17,7 +17,7 @@ namespace capaPresentacion
         public FrmGestorBd()
         {
             InitializeComponent();
-            comboBoxDatabase.Items.AddRange(new object[] { "SqlServer", "MySQL" });
+            comboBoxDatabase.Items.AddRange(new object[] { "SqlServer", "MySql" });
             comboBoxDatabase.SelectedIndex = 0;
         }
 
@@ -30,7 +30,7 @@ namespace capaPresentacion
             }
             else if (selectedDatabase == "MySql")
             {
-                connectionString = $"Server={server};Database={database};Uid={username};Pwd={password}";
+                connectionString = $"server={server};database={database};user={username};password={password}";
             }
 
             return connectionString;
