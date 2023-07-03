@@ -10,10 +10,10 @@ namespace capaPresentacion
         private readonly PacienteBll _pacientebll;
         ApisPeru ApisPeru = new ApisPeru();
 
-        public FrmPaciente(PacienteBll pacientesBll)
+        public FrmPaciente(string providerName, string connectionString)
         {
             InitializeComponent();
-            _pacientebll = new PacienteBll();
+            _pacientebll = new PacienteBll(providerName, connectionString);
             txtNombres.Enabled = false;
             txtApellidos.Enabled = false;
         }

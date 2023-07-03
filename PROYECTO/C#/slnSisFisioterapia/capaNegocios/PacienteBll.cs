@@ -11,33 +11,55 @@ namespace capaNegocios
 {
     public class PacienteBll : DbContext
     {
-        public PacienteBll(BDFisioContext dbContext)
+        private readonly string _providerName;
+        private readonly string _connectionString;
+        private readonly PacientesDao _pacientesDao;
+
+        public PacienteBll(string providerName, string connectionString)
         {
-            pacientesDao = new PacientesDao(dbContext);
+            _providerName = providerName;
+            _connectionString = connectionString;
+            _pacientesDao = new PacientesDao(CreateDbContext());
         }
-        private PacientesDao pacientesDao;
-        //PacientesDao pacientesDao = new PacientesDao(new BDFisioContext());
+        private DbContext CreateDbContext()
+        {
+            DbContextOptionsBuilder<BDFisioContext> optionsBuilder = new DbContextOptionsBuilder<BDFisioContext>();
+
+            switch (_providerName)
+            {
+                case "SqlServer":
+                    optionsBuilder.UseSqlServer(_connectionString);
+                    break;
+                case "MySql":
+                    optionsBuilder.UseMySql(_connectionString, new MySqlServerVersion(new Version(8, 0, 32)));
+                    break;
+                default:
+                    break;
+            }
+
+            return new BDFisioContext(optionsBuilder.Options, _providerName, _connectionString);
+        }
 
 
         public void InsertarPaciente(Paciente nuevoPaciente)
         {
-            pacientesDao.InsertarPaciente(nuevoPaciente);
+            _pacientesDao.InsertarPaciente(nuevoPaciente);
         }
 
         public void ActualizarPaciente(Paciente upPaciente)
         {
-            pacientesDao.ActualizarPaciente(upPaciente);
+            _pacientesDao.ActualizarPaciente(upPaciente);
         }
 
         public List<ListaPacienteHistoria> ObtenerListaPacientes()
         {
-            return pacientesDao.ObtenerListaPacientes();
+            return _pacientesDao.ObtenerListaPacientes();
         }
-        
+
 
         public void InsertarPacienteHistoria(HistoriaClinica historia)
         {
-            pacientesDao.InsertarPacienteHistoria(historia);
+            _pacientesDao.InsertarPacienteHistoria(historia);
         }
     }
 }

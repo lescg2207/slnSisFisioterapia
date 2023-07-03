@@ -11,40 +11,44 @@ namespace capaDatos
 {
     public class BDFisioContext: DbContext
     {
+        private readonly string _connectionString;
+        private readonly string _providerName;
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<HistoriaClinica> HistoriaClinica { get; set; }
         public DbSet<Empleado> Empleado { get; set; }
         public DbSet<Cita> Citas { get; set; }
 
-        private GestorBaseDatos _selectedGestor;
-
-        public BDFisioContext(GestorBaseDatos selectedGestor)
+        public BDFisioContext(DbContextOptions<BDFisioContext> options, string providerName) : base(options)
         {
-            _selectedGestor = selectedGestor;
+            _providerName = providerName;
+        }
+
+        public BDFisioContext(DbContextOptions<BDFisioContext> options, string providerName, string connectionString) : base(options)
+        {
+            _providerName = providerName;
+            _connectionString = connectionString;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (_selectedGestor == GestorBaseDatos.SqlServer)
+            switch (_providerName)
             {
-                optionsBuilder.UseSqlServer("Server=localhost;Database=BDFisio;User Id=sa;Password=les123;TrustServerCertificate=true;");
+                case "SqlServer":
+                    optionsBuilder.UseSqlServer(_connectionString);
+                    break;
+                case "MySql":
+                    optionsBuilder.UseMySql(_connectionString, new MySqlServerVersion(new Version(8, 0, 32)));
+                    break;
+                default:
+                    // Configuración predeterminada para otros proveedores
+                    break;
             }
-            else if (_selectedGestor == GestorBaseDatos.MySql)
-            {
-                optionsBuilder.UseMySql("Server=localhost;Uid=root;Pwd=admin;Database=bdfisio",
-                        new MySqlServerVersion(new Version(8, 0, 32)));
-            }
-            // Agrega aquí otros casos para diferentes gestores de base de datos
-
-            base.OnConfiguring(optionsBuilder);
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configuraciones adicionales del modelo
-
-            base.OnModelCreating(modelBuilder);
+            // Configuración específica del modelo
         }
-
 
     }
     
