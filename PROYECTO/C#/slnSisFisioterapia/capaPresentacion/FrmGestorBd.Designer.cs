@@ -110,14 +110,14 @@
             comboBoxDatabase.FormattingEnabled = true;
             comboBoxDatabase.Location = new Point(175, 33);
             comboBoxDatabase.Name = "comboBoxDatabase";
-            comboBoxDatabase.Size = new Size(144, 23);
+            comboBoxDatabase.Size = new Size(161, 23);
             comboBoxDatabase.TabIndex = 9;
             // 
             // textBoxPassword
             // 
             textBoxPassword.Location = new Point(175, 155);
             textBoxPassword.Name = "textBoxPassword";
-            textBoxPassword.Size = new Size(144, 23);
+            textBoxPassword.Size = new Size(161, 23);
             textBoxPassword.TabIndex = 8;
             textBoxPassword.TextAlign = HorizontalAlignment.Center;
             // 
@@ -125,7 +125,7 @@
             // 
             textBoxUsername.Location = new Point(175, 125);
             textBoxUsername.Name = "textBoxUsername";
-            textBoxUsername.Size = new Size(144, 23);
+            textBoxUsername.Size = new Size(161, 23);
             textBoxUsername.TabIndex = 7;
             textBoxUsername.TextAlign = HorizontalAlignment.Center;
             // 
@@ -134,7 +134,7 @@
             textBoxDatabase.Enabled = false;
             textBoxDatabase.Location = new Point(175, 95);
             textBoxDatabase.Name = "textBoxDatabase";
-            textBoxDatabase.Size = new Size(144, 23);
+            textBoxDatabase.Size = new Size(161, 23);
             textBoxDatabase.TabIndex = 6;
             textBoxDatabase.Text = "BDFisio";
             textBoxDatabase.TextAlign = HorizontalAlignment.Center;
@@ -143,7 +143,7 @@
             // 
             textBoxServer.Location = new Point(175, 62);
             textBoxServer.Name = "textBoxServer";
-            textBoxServer.Size = new Size(144, 23);
+            textBoxServer.Size = new Size(161, 23);
             textBoxServer.TabIndex = 5;
             textBoxServer.TextAlign = HorizontalAlignment.Center;
             // 
