@@ -31,6 +31,7 @@
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();
+            btnConectar = new Button();
             panel3 = new Panel();
             comboBoxDatabase = new ComboBox();
             textBoxPassword = new TextBox();
@@ -42,7 +43,6 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            btnConectar = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -75,6 +75,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(448, 64);
             panel2.TabIndex = 1;
+            // 
+            // btnConectar
+            // 
+            btnConectar.Location = new Point(313, 18);
+            btnConectar.Name = "btnConectar";
+            btnConectar.Size = new Size(75, 23);
+            btnConectar.TabIndex = 0;
+            btnConectar.Text = "Conectar";
+            btnConectar.UseVisualStyleBackColor = true;
+            btnConectar.Click += btnConectar_Click;
             // 
             // panel3
             // 
@@ -109,6 +119,7 @@
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(144, 23);
             textBoxPassword.TabIndex = 8;
+            textBoxPassword.TextAlign = HorizontalAlignment.Center;
             // 
             // textBoxUsername
             // 
@@ -116,13 +127,17 @@
             textBoxUsername.Name = "textBoxUsername";
             textBoxUsername.Size = new Size(144, 23);
             textBoxUsername.TabIndex = 7;
+            textBoxUsername.TextAlign = HorizontalAlignment.Center;
             // 
             // textBoxDatabase
             // 
+            textBoxDatabase.Enabled = false;
             textBoxDatabase.Location = new Point(175, 95);
             textBoxDatabase.Name = "textBoxDatabase";
             textBoxDatabase.Size = new Size(144, 23);
             textBoxDatabase.TabIndex = 6;
+            textBoxDatabase.Text = "BDFisio";
+            textBoxDatabase.TextAlign = HorizontalAlignment.Center;
             // 
             // textBoxServer
             // 
@@ -130,6 +145,7 @@
             textBoxServer.Name = "textBoxServer";
             textBoxServer.Size = new Size(144, 23);
             textBoxServer.TabIndex = 5;
+            textBoxServer.TextAlign = HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -180,16 +196,6 @@
             label2.Size = new Size(56, 17);
             label2.TabIndex = 0;
             label2.Text = "Gestor :";
-            // 
-            // btnConectar
-            // 
-            btnConectar.Location = new Point(313, 18);
-            btnConectar.Name = "btnConectar";
-            btnConectar.Size = new Size(75, 23);
-            btnConectar.TabIndex = 0;
-            btnConectar.Text = "Conectar";
-            btnConectar.UseVisualStyleBackColor = true;
-            btnConectar.Click += btnConectar_Click;
             // 
             // FrmGestorBd
             // 

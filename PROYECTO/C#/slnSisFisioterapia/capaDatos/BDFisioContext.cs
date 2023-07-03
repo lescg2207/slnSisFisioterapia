@@ -11,7 +11,7 @@ namespace capaDatos
 {
     public class BDFisioContext: DbContext
     {
-        private readonly string _connectionString;
+        private readonly string _connectionString = null!;
         private readonly string _providerName;
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<HistoriaClinica> HistoriaClinica { get; set; }

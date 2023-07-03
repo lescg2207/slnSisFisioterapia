@@ -12,12 +12,12 @@ namespace capaPresentacion
 {
     public partial class FrmGestorBd : Form
     {
-        private string _gestorSeleccionado;
-        public string connectionString;
+        private string _gestorSeleccionado = null!;
+        public string connectionString = null!;
         public FrmGestorBd()
         {
             InitializeComponent();
-            comboBoxDatabase.Items.AddRange(new object[] { "Seleccione...", "SqlServer", "MySQL", "Oracle", "Access" });
+            comboBoxDatabase.Items.AddRange(new object[] { "SqlServer", "MySQL" });
             comboBoxDatabase.SelectedIndex = 0;
         }
 
@@ -31,16 +31,6 @@ namespace capaPresentacion
             else if (selectedDatabase == "MySql")
             {
                 connectionString = $"Server={server};Database={database};Uid={username};Pwd={password}";
-            }
-            else if (selectedDatabase == "Oracle")
-            {
-                connectionString = $"Data Source={server};User ID={username};Password={password}";
-
-            }
-            else if (selectedDatabase == "Access")
-            {
-
-                connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={database};Persist Security Info=False;";
             }
 
             return connectionString;
@@ -57,12 +47,12 @@ namespace capaPresentacion
             string username = textBoxUsername.Text;
             string password = textBoxPassword.Text;
 
-            if (comboBoxDatabase.SelectedItem == "SqlServer")
+            if (comboBoxDatabase.SelectedItem.ToString() == "SqlServer")
             {
                 _gestorSeleccionado = "SqlServer";
 
             }
-            else if (comboBoxDatabase.SelectedItem == "MySql")
+            else if (comboBoxDatabase.SelectedItem.ToString() == "MySql")
             {
                 _gestorSeleccionado = "MySql";
 
