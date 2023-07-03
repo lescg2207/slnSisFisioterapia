@@ -11,7 +11,12 @@ namespace capaNegocios
 {
     public class PacienteBll : DbContext
     {
-        PacientesDao pacientesDao = new PacientesDao(new BDFisioContext());
+        public PacienteBll(BDFisioContext dbContext)
+        {
+            pacientesDao = new PacientesDao(dbContext);
+        }
+        private PacientesDao pacientesDao;
+        //PacientesDao pacientesDao = new PacientesDao(new BDFisioContext());
 
 
         public void InsertarPaciente(Paciente nuevoPaciente)

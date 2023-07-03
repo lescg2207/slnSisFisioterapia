@@ -14,7 +14,7 @@ namespace capaPresentacion
 {
     public partial class FrmMenu : Form
     {
-        PacienteBll pacientesDll = new PacienteBll();
+        //PacienteBll pacientesDll = new PacienteBll();
         #region MouseDowmn
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -42,9 +42,9 @@ namespace capaPresentacion
 
         private void btnPacientes_Click(object sender, EventArgs e)
         {
-            FrmPaciente frmPaciente = new FrmPaciente(pacientesDll);
-            AbrirFrm(frmPaciente);
-            lbltitulo.Text = "Registro de Pacientes";
+            //FrmPaciente frmPaciente = new FrmPaciente(pacientesDll);
+            //AbrirFrm(frmPaciente);
+            //lbltitulo.Text = "Registro de Pacientes";
         }
 
         private void fechaHora_Tick(object sender, EventArgs e)
