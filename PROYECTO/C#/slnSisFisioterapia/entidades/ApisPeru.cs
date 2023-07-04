@@ -24,7 +24,7 @@ namespace entidades
             //Leemos los datos
             string Datos = HttpUtility.HtmlDecode(myStreamReader.ReadToEnd());
 
-            dynamic data = JsonConvert.DeserializeObject(Datos);
+            dynamic data = JsonConvert.DeserializeObject(Datos)!;
 
             return data;
         }

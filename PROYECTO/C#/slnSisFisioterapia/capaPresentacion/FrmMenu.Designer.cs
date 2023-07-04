@@ -47,6 +47,7 @@
             lbltitulo = new Label();
             frmContenedor = new Panel();
             fechaHora = new System.Windows.Forms.Timer(components);
+            btnCitas = new Button();
             panel1.SuspendLayout();
             pEnfermera.SuspendLayout();
             panel5.SuspendLayout();
@@ -79,6 +80,7 @@
             // 
             // pEnfermera
             // 
+            pEnfermera.Controls.Add(btnCitas);
             pEnfermera.Controls.Add(btnPacientes);
             pEnfermera.Dock = DockStyle.Top;
             pEnfermera.Location = new Point(0, 295);
@@ -237,6 +239,21 @@
             fechaHora.Enabled = true;
             fechaHora.Tick += fechaHora_Tick;
             // 
+            // btnCitas
+            // 
+            btnCitas.Cursor = Cursors.Hand;
+            btnCitas.Dock = DockStyle.Top;
+            btnCitas.FlatAppearance.BorderSize = 0;
+            btnCitas.FlatStyle = FlatStyle.Flat;
+            btnCitas.Image = Properties.Resources.citas;
+            btnCitas.Location = new Point(0, 64);
+            btnCitas.Name = "btnCitas";
+            btnCitas.Size = new Size(80, 64);
+            btnCitas.TabIndex = 1;
+            btnCitas.TextAlign = ContentAlignment.MiddleRight;
+            btnCitas.UseVisualStyleBackColor = true;
+            btnCitas.Click += btnCitas_Click;
+            // 
             // FrmMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -281,5 +298,6 @@
         private Label lblHora;
         private System.Windows.Forms.Timer fechaHora;
         public Panel pEnfermera;
+        private Button btnCitas;
     }
 }

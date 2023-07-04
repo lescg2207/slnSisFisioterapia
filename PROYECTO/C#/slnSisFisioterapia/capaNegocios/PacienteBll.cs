@@ -23,7 +23,7 @@ namespace capaNegocios
         }
         private DbContext CreateDbContext()
         {
-            DbContextOptionsBuilder<BDFisioContext> optionsBuilder = new DbContextOptionsBuilder<BDFisioContext>();
+            DbContextOptionsBuilder<ConexionBd> optionsBuilder = new DbContextOptionsBuilder<ConexionBd>();
 
             switch (_providerName)
             {
@@ -37,7 +37,7 @@ namespace capaNegocios
                     break;
             }
 
-            return new BDFisioContext(optionsBuilder.Options, _providerName, _connectionString);
+            return new ConexionBd(optionsBuilder.Options, _providerName, _connectionString);
         }
 
 

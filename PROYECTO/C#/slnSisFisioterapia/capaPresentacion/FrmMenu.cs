@@ -57,5 +57,12 @@ namespace capaPresentacion
             lblDia.Text = DateTime.Now.ToString("dd");
             lblMesAño.Text = DateTime.Now.ToString("Y");
         }
+
+        private void btnCitas_Click(object sender, EventArgs e)
+        {
+            FrmCitas citas = new FrmCitas(gestor,conexion);
+            AbrirFrm(citas);
+            lbltitulo.Text = "Registro de cita";
+        }
     }
 }

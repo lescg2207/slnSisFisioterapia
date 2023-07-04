@@ -9,7 +9,7 @@ using static entidades.Enums;
 
 namespace capaDatos
 {
-    public class BDFisioContext: DbContext
+    public class ConexionBd: DbContext
     {
         private readonly string _connectionString = null!;
         private readonly string _providerName;
@@ -17,13 +17,14 @@ namespace capaDatos
         public DbSet<HistoriaClinica> HistoriaClinica { get; set; }
         public DbSet<Empleado> Empleado { get; set; }
         public DbSet<Cita> Citas { get; set; }
+        public DbSet<Horario> Horario { get; set; }
 
-        public BDFisioContext(DbContextOptions<BDFisioContext> options, string providerName) : base(options)
+        public ConexionBd(DbContextOptions<ConexionBd> options, string providerName) : base(options)
         {
             _providerName = providerName;
         }
 
-        public BDFisioContext(DbContextOptions<BDFisioContext> options, string providerName, string connectionString) : base(options)
+        public ConexionBd(DbContextOptions<ConexionBd> options, string providerName, string connectionString) : base(options)
         {
             _providerName = providerName;
             _connectionString = connectionString;
