@@ -94,6 +94,7 @@
             button1.TabIndex = 0;
             button1.Text = "INGRESAR";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // panel4
             // 
@@ -224,7 +225,6 @@
         private Label label1;
         private TextBox txtusuario;
         private TextBox txtcontraseña;
-        private PictureBox pbcerrar;
         private PictureBox pbclose;
     }
 }

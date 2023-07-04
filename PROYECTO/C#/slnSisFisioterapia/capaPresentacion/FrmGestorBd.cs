@@ -59,22 +59,39 @@ namespace capaPresentacion
             }
 
             connectionString = GetConnectionString(_gestorSeleccionado, server, database, username, password);
-            FrmPaciente paciente = new FrmPaciente(_gestorSeleccionado, connectionString);
+            FrmLogin paciente = new FrmLogin(_gestorSeleccionado, connectionString);
             paciente.Show();
             this.Hide();
         }
 
         private void comboBoxDatabase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBoxUsername.Text = "sis";
-            textBoxServer.Text = "bdfisioterapia.database.windows.net";
-            textBoxPassword.Text = "proyFisio22";
-            textBoxDatabase.Text = "bdFisioterapia";
-            textBoxServer.Enabled = true;
-            textBoxUsername.Enabled = true;
-            textBoxPassword.Enabled = true;
-            textBoxDatabase.Enabled = false;
-            textBoxPassword.Focus();
+
+            if (comboBoxDatabase.SelectedIndex == 0)
+            {
+                textBoxUsername.Text = "sis";
+                textBoxServer.Text = "bdfisioterapia.database.windows.net";
+                textBoxPassword.Text = "proyFisio22";
+                textBoxDatabase.Text = "bdFisioterapia";
+                textBoxServer.Enabled = true;
+                textBoxUsername.Enabled = true;
+                textBoxPassword.Enabled = true;
+                textBoxDatabase.Enabled = false;
+                textBoxPassword.Focus();
+            }
+            else
+            {
+                textBoxUsername.Text = "root";
+                textBoxServer.Text = "localhost";
+                textBoxPassword.Text = "";
+                textBoxDatabase.Text = "bdFisioterapia";
+                textBoxServer.Enabled = true;
+                textBoxUsername.Enabled = true;
+                textBoxPassword.Enabled = true;
+                textBoxDatabase.Enabled = false;
+                textBoxPassword.Focus();
+            }
+           
         }
     }
 }

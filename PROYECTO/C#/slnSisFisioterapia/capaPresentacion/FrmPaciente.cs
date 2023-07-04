@@ -21,7 +21,7 @@ namespace capaPresentacion
         {
             listarPacientes();
             CCriterioBusqueda.Items.AddRange(new string[] { "Seleccione", "DNI", "Nombre", "Apellido" });
-            CCriterioBusqueda.SelectedIndex = 0; // Establecer la opción por defecto
+            CCriterioBusqueda.SelectedIndex = 0;
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -150,25 +150,19 @@ namespace capaPresentacion
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            string criterio = CCriterioBusqueda.SelectedItem.ToString();
+        {          
             string valorBusqueda = textBox1.Text;
 
-            // Validar que se haya ingresado un valor de búsqueda
             if (string.IsNullOrWhiteSpace(valorBusqueda))
             {
-                // Si el valor de búsqueda está vacío, puedes limpiar la lista de resultados o
-                // realizar alguna otra acción en la interfaz de usuario
-                dgvPaciente.DataSource = null;
+                
+                listarPacientes();
                 return;
             }
-
             try
             {
-                List<ListaPacienteHistoria> pacientes = null;
-
-                // Realizar la búsqueda según el criterio seleccionado
-                switch (criterio)
+                List<ListaPacienteHistoria> pacientes = null!;              
+                switch (CCriterioBusqueda.SelectedItem.ToString())
                 {
                     case "DNI":
                         pacientes = _pacientebll.BuscarPacientePorDNI(valorBusqueda);
@@ -180,11 +174,6 @@ namespace capaPresentacion
                         pacientes = _pacientebll.BuscarPacientePorApellido(valorBusqueda);
                         break;
                 }
-
-                // Mostrar los resultados en una lista, DataGridView o cualquier otro control
-                // según la estructura de tu interfaz de usuario
-
-                // Por ejemplo, asumiendo que tienes un DataGridView llamado dataGridViewPacientes
                 dgvPaciente.DataSource = pacientes;
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using capaNegocios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,100 +20,38 @@ namespace capaPresentacion
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparan);
         #endregion
-        public FrmLogin()
+        private string gestor;
+        private string conexion;
+        private readonly PacienteBll _pacientebll;
+        public FrmLogin(string providerName, string connectionString)
         {
             InitializeComponent();
+            this.gestor = providerName;
+            this.conexion = connectionString;
+            _pacientebll = new PacienteBll(providerName, connectionString);
         }
 
-
-        /*void LoginMultiGestor(string selectedData, string conexion)
+        private void Validarlogin()
         {
-            frmMenu frmMenu = new frmMenu(connectionString, selectedDatabase);
-            string username = txtusuario.Text;
-            string password = txtcontraseña.Text;
+            FrmMenu menu= new FrmMenu(gestor,conexion);
+            string usuario = txtusuario.Text;
+            string contraseña = txtcontraseña.Text;
 
-            if (username != "USUARIO")
+            bool isValidCredentials = _pacientebll.ValidarCredenciales(usuario, contraseña);
+
+            if (isValidCredentials)
             {
-                if (password != "CONTRASEÑA")
-                {
-                    if (selectedData == "SQL Server")
-                    {
-                        sqlser = new SqlServerBusinessLayer(new SqlServerConnector(conexion));
-                        ouser = sqlser.ValidateLogin(username, password);
-
-                    }
-                    else if (selectedData == "MySQL")
-                    {
-                        mysql = new mySqlBusinessLayer(new MySqlConnector(conexion));
-                        ouser = mysql.ValidateLogin(username, password);
-
-                    }
-                    else if (selectedData == "Oracle")
-                    {
-                        orcsql = new OracleBusinessLayer(new OracleConnector(conexion));
-                        ouser = orcsql.ValidateLogin(username, password);
-
-                    }
-                    else if (selectedData == "Access")
-                    {
-                        accesql = new AccessBusinessLayer(new AccessConnector(conexion));
-                        ouser = accesql.ValidateLogin(username, password);
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Gestor de base de datos no válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    
-                    if (ouser != null)
-                    {
-
-                        MessageBox.Show("Bienvenid@"+" "+ ouser.usuario+" ", "BIENVENIDO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
-                        if (ouser.cargo == 2)
-                        {
-                            frmMenu.pEnfermera.Visible = true;
-                        }
-                        else if (ouser.cargo == 1)
-                        {
-                            frmMenu.pDoctor.Visible = true;
-                        }
-                        else
-                        {
-                            frmMenu.pAdmin.Visible = true;
-                        }
-                        frmMenu.Show();
-                        this.Hide();
-
-
-                    }
-                    else if (intentos == 2)
-                    {
-                        MessageBox.Show("Has excedido el numero de intentos para ingresar al sistema", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        this.Close();
-                    }
-                    else
-                    {
-                        MsgError("Usuario o contraseña inválidos");
-                        txtcontraseña.Clear();
-                        txtusuario.Focus();
-                        intentos = intentos + 1;
-                    }
-                    
-                }
-                else
-                {
-                    MsgError(" " + "  Falta ingresar contraseña");
-                }
-                    
+                menu.Show();                     
+                this.Hide();
             }
             else
             {
-                MsgError(" " + "   Falta ingresar usuario");
-                txtusuario.Focus();
+                
+                MessageBox.Show("Nombre de usuario o contraseña incorrectos", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
-        }*/
+        }
+        
 
         #region diseñoControls
 
@@ -129,8 +68,7 @@ namespace capaPresentacion
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                //ingresar();
-                //LoginMultiGestor(selectedDatabase, connectionString);
+                Validarlogin();            
                 e.Handled = true;
             }
         }
@@ -185,6 +123,11 @@ namespace capaPresentacion
                 txtcontraseña.ForeColor = Color.DimGray;
                 txtcontraseña.UseSystemPasswordChar = false;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Validarlogin();
         }
     }
 }

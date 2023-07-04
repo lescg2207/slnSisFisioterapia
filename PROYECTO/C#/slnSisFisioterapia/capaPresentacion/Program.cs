@@ -10,7 +10,7 @@ namespace capaPresentacion
         {
             
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrmLogin());
+            Application.Run(new FrmGestorBd());
 
         }
     }

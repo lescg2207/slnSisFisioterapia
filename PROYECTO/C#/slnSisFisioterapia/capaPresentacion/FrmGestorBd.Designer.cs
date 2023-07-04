@@ -50,6 +50,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.Silver;
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -61,7 +62,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(129, 24);
+            label1.Location = new Point(126, 20);
             label1.Name = "label1";
             label1.Size = new Size(207, 30);
             label1.TabIndex = 0;
@@ -69,6 +70,7 @@
             // 
             // panel2
             // 
+            panel2.BackColor = Color.Silver;
             panel2.Controls.Add(btnConectar);
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 275);
@@ -78,9 +80,11 @@
             // 
             // btnConectar
             // 
-            btnConectar.Location = new Point(313, 18);
+            btnConectar.Cursor = Cursors.Hand;
+            btnConectar.FlatStyle = FlatStyle.Flat;
+            btnConectar.Location = new Point(321, 13);
             btnConectar.Name = "btnConectar";
-            btnConectar.Size = new Size(75, 23);
+            btnConectar.Size = new Size(98, 35);
             btnConectar.TabIndex = 0;
             btnConectar.Text = "Conectar";
             btnConectar.UseVisualStyleBackColor = true;
@@ -88,6 +92,7 @@
             // 
             // panel3
             // 
+            panel3.BackColor = Color.FromArgb(21, 60, 77);
             panel3.Controls.Add(comboBoxDatabase);
             panel3.Controls.Add(textBoxPassword);
             panel3.Controls.Add(textBoxUsername);
@@ -153,6 +158,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = Color.White;
             label6.Location = new Point(95, 156);
             label6.Name = "label6";
             label6.Size = new Size(74, 17);
@@ -163,6 +169,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = Color.White;
             label5.Location = new Point(90, 126);
             label5.Name = "label5";
             label5.Size = new Size(79, 17);
@@ -173,6 +180,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.White;
             label4.Location = new Point(96, 96);
             label4.Name = "label4";
             label4.Size = new Size(73, 17);
@@ -183,6 +191,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
             label3.Location = new Point(114, 63);
             label3.Name = "label3";
             label3.Size = new Size(55, 17);
@@ -193,6 +202,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
             label2.Location = new Point(113, 34);
             label2.Name = "label2";
             label2.Size = new Size(56, 17);
