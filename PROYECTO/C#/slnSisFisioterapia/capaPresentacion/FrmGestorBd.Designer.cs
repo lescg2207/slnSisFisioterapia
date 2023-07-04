@@ -50,7 +50,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Silver;
+            panel1.BackColor = Color.FromArgb(22, 173, 138);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -62,6 +62,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
             label1.Location = new Point(126, 20);
             label1.Name = "label1";
             label1.Size = new Size(207, 30);
@@ -70,7 +71,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.Silver;
+            panel2.BackColor = Color.FromArgb(22, 173, 138);
             panel2.Controls.Add(btnConectar);
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 275);
@@ -81,10 +82,13 @@
             // btnConectar
             // 
             btnConectar.Cursor = Cursors.Hand;
+            btnConectar.FlatAppearance.BorderColor = Color.White;
             btnConectar.FlatStyle = FlatStyle.Flat;
-            btnConectar.Location = new Point(321, 13);
+            btnConectar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnConectar.ForeColor = Color.White;
+            btnConectar.Location = new Point(297, 13);
             btnConectar.Name = "btnConectar";
-            btnConectar.Size = new Size(98, 35);
+            btnConectar.Size = new Size(126, 35);
             btnConectar.TabIndex = 0;
             btnConectar.Text = "Conectar";
             btnConectar.UseVisualStyleBackColor = true;

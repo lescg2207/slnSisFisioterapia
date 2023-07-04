@@ -91,7 +91,7 @@ namespace capaPresentacion
                 textBoxDatabase.Enabled = false;
                 textBoxPassword.Focus();
             }
-           
+
         }
     }
 }
