@@ -6,7 +6,6 @@ namespace capaPresentacion
 {
     public partial class FrmPaciente : Form
     {
-
         private readonly PacienteBll _pacientebll;
         ApisPeru ApisPeru = new ApisPeru();
 
@@ -24,9 +23,9 @@ namespace capaPresentacion
             CCriterioBusqueda.SelectedIndex = 0;
         }
 
-        private void btnInsertar_Click(object sender, EventArgs e)
+        #region InsertarPac
+        private void InsertarPaciente()
         {
-
             var paciente = new Paciente
             {
                 dniPaciente = txtDniPaciente.Text,
@@ -49,10 +48,16 @@ namespace capaPresentacion
 
             _pacientebll.InsertarPaciente(paciente);
             _pacientebll.InsertarPacienteHistoria(historia);
-            Limpiar();
-            listarPacientes();
 
+        }
+        #endregion
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+
+            InsertarPaciente();
+            Limpiar();            
             MessageBox.Show("Paciente guardado correctamente.");
+            listarPacientes();
 
         }
 
@@ -93,7 +98,7 @@ namespace capaPresentacion
             txtDireccion.Text = "";
             txtDniPaciente.Enabled = true;
         }
-
+        #region ConsultarDNI
         private void consultarCliente()
         {
 
@@ -120,7 +125,7 @@ namespace capaPresentacion
                 MessageBox.Show("Ingrese un número de documento válido.", "Documento inválido", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
+        #endregion
         private void pbxConsurDni_Click(object sender, EventArgs e)
         {
             consultarCliente();
@@ -140,8 +145,6 @@ namespace capaPresentacion
             txtImc.Text = dgvPaciente.CurrentRow.Cells[10].Value.ToString();
             txtDniPaciente.Enabled = false;
 
-
-
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -149,6 +152,7 @@ namespace capaPresentacion
             Limpiar();
         }
 
+        #region BuscarPaciente(DNI,Nombre,Apellido)
         private void textBox1_TextChanged(object sender, EventArgs e)
         {          
             string valorBusqueda = textBox1.Text;
@@ -181,5 +185,6 @@ namespace capaPresentacion
                 MessageBox.Show("Error al buscar los pacientes: " + ex.Message);
             }
         }
+        #endregion
     }
 }

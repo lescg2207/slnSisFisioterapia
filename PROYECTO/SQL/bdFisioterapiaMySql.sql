@@ -131,4 +131,18 @@ CONSTRAINT `FK__Dcita_Citas`
     REFERENCES `bdFisioterapia`.`Impuesto` (`idImpuesto`)
 );
 
+insert into Cargo(cargo) values('Doctor'),('Enfermera');
+insert into Empleado(nombres,apellidos,usuario,contraseña,idCargo) values('Camila','Lopez','maria','123',2),('Ernesto','Jimenez','juan','12',1);
+
+call MostrarPacienteHistoria();
+
+
+
+
+
+
+
+
+
+
 

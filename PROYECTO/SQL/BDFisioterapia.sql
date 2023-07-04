@@ -1,4 +1,6 @@
 create database bdFisioterapia
+use bdFisioterapia
+
 create table Pacientes(
 dniPaciente char(8) primary key,
 nombres varchar(100),
@@ -98,4 +100,13 @@ subtotal money,
 idImpuesto int foreign key references Impuesto(idImpuesto)
 )
 
-SELECT*FROM HistoriaClinica
+SELECT*FROM Cargo
+
+insert into Cargo values('Doctor'),('Enfermera')
+
+insert into Empleado values('Camila','Lopez','maria','123',2),('Ernesto','Jimenez','juan','12',1)
+
+SELECT*FROM Pacientes
+go
+
+MostrarPacienteHistoria
