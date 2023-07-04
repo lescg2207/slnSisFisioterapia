@@ -55,7 +55,7 @@ namespace capaPresentacion
         {
 
             InsertarPaciente();
-            Limpiar();            
+            Limpiar();
             MessageBox.Show("Paciente guardado correctamente.");
             listarPacientes();
 
@@ -154,18 +154,18 @@ namespace capaPresentacion
 
         #region BuscarPaciente(DNI,Nombre,Apellido)
         private void textBox1_TextChanged(object sender, EventArgs e)
-        {          
+        {
             string valorBusqueda = textBox1.Text;
 
             if (string.IsNullOrWhiteSpace(valorBusqueda))
             {
-                
+
                 listarPacientes();
                 return;
             }
             try
             {
-                List<ListaPacienteHistoria> pacientes = null!;              
+                List<ListaPacienteHistoria> pacientes = null!;
                 switch (CCriterioBusqueda.SelectedItem.ToString())
                 {
                     case "DNI":
@@ -186,5 +186,76 @@ namespace capaPresentacion
             }
         }
         #endregion
+
+        private void txtPeso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                double peso = double.Parse(txtPeso.Text);
+                double talla = double.Parse(txtTalla.Text);
+                double r = 0;
+                r = peso / (talla * talla);
+                txtImc.Text = Math.Round(r).ToString();
+                txtTalla.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtTalla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                double peso = double.Parse(txtPeso.Text);
+                double talla = double.Parse(txtTalla.Text);
+                double r = 0;
+                r = peso / (talla * talla);
+                txtImc.Text = Math.Round(r).ToString();
+                txtImc.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPeso_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTalla.Text == string.Empty)
+            {
+                txtImc.Text = 0.ToString();
+                txtTalla.Text = 0.ToString();
+            }
+
+            else if (txtPeso.Text == string.Empty)
+            {
+                txtImc.Text = txtTalla.Text;
+            }
+            else
+            {
+                double peso = double.Parse(txtPeso.Text);
+
+                double r = 0;
+                r = peso;
+                txtImc.Text = Math.Round(r).ToString();
+            }
+        }
+
+        private void txtTalla_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPeso.Text == string.Empty)
+            {
+                txtImc.Text = 0.ToString();
+                txtPeso.Text = 0.ToString();
+            }
+            else if (txtTalla.Text == string.Empty)
+            {
+                txtImc.Text = txtPeso.Text;
+            }
+            else
+            {
+                double peso = double.Parse(txtPeso.Text);
+                double talla = double.Parse(txtTalla.Text);
+                double r = 0;
+                r = peso / (talla * talla);
+                txtImc.Text = Math.Round(r).ToString();
+            }
+        }
     }
 }

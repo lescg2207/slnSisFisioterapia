@@ -165,6 +165,8 @@
             txtPeso.Name = "txtPeso";
             txtPeso.Size = new Size(99, 23);
             txtPeso.TabIndex = 11;
+            txtPeso.TextChanged += txtPeso_TextChanged;
+            txtPeso.KeyPress += txtPeso_KeyPress;
             // 
             // txtTalla
             // 
@@ -173,6 +175,8 @@
             txtTalla.Name = "txtTalla";
             txtTalla.Size = new Size(99, 23);
             txtTalla.TabIndex = 12;
+            txtTalla.TextChanged += txtTalla_TextChanged;
+            txtTalla.KeyPress += txtTalla_KeyPress;
             // 
             // txtImc
             // 
