@@ -22,6 +22,13 @@ namespace capaDatos
             return _dbContext.Set<Horario>().ToList();
         }
 
+        public void InsertarCita(Cita Citas)
+        {
+            
+            _dbContext.Set<Cita>().Add(Citas);
+            _dbContext.SaveChanges();
+        }
+
 
     }
 }

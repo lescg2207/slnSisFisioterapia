@@ -1,4 +1,5 @@
 ﻿using capaNegocios;
+using entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace capaPresentacion
             this.gestor = providerName;
             this.conexion = connectionString;
             _citaBll = new CitasBll(providerName, connectionString);
-            _empleadoBll=new EmpleadoBll(providerName, connectionString);
+            _empleadoBll = new EmpleadoBll(providerName, connectionString);
             InitializeComponent();
             CargarHorario();
             CargarEmpleado();
@@ -53,8 +54,8 @@ namespace capaPresentacion
         }
         void CargarEmpleado()
         {
-            var tabla=_empleadoBll.ObtenerEmpleado();
-            if(tabla.Count > 0)
+            var tabla = _empleadoBll.ObtenerEmpleado();
+            if (tabla.Count > 0)
             {
                 cbxDoctor.DataSource = tabla;
                 cbxDoctor.DisplayMember = "Nombres";
@@ -65,6 +66,45 @@ namespace capaPresentacion
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txtBuscar_Enter(object sender, EventArgs e)
+        {
+            if (txtBuscar.Text == "Ingresa nombre del doctor")
+            {
+                txtBuscar.Text = "";
+                txtBuscar.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtBuscar_Leave(object sender, EventArgs e)
+        {
+            if (txtBuscar.Text == "")
+            {
+                txtBuscar.Text = "Ingresa nombre del doctor";
+                txtBuscar.ForeColor = Color.DimGray;
+            }
+        }
+        private void InsertarCitas()
+        {
+            var citas = new Cita
+            {
+                dniPaciente = txtDniPaciente.Text,
+                idEmpleado = int.Parse(cbxDoctor.SelectedValue.ToString()!),
+                fCita = dtpfecha.Value,
+                estadoPago = int.Parse(lblEstadopago.Text),
+                descuento = 10,
+                total = double.Parse(lblTotal.Text),
+                estadoCita = "Activa",
+                hCita = int.Parse(cbxDoctor.SelectedValue.ToString()!)
+            };
+            _citaBll.InsertarCitas(citas);
+        }
+
+    
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            InsertarCitas();
         }
     }
 }

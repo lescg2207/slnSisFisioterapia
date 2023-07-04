@@ -109,4 +109,9 @@ insert into Empleado values('Camila','Lopez','maria','123',2),('Ernesto','Jimene
 SELECT*FROM Pacientes
 go
 
-MostrarPacienteHistoria
+select*from Horario
+
+insert into Horario values('01:00',1)
+
+select*from Empleado
+

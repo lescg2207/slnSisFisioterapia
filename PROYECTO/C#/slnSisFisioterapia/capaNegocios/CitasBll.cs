@@ -44,5 +44,10 @@ namespace capaNegocios
         {
           return _CitasDao.ObtenerHorario();
         }
+
+        public void InsertarCitas(Cita citas)
+        {
+            _CitasDao.InsertarCita(citas);
+        }
     }
 }

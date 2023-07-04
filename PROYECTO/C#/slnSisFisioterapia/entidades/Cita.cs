@@ -16,9 +16,10 @@ namespace entidades
         public string dniPaciente { get; set; } = null!;
         public int idEmpleado { get; set; }
         public DateTime fCita { get; set; }
+        public int hCita { get; set; } 
         public int estadoPago { get; set; }
         public decimal descuento { get; set; }
-        public decimal total { get; set; }
+        public double total { get; set; }
         public string estadoCita { get; set; } = null!;
 
     }
