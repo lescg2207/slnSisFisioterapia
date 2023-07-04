@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             panel1 = new Panel();
             panel9 = new Panel();
-            panel8 = new Panel();
+            pEnfermera = new Panel();
             btnPacientes = new Button();
             panel7 = new Panel();
             panel6 = new Panel();
@@ -48,7 +48,7 @@
             frmContenedor = new Panel();
             fechaHora = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
-            panel8.SuspendLayout();
+            pEnfermera.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -59,7 +59,7 @@
             // 
             panel1.BackColor = Color.FromArgb(21, 60, 77);
             panel1.Controls.Add(panel9);
-            panel1.Controls.Add(panel8);
+            panel1.Controls.Add(pEnfermera);
             panel1.Controls.Add(panel7);
             panel1.Controls.Add(panel6);
             panel1.Controls.Add(panel5);
@@ -77,14 +77,14 @@
             panel9.Size = new Size(80, 100);
             panel9.TabIndex = 4;
             // 
-            // panel8
+            // pEnfermera
             // 
-            panel8.Controls.Add(btnPacientes);
-            panel8.Dock = DockStyle.Top;
-            panel8.Location = new Point(0, 295);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(80, 194);
-            panel8.TabIndex = 3;
+            pEnfermera.Controls.Add(btnPacientes);
+            pEnfermera.Dock = DockStyle.Top;
+            pEnfermera.Location = new Point(0, 295);
+            pEnfermera.Name = "pEnfermera";
+            pEnfermera.Size = new Size(80, 194);
+            pEnfermera.TabIndex = 3;
             // 
             // btnPacientes
             // 
@@ -251,7 +251,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmMenu";
             panel1.ResumeLayout(false);
-            panel8.ResumeLayout(false);
+            pEnfermera.ResumeLayout(false);
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel3.ResumeLayout(false);
@@ -266,7 +266,6 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel9;
-        private Panel panel8;
         private Panel panel7;
         private Panel panel6;
         private Panel panel5;
@@ -281,5 +280,6 @@
         private Label lblDia;
         private Label lblHora;
         private System.Windows.Forms.Timer fechaHora;
+        public Panel pEnfermera;
     }
 }

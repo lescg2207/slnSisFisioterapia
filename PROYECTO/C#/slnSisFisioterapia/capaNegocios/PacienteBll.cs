@@ -75,7 +75,7 @@ namespace capaNegocios
         {
             return _pacientesDao.BuscarPacientePorApellido(apellido);
         }
-        public bool ValidarCredenciales(string usuario, string contraseña)
+        public Empleado ValidarCredenciales(string usuario, string contraseña)
         {
             return _pacientesDao.ValidarCredenciales(usuario, contraseña);
         }

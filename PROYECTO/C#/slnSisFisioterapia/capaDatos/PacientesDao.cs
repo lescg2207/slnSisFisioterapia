@@ -158,13 +158,11 @@ namespace capaDatos
             return pacientesConHistoriaClinica;
         }
 
-        public bool ValidarCredenciales(string usuario, string contraseña)
+        public Empleado ValidarCredenciales(string usuario, string contraseña)
         {
-            
-            var empleado = _dbContext.Set<Empleado>().FirstOrDefault(e => e.Usuario == usuario && e.Contraseña == contraseña);
 
-            
-            return empleado != null;
+            var empleado = _dbContext.Set<Empleado>().FirstOrDefault(e => e.Usuario == usuario && e.Contraseña == contraseña);
+            return empleado!;
         }
     }
 }

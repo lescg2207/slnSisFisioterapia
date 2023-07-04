@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace capaPresentacion
 {
     public partial class FrmMenu : Form
-    {       
+    {
         private string gestor;
         private string conexion;
         #region MouseDowmn
@@ -27,15 +27,15 @@ namespace capaPresentacion
             InitializeComponent();
             this.gestor = providerName;
             this.conexion = connectionString;
-            
+
         }
         #region Abrir Formularios
         public void AbrirFrm(object FrmContenedor)
         {
             if (this.frmContenedor.Controls.Count > 0)
                 this.frmContenedor.Controls.RemoveAt(0);
-            Form fh = FrmContenedor as Form;
-            fh.TopLevel = false;
+            Form? fh = FrmContenedor as Form;
+            fh!.TopLevel = false;
             fh.Dock = DockStyle.Fill;
             this.frmContenedor.Controls.Add(fh);
             this.frmContenedor.Tag = fh;
@@ -46,7 +46,7 @@ namespace capaPresentacion
 
         private void btnPacientes_Click(object sender, EventArgs e)
         {
-            FrmPaciente frmPaciente = new FrmPaciente(gestor,conexion);
+            FrmPaciente frmPaciente = new FrmPaciente(gestor, conexion);
             AbrirFrm(frmPaciente);
             lbltitulo.Text = "Registro de Pacientes";
         }
