@@ -271,6 +271,8 @@
             txtBuscar.Size = new Size(165, 23);
             txtBuscar.TabIndex = 22;
             txtBuscar.Text = "Ingresa nombre del doctor";
+            txtBuscar.Enter += txtBuscar_Enter;
+            txtBuscar.Leave += txtBuscar_Leave;
             // 
             // btnGuardar
             // 
