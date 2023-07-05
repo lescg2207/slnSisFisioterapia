@@ -98,7 +98,17 @@ cantidad int,
 precioU money,
 subtotal money,
 idImpuesto int foreign key references Impuesto(idImpuesto)
-)
+);
+
+CREATE TABLE Tratamientos (
+    idTratamiento int PRIMARY KEY IDENTITY,
+    dniPaciente char(8) REFERENCES Pacientes(dniPaciente),
+    nombreTratamiento varchar(100),
+    fechaInicio date,
+    fechaFin date,
+    estado varchar(20)
+);
+
 
 SELECT*FROM Cargo
 
@@ -115,3 +125,14 @@ insert into Horario values('01:00',1)
 
 select*from Empleado
 
+select*from Servicio
+
+insert into Servicio values('Diario',35),('Domiciliario',40),('Paquete',0)
+
+insert into Sesiones values(3,10,315),(3,12,385),(3,15,490)
+
+select servicio,sesiones,sesiones.precio from Servicio
+inner join Sesiones
+on sesiones.idtipo=servicio.idServicio
+
+select*from Citas
