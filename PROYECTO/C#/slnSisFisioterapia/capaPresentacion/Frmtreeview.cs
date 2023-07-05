@@ -58,40 +58,47 @@ namespace capaPresentacion
             TreeNode nodoPadreserv = new TreeNode("Servicios");
 
             int contadorServicio = 0; // Variable para contar el número de servicios procesados
+            TreeNode nodoPaquete = null;
 
             foreach (var servicio in servicios)
             {
-                TreeNode servicioNode = new TreeNode(servicio.SERVICIO);
-
-                // Agregar nodo Precio para los primeros dos servicios
-                if (contadorServicio < 2)
+                if (servicio.SERVICIO == "Paquete")
                 {
-                    TreeNode precioNodeS = new TreeNode($"Precio: {servicio.PRECIOServ}");
-                    servicioNode.Nodes.Add(precioNodeS);
+                    if (nodoPaquete == null)
+                    {
+                        nodoPaquete = new TreeNode("Paquete");
+                        nodoPadreserv.Nodes.Add(nodoPaquete);
+                    }
+
+                    TreeNode sesionesNode = new TreeNode($"Sesiones: {servicio.SESIONES}");
+                    TreeNode precioNode = new TreeNode($"Precio: {servicio.PRECIO}");
+
+                    sesionesNode.Nodes.Add(precioNode);
+                    nodoPaquete.Nodes.Add(sesionesNode);
                 }
                 else
                 {
-                    // Agregar nodo Sesiones para todos los servicios, excepto los primeros dos
-                    TreeNode sesionesNode = new TreeNode($"Sesiones: {servicio.SESIONES}");
-                    servicioNode.Nodes.Add(sesionesNode);
+                    TreeNode servicioNode = new TreeNode(servicio.SERVICIO);
+
+                    // Agregar nodo Precio para los primeros dos servicios
+                    if (contadorServicio < 2)
+                    {
+                        TreeNode precioNodeS = new TreeNode($"Precio: {servicio.PRECIOServ}");
+                        servicioNode.Nodes.Add(precioNodeS);
+                    }
+                    else
+                    {
+                        // Agregar nodo Sesiones para todos los servicios, excepto los primeros dos
+                        TreeNode sesionesNode = new TreeNode($"Sesiones: {servicio.SESIONES}");
+                        TreeNode precioNode = new TreeNode($"Precio: {servicio.PRECIO}");
+
+                        servicioNode.Nodes.Add(sesionesNode);
+                        servicioNode.Nodes.Add(precioNode);
+                    }
+
+                    nodoPadreserv.Nodes.Add(servicioNode);
                 }
 
-
-
-                // Agregar precio específico para el servicio "Paquetes"
-                if (servicio.SERVICIO == "Paquete")
-                {
-                    // Agregar nodo Precio para todos los servicios
-                    TreeNode precioNode = new TreeNode($"Precio: {servicio.PRECIO}");
-                    servicioNode.Nodes.Add(precioNode);
-                }
-                else 
-                {
-                    TreeNode precioNode = new TreeNode($"Precio: {servicio.PRECIO}");
-                    servicioNode.Nodes.Remove(precioNode);
-                }
-
-                nodoPadreserv.Nodes.Add(servicioNode);
                 contadorServicio++;
             }
 
