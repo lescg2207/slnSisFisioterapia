@@ -98,13 +98,6 @@ namespace capaDatos
             return empleado!;
         }
 
-        public List<Paciente> ObtenerPacientesConHistoriasClinicas()
-        {
-            var pacientes = _dbContext.Set<Paciente>()
-                .Include(p => p.HistoriaClinica)
-                .ToList();
-
-            return pacientes;
-        }
+        
     }
 }

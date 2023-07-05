@@ -24,7 +24,7 @@ namespace entidades
         
         public string Celular { get; set; } = null!;
 
-        public virtual ICollection<HistoriaClinica> HistoriaClinica { get; set; } = null!;
+        
 
 
     }

@@ -79,9 +79,6 @@ namespace capaNegocios
         {
             return _pacientesDao.ValidarCredenciales(usuario, contraseña);
         }
-        public List<Paciente> ObtenerPacientesConHistoriasClinicas()
-        {
-            return _pacientesDao.ObtenerPacientesConHistoriasClinicas();
-        }
+       
     }
 }
