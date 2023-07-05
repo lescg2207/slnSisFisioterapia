@@ -18,17 +18,18 @@ namespace capaPresentacion
         //private string gestor;
         //private string conexion;
         private PacienteBll pacBll;
+        private ServicioBll servBll;
 
         public Frmtreeview(string ges, string conex)
         {
             InitializeComponent();
             pacBll = new PacienteBll(ges, conex);
+            servBll = new ServicioBll(ges, conex);
             CargarDatosTreeView(tPac);
         }
 
         public void CargarDatosTreeView(TreeView treeView)
         {
-
             List<ListaPacienteHistoria> pacientes = pacBll.ObtenerListaPacientes();
 
             TreeNode nodoPadre = new TreeNode("Pacientes");
@@ -51,6 +52,50 @@ namespace capaPresentacion
             }
 
             treeView.Nodes.Add(nodoPadre);
+
+            List<ServicioSesiones> servicios = servBll.ObtenerTreeNodes();
+
+            TreeNode nodoPadreserv = new TreeNode("Servicios");
+
+            int contadorServicio = 0; // Variable para contar el número de servicios procesados
+
+            foreach (var servicio in servicios)
+            {
+                TreeNode servicioNode = new TreeNode(servicio.SERVICIO);
+
+                // Agregar nodo Precio para los primeros dos servicios
+                if (contadorServicio < 2)
+                {
+                    TreeNode precioNodeS = new TreeNode($"Precio: {servicio.PRECIOServ}");
+                    servicioNode.Nodes.Add(precioNodeS);
+                }
+                else
+                {
+                    // Agregar nodo Sesiones para todos los servicios, excepto los primeros dos
+                    TreeNode sesionesNode = new TreeNode($"Sesiones: {servicio.SESIONES}");
+                    servicioNode.Nodes.Add(sesionesNode);
+                }
+
+
+
+                // Agregar precio específico para el servicio "Paquetes"
+                if (servicio.SERVICIO == "Paquete")
+                {
+                    // Agregar nodo Precio para todos los servicios
+                    TreeNode precioNode = new TreeNode($"Precio: {servicio.PRECIO}");
+                    servicioNode.Nodes.Add(precioNode);
+                }
+                else 
+                {
+                    TreeNode precioNode = new TreeNode($"Precio: {servicio.PRECIO}");
+                    servicioNode.Nodes.Remove(precioNode);
+                }
+
+                nodoPadreserv.Nodes.Add(servicioNode);
+                contadorServicio++;
+            }
+
+            treeView.Nodes.Add(nodoPadreserv);
         }
     }
-}
+    }
