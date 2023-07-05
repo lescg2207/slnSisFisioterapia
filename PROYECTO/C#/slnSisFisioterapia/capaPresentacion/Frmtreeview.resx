@@ -117,21 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnLogout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
-        MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnBwUDOgqFUSSGAAAA4UlEQVRYR+2WwQ2CMBiFiRe9OoAu
-        4DB4YQSH8aBTeNEt3EGvnnQO/BqfCakplFooh37JS6B9f/tCoaXIZCZJXddbdHHohFayDoMmaqOSdRiY
-        YPIBSlmHgQnsAAdUSSWay/oDfXu00W0YDGAH8H7k8r/QWk39ofjfAIY7Wqq5HxTGCGC4ooW6/KEoVgDD
-        Gc3U7QcFzgBcPz5NvTiq3A8K2gKEstMQ3WCedIC0S9CF/E3ivoRdyP/FfIbOXdMJRTEC3FCyjeiJom7F
-        yQ8jm9GPYxvvJQmCCZIHSPtTmsmMR1G8AVrYrNVt8gL8AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="fechaHora.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
-  </metadata>
 </root>

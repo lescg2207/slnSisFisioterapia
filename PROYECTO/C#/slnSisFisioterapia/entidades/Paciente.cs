@@ -23,7 +23,9 @@ namespace entidades
         public DateTime FNacimiento { get; set; }
         
         public string Celular { get; set; } = null!;
-      
+
+        public virtual ICollection<HistoriaClinica> HistoriaClinica { get; set; } = null!;
+
 
     }
 }

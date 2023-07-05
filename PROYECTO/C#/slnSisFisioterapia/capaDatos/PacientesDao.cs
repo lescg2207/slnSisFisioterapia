@@ -97,5 +97,14 @@ namespace capaDatos
             var empleado = _dbContext.Set<Empleado>().FirstOrDefault(e => e.Usuario == usuario && e.Contraseña == contraseña);
             return empleado!;
         }
+
+        public List<Paciente> ObtenerPacientesConHistoriasClinicas()
+        {
+            var pacientes = _dbContext.Set<Paciente>()
+                .Include(p => p.HistoriaClinica)
+                .ToList();
+
+            return pacientes;
+        }
     }
 }

@@ -29,11 +29,20 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenu));
             panel1 = new Panel();
-            panel9 = new Panel();
-            pEnfermera = new Panel();
-            btnPacientes = new Button();
             panel7 = new Panel();
+            btnconfig = new Button();
+            btnLogout = new Button();
+            pbAdmin = new Panel();
+            btnProductos = new Button();
+            pEnfermera = new Panel();
+            btnCitas = new Button();
+            btnPacientes = new Button();
+            pbDoctor = new Panel();
+            btnHorario = new Button();
+            btnReceta = new Button();
+            btnDash = new Button();
             panel6 = new Panel();
             panel5 = new Panel();
             pictureBox1 = new PictureBox();
@@ -47,9 +56,11 @@
             lbltitulo = new Label();
             frmContenedor = new Panel();
             fechaHora = new System.Windows.Forms.Timer(components);
-            btnCitas = new Button();
             panel1.SuspendLayout();
+            panel7.SuspendLayout();
+            pbAdmin.SuspendLayout();
             pEnfermera.SuspendLayout();
+            pbDoctor.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -59,9 +70,10 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(21, 60, 77);
-            panel1.Controls.Add(panel9);
-            panel1.Controls.Add(pEnfermera);
             panel1.Controls.Add(panel7);
+            panel1.Controls.Add(pbAdmin);
+            panel1.Controls.Add(pEnfermera);
+            panel1.Controls.Add(pbDoctor);
             panel1.Controls.Add(panel6);
             panel1.Controls.Add(panel5);
             panel1.Dock = DockStyle.Left;
@@ -70,23 +82,91 @@
             panel1.Size = new Size(80, 788);
             panel1.TabIndex = 0;
             // 
-            // panel9
+            // panel7
             // 
-            panel9.Dock = DockStyle.Top;
-            panel9.Location = new Point(0, 489);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(80, 100);
-            panel9.TabIndex = 4;
+            panel7.Controls.Add(btnconfig);
+            panel7.Controls.Add(btnLogout);
+            panel7.Dock = DockStyle.Bottom;
+            panel7.Location = new Point(0, 665);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(80, 123);
+            panel7.TabIndex = 0;
+            // 
+            // btnconfig
+            // 
+            btnconfig.Cursor = Cursors.Hand;
+            btnconfig.Dock = DockStyle.Bottom;
+            btnconfig.FlatAppearance.BorderSize = 0;
+            btnconfig.FlatStyle = FlatStyle.Flat;
+            btnconfig.Image = Properties.Resources.configuraciones__1_;
+            btnconfig.Location = new Point(0, -5);
+            btnconfig.Name = "btnconfig";
+            btnconfig.Size = new Size(80, 64);
+            btnconfig.TabIndex = 1;
+            btnconfig.UseVisualStyleBackColor = true;
+            // 
+            // btnLogout
+            // 
+            btnLogout.Cursor = Cursors.Hand;
+            btnLogout.Dock = DockStyle.Bottom;
+            btnLogout.FlatAppearance.BorderSize = 0;
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Image = (Image)resources.GetObject("btnLogout.Image");
+            btnLogout.Location = new Point(0, 59);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(80, 64);
+            btnLogout.TabIndex = 0;
+            btnLogout.UseVisualStyleBackColor = true;
+            // 
+            // pbAdmin
+            // 
+            pbAdmin.Controls.Add(btnProductos);
+            pbAdmin.Dock = DockStyle.Top;
+            pbAdmin.Location = new Point(0, 561);
+            pbAdmin.Name = "pbAdmin";
+            pbAdmin.Size = new Size(80, 86);
+            pbAdmin.TabIndex = 4;
+            pbAdmin.Visible = false;
+            // 
+            // btnProductos
+            // 
+            btnProductos.Cursor = Cursors.Hand;
+            btnProductos.Dock = DockStyle.Top;
+            btnProductos.FlatAppearance.BorderSize = 0;
+            btnProductos.FlatStyle = FlatStyle.Flat;
+            btnProductos.Image = Properties.Resources.productos;
+            btnProductos.Location = new Point(0, 0);
+            btnProductos.Name = "btnProductos";
+            btnProductos.Size = new Size(80, 64);
+            btnProductos.TabIndex = 0;
+            btnProductos.UseVisualStyleBackColor = true;
+            btnProductos.Click += btnProductos_Click;
             // 
             // pEnfermera
             // 
             pEnfermera.Controls.Add(btnCitas);
             pEnfermera.Controls.Add(btnPacientes);
             pEnfermera.Dock = DockStyle.Top;
-            pEnfermera.Location = new Point(0, 295);
+            pEnfermera.Location = new Point(0, 382);
             pEnfermera.Name = "pEnfermera";
-            pEnfermera.Size = new Size(80, 194);
+            pEnfermera.Size = new Size(80, 179);
             pEnfermera.TabIndex = 3;
+            pEnfermera.Visible = false;
+            // 
+            // btnCitas
+            // 
+            btnCitas.Cursor = Cursors.Hand;
+            btnCitas.Dock = DockStyle.Top;
+            btnCitas.FlatAppearance.BorderSize = 0;
+            btnCitas.FlatStyle = FlatStyle.Flat;
+            btnCitas.Image = Properties.Resources.citas;
+            btnCitas.Location = new Point(0, 64);
+            btnCitas.Name = "btnCitas";
+            btnCitas.Size = new Size(80, 64);
+            btnCitas.TabIndex = 1;
+            btnCitas.TextAlign = ContentAlignment.MiddleRight;
+            btnCitas.UseVisualStyleBackColor = true;
+            btnCitas.Click += btnCitas_Click;
             // 
             // btnPacientes
             // 
@@ -103,20 +183,64 @@
             btnPacientes.UseVisualStyleBackColor = true;
             btnPacientes.Click += btnPacientes_Click;
             // 
-            // panel7
+            // pbDoctor
             // 
-            panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(0, 148);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(80, 147);
-            panel7.TabIndex = 2;
+            pbDoctor.Controls.Add(btnHorario);
+            pbDoctor.Controls.Add(btnReceta);
+            pbDoctor.Controls.Add(btnDash);
+            pbDoctor.Dock = DockStyle.Top;
+            pbDoctor.Location = new Point(0, 172);
+            pbDoctor.Name = "pbDoctor";
+            pbDoctor.Size = new Size(80, 210);
+            pbDoctor.TabIndex = 2;
+            pbDoctor.Visible = false;
+            // 
+            // btnHorario
+            // 
+            btnHorario.Cursor = Cursors.Hand;
+            btnHorario.Dock = DockStyle.Top;
+            btnHorario.FlatAppearance.BorderSize = 0;
+            btnHorario.FlatStyle = FlatStyle.Flat;
+            btnHorario.Image = Properties.Resources.horario;
+            btnHorario.Location = new Point(0, 128);
+            btnHorario.Name = "btnHorario";
+            btnHorario.Size = new Size(80, 64);
+            btnHorario.TabIndex = 2;
+            btnHorario.UseVisualStyleBackColor = true;
+            // 
+            // btnReceta
+            // 
+            btnReceta.Cursor = Cursors.Hand;
+            btnReceta.Dock = DockStyle.Top;
+            btnReceta.FlatAppearance.BorderSize = 0;
+            btnReceta.FlatStyle = FlatStyle.Flat;
+            btnReceta.Image = Properties.Resources.receta;
+            btnReceta.Location = new Point(0, 64);
+            btnReceta.Name = "btnReceta";
+            btnReceta.Size = new Size(80, 64);
+            btnReceta.TabIndex = 1;
+            btnReceta.UseVisualStyleBackColor = true;
+            // 
+            // btnDash
+            // 
+            btnDash.Cursor = Cursors.Hand;
+            btnDash.Dock = DockStyle.Top;
+            btnDash.FlatAppearance.BorderSize = 0;
+            btnDash.FlatStyle = FlatStyle.Flat;
+            btnDash.Image = Properties.Resources.home_;
+            btnDash.Location = new Point(0, 0);
+            btnDash.Name = "btnDash";
+            btnDash.Size = new Size(80, 64);
+            btnDash.TabIndex = 0;
+            btnDash.UseVisualStyleBackColor = true;
+            btnDash.Click += btnDash_Click;
             // 
             // panel6
             // 
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 98);
             panel6.Name = "panel6";
-            panel6.Size = new Size(80, 50);
+            panel6.Size = new Size(80, 74);
             panel6.TabIndex = 1;
             // 
             // panel5
@@ -239,21 +363,6 @@
             fechaHora.Enabled = true;
             fechaHora.Tick += fechaHora_Tick;
             // 
-            // btnCitas
-            // 
-            btnCitas.Cursor = Cursors.Hand;
-            btnCitas.Dock = DockStyle.Top;
-            btnCitas.FlatAppearance.BorderSize = 0;
-            btnCitas.FlatStyle = FlatStyle.Flat;
-            btnCitas.Image = Properties.Resources.citas;
-            btnCitas.Location = new Point(0, 64);
-            btnCitas.Name = "btnCitas";
-            btnCitas.Size = new Size(80, 64);
-            btnCitas.TabIndex = 1;
-            btnCitas.TextAlign = ContentAlignment.MiddleRight;
-            btnCitas.UseVisualStyleBackColor = true;
-            btnCitas.Click += btnCitas_Click;
-            // 
             // FrmMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -268,7 +377,10 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmMenu";
             panel1.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            pbAdmin.ResumeLayout(false);
             pEnfermera.ResumeLayout(false);
+            pbDoctor.ResumeLayout(false);
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel3.ResumeLayout(false);
@@ -282,8 +394,6 @@
 
         private Panel panel1;
         private Panel panel2;
-        private Panel panel9;
-        private Panel panel7;
         private Panel panel6;
         private Panel panel5;
         private PictureBox pictureBox1;
@@ -299,5 +409,14 @@
         private System.Windows.Forms.Timer fechaHora;
         public Panel pEnfermera;
         private Button btnCitas;
+        private Button btnDash;
+        private Button btnHorario;
+        private Button btnReceta;
+        private Button btnProductos;
+        public Panel pbAdmin;
+        public Panel pbDoctor;
+        private Panel panel7;
+        private Button btnLogout;
+        private Button btnconfig;
     }
 }

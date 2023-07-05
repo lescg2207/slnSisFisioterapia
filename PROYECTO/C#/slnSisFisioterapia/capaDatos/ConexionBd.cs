@@ -44,9 +44,7 @@ namespace capaDatos
                     break;
             }
         }
-
-       
-
+      
     }
     
 }

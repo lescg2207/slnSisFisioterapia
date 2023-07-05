@@ -60,9 +60,22 @@ namespace capaPresentacion
 
         private void btnCitas_Click(object sender, EventArgs e)
         {
-            FrmCitas citas = new FrmCitas(gestor,conexion);
+            FrmCitas citas = new FrmCitas(gestor, conexion);
             AbrirFrm(citas);
             lbltitulo.Text = "Registro de cita";
+        }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDash_Click(object sender, EventArgs e)
+        {
+            Frmtreeview tre = new Frmtreeview(gestor,conexion);
+            AbrirFrm(tre);
+
+
         }
     }
 }

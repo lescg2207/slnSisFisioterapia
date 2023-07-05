@@ -14,6 +14,7 @@ namespace entidades
         public int Id { get; set; } 
         public string idHistoria { get; set; } = null!;
         public string dniPaciente { get; set; } = null!;
+        public virtual Paciente Paciente { get; set; }=null!;
         public string? antecedentes { get; set; }
         public decimal peso { get; set; }
         public decimal talla { get; set; }

@@ -58,9 +58,13 @@ namespace capaPresentacion
                         {
                             menu.pEnfermera.Visible = true;
                         }
+                        else if (empleado.IdCargo==1)
+                        {
+                            menu.pbDoctor.Visible = true;
+                        }
                         else
                         {
-                            menu.pEnfermera.Visible = false;
+                            menu.pbAdmin.Visible = true;
                         }
                         menu.Show();
                         this.Hide();

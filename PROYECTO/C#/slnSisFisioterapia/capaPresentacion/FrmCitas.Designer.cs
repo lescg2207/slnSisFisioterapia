@@ -104,7 +104,7 @@
             // lblEstadopago
             // 
             lblEstadopago.AutoSize = true;
-            lblEstadopago.Location = new Point(515, 37);
+            lblEstadopago.Location = new Point(526, 37);
             lblEstadopago.Name = "lblEstadopago";
             lblEstadopago.Size = new Size(13, 15);
             lblEstadopago.TabIndex = 4;
@@ -113,7 +113,7 @@
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(71, 37);
+            lblTotal.Location = new Point(55, 37);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(28, 15);
             lblTotal.TabIndex = 5;
@@ -122,7 +122,7 @@
             // lblEstadoCita
             // 
             lblEstadoCita.AutoSize = true;
-            lblEstadoCita.Location = new Point(258, 37);
+            lblEstadoCita.Location = new Point(273, 37);
             lblEstadoCita.Name = "lblEstadoCita";
             lblEstadoCita.Size = new Size(13, 15);
             lblEstadoCita.TabIndex = 6;
