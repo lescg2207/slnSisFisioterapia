@@ -8,9 +8,9 @@ namespace capaPresentacion
         [STAThread]
         static void Main()
         {
-            string gestor = "SqlServer";
-            string cone = "Data Source=bdfisioterapia.database.windows.net;Initial Catalog=bdFisioterapia;User ID=sis;Password=proyFisio22;TrustServerCertificate=true;";
-            
+            //string gestor = "SqlServer";
+            //string cone = "Data Source=bdfisioterapia.database.windows.net;Initial Catalog=bdFisioterapia;User ID=sis;Password=proyFisio22;TrustServerCertificate=true;";
+            //
             ApplicationConfiguration.Initialize();
             Application.Run(new FrmGestorBd());
 

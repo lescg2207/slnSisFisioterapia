@@ -54,11 +54,13 @@
             button2 = new Button();
             panel1 = new Panel();
             panelIzquierda = new Panel();
+            treeView1 = new TreeView();
             ((System.ComponentModel.ISupportInitialize)dgvCitas).BeginInit();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
+            panelIzquierda.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -145,7 +147,7 @@
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 200);
             panel3.Name = "panel3";
-            panel3.Size = new Size(670, 84);
+            panel3.Size = new Size(667, 84);
             panel3.TabIndex = 9;
             // 
             // panel2
@@ -162,7 +164,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(670, 200);
+            panel2.Size = new Size(667, 200);
             panel2.TabIndex = 8;
             panel2.Paint += panel2_Paint;
             // 
@@ -176,7 +178,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(211, 63);
+            btnBuscar.Location = new Point(226, 64);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(75, 23);
             btnBuscar.TabIndex = 6;
@@ -239,9 +241,9 @@
             panel6.Controls.Add(panel2);
             panel6.Controls.Add(dgvCitas);
             panel6.Dock = DockStyle.Fill;
-            panel6.Location = new Point(213, 0);
+            panel6.Location = new Point(296, 0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(670, 616);
+            panel6.Size = new Size(667, 616);
             panel6.TabIndex = 11;
             // 
             // label8
@@ -305,18 +307,26 @@
             // panel1
             // 
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(883, 0);
+            panel1.Location = new Point(963, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(213, 616);
+            panel1.Size = new Size(133, 616);
             panel1.TabIndex = 10;
             // 
             // panelIzquierda
             // 
+            panelIzquierda.Controls.Add(treeView1);
             panelIzquierda.Dock = DockStyle.Left;
             panelIzquierda.Location = new Point(0, 0);
             panelIzquierda.Name = "panelIzquierda";
-            panelIzquierda.Size = new Size(213, 616);
+            panelIzquierda.Size = new Size(296, 616);
             panelIzquierda.TabIndex = 8;
+            // 
+            // treeView1
+            // 
+            treeView1.Location = new Point(14, 13);
+            treeView1.Name = "treeView1";
+            treeView1.Size = new Size(266, 583);
+            treeView1.TabIndex = 0;
             // 
             // FrmCitas
             // 
@@ -336,6 +346,7 @@
             panel5.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
+            panelIzquierda.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -367,5 +378,6 @@
         private Button btnGuardar;
         private Button button1;
         private Button button2;
+        private TreeView treeView1;
     }
 }
