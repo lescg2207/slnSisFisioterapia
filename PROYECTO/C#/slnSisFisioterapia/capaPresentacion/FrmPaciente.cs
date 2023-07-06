@@ -1,5 +1,6 @@
 using capaNegocios;
 using entidades;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace capaPresentacion
@@ -8,6 +9,16 @@ namespace capaPresentacion
     {
         private readonly PacienteBll _pacientebll;
         ApisPeru ApisPeru = new ApisPeru();
+        public string accion { get; set; } = null!;
+        public string dniPaciente { get; set; } = null!;
+
+
+        #region MouseDowmn
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparan);
+        #endregion
 
         public FrmPaciente(string providerName, string connectionString)
         {
@@ -18,9 +29,20 @@ namespace capaPresentacion
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            listarPacientes();
-            CCriterioBusqueda.Items.AddRange(new string[] { "Seleccione", "DNI", "Nombre", "Apellido" });
-            CCriterioBusqueda.SelectedIndex = 0;
+
+            if (accion == "I")
+            {
+                Limpiar();
+                btnGuardar.Text = "Nuevo";
+                lbltitulo.Text = "Nuevo Usuario";
+
+            }
+            else if (accion == "U")
+            {
+                btnGuardar.Text = "Actualizar";
+                lbltitulo.Text = "Modificar Usuario";
+
+            }
         }
 
         #region InsertarPac
@@ -51,17 +73,9 @@ namespace capaPresentacion
 
         }
         #endregion
-        private void btnInsertar_Click(object sender, EventArgs e)
-        {
 
-            InsertarPaciente();
-            Limpiar();
-            MessageBox.Show("Paciente guardado correctamente.");
-            listarPacientes();
 
-        }
-
-        private void btnActualizar_Click(object sender, EventArgs e)
+        private void ActualizarPaciente()
         {
             var paciente = new Paciente
             {
@@ -72,18 +86,28 @@ namespace capaPresentacion
                 FNacimiento = dtpFechaNacimiento.Value,
                 Celular = txtCelular.Text
             };
+            var histori = new HistoriaClinica
+            {
+                Id = int.Parse(lblIdHist.Text),
+                idHistoria = lblCodigo.Text,
+                dniPaciente = txtDniPaciente.Text,
+                antecedentes = txtAntecedentes.Text,
+                peso = decimal.Parse(txtPeso.Text),
+                talla = decimal.Parse(txtTalla.Text),
+                imc = decimal.Parse(txtImc.Text),
+                observaciones = lblobserv.Text,
+            };
             _pacientebll.ActualizarPaciente(paciente);
+            _pacientebll.ActualizarHistoria(histori);
             Limpiar();
-            listarPacientes();
+
             MessageBox.Show("Paciente Actualizado con exito");
         }
-        void listarPacientes()
+        private void btnActualizar_Click(object sender, EventArgs e)
         {
-            List<ListaPacienteHistoria> pacientes = _pacientebll.ObtenerListaPacientes();
-            dgvPaciente.DataSource = pacientes;
-
-
+            ActualizarPaciente();
         }
+
         private void Limpiar()
         {
             txtNombres.Text = "";
@@ -131,61 +155,14 @@ namespace capaPresentacion
             consultarCliente();
         }
 
-        private void dgvPaciente_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtDniPaciente.Text = dgvPaciente.CurrentRow.Cells[1].Value.ToString();
-            txtNombres.Text = dgvPaciente.CurrentRow.Cells[2].Value.ToString();
-            txtApellidos.Text = dgvPaciente.CurrentRow.Cells[3].Value.ToString();
-            txtDireccion.Text = dgvPaciente.CurrentRow.Cells[4].Value.ToString();
-            dtpFechaNacimiento.Text = dgvPaciente.CurrentRow.Cells[5].Value.ToString();
-            txtCelular.Text = dgvPaciente.CurrentRow.Cells[6].Value.ToString();
-            txtAntecedentes.Text = dgvPaciente.CurrentRow.Cells[7].Value.ToString();
-            txtPeso.Text = dgvPaciente.CurrentRow.Cells[8].Value.ToString();
-            txtTalla.Text = dgvPaciente.CurrentRow.Cells[9].Value.ToString();
-            txtImc.Text = dgvPaciente.CurrentRow.Cells[10].Value.ToString();
-            txtDniPaciente.Enabled = false;
 
-        }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
         }
 
-        #region BuscarPaciente(DNI,Nombre,Apellido)
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            string valorBusqueda = textBox1.Text;
 
-            if (string.IsNullOrWhiteSpace(valorBusqueda))
-            {
-
-                listarPacientes();
-                return;
-            }
-            try
-            {
-                List<ListaPacienteHistoria> pacientes = null!;
-                switch (CCriterioBusqueda.SelectedItem.ToString())
-                {
-                    case "DNI":
-                        pacientes = _pacientebll.BuscarPacientePorDNI(valorBusqueda);
-                        break;
-                    case "Nombre":
-                        pacientes = _pacientebll.BuscarPacientePorNombre(valorBusqueda);
-                        break;
-                    case "Apellido":
-                        pacientes = _pacientebll.BuscarPacientePorApellido(valorBusqueda);
-                        break;
-                }
-                dgvPaciente.DataSource = pacientes;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar los pacientes: " + ex.Message);
-            }
-        }
-        #endregion
 
         private void txtPeso_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -256,6 +233,37 @@ namespace capaPresentacion
                 r = peso / (talla * talla);
                 txtImc.Text = Math.Round(r).ToString();
             }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (accion == "I")
+            {
+                InsertarPaciente();
+                Limpiar();
+                MessageBox.Show("Paciente guardado correctamente.");
+
+            }
+            else if (accion == "U")
+            {
+
+                ActualizarPaciente();
+
+
+                this.Close();
+            }
+
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

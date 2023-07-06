@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnInsertar = new Button();
             txtDniPaciente = new TextBox();
             txtNombres = new TextBox();
             txtApellidos = new TextBox();
             txtDireccion = new TextBox();
             txtCelular = new TextBox();
             dtpFechaNacimiento = new DateTimePicker();
-            btnActualizar = new Button();
-            dgvPaciente = new DataGridView();
             txtAntecedentes = new TextBox();
             txtPeso = new TextBox();
             txtTalla = new TextBox();
@@ -54,29 +51,20 @@
             label11 = new Label();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
-            btnLimpiar = new Button();
-            textBox1 = new TextBox();
-            CCriterioBusqueda = new ComboBox();
-            label12 = new Label();
-            panel1 = new Panel();
             panel2 = new Panel();
-            ((System.ComponentModel.ISupportInitialize)dgvPaciente).BeginInit();
+            lblCodigo = new Label();
+            lblobserv = new Label();
+            lblIdHist = new Label();
+            panel3 = new Panel();
+            lbltitulo = new Label();
+            btnSalir = new Button();
+            btnGuardar = new Button();
             ((System.ComponentModel.ISupportInitialize)pbxConsurDni).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            panel1.SuspendLayout();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
-            // 
-            // btnInsertar
-            // 
-            btnInsertar.Location = new Point(922, 31);
-            btnInsertar.Name = "btnInsertar";
-            btnInsertar.Size = new Size(135, 35);
-            btnInsertar.TabIndex = 1;
-            btnInsertar.Text = "GUARDAR";
-            btnInsertar.UseVisualStyleBackColor = true;
-            btnInsertar.Click += btnInsertar_Click;
             // 
             // txtDniPaciente
             // 
@@ -129,39 +117,19 @@
             dtpFechaNacimiento.Size = new Size(142, 23);
             dtpFechaNacimiento.TabIndex = 7;
             // 
-            // btnActualizar
-            // 
-            btnActualizar.Location = new Point(781, 31);
-            btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(135, 35);
-            btnActualizar.TabIndex = 8;
-            btnActualizar.Text = "ACTUALIZAR";
-            btnActualizar.UseVisualStyleBackColor = true;
-            btnActualizar.Click += btnActualizar_Click;
-            // 
-            // dgvPaciente
-            // 
-            dgvPaciente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPaciente.Location = new Point(51, 83);
-            dgvPaciente.Name = "dgvPaciente";
-            dgvPaciente.RowTemplate.Height = 25;
-            dgvPaciente.Size = new Size(1006, 304);
-            dgvPaciente.TabIndex = 9;
-            dgvPaciente.CellClick += dgvPaciente_CellClick;
-            // 
             // txtAntecedentes
             // 
             txtAntecedentes.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtAntecedentes.Location = new Point(136, 55);
             txtAntecedentes.Multiline = true;
             txtAntecedentes.Name = "txtAntecedentes";
-            txtAntecedentes.Size = new Size(250, 53);
+            txtAntecedentes.Size = new Size(380, 53);
             txtAntecedentes.TabIndex = 10;
             // 
             // txtPeso
             // 
             txtPeso.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPeso.Location = new Point(31, 134);
+            txtPeso.Location = new Point(82, 135);
             txtPeso.Name = "txtPeso";
             txtPeso.Size = new Size(99, 23);
             txtPeso.TabIndex = 11;
@@ -171,7 +139,7 @@
             // txtTalla
             // 
             txtTalla.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTalla.Location = new Point(157, 135);
+            txtTalla.Location = new Point(255, 134);
             txtTalla.Name = "txtTalla";
             txtTalla.Size = new Size(99, 23);
             txtTalla.TabIndex = 12;
@@ -181,7 +149,7 @@
             // txtImc
             // 
             txtImc.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtImc.Location = new Point(287, 135);
+            txtImc.Location = new Point(417, 134);
             txtImc.Name = "txtImc";
             txtImc.Size = new Size(99, 23);
             txtImc.TabIndex = 13;
@@ -247,7 +215,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(287, 115);
+            label5.Location = new Point(373, 136);
             label5.Name = "label5";
             label5.Size = new Size(38, 17);
             label5.TabIndex = 23;
@@ -258,7 +226,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(157, 115);
+            label6.Location = new Point(204, 136);
             label6.Name = "label6";
             label6.Size = new Size(45, 17);
             label6.TabIndex = 22;
@@ -269,7 +237,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(31, 114);
+            label7.Location = new Point(31, 136);
             label7.Name = "label7";
             label7.Size = new Size(45, 17);
             label7.TabIndex = 21;
@@ -325,7 +293,7 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(51, 35);
+            groupBox1.Location = new Point(34, 100);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(564, 195);
             groupBox1.TabIndex = 27;
@@ -344,115 +312,128 @@
             groupBox2.Controls.Add(label7);
             groupBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(644, 35);
+            groupBox2.Location = new Point(34, 309);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(413, 195);
+            groupBox2.Size = new Size(564, 195);
             groupBox2.TabIndex = 28;
             groupBox2.TabStop = false;
             groupBox2.Text = "Datos Clinicos";
             // 
-            // btnLimpiar
-            // 
-            btnLimpiar.Location = new Point(640, 31);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(135, 35);
-            btnLimpiar.TabIndex = 29;
-            btnLimpiar.Text = "LIMPIAR";
-            btnLimpiar.UseVisualStyleBackColor = true;
-            btnLimpiar.Click += btnLimpiar_Click;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(309, 38);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(234, 23);
-            textBox1.TabIndex = 30;
-            textBox1.TextChanged += textBox1_TextChanged;
-            // 
-            // CCriterioBusqueda
-            // 
-            CCriterioBusqueda.FormattingEnabled = true;
-            CCriterioBusqueda.Location = new Point(173, 38);
-            CCriterioBusqueda.Name = "CCriterioBusqueda";
-            CCriterioBusqueda.Size = new Size(130, 23);
-            CCriterioBusqueda.TabIndex = 31;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.ForeColor = Color.White;
-            label12.Location = new Point(66, 39);
-            label12.Name = "label12";
-            label12.Size = new Size(101, 17);
-            label12.TabIndex = 24;
-            label12.Text = "Búsqueda por :";
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(21, 60, 77);
-            panel1.Controls.Add(dgvPaciente);
-            panel1.Controls.Add(label12);
-            panel1.Controls.Add(btnInsertar);
-            panel1.Controls.Add(CCriterioBusqueda);
-            panel1.Controls.Add(btnActualizar);
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(btnLimpiar);
-            panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 268);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1120, 422);
-            panel1.TabIndex = 32;
-            // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(22, 173, 138);
-            panel2.Controls.Add(groupBox1);
             panel2.Controls.Add(groupBox2);
+            panel2.Controls.Add(lblCodigo);
+            panel2.Controls.Add(lblobserv);
+            panel2.Controls.Add(lblIdHist);
+            panel2.Controls.Add(panel3);
+            panel2.Controls.Add(btnSalir);
+            panel2.Controls.Add(btnGuardar);
+            panel2.Controls.Add(groupBox1);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1120, 268);
+            panel2.Size = new Size(636, 585);
             panel2.TabIndex = 33;
+            // 
+            // lblCodigo
+            // 
+            lblCodigo.AutoSize = true;
+            lblCodigo.Location = new Point(450, 428);
+            lblCodigo.Name = "lblCodigo";
+            lblCodigo.Size = new Size(44, 15);
+            lblCodigo.TabIndex = 34;
+            lblCodigo.Text = "label10";
+            // 
+            // lblobserv
+            // 
+            lblobserv.AutoSize = true;
+            lblobserv.Location = new Point(442, 399);
+            lblobserv.Name = "lblobserv";
+            lblobserv.Size = new Size(44, 15);
+            lblobserv.TabIndex = 33;
+            lblobserv.Text = "label12";
+            // 
+            // lblIdHist
+            // 
+            lblIdHist.AutoSize = true;
+            lblIdHist.Location = new Point(439, 368);
+            lblIdHist.Name = "lblIdHist";
+            lblIdHist.Size = new Size(44, 15);
+            lblIdHist.TabIndex = 32;
+            lblIdHist.Text = "label10";
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.FromArgb(21, 60, 77);
+            panel3.Controls.Add(lbltitulo);
+            panel3.Location = new Point(34, 20);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(564, 53);
+            panel3.TabIndex = 31;
+            panel3.MouseDown += panel3_MouseDown;
+            // 
+            // lbltitulo
+            // 
+            lbltitulo.AutoSize = true;
+            lbltitulo.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbltitulo.ForeColor = Color.White;
+            lbltitulo.Location = new Point(15, 9);
+            lbltitulo.Name = "lbltitulo";
+            lbltitulo.Size = new Size(166, 30);
+            lbltitulo.TabIndex = 0;
+            lbltitulo.Text = "Nuevo Paciente";
+            // 
+            // btnSalir
+            // 
+            btnSalir.FlatStyle = FlatStyle.Flat;
+            btnSalir.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSalir.ForeColor = Color.White;
+            btnSalir.Location = new Point(489, 529);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(109, 30);
+            btnSalir.TabIndex = 30;
+            btnSalir.Text = "Cerrar";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardar.ForeColor = Color.White;
+            btnGuardar.Location = new Point(364, 529);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(109, 30);
+            btnGuardar.TabIndex = 29;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // FrmPaciente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1120, 690);
+            ClientSize = new Size(636, 585);
             Controls.Add(panel2);
-            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmPaciente";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvPaciente).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxConsurDni).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button btnInsertar;
-        private TextBox txtDniPaciente;
-        private TextBox txtNombres;
-        private TextBox txtApellidos;
-        private TextBox txtDireccion;
-        private TextBox txtCelular;
-        private DateTimePicker dtpFechaNacimiento;
-        private Button btnActualizar;
-        private DataGridView dgvPaciente;
-        private TextBox txtAntecedentes;
-        private TextBox txtPeso;
-        private TextBox txtTalla;
-        private TextBox txtImc;
         private PictureBox pbxConsurDni;
         private Label label1;
         private Label label2;
@@ -466,11 +447,23 @@
         private Label label11;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private Button btnLimpiar;
-        private TextBox textBox1;
-        private ComboBox CCriterioBusqueda;
-        private Label label12;
-        private Panel panel1;
         private Panel panel2;
+        private Panel panel3;
+        private Button btnSalir;
+        private Button btnGuardar;
+        private Label lbltitulo;
+        public TextBox txtDniPaciente;
+        public TextBox txtNombres;
+        public TextBox txtApellidos;
+        public TextBox txtDireccion;
+        public TextBox txtCelular;
+        public DateTimePicker dtpFechaNacimiento;
+        public TextBox txtAntecedentes;
+        public TextBox txtPeso;
+        public TextBox txtTalla;
+        public TextBox txtImc;
+        public Label lblobserv;
+        public Label lblIdHist;
+        public Label lblCodigo;
     }
 }

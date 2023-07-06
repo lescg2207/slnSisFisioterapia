@@ -79,6 +79,10 @@ namespace capaNegocios
         {
             return _pacientesDao.ValidarCredenciales(usuario, contraseña);
         }
-       
+
+        public void ActualizarHistoria(HistoriaClinica historia)
+        {
+            _pacientesDao.ActualizarHistoria(historia);
+        }
     }
 }
