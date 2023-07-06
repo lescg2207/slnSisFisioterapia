@@ -53,13 +53,14 @@ namespace capaPresentacion
             if (cbxBuscar.SelectedIndex == 1)
             {
                 lbltitu.Text = "Ingrese cargo :";
+                
             }
             else
             {
                 lbltitu.Text = "Ingrese nombre :";
+               
             }
-
-
+            
         }
         private void Limpiar()
         {
@@ -69,6 +70,7 @@ namespace capaPresentacion
             txtxContraseña.Text = "";
             cbxBuscar.SelectedIndex = 0;
             cbxCargo.SelectedIndex = 0;
+            btnAgregar.Enabled = true;
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -101,6 +103,7 @@ namespace capaPresentacion
             txtusuarios.Text = dgvEmpleado.CurrentRow.Cells[3].Value.ToString();
             txtxContraseña.Text = dgvEmpleado.CurrentRow.Cells[6].Value.ToString();
             cbxCargo.Text = dgvEmpleado.CurrentRow.Cells[4].Value.ToString();
+            btnAgregar.Enabled = false;
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
