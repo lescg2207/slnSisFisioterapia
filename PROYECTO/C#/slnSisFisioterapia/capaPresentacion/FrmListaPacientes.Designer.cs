@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            panel2 = new Panel();
-            dgvPacientes = new DataGridView();
-            button1 = new Button();
-            button2 = new Button();
-            label1 = new Label();
-            comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
             label2 = new Label();
+            panel2 = new Panel();
+            textBox1 = new TextBox();
+            comboBox1 = new ComboBox();
+            label1 = new Label();
+            button2 = new Button();
+            button1 = new Button();
+            dgvPacientes = new DataGridView();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPacientes).BeginInit();
@@ -51,6 +51,16 @@
             panel1.Size = new Size(1096, 63);
             panel1.TabIndex = 0;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(3, 16);
+            label2.Name = "label2";
+            label2.Size = new Size(185, 30);
+            label2.TabIndex = 0;
+            label2.Text = "Lista de Pacientes";
+            // 
             // panel2
             // 
             panel2.Controls.Add(textBox1);
@@ -64,27 +74,30 @@
             panel2.Size = new Size(1096, 597);
             panel2.TabIndex = 1;
             // 
-            // dgvPacientes
+            // textBox1
             // 
-            dgvPacientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvPacientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPacientes.Location = new Point(3, 89);
-            dgvPacientes.Name = "dgvPacientes";
-            dgvPacientes.RowTemplate.Height = 25;
-            dgvPacientes.Size = new Size(1087, 421);
-            dgvPacientes.TabIndex = 0;
+            textBox1.Location = new Point(881, 45);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(209, 23);
+            textBox1.TabIndex = 5;
             // 
-            // button1
+            // comboBox1
             // 
-            button1.Cursor = Cursors.Hand;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(1015, 542);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 30);
-            button1.TabIndex = 1;
-            button1.Text = "Exportar";
-            button1.UseVisualStyleBackColor = true;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(745, 45);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(130, 23);
+            comboBox1.TabIndex = 4;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(625, 44);
+            label1.Name = "label1";
+            label1.Size = new Size(114, 20);
+            label1.TabIndex = 3;
+            label1.Text = "Búsqueda por :";
             // 
             // button2
             // 
@@ -97,40 +110,27 @@
             button2.Text = "Nuevo Paciente";
             button2.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // button1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(625, 44);
-            label1.Name = "label1";
-            label1.Size = new Size(114, 20);
-            label1.TabIndex = 3;
-            label1.Text = "Búsqueda por :";
+            button1.Cursor = Cursors.Hand;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(1015, 541);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 30);
+            button1.TabIndex = 1;
+            button1.Text = "Exportar";
+            button1.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // dgvPacientes
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(745, 45);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(130, 23);
-            comboBox1.TabIndex = 4;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(881, 45);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(209, 23);
-            textBox1.TabIndex = 5;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 16);
-            label2.Name = "label2";
-            label2.Size = new Size(185, 30);
-            label2.TabIndex = 0;
-            label2.Text = "Lista de Pacientes";
+            dgvPacientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvPacientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPacientes.Location = new Point(3, 89);
+            dgvPacientes.Name = "dgvPacientes";
+            dgvPacientes.RowTemplate.Height = 25;
+            dgvPacientes.Size = new Size(1087, 421);
+            dgvPacientes.TabIndex = 0;
             // 
             // FrmListaPacientes
             // 

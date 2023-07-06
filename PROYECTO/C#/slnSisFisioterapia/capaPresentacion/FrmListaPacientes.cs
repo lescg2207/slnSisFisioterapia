@@ -15,7 +15,7 @@ namespace capaPresentacion
     public partial class FrmListaPacientes : Form
     {
         private PacienteBll _pacientebll;
-        public FrmListaPacientes( string gest, string con)
+        public FrmListaPacientes(string gest, string con)
         {
             _pacientebll = new PacienteBll(gest, con);
             InitializeComponent();

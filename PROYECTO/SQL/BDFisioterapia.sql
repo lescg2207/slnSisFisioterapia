@@ -136,3 +136,7 @@ inner join Sesiones
 on sesiones.idtipo=servicio.idServicio
 
 select*from Citas
+
+select idEmpleado,nombres+apellidos as nombre,usuario,cargo from Empleado e
+inner join Cargo c
+on e.idCargo=c.idCargo
