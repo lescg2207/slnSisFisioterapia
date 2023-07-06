@@ -30,7 +30,7 @@ namespace capaPresentacion
 
         public void CargarDatosTreeView(TreeView treeView)
         {
-            List<ListaPacienteHistoria> pacientes = pacBll.ObtenerListaPacientes();
+            /*List<ListaPacienteHistoria> pacientes = pacBll.ObtenerListaPacientes();
 
             TreeNode nodoPadre = new TreeNode("Pacientes");
 
@@ -49,16 +49,16 @@ namespace capaPresentacion
                 // Agregar más nodos según tus necesidades
 
                 nodoPadre.Nodes.Add(pacienteNode);
-            }
+            }*/
 
-            treeView.Nodes.Add(nodoPadre);
+            //treeView.Nodes.Add(nodoPadre);
 
             List<ServicioSesiones> servicios = servBll.ObtenerTreeNodes();
 
             TreeNode nodoPadreserv = new TreeNode("Servicios");
 
             int contadorServicio = 0; // Variable para contar el número de servicios procesados
-            TreeNode nodoPaquete = null;
+            TreeNode nodoPaquete = null!;
 
             foreach (var servicio in servicios)
             {

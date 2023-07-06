@@ -20,6 +20,7 @@ namespace capaDatos
         public DbSet<Horario> Horario { get; set; }
         public DbSet<Servicios> Servicio { get; set; }
         public DbSet<Sesiones> Sesiones { get; set; }
+        public DbSet<Cargo> Cargo { get; set; }
 
         public ConexionBd(DbContextOptions<ConexionBd> options, string providerName) : base(options)
         {

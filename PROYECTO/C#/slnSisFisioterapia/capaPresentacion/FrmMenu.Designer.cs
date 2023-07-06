@@ -35,6 +35,7 @@
             btnconfig = new Button();
             btnLogout = new Button();
             pbAdmin = new Panel();
+            btnEmpleado = new Button();
             btnProductos = new Button();
             pEnfermera = new Panel();
             btnCitas = new Button();
@@ -120,13 +121,28 @@
             // 
             // pbAdmin
             // 
+            pbAdmin.Controls.Add(btnEmpleado);
             pbAdmin.Controls.Add(btnProductos);
             pbAdmin.Dock = DockStyle.Top;
-            pbAdmin.Location = new Point(0, 561);
+            pbAdmin.Location = new Point(0, 649);
             pbAdmin.Name = "pbAdmin";
-            pbAdmin.Size = new Size(80, 86);
+            pbAdmin.Size = new Size(80, 202);
             pbAdmin.TabIndex = 4;
             pbAdmin.Visible = false;
+            // 
+            // btnEmpleado
+            // 
+            btnEmpleado.Cursor = Cursors.Hand;
+            btnEmpleado.Dock = DockStyle.Top;
+            btnEmpleado.FlatAppearance.BorderSize = 0;
+            btnEmpleado.FlatStyle = FlatStyle.Flat;
+            btnEmpleado.Image = Properties.Resources.user;
+            btnEmpleado.Location = new Point(0, 64);
+            btnEmpleado.Name = "btnEmpleado";
+            btnEmpleado.Size = new Size(80, 64);
+            btnEmpleado.TabIndex = 1;
+            btnEmpleado.UseVisualStyleBackColor = true;
+            btnEmpleado.Click += btnEmpleado_Click;
             // 
             // btnProductos
             // 
@@ -147,9 +163,9 @@
             pEnfermera.Controls.Add(btnCitas);
             pEnfermera.Controls.Add(btnPacientes);
             pEnfermera.Dock = DockStyle.Top;
-            pEnfermera.Location = new Point(0, 382);
+            pEnfermera.Location = new Point(0, 476);
             pEnfermera.Name = "pEnfermera";
-            pEnfermera.Size = new Size(80, 179);
+            pEnfermera.Size = new Size(80, 173);
             pEnfermera.TabIndex = 3;
             pEnfermera.Visible = false;
             // 
@@ -191,7 +207,7 @@
             pbDoctor.Dock = DockStyle.Top;
             pbDoctor.Location = new Point(0, 172);
             pbDoctor.Name = "pbDoctor";
-            pbDoctor.Size = new Size(80, 210);
+            pbDoctor.Size = new Size(80, 304);
             pbDoctor.TabIndex = 2;
             pbDoctor.Visible = false;
             // 
@@ -418,5 +434,6 @@
         private Panel panel7;
         private Button btnLogout;
         private Button btnconfig;
+        private Button btnEmpleado;
     }
 }

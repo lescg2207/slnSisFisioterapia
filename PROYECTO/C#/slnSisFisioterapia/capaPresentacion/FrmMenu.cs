@@ -46,7 +46,7 @@ namespace capaPresentacion
 
         private void btnPacientes_Click(object sender, EventArgs e)
         {
-            FrmPaciente frmPaciente = new FrmPaciente(gestor, conexion);
+            FrmListaPacientes frmPaciente = new FrmListaPacientes(gestor, conexion);
             AbrirFrm(frmPaciente);
             lbltitulo.Text = "Registro de Pacientes";
         }
@@ -72,10 +72,16 @@ namespace capaPresentacion
 
         private void btnDash_Click(object sender, EventArgs e)
         {
-            Frmtreeview tre = new Frmtreeview(gestor,conexion);
+            Frmtreeview tre = new Frmtreeview(gestor, conexion);
             AbrirFrm(tre);
 
 
+        }
+
+        private void btnEmpleado_Click(object sender, EventArgs e)
+        {
+            FrmListaEmpleado emple = new FrmListaEmpleado(gestor, conexion);
+            AbrirFrm(emple);
         }
     }
 }

@@ -46,5 +46,32 @@ namespace capaNegocios
         {
             return _empleadoDa.ObtenerEmpleado();
         }
+        public List<ListaEmpleadoCargo> ListaEmpleadoCargo()
+        {
+            return _empleadoDa.ListaEmpleadoCargo();
+        }
+
+        public List<Cargo> ObtenerEmpleadoCargo()
+        {
+            return _empleadoDa.ObtenerEmpleadoCargo();
+        }
+        public void InsertarEmpleado(Empleado Emple)
+        {
+            _empleadoDa.InsertarEmpleado(Emple);
+        }
+        public void ActualizarEmpleado(Empleado emple)
+        {
+            _empleadoDa.ActualizarEmpleado(emple);
+        }
+
+        public List<ListaEmpleadoCargo> BuscarEmpleadoCargo(string cargo)
+        {
+            return _empleadoDa.BuscarEmpleadoCargo(cargo);
+         }
+
+        public List<ListaEmpleadoCargo> BuscarEmpleadoNombre(string nombre)
+        {
+            return _empleadoDa.BuscarEmpleadoNombre(nombre);
+        }
     }
 }

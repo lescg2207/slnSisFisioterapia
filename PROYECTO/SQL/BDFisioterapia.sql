@@ -112,9 +112,9 @@ CREATE TABLE Tratamientos (
 
 SELECT*FROM Cargo
 
-insert into Cargo values('Doctor'),('Enfermera')
+insert into Cargo values('Doctor'),('Enfermera'),('Admin')
 
-insert into Empleado values('Camila','Lopez','maria','123',2),('Ernesto','Jimenez','juan','12',1)
+insert into Empleado values('Camila','Lopez','maria','123',2),('Ernesto','Jimenez','juan','12',1),('Gisela','Ramirez','gise','123',3)
 
 SELECT*FROM Pacientes
 go
