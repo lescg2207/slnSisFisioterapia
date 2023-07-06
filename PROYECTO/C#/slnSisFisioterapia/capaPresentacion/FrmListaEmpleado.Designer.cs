@@ -31,6 +31,7 @@
             panel1 = new Panel();
             label2 = new Label();
             panel2 = new Panel();
+            lbltitu = new Label();
             dgvEmpleado = new DataGridView();
             lblId = new Label();
             lblcontra = new Label();
@@ -80,6 +81,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(lbltitu);
             panel2.Controls.Add(dgvEmpleado);
             panel2.Controls.Add(lblId);
             panel2.Controls.Add(lblcontra);
@@ -95,6 +97,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1096, 597);
             panel2.TabIndex = 2;
+            // 
+            // lbltitu
+            // 
+            lbltitu.AutoSize = true;
+            lbltitu.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbltitu.Location = new Point(322, 167);
+            lbltitu.Name = "lbltitu";
+            lbltitu.Size = new Size(113, 17);
+            lbltitu.TabIndex = 12;
+            lbltitu.Text = "Ingrese nombre :";
             // 
             // dgvEmpleado
             // 
@@ -130,7 +142,7 @@
             btnModificar.Cursor = Cursors.Hand;
             btnModificar.FlatStyle = FlatStyle.Flat;
             btnModificar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnModificar.Location = new Point(599, 168);
+            btnModificar.Location = new Point(599, 175);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(148, 30);
             btnModificar.TabIndex = 9;
@@ -143,7 +155,7 @@
             btnEliminar.Cursor = Cursors.Hand;
             btnEliminar.FlatStyle = FlatStyle.Flat;
             btnEliminar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(753, 168);
+            btnEliminar.Location = new Point(753, 175);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(148, 30);
             btnEliminar.TabIndex = 8;
@@ -155,7 +167,7 @@
             btnLimpiar.Cursor = Cursors.Hand;
             btnLimpiar.FlatStyle = FlatStyle.Flat;
             btnLimpiar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(907, 168);
+            btnLimpiar.Location = new Point(907, 175);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(148, 30);
             btnLimpiar.TabIndex = 7;
@@ -290,21 +302,18 @@
             // txtbuscar
             // 
             txtbuscar.ForeColor = Color.DimGray;
-            txtbuscar.Location = new Point(321, 174);
+            txtbuscar.Location = new Point(322, 187);
             txtbuscar.Name = "txtbuscar";
             txtbuscar.Size = new Size(207, 23);
             txtbuscar.TabIndex = 5;
-            txtbuscar.Text = "Ingrese nombre";
             txtbuscar.TextAlign = HorizontalAlignment.Center;
             txtbuscar.TextChanged += txtbuscar_TextChanged;
-            txtbuscar.Enter += txtbuscar_Enter;
-            txtbuscar.Leave += txtbuscar_Leave;
             // 
             // cbxBuscar
             // 
             cbxBuscar.FormattingEnabled = true;
             cbxBuscar.Items.AddRange(new object[] { "NOMBRE", "CARGO" });
-            cbxBuscar.Location = new Point(142, 174);
+            cbxBuscar.Location = new Point(143, 187);
             cbxBuscar.Name = "cbxBuscar";
             cbxBuscar.Size = new Size(173, 23);
             cbxBuscar.TabIndex = 4;
@@ -314,7 +323,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(35, 175);
+            label1.Location = new Point(36, 188);
             label1.Name = "label1";
             label1.Size = new Size(101, 17);
             label1.TabIndex = 3;
@@ -379,5 +388,6 @@
         private Button btnEliminar;
         private Label lblcontra;
         private Label lblId;
+        private Label lbltitu;
     }
 }

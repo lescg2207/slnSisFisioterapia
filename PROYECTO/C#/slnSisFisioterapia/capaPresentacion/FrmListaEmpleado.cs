@@ -48,57 +48,18 @@ namespace capaPresentacion
 
         }
 
-        private void txtbuscar_Enter(object sender, EventArgs e)
-        {
-            string item;
-
-            if (cbxBuscar.SelectedIndex == 1)
-            {
-                item = "cargo";
-            }
-            else
-            {
-                item = "nombre";
-
-            }
-
-            if (txtbuscar.Text == "Ingrese" + " " + item)
-            {
-                txtbuscar.Text = "";
-            }
-        }
-
-        private void txtbuscar_Leave(object sender, EventArgs e)
-        {
-            string item;
-            if (cbxBuscar.SelectedIndex == 1)
-            {
-                item = "cargo";
-            }
-            else
-            {
-                item = "nombre";
-
-            }
-
-            if (txtbuscar.Text == "")
-            {
-                txtbuscar.Text = "Ingrese" + " " + item;
-            }
-
-        }
-
         private void cbxBuscar_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbxBuscar.SelectedIndex == 1)
             {
-                txtbuscar.Text = "Ingrese cargo";
+                lbltitu.Text = "Ingrese cargo :";
             }
             else
             {
-                txtbuscar.Text = "Ingrese nombre";
+                lbltitu.Text = "Ingrese nombre :";
             }
-            ListarEmpleado();
+
+
         }
         private void Limpiar()
         {
@@ -188,7 +149,7 @@ namespace capaPresentacion
                     case "CARGO":
                         pacientes = _empleadoBll.BuscarEmpleadoCargo(valorBusqueda);
                         break;
-                    
+
                 }
                 dgvEmpleado.DataSource = pacientes;
             }
