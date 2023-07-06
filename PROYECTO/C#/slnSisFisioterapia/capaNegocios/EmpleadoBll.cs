@@ -1,5 +1,6 @@
 ﻿using capaDatos;
 using entidades;
+using entidades.Vistas;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

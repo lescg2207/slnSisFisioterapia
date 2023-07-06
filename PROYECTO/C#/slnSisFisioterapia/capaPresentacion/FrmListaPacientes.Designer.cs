@@ -32,10 +32,10 @@
             label2 = new Label();
             panel2 = new Panel();
             textBox1 = new TextBox();
-            comboBox1 = new ComboBox();
+            cbxBuscar = new ComboBox();
             label1 = new Label();
-            button2 = new Button();
-            button1 = new Button();
+            btnNuevo = new Button();
+            btnExportar = new Button();
             dgvPacientes = new DataGridView();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -64,10 +64,10 @@
             // panel2
             // 
             panel2.Controls.Add(textBox1);
-            panel2.Controls.Add(comboBox1);
+            panel2.Controls.Add(cbxBuscar);
             panel2.Controls.Add(label1);
-            panel2.Controls.Add(button2);
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(btnNuevo);
+            panel2.Controls.Add(btnExportar);
             panel2.Controls.Add(dgvPacientes);
             panel2.Location = new Point(12, 81);
             panel2.Name = "panel2";
@@ -80,14 +80,15 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(209, 23);
             textBox1.TabIndex = 5;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
-            // comboBox1
+            // cbxBuscar
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(745, 45);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(130, 23);
-            comboBox1.TabIndex = 4;
+            cbxBuscar.FormattingEnabled = true;
+            cbxBuscar.Location = new Point(745, 45);
+            cbxBuscar.Name = "cbxBuscar";
+            cbxBuscar.Size = new Size(130, 23);
+            cbxBuscar.TabIndex = 4;
             // 
             // label1
             // 
@@ -99,27 +100,28 @@
             label1.TabIndex = 3;
             label1.Text = "Búsqueda por :";
             // 
-            // button2
+            // btnNuevo
             // 
-            button2.Cursor = Cursors.Hand;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(3, 40);
-            button2.Name = "button2";
-            button2.Size = new Size(118, 30);
-            button2.TabIndex = 2;
-            button2.Text = "Nuevo Paciente";
-            button2.UseVisualStyleBackColor = true;
+            btnNuevo.Cursor = Cursors.Hand;
+            btnNuevo.FlatStyle = FlatStyle.Flat;
+            btnNuevo.Location = new Point(3, 40);
+            btnNuevo.Name = "btnNuevo";
+            btnNuevo.Size = new Size(118, 30);
+            btnNuevo.TabIndex = 2;
+            btnNuevo.Text = "Nuevo Paciente";
+            btnNuevo.UseVisualStyleBackColor = true;
+            btnNuevo.Click += btnNuevo_Click;
             // 
-            // button1
+            // btnExportar
             // 
-            button1.Cursor = Cursors.Hand;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(1015, 541);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 30);
-            button1.TabIndex = 1;
-            button1.Text = "Exportar";
-            button1.UseVisualStyleBackColor = true;
+            btnExportar.Cursor = Cursors.Hand;
+            btnExportar.FlatStyle = FlatStyle.Flat;
+            btnExportar.Location = new Point(972, 528);
+            btnExportar.Name = "btnExportar";
+            btnExportar.Size = new Size(118, 30);
+            btnExportar.TabIndex = 1;
+            btnExportar.Text = "Exportar";
+            btnExportar.UseVisualStyleBackColor = true;
             // 
             // dgvPacientes
             // 
@@ -131,6 +133,7 @@
             dgvPacientes.RowTemplate.Height = 25;
             dgvPacientes.Size = new Size(1087, 421);
             dgvPacientes.TabIndex = 0;
+            dgvPacientes.CellContentClick += dgvPacientes_CellContentClick;
             // 
             // FrmListaPacientes
             // 
@@ -155,10 +158,10 @@
         private Panel panel1;
         private Panel panel2;
         private TextBox textBox1;
-        private ComboBox comboBox1;
+        private ComboBox cbxBuscar;
         private Label label1;
-        private Button button2;
-        private Button button1;
+        private Button btnNuevo;
+        private Button btnExportar;
         private DataGridView dgvPacientes;
         private Label label2;
     }

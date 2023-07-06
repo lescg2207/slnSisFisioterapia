@@ -15,21 +15,103 @@ namespace capaPresentacion
     public partial class FrmListaPacientes : Form
     {
         private PacienteBll _pacientebll;
+        private FrmPaciente paciente;
+
+        public string accion { get; set; } = null!;
         public FrmListaPacientes(string gest, string con)
         {
             _pacientebll = new PacienteBll(gest, con);
+            paciente = new FrmPaciente(gest, con);
+
             InitializeComponent();
+            cbxBuscar.Items.AddRange(new string[] { "Seleccione", "DNI", "Nombre", "Apellido" });
+            cbxBuscar.SelectedIndex = 0;
             listarPacientes();
+            if (!dgvPacientes.Columns.Contains("Accion"))
+            {
+                DataGridViewButtonColumn boton = new DataGridViewButtonColumn();
+                boton.HeaderText = "Accion";
+                boton.Text = "☑";
+                boton.Name = "btnModificar";
+                boton.UseColumnTextForButtonValue = true;
+                dgvPacientes.Columns.Add(boton);
+            }
+
         }
 
-        void listarPacientes()
+        public void listarPacientes()
         {
             List<ListaPacienteHistoria> pacientes = _pacientebll.ObtenerListaPacientes();
             dgvPacientes.DataSource = pacientes;
 
-
         }
 
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
 
+            paciente.accion = "I";
+            paciente.ShowDialog();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string valorBusqueda = textBox1.Text;
+
+            if (string.IsNullOrWhiteSpace(valorBusqueda))
+            {
+
+                listarPacientes();
+                return;
+            }
+            try
+            {
+                List<ListaPacienteHistoria> pacientes = null!;
+                switch (cbxBuscar.SelectedItem.ToString())
+                {
+                    case "DNI":
+                        pacientes = _pacientebll.BuscarPacientePorDNI(valorBusqueda);
+                        break;
+                    case "Nombre":
+                        pacientes = _pacientebll.BuscarPacientePorNombre(valorBusqueda);
+                        break;
+                    case "Apellido":
+                        pacientes = _pacientebll.BuscarPacientePorApellido(valorBusqueda);
+                        break;
+                }
+                dgvPacientes.DataSource = pacientes;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar los pacientes: " + ex.Message);
+            }
+        }
+
+      
+
+        private void dgvPacientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPacientes.Columns[e.ColumnIndex].Name == "btnModificar")
+            {
+                int index = e.RowIndex;
+                if (index >= 0)
+                {
+                    paciente.txtDniPaciente.Text = dgvPacientes.CurrentRow.Cells[2].Value.ToString();
+                    paciente.txtNombres.Text = dgvPacientes.CurrentRow.Cells[3].Value.ToString();
+                    paciente.txtApellidos.Text = dgvPacientes.CurrentRow.Cells[4].Value.ToString();
+                    paciente.txtDireccion.Text = dgvPacientes.CurrentRow.Cells[5].Value.ToString();
+                    paciente.dtpFechaNacimiento.Text = dgvPacientes.CurrentRow.Cells[6].Value.ToString();
+                    paciente.txtCelular.Text = dgvPacientes.CurrentRow.Cells[7].Value.ToString();
+                    paciente.txtAntecedentes.Text = dgvPacientes.CurrentRow.Cells[8].Value.ToString();
+                    paciente.txtPeso.Text = dgvPacientes.CurrentRow.Cells[9].Value.ToString();
+                    paciente.txtTalla.Text = dgvPacientes.CurrentRow.Cells[10].Value.ToString();
+                    paciente.txtImc.Text = dgvPacientes.CurrentRow.Cells[11].Value.ToString();
+                    paciente.txtDniPaciente.Enabled = false;
+                    paciente.accion = "U";
+                    paciente.ShowDialog();
+                    listarPacientes();
+
+                }
+            }
+        }
     }
 }

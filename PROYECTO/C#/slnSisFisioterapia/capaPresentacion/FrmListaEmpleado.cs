@@ -1,5 +1,6 @@
 ﻿using capaNegocios;
 using entidades;
+using entidades.Vistas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
