@@ -52,6 +52,9 @@
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             panel2 = new Panel();
+            lblCodigo = new Label();
+            lblobserv = new Label();
+            lblIdHist = new Label();
             panel3 = new Panel();
             lbltitulo = new Label();
             btnSalir = new Button();
@@ -319,15 +322,46 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(22, 173, 138);
+            panel2.Controls.Add(groupBox2);
+            panel2.Controls.Add(lblCodigo);
+            panel2.Controls.Add(lblobserv);
+            panel2.Controls.Add(lblIdHist);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(btnSalir);
             panel2.Controls.Add(btnGuardar);
             panel2.Controls.Add(groupBox1);
-            panel2.Controls.Add(groupBox2);
+            panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(642, 589);
+            panel2.Size = new Size(636, 585);
             panel2.TabIndex = 33;
+            // 
+            // lblCodigo
+            // 
+            lblCodigo.AutoSize = true;
+            lblCodigo.Location = new Point(450, 428);
+            lblCodigo.Name = "lblCodigo";
+            lblCodigo.Size = new Size(44, 15);
+            lblCodigo.TabIndex = 34;
+            lblCodigo.Text = "label10";
+            // 
+            // lblobserv
+            // 
+            lblobserv.AutoSize = true;
+            lblobserv.Location = new Point(442, 399);
+            lblobserv.Name = "lblobserv";
+            lblobserv.Size = new Size(44, 15);
+            lblobserv.TabIndex = 33;
+            lblobserv.Text = "label12";
+            // 
+            // lblIdHist
+            // 
+            lblIdHist.AutoSize = true;
+            lblIdHist.Location = new Point(439, 368);
+            lblIdHist.Name = "lblIdHist";
+            lblIdHist.Size = new Size(44, 15);
+            lblIdHist.TabIndex = 32;
+            lblIdHist.Text = "label10";
             // 
             // panel3
             // 
@@ -393,6 +427,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ResumeLayout(false);
@@ -427,5 +462,8 @@
         public TextBox txtPeso;
         public TextBox txtTalla;
         public TextBox txtImc;
+        public Label lblobserv;
+        public Label lblIdHist;
+        public Label lblCodigo;
     }
 }

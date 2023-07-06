@@ -8,6 +8,7 @@ namespace entidades
 {
     public class ListaPacienteHistoria
     {
+        
         public string HISTORIA { get; set; } = null!;
 
         public string DNI { get; set; } = null!;
@@ -26,6 +27,9 @@ namespace entidades
         public decimal PESO { get; set; }
         public decimal TALLA { get; set; }
         public decimal IMC { get; set; }
+
+        public int IDHistoria { get; set; }
+        public string observaciones { get; set; } = null!;
 
     }
 }

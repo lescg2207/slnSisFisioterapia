@@ -10,8 +10,8 @@ namespace capaPresentacion
         private readonly PacienteBll _pacientebll;
         ApisPeru ApisPeru = new ApisPeru();
         public string accion { get; set; } = null!;
-        public string dniPaciente { get; set; }=null!;
- 
+        public string dniPaciente { get; set; } = null!;
+
 
         #region MouseDowmn
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -23,7 +23,7 @@ namespace capaPresentacion
         public FrmPaciente(string providerName, string connectionString)
         {
             InitializeComponent();
-            _pacientebll = new PacienteBll(providerName, connectionString);          
+            _pacientebll = new PacienteBll(providerName, connectionString);
             txtNombres.Enabled = false;
             txtApellidos.Enabled = false;
         }
@@ -86,7 +86,19 @@ namespace capaPresentacion
                 FNacimiento = dtpFechaNacimiento.Value,
                 Celular = txtCelular.Text
             };
+            var histori = new HistoriaClinica
+            {
+                Id = int.Parse(lblIdHist.Text),
+                idHistoria = lblCodigo.Text,
+                dniPaciente = txtDniPaciente.Text,
+                antecedentes = txtAntecedentes.Text,
+                peso = decimal.Parse(txtPeso.Text),
+                talla = decimal.Parse(txtTalla.Text),
+                imc = decimal.Parse(txtImc.Text),
+                observaciones = lblobserv.Text,
+            };
             _pacientebll.ActualizarPaciente(paciente);
+            _pacientebll.ActualizarHistoria(histori);
             Limpiar();
 
             MessageBox.Show("Paciente Actualizado con exito");
@@ -236,8 +248,8 @@ namespace capaPresentacion
             {
 
                 ActualizarPaciente();
-                
-                
+
+
                 this.Close();
             }
 
@@ -250,7 +262,7 @@ namespace capaPresentacion
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
-        {    
+        {
             this.Close();
         }
     }

@@ -43,6 +43,9 @@ namespace capaPresentacion
         {
             List<ListaPacienteHistoria> pacientes = _pacientebll.ObtenerListaPacientes();
             dgvPacientes.DataSource = pacientes;
+            dgvPacientes.Columns["HISTORIA"].Visible = false;
+            dgvPacientes.Columns["IDHistoria"].Visible = false;
+            dgvPacientes.Columns["observaciones"].Visible = false;
 
         }
 
@@ -95,6 +98,7 @@ namespace capaPresentacion
                 int index = e.RowIndex;
                 if (index >= 0)
                 {
+                    paciente.lblCodigo.Text = dgvPacientes.CurrentRow.Cells[1].Value.ToString();
                     paciente.txtDniPaciente.Text = dgvPacientes.CurrentRow.Cells[2].Value.ToString();
                     paciente.txtNombres.Text = dgvPacientes.CurrentRow.Cells[3].Value.ToString();
                     paciente.txtApellidos.Text = dgvPacientes.CurrentRow.Cells[4].Value.ToString();
@@ -105,6 +109,8 @@ namespace capaPresentacion
                     paciente.txtPeso.Text = dgvPacientes.CurrentRow.Cells[9].Value.ToString();
                     paciente.txtTalla.Text = dgvPacientes.CurrentRow.Cells[10].Value.ToString();
                     paciente.txtImc.Text = dgvPacientes.CurrentRow.Cells[11].Value.ToString();
+                    paciente.lblIdHist.Text = dgvPacientes.CurrentRow.Cells[12].Value.ToString();
+                    paciente.lblobserv.Text= dgvPacientes.CurrentRow.Cells[13].Value.ToString();
                     paciente.txtDniPaciente.Enabled = false;
                     paciente.accion = "U";
                     paciente.ShowDialog();
