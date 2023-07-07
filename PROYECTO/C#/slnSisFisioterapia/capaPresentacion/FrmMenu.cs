@@ -84,6 +84,12 @@ namespace capaPresentacion
             AbrirFrm(emple);
         }
 
+        private void btnProductos_Click_1(object sender, EventArgs e)
+        {
+            FrmProductos prod = new FrmProductos(gestor, conexion);
+            AbrirFrm(prod);
+        }
+
         private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
