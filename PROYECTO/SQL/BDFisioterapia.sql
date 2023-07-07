@@ -10,7 +10,6 @@ fNacimiento date,
 celular char(10)
 )
 
-
 create table HistoriaClinica(
 Id int primary key identity,
 idHistoria char(10),

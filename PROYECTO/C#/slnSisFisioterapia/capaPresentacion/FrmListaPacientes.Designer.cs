@@ -80,6 +80,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(209, 23);
             textBox1.TabIndex = 5;
+            textBox1.TextAlign = HorizontalAlignment.Center;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // cbxBuscar
@@ -104,11 +105,12 @@
             // 
             btnNuevo.Cursor = Cursors.Hand;
             btnNuevo.FlatStyle = FlatStyle.Flat;
+            btnNuevo.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnNuevo.Location = new Point(3, 40);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(118, 30);
             btnNuevo.TabIndex = 2;
-            btnNuevo.Text = "Nuevo Paciente";
+            btnNuevo.Text = "NUEVO";
             btnNuevo.UseVisualStyleBackColor = true;
             btnNuevo.Click += btnNuevo_Click;
             // 
@@ -116,11 +118,12 @@
             // 
             btnExportar.Cursor = Cursors.Hand;
             btnExportar.FlatStyle = FlatStyle.Flat;
+            btnExportar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnExportar.Location = new Point(972, 528);
             btnExportar.Name = "btnExportar";
             btnExportar.Size = new Size(118, 30);
             btnExportar.TabIndex = 1;
-            btnExportar.Text = "Exportar";
+            btnExportar.Text = "EXPORTAR";
             btnExportar.UseVisualStyleBackColor = true;
             // 
             // dgvPacientes
@@ -130,6 +133,7 @@
             dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPacientes.Location = new Point(3, 89);
             dgvPacientes.Name = "dgvPacientes";
+            dgvPacientes.ReadOnly = true;
             dgvPacientes.RowTemplate.Height = 25;
             dgvPacientes.Size = new Size(1087, 421);
             dgvPacientes.TabIndex = 0;

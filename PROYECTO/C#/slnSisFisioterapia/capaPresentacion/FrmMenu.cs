@@ -48,7 +48,7 @@ namespace capaPresentacion
         {
             FrmListaPacientes frmPaciente = new FrmListaPacientes(gestor, conexion);
             AbrirFrm(frmPaciente);
-            
+
         }
 
         private void fechaHora_Tick(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace capaPresentacion
         {
             FrmCitas citas = new FrmCitas(gestor, conexion);
             AbrirFrm(citas);
-            
+
         }
 
         private void btnProductos_Click(object sender, EventArgs e)
@@ -82,6 +82,12 @@ namespace capaPresentacion
         {
             FrmListaEmpleado emple = new FrmListaEmpleado(gestor, conexion);
             AbrirFrm(emple);
+        }
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

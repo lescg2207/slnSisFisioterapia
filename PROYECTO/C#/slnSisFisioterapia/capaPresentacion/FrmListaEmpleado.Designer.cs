@@ -109,10 +109,12 @@
             dgvEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmpleado.Location = new Point(35, 235);
             dgvEmpleado.Name = "dgvEmpleado";
+            dgvEmpleado.ReadOnly = true;
             dgvEmpleado.RowTemplate.Height = 25;
             dgvEmpleado.Size = new Size(1020, 289);
             dgvEmpleado.TabIndex = 0;
             dgvEmpleado.CellContentClick += dgvEmpleado_CellContentClick;
+            dgvEmpleado.CellPainting += dgvEmpleado_CellPainting;
             // 
             // lblId
             // 
@@ -304,7 +306,7 @@
             btnExportar.Cursor = Cursors.Hand;
             btnExportar.FlatStyle = FlatStyle.Flat;
             btnExportar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnExportar.Location = new Point(700, 548);
+            btnExportar.Location = new Point(907, 546);
             btnExportar.Name = "btnExportar";
             btnExportar.Size = new Size(148, 30);
             btnExportar.TabIndex = 1;

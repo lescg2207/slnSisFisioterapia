@@ -286,6 +286,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1120, 30);
             panel2.TabIndex = 1;
+            panel2.MouseDown += panel2_MouseDown;
             // 
             // panel3
             // 

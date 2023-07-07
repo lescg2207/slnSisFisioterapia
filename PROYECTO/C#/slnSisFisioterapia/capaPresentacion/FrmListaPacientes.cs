@@ -91,7 +91,7 @@ namespace capaPresentacion
             }
         }
 
-      
+
 
         private void dgvPacientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -112,7 +112,7 @@ namespace capaPresentacion
                     paciente.txtTalla.Text = dgvPacientes.CurrentRow.Cells[10].Value.ToString();
                     paciente.txtImc.Text = dgvPacientes.CurrentRow.Cells[11].Value.ToString();
                     paciente.lblIdHist.Text = dgvPacientes.CurrentRow.Cells[12].Value.ToString();
-                    paciente.lblobserv.Text= dgvPacientes.CurrentRow.Cells[13].Value.ToString();
+                    paciente.lblobserv.Text = dgvPacientes.CurrentRow.Cells[13].Value.ToString();
                     paciente.txtDniPaciente.Enabled = false;
                     paciente.accion = "U";
                     paciente.ShowDialog();
