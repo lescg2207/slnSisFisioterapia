@@ -35,8 +35,6 @@
             dgvEmpleado = new DataGridView();
             lblId = new Label();
             lblcontra = new Label();
-            btnModificar = new Button();
-            btnEliminar = new Button();
             btnLimpiar = new Button();
             panel3 = new Panel();
             cbxCargo = new ComboBox();
@@ -85,8 +83,6 @@
             panel2.Controls.Add(dgvEmpleado);
             panel2.Controls.Add(lblId);
             panel2.Controls.Add(lblcontra);
-            panel2.Controls.Add(btnModificar);
-            panel2.Controls.Add(btnEliminar);
             panel2.Controls.Add(btnLimpiar);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(txtbuscar);
@@ -116,7 +112,6 @@
             dgvEmpleado.RowTemplate.Height = 25;
             dgvEmpleado.Size = new Size(1020, 289);
             dgvEmpleado.TabIndex = 0;
-            dgvEmpleado.CellClick += dgvEmpleado_CellClick;
             dgvEmpleado.CellContentClick += dgvEmpleado_CellContentClick;
             // 
             // lblId
@@ -136,31 +131,6 @@
             lblcontra.Size = new Size(38, 15);
             lblcontra.TabIndex = 10;
             lblcontra.Text = "label8";
-            // 
-            // btnModificar
-            // 
-            btnModificar.Cursor = Cursors.Hand;
-            btnModificar.FlatStyle = FlatStyle.Flat;
-            btnModificar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnModificar.Location = new Point(599, 175);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(148, 30);
-            btnModificar.TabIndex = 9;
-            btnModificar.Text = "MODIFICAR";
-            btnModificar.UseVisualStyleBackColor = true;
-            btnModificar.Click += btnModificar_Click;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.Cursor = Cursors.Hand;
-            btnEliminar.FlatStyle = FlatStyle.Flat;
-            btnEliminar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(753, 175);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(148, 30);
-            btnEliminar.TabIndex = 8;
-            btnEliminar.Text = "ELIMINAR";
-            btnEliminar.UseVisualStyleBackColor = true;
             // 
             // btnLimpiar
             // 
@@ -334,7 +304,7 @@
             btnExportar.Cursor = Cursors.Hand;
             btnExportar.FlatStyle = FlatStyle.Flat;
             btnExportar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnExportar.Location = new Point(907, 548);
+            btnExportar.Location = new Point(700, 548);
             btnExportar.Name = "btnExportar";
             btnExportar.Size = new Size(148, 30);
             btnExportar.TabIndex = 1;
@@ -351,6 +321,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmListaEmpleado";
             Text = "FrmListaUsusario";
+            Load += FrmListaEmpleado_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -384,8 +355,6 @@
         private Label label5;
         private Label label4;
         private Label label3;
-        private Button btnModificar;
-        private Button btnEliminar;
         private Label lblcontra;
         private Label lblId;
         private Label lbltitu;

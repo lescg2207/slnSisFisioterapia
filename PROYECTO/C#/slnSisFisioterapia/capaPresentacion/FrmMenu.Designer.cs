@@ -54,7 +54,6 @@
             lblDia = new Label();
             lblHora = new Label();
             panel10 = new Panel();
-            lbltitulo = new Label();
             frmContenedor = new Panel();
             fechaHora = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
@@ -124,9 +123,9 @@
             pbAdmin.Controls.Add(btnEmpleado);
             pbAdmin.Controls.Add(btnProductos);
             pbAdmin.Dock = DockStyle.Top;
-            pbAdmin.Location = new Point(0, 649);
+            pbAdmin.Location = new Point(0, 533);
             pbAdmin.Name = "pbAdmin";
-            pbAdmin.Size = new Size(80, 202);
+            pbAdmin.Size = new Size(80, 157);
             pbAdmin.TabIndex = 4;
             pbAdmin.Visible = false;
             // 
@@ -163,9 +162,9 @@
             pEnfermera.Controls.Add(btnCitas);
             pEnfermera.Controls.Add(btnPacientes);
             pEnfermera.Dock = DockStyle.Top;
-            pEnfermera.Location = new Point(0, 476);
+            pEnfermera.Location = new Point(0, 381);
             pEnfermera.Name = "pEnfermera";
-            pEnfermera.Size = new Size(80, 173);
+            pEnfermera.Size = new Size(80, 152);
             pEnfermera.TabIndex = 3;
             pEnfermera.Visible = false;
             // 
@@ -207,7 +206,7 @@
             pbDoctor.Dock = DockStyle.Top;
             pbDoctor.Location = new Point(0, 172);
             pbDoctor.Name = "pbDoctor";
-            pbDoctor.Size = new Size(80, 304);
+            pbDoctor.Size = new Size(80, 209);
             pbDoctor.TabIndex = 2;
             pbDoctor.Visible = false;
             // 
@@ -292,7 +291,6 @@
             // 
             panel3.BackColor = Color.FromArgb(22, 173, 138);
             panel3.Controls.Add(panel4);
-            panel3.Controls.Add(lbltitulo);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(80, 30);
             panel3.Name = "panel3";
@@ -355,17 +353,6 @@
             panel10.Size = new Size(35, 26);
             panel10.TabIndex = 0;
             // 
-            // lbltitulo
-            // 
-            lbltitulo.AutoSize = true;
-            lbltitulo.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbltitulo.ForeColor = Color.White;
-            lbltitulo.Location = new Point(25, 13);
-            lbltitulo.Name = "lbltitulo";
-            lbltitulo.Size = new Size(217, 37);
-            lbltitulo.TabIndex = 26;
-            lbltitulo.Text = "Nuevo Paciente";
-            // 
             // frmContenedor
             // 
             frmContenedor.Dock = DockStyle.Fill;
@@ -400,7 +387,6 @@
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ResumeLayout(false);
@@ -416,7 +402,6 @@
         private Panel panel3;
         private Panel frmContenedor;
         private Button btnPacientes;
-        private Label lbltitulo;
         private Panel panel4;
         private Panel panel10;
         private Label lblMesAño;

@@ -37,6 +37,7 @@ namespace capaPresentacion
                 dgvPacientes.Columns.Add(boton);
             }
 
+
         }
 
         public void listarPacientes()
@@ -54,6 +55,7 @@ namespace capaPresentacion
 
             paciente.accion = "I";
             paciente.ShowDialog();
+            listarPacientes();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

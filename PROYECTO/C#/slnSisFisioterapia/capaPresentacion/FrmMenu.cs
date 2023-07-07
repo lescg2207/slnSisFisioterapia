@@ -48,7 +48,7 @@ namespace capaPresentacion
         {
             FrmListaPacientes frmPaciente = new FrmListaPacientes(gestor, conexion);
             AbrirFrm(frmPaciente);
-            lbltitulo.Text = "Registro de Pacientes";
+            
         }
 
         private void fechaHora_Tick(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace capaPresentacion
         {
             FrmCitas citas = new FrmCitas(gestor, conexion);
             AbrirFrm(citas);
-            lbltitulo.Text = "Registro de cita";
+            
         }
 
         private void btnProductos_Click(object sender, EventArgs e)

@@ -34,13 +34,13 @@ namespace capaPresentacion
             {
                 Limpiar();
                 btnGuardar.Text = "Nuevo";
-                lbltitulo.Text = "Nuevo Usuario";
+                lbltitulo.Text = "Nuevo Paciente";
 
             }
             else if (accion == "U")
             {
                 btnGuardar.Text = "Actualizar";
-                lbltitulo.Text = "Modificar Usuario";
+                lbltitulo.Text = "Modificar Paciente";
 
             }
         }
@@ -70,6 +70,8 @@ namespace capaPresentacion
 
             _pacientebll.InsertarPaciente(paciente);
             _pacientebll.InsertarPacienteHistoria(historia);
+            Limpiar();
+            MessageBox.Show("Paciente guardado correctamente.");
 
         }
         #endregion
@@ -240,16 +242,13 @@ namespace capaPresentacion
             if (accion == "I")
             {
                 InsertarPaciente();
-                Limpiar();
-                MessageBox.Show("Paciente guardado correctamente.");
+                this.Close();
+                
 
             }
             else if (accion == "U")
             {
-
                 ActualizarPaciente();
-
-
                 this.Close();
             }
 

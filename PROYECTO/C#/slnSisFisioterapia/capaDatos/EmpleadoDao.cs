@@ -33,16 +33,20 @@ namespace capaDatos
 
         public List<ListaEmpleadoCargo> ListaEmpleadoCargo()
         {
-           
-            var EmpleadoCargo = (from e in _dbContext.Set<Empleado>()join c in _dbContext.Set<Cargo>() on e.IdCargo equals c.idCargo select new ListaEmpleadoCargo { 
-                CODIGO=e.IdEmpleado,
-                NOMBRE= e.Nombres,
-                APELLIDOS=e.Apellidos,
-                USUARIO=e.Usuario,
-                CARGO=c.cargo,
-                IDCARGO=e.IdCargo,
-                CONTRASEÑA=e.Contraseña,
-            }).ToList();
+            var EmpleadoCargo = (from e in _dbContext.Set<Empleado>()
+                                 join c in _dbContext.Set<Cargo>() on e.IdCargo equals c.idCargo
+                                 where e.estadoEmp == true
+                                 select new ListaEmpleadoCargo
+                                 {
+                                     CODIGO = e.IdEmpleado,
+                                     NOMBRE = e.Nombres,
+                                     APELLIDOS = e.Apellidos,
+                                     USUARIO = e.Usuario,
+                                     CARGO = c.cargo,
+                                     IDCARGO = e.IdCargo,
+                                     CONTRASEÑA = e.Contraseña,
+                                     ESTADO = e.estadoEmp
+                                 }).ToList();
 
             return EmpleadoCargo;
         }
@@ -91,6 +95,7 @@ namespace capaDatos
             var EmpleadoCargo = (from e in _dbContext.Set<Empleado>()
                                  join c in _dbContext.Set<Cargo>() on e.IdCargo equals c.idCargo
                                  where c.cargo.StartsWith(cargo)
+                                 where e.estadoEmp == true
                                  select new ListaEmpleadoCargo
                                  {
                                      CODIGO = e.IdEmpleado,
@@ -100,6 +105,7 @@ namespace capaDatos
                                      CARGO = c.cargo,
                                      IDCARGO = e.IdCargo,
                                      CONTRASEÑA = e.Contraseña,
+                                     ESTADO=e.estadoEmp,
                                  }).ToList();
 
             return EmpleadoCargo;
@@ -110,6 +116,7 @@ namespace capaDatos
             var EmpleadoCargo = (from e in _dbContext.Set<Empleado>()
                                  join c in _dbContext.Set<Cargo>() on e.IdCargo equals c.idCargo
                                  where e.Nombres.StartsWith(nombre)
+                                 where e.estadoEmp == true
                                  select new ListaEmpleadoCargo
                                  {
                                      CODIGO = e.IdEmpleado,
@@ -119,9 +126,24 @@ namespace capaDatos
                                      CARGO = c.cargo,
                                      IDCARGO = e.IdCargo,
                                      CONTRASEÑA = e.Contraseña,
+                                     ESTADO = e.estadoEmp,
                                  }).ToList();
 
             return EmpleadoCargo;
+        }
+
+        public void EliminarEmpleado(Empleado emple)
+        {
+
+            var empleadoExistente = _dbContext.Set<Empleado>().Find(emple.IdEmpleado);
+
+            if (empleadoExistente != null)
+            {
+
+                empleadoExistente.estadoEmp=emple.estadoEmp;
+
+                _dbContext.SaveChanges();
+            }
         }
 
     }

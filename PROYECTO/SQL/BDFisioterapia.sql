@@ -33,7 +33,8 @@ nombres varchar(100),
 apellidos varchar(100),
 usuario varchar(50),
 contraseña varchar(50),
-idCargo int foreign key references Cargo(idCargo)
+idCargo int foreign key references Cargo(idCargo),
+estadoEmp bit
 )
 
 create table Horario(
@@ -100,21 +101,14 @@ subtotal money,
 idImpuesto int foreign key references Impuesto(idImpuesto)
 );
 
-CREATE TABLE Tratamientos (
-    idTratamiento int PRIMARY KEY IDENTITY,
-    dniPaciente char(8) REFERENCES Pacientes(dniPaciente),
-    nombreTratamiento varchar(100),
-    fechaInicio date,
-    fechaFin date,
-    estado varchar(20)
-);
+
 
 
 SELECT*FROM Cargo
 
 insert into Cargo values('Doctor'),('Enfermera'),('Admin')
 
-insert into Empleado values('Camila','Lopez','maria','123',2),('Ernesto','Jimenez','juan','12',1),('Gisela','Ramirez','gise','123',3)
+insert into Empleado values('Camila','Lopez','maria','123',2,1),('Ernesto','Jimenez','juan','12',1,1),('Gisela','Ramirez','gise','123',3,1)
 
 SELECT*FROM Pacientes
 go
@@ -124,6 +118,8 @@ select*from Horario
 insert into Horario values('01:00',1)
 
 select*from Empleado
+
+update Empleado set estadoEmp=1
 
 select*from Servicio
 
@@ -140,3 +136,4 @@ select*from Citas
 select idEmpleado,nombres+apellidos as nombre,usuario,cargo from Empleado e
 inner join Cargo c
 on e.idCargo=c.idCargo
+

@@ -19,5 +19,6 @@ namespace entidades.Vistas
         public int IDCARGO { get; set; }
 
         public string CONTRASEÑA { get; set; } = null!;
+        public bool ESTADO { get; set; }
     }
 }

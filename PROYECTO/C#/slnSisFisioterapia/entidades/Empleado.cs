@@ -16,5 +16,6 @@ namespace entidades
         public string Usuario { get; set; } = null!;
         public string Contraseña { get; set; }=null!;
         public int IdCargo { get; set; }
+        public bool estadoEmp { get; set; }
     }
 }

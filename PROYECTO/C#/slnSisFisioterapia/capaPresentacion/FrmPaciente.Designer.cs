@@ -386,6 +386,7 @@
             // 
             // btnSalir
             // 
+            btnSalir.Cursor = Cursors.Hand;
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = Color.White;
@@ -399,6 +400,7 @@
             // 
             // btnGuardar
             // 
+            btnGuardar.Cursor = Cursors.Hand;
             btnGuardar.FlatStyle = FlatStyle.Flat;
             btnGuardar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnGuardar.ForeColor = Color.White;

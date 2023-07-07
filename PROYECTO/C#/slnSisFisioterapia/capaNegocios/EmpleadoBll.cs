@@ -20,7 +20,7 @@ namespace capaNegocios
         {
             _providerName = providerName;
             _connectionString = connectionString;
-            _empleadoDa =new EmpleadoDao(CreateDbContext());
+            _empleadoDa = new EmpleadoDao(CreateDbContext());
 
         }
 
@@ -68,11 +68,16 @@ namespace capaNegocios
         public List<ListaEmpleadoCargo> BuscarEmpleadoCargo(string cargo)
         {
             return _empleadoDa.BuscarEmpleadoCargo(cargo);
-         }
+        }
 
         public List<ListaEmpleadoCargo> BuscarEmpleadoNombre(string nombre)
         {
             return _empleadoDa.BuscarEmpleadoNombre(nombre);
+        }
+
+        public void EliminarEmpleado(Empleado emple)
+        {
+            _empleadoDa.EliminarEmpleado(emple);
         }
     }
 }
