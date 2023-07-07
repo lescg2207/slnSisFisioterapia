@@ -14,6 +14,6 @@ namespace entidades
         public int idSesion { get; set; }
         public int idTipo { get; set; } = 0!;
         public int sesiones { get; set; } = 0!;
-        public decimal precio { get; set; }
+        public decimal precio { get; set; } = 0!;
     }
 }

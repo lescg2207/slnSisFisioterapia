@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace entidades
 {
-    public class Servicios
+    public class Servicio
     {
         [Key]
         public int IdServicio { get; set; }
         public string servicio { get; set; } = null!;
-        public decimal precio { get; set; }
+        public decimal precio { get; set; } = 0!;
     }
 }

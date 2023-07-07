@@ -21,7 +21,7 @@ namespace capaDatos
         }
         public List<ServicioSesiones> ObtenerTreeNodes()
         {
-            var treeNodes = (from se in _dbContext.Set<Servicios>()
+            var treeNodes = (from se in _dbContext.Set<Servicio>()
                              join ss in _dbContext.Set<Sesiones>() on se.IdServicio equals ss.idTipo into sesionesJoin
                              from ssJoin in sesionesJoin.DefaultIfEmpty()
                              select new ServicioSesiones
@@ -38,7 +38,7 @@ namespace capaDatos
         public void AgregarServicio(ServicioSesiones servicioSesiones)
         {
             // Obtener el ID correspondiente al tipo de servicio seleccionado
-            int idTipo = _dbContext.Set<Servicios>().FirstOrDefault(s => s.servicio == servicioSesiones.SERVICIO)?.IdServicio ?? 0;
+            int idTipo = _dbContext.Set<Servicio>().FirstOrDefault(s => s.servicio == servicioSesiones.SERVICIO)?.IdServicio ?? 0;
 
             // Crear una instancia de la entidad Sesiones y asignar los valores
             Sesiones sesiones = new Sesiones
@@ -65,7 +65,7 @@ namespace capaDatos
         }
         public void ActualizarCostoServicio(string nombreServicio, decimal nuevoPrecio)
         {
-            var servicioExistente = _dbContext.Set<Servicios>().FirstOrDefault(s => s.servicio == nombreServicio);
+            var servicioExistente = _dbContext.Set<Servicio>().FirstOrDefault(s => s.servicio == nombreServicio);
 
             if (servicioExistente != null)
             {

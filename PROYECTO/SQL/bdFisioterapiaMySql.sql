@@ -35,6 +35,7 @@ apellidos varchar(100),
 usuario varchar(50),
 contraseña varchar(50),
 idCargo int ,
+estadoEmp TINYINT,
 CONSTRAINT `FK__CARGO_EMPLEDO`
     FOREIGN KEY (`idCargo`)
     REFERENCES `bdFisioterapia`.`Cargo` (`idCargo`)
@@ -43,20 +44,20 @@ CONSTRAINT `FK__CARGO_EMPLEDO`
 create table Horario(
 idHorario int primary key AUTO_INCREMENT,
 horario varchar(20),
-estado int
+estado TINYINT
 );
 
 create table Servicio(
 idServicio int primary key AUTO_INCREMENT,
 servicio varchar(50),
-precio double
+precio decimal(10,2)
 );
 
 create table Sesiones(
 idSesion int primary key AUTO_INCREMENT,
 idTipo int ,
 sesiones int,
-precio double,
+precio decimal(10,2),
 CONSTRAINT `FK__Servicio_Sesiones`
     FOREIGN KEY (`idTipo`)
     REFERENCES `bdFisioterapia`.`Servicio` (`idServicio`)
@@ -68,10 +69,10 @@ dniPaciente char(8) ,
 idEmpleado int ,
 fCita date,
 hCita int ,
-estadoPago int,
+estadoPago TINYINT,
 descuento decimal(4,2),
-total double,
-estadoCita varchar(20),
+total decimal(10,2),
+estadoCita TINYINT,
 CONSTRAINT `FK__Paciente_Cita`
     FOREIGN KEY (`dniPaciente`)
     REFERENCES `bdFisioterapia`.`Pacientes` (`dniPaciente`),
@@ -88,7 +89,7 @@ create table Pago(
 idPago int primary key AUTO_INCREMENT,
 idCita int,
 metodoPago varchar(50),
-monto double,
+monto decimal(10,2),
 fpago datetime,
 CONSTRAINT `FK__Pago_Citas`
     FOREIGN KEY (`idCita`)
@@ -98,7 +99,7 @@ CONSTRAINT `FK__Pago_Citas`
 create table Productos(
 idProducto int primary key AUTO_INCREMENT,
 nomProducto varchar(100),
-precio double,
+precio decimal(10,2),
 stock int
 );
 
@@ -114,8 +115,8 @@ idCita int ,
 idServicio int ,
 idProducto int,
 cantidad int,
-precioU double,
-subtotal double,
+precioU decimal(10,2),
+subtotal decimal(10,2),
 idImpuesto int ,
 CONSTRAINT `FK__Dcita_Citas`
     FOREIGN KEY (`idCita`)
@@ -132,7 +133,20 @@ CONSTRAINT `FK__Dcita_Citas`
 );
 
 insert into Cargo(cargo) values('Doctor'),('Enfermera');
-insert into Empleado(nombres,apellidos,usuario,contraseña,idCargo) values('Camila','Lopez','maria','123',2),('Ernesto','Jimenez','juan','12',1);
+insert into Empleado(nombres,apellidos,usuario,contraseña,idCargo,estadoEmp) values('Camila','Lopez','maria','123',2,1),('Ernesto','Jimenez','juan','12',1,1),('Gisela','Ramirez','gise','123',3,1);
+
+
+CREATE TABLE Descuentos (
+    idDescuento int PRIMARY KEY AUTO_INCREMENT,
+    nombreDescuento varchar(100),
+    valorDescuento decimal(4,2)
+);
+
+insert into Servicio(servicio,precio) values('Diario',35),('Domiciliario',40),('Paquete',0);
+
+insert into Sesiones (idTipo,sesiones,precio) values(3,10,315),(3,12,385),(3,15,490);
+
+insert into Descuentos (nombreDescuento,valorDescuento) values('Regular Citas',0.06);
 
 call MostrarPacienteHistoria();
 

@@ -39,7 +39,7 @@ estadoEmp bit
 create table Horario(
 idHorario int primary key identity,
 horario varchar(20),
-estado int
+estado bit
 )
 
 create table Servicio(
@@ -64,7 +64,7 @@ hCita int foreign key references Horario(idHorario),
 estadoPago int,
 descuento decimal(4,2),
 total money,
-estadoCita varchar(20)
+estadoCita bit
 
 )
 
@@ -83,7 +83,6 @@ precio money,
 stock int
 )
 
-select * from Productos
 
 create table Impuesto(
 idImpuesto int primary key identity,
@@ -151,3 +150,5 @@ select idEmpleado,nombres+apellidos as nombre,usuario,cargo from Empleado e
 inner join Cargo c
 on e.idCargo=c.idCargo
 
+
+drop table servicio

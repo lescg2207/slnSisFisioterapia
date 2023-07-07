@@ -125,7 +125,7 @@ namespace capaPresentacion
         private void Mostrarcombohijo()
         {
             // Obtener la opción seleccionada del primer ComboBox
-            string opcionSeleccionada = comboBox1.SelectedItem.ToString();
+            string opcionSeleccionada = comboBox1.SelectedItem.ToString()!;
 
             // Limpiar el segundo ComboBox
             comboBox2.Items.Clear();
@@ -178,7 +178,7 @@ namespace capaPresentacion
         {
 
             // Obtener la opción seleccionada del primer ComboBox
-            string opcionSeleccionada = comboBox2.SelectedItem.ToString();
+            string opcionSeleccionada = comboBox2.SelectedItem.ToString()!;
 
             // Limpiar el segundo ComboBox
             comboBox3.Items.Clear();
@@ -259,7 +259,7 @@ namespace capaPresentacion
         private void AgregarServicio()
         {
             // Obtener los valores de los campos de entrada
-            string servicio = comboBox2.SelectedItem.ToString();
+            string servicio = comboBox2.SelectedItem.ToString()!;
             string sesiones = textBox1.Text;
             string precio = textBox2.Text;
 
@@ -293,7 +293,7 @@ namespace capaPresentacion
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<ServicioSesiones> servicios = servBll.ObtenerTreeNodes();
-            string sesionSeleccionada = comboBox3.SelectedItem.ToString();
+            string sesionSeleccionada = comboBox3.SelectedItem.ToString()!;
 
             // Limpia el ComboBox de precios
             comboBox4.Items.Clear();
@@ -322,7 +322,7 @@ namespace capaPresentacion
             {
                 var descuento = new Descuento
                 {
-                    nombreDescuento = comboBox2.SelectedItem.ToString(),
+                    nombreDescuento = comboBox2.SelectedItem.ToString()!,
                     valorDescuento = Convert.ToDecimal(textBox1.Text)
                 };
                 descBll.ActualizarDescuento(descuento);
@@ -350,7 +350,7 @@ namespace capaPresentacion
             }
             else if (btnactualizar.Text == "Actualizar Servicio")
             {
-                string nombreServicio = comboBox2.SelectedItem.ToString();
+                string nombreServicio = comboBox2.SelectedItem.ToString()!;
                 if (decimal.TryParse(textBox1.Text, out decimal nuevoPrecio))
                 {
                     servBll.ActualizarCostoServicio(nombreServicio, nuevoPrecio);

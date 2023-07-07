@@ -18,7 +18,7 @@ namespace capaDatos
         public DbSet<Empleado> Empleado { get; set; }
         public DbSet<Cita> Citas { get; set; }
         public DbSet<Horario> Horario { get; set; }
-        public DbSet<Servicios> Servicio { get; set; }
+        public DbSet<Servicio> Servicio { get; set; }
         public DbSet<Sesiones> Sesiones { get; set; }
         public DbSet<Cargo> Cargo { get; set; }
         public DbSet<Descuento> Descuentos { get; set; }
