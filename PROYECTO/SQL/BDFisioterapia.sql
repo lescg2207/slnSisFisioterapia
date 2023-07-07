@@ -84,6 +84,8 @@ precio money,
 stock int
 )
 
+select * from Productos
+
 create table Impuesto(
 idImpuesto int primary key identity,
 impuesto varchar(20),
