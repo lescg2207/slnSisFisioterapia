@@ -28,308 +28,306 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            label2 = new Label();
-            panel2 = new Panel();
-            lbltitu = new Label();
-            dgvEmpleado = new DataGridView();
-            lblId = new Label();
-            lblcontra = new Label();
-            btnLimpiar = new Button();
-            panel3 = new Panel();
-            cbxCargo = new ComboBox();
-            txtxContraseña = new TextBox();
-            txtusuarios = new TextBox();
-            txtApellidos = new TextBox();
-            txtNombre = new TextBox();
-            label7 = new Label();
-            btnAgregar = new Button();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            txtbuscar = new TextBox();
-            cbxBuscar = new ComboBox();
-            label1 = new Label();
-            btnExportar = new Button();
-            panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvEmpleado).BeginInit();
-            panel3.SuspendLayout();
-            SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbltitu = new System.Windows.Forms.Label();
+            this.dgvEmpleado = new System.Windows.Forms.DataGridView();
+            this.lblId = new System.Windows.Forms.Label();
+            this.lblcontra = new System.Windows.Forms.Label();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.cbxCargo = new System.Windows.Forms.ComboBox();
+            this.txtxContraseña = new System.Windows.Forms.TextBox();
+            this.txtusuarios = new System.Windows.Forms.TextBox();
+            this.txtApellidos = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtbuscar = new System.Windows.Forms.TextBox();
+            this.cbxBuscar = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnExportar = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(22, 173, 138);
-            panel1.Controls.Add(label2);
-            panel1.Location = new Point(12, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1096, 63);
-            panel1.TabIndex = 1;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(173)))), ((int)(((byte)(138)))));
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1096, 63);
+            this.panel1.TabIndex = 1;
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(35, 15);
-            label2.Name = "label2";
-            label2.Size = new Size(307, 30);
-            label2.TabIndex = 0;
-            label2.Text = "Mantenimiento de Empleados";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(35, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(307, 30);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Mantenimiento de Empleados";
             // 
             // panel2
             // 
-            panel2.Controls.Add(lbltitu);
-            panel2.Controls.Add(dgvEmpleado);
-            panel2.Controls.Add(lblId);
-            panel2.Controls.Add(lblcontra);
-            panel2.Controls.Add(btnLimpiar);
-            panel2.Controls.Add(panel3);
-            panel2.Controls.Add(txtbuscar);
-            panel2.Controls.Add(cbxBuscar);
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(btnExportar);
-            panel2.Location = new Point(12, 81);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1096, 597);
-            panel2.TabIndex = 2;
+            this.panel2.Controls.Add(this.lbltitu);
+            this.panel2.Controls.Add(this.dgvEmpleado);
+            this.panel2.Controls.Add(this.lblId);
+            this.panel2.Controls.Add(this.lblcontra);
+            this.panel2.Controls.Add(this.btnLimpiar);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.txtbuscar);
+            this.panel2.Controls.Add(this.cbxBuscar);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.btnExportar);
+            this.panel2.Location = new System.Drawing.Point(12, 81);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1096, 597);
+            this.panel2.TabIndex = 2;
             // 
             // lbltitu
             // 
-            lbltitu.AutoSize = true;
-            lbltitu.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbltitu.Location = new Point(322, 167);
-            lbltitu.Name = "lbltitu";
-            lbltitu.Size = new Size(113, 17);
-            lbltitu.TabIndex = 12;
-            lbltitu.Text = "Ingrese nombre :";
+            this.lbltitu.AutoSize = true;
+            this.lbltitu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbltitu.Location = new System.Drawing.Point(322, 167);
+            this.lbltitu.Name = "lbltitu";
+            this.lbltitu.Size = new System.Drawing.Size(113, 17);
+            this.lbltitu.TabIndex = 12;
+            this.lbltitu.Text = "Ingrese nombre :";
             // 
             // dgvEmpleado
             // 
-            dgvEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmpleado.Location = new Point(35, 235);
-            dgvEmpleado.Name = "dgvEmpleado";
-            dgvEmpleado.RowTemplate.Height = 25;
-            dgvEmpleado.Size = new Size(1020, 289);
-            dgvEmpleado.TabIndex = 0;
-            dgvEmpleado.CellContentClick += dgvEmpleado_CellContentClick;
+            this.dgvEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmpleado.Location = new System.Drawing.Point(35, 235);
+            this.dgvEmpleado.Name = "dgvEmpleado";
+            this.dgvEmpleado.RowTemplate.Height = 25;
+            this.dgvEmpleado.Size = new System.Drawing.Size(1020, 289);
+            this.dgvEmpleado.TabIndex = 0;
             // 
             // lblId
             // 
-            lblId.AutoSize = true;
-            lblId.Location = new Point(963, 251);
-            lblId.Name = "lblId";
-            lblId.Size = new Size(38, 15);
-            lblId.TabIndex = 11;
-            lblId.Text = "label8";
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(963, 251);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(38, 15);
+            this.lblId.TabIndex = 11;
+            this.lblId.Text = "label8";
             // 
             // lblcontra
             // 
-            lblcontra.AutoSize = true;
-            lblcontra.Location = new Point(1017, 251);
-            lblcontra.Name = "lblcontra";
-            lblcontra.Size = new Size(38, 15);
-            lblcontra.TabIndex = 10;
-            lblcontra.Text = "label8";
+            this.lblcontra.AutoSize = true;
+            this.lblcontra.Location = new System.Drawing.Point(1017, 251);
+            this.lblcontra.Name = "lblcontra";
+            this.lblcontra.Size = new System.Drawing.Size(38, 15);
+            this.lblcontra.TabIndex = 10;
+            this.lblcontra.Text = "label8";
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Cursor = Cursors.Hand;
-            btnLimpiar.FlatStyle = FlatStyle.Flat;
-            btnLimpiar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(907, 175);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(148, 30);
-            btnLimpiar.TabIndex = 7;
-            btnLimpiar.Text = "LIMPIAR";
-            btnLimpiar.UseVisualStyleBackColor = true;
-            btnLimpiar.Click += btnLimpiar_Click;
+            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLimpiar.Location = new System.Drawing.Point(907, 175);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(148, 30);
+            this.btnLimpiar.TabIndex = 7;
+            this.btnLimpiar.Text = "LIMPIAR";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
-            panel3.Controls.Add(cbxCargo);
-            panel3.Controls.Add(txtxContraseña);
-            panel3.Controls.Add(txtusuarios);
-            panel3.Controls.Add(txtApellidos);
-            panel3.Controls.Add(txtNombre);
-            panel3.Controls.Add(label7);
-            panel3.Controls.Add(btnAgregar);
-            panel3.Controls.Add(label6);
-            panel3.Controls.Add(label5);
-            panel3.Controls.Add(label4);
-            panel3.Controls.Add(label3);
-            panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1096, 137);
-            panel3.TabIndex = 6;
+            this.panel3.Controls.Add(this.cbxCargo);
+            this.panel3.Controls.Add(this.txtxContraseña);
+            this.panel3.Controls.Add(this.txtusuarios);
+            this.panel3.Controls.Add(this.txtApellidos);
+            this.panel3.Controls.Add(this.txtNombre);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.btnAgregar);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1096, 137);
+            this.panel3.TabIndex = 6;
             // 
             // cbxCargo
             // 
-            cbxCargo.FormattingEnabled = true;
-            cbxCargo.Items.AddRange(new object[] { "Seleccione" });
-            cbxCargo.Location = new Point(854, 25);
-            cbxCargo.Name = "cbxCargo";
-            cbxCargo.Size = new Size(201, 23);
-            cbxCargo.TabIndex = 9;
+            this.cbxCargo.FormattingEnabled = true;
+            this.cbxCargo.Items.AddRange(new object[] {
+            "Seleccione"});
+            this.cbxCargo.Location = new System.Drawing.Point(854, 25);
+            this.cbxCargo.Name = "cbxCargo";
+            this.cbxCargo.Size = new System.Drawing.Size(201, 23);
+            this.cbxCargo.TabIndex = 9;
             // 
             // txtxContraseña
             // 
-            txtxContraseña.Location = new Point(494, 66);
-            txtxContraseña.Name = "txtxContraseña";
-            txtxContraseña.PasswordChar = '*';
-            txtxContraseña.Size = new Size(215, 23);
-            txtxContraseña.TabIndex = 8;
-            txtxContraseña.TextAlign = HorizontalAlignment.Center;
+            this.txtxContraseña.Location = new System.Drawing.Point(494, 66);
+            this.txtxContraseña.Name = "txtxContraseña";
+            this.txtxContraseña.PasswordChar = '*';
+            this.txtxContraseña.Size = new System.Drawing.Size(215, 23);
+            this.txtxContraseña.TabIndex = 8;
+            this.txtxContraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtusuarios
             // 
-            txtusuarios.Location = new Point(494, 27);
-            txtusuarios.Name = "txtusuarios";
-            txtusuarios.Size = new Size(215, 23);
-            txtusuarios.TabIndex = 7;
-            txtusuarios.TextAlign = HorizontalAlignment.Center;
+            this.txtusuarios.Location = new System.Drawing.Point(494, 27);
+            this.txtusuarios.Name = "txtusuarios";
+            this.txtusuarios.Size = new System.Drawing.Size(215, 23);
+            this.txtusuarios.TabIndex = 7;
+            this.txtusuarios.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtApellidos
             // 
-            txtApellidos.Location = new Point(115, 66);
-            txtApellidos.Name = "txtApellidos";
-            txtApellidos.Size = new Size(215, 23);
-            txtApellidos.TabIndex = 6;
-            txtApellidos.TextAlign = HorizontalAlignment.Center;
+            this.txtApellidos.Location = new System.Drawing.Point(115, 66);
+            this.txtApellidos.Name = "txtApellidos";
+            this.txtApellidos.Size = new System.Drawing.Size(215, 23);
+            this.txtApellidos.TabIndex = 6;
+            this.txtApellidos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(115, 28);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(215, 23);
-            txtNombre.TabIndex = 5;
-            txtNombre.TextAlign = HorizontalAlignment.Center;
+            this.txtNombre.Location = new System.Drawing.Point(115, 28);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(215, 23);
+            this.txtNombre.TabIndex = 5;
+            this.txtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(796, 26);
-            label7.Name = "label7";
-            label7.Size = new Size(52, 17);
-            label7.TabIndex = 4;
-            label7.Text = "Cargo :";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(796, 26);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 17);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Cargo :";
             // 
             // btnAgregar
             // 
-            btnAgregar.Cursor = Cursors.Hand;
-            btnAgregar.FlatStyle = FlatStyle.Flat;
-            btnAgregar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAgregar.Location = new Point(907, 67);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(148, 30);
-            btnAgregar.TabIndex = 2;
-            btnAgregar.Text = "AGREGAR";
-            btnAgregar.UseVisualStyleBackColor = true;
-            btnAgregar.Click += btnAgregar_Click;
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAgregar.Location = new System.Drawing.Point(907, 67);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(148, 30);
+            this.btnAgregar.TabIndex = 2;
+            this.btnAgregar.Text = "AGREGAR";
+            this.btnAgregar.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(403, 67);
-            label6.Name = "label6";
-            label6.Size = new Size(85, 17);
-            label6.TabIndex = 3;
-            label6.Text = "Contraseña :";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(403, 67);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(85, 17);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Contraseña :";
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(425, 28);
-            label5.Name = "label5";
-            label5.Size = new Size(63, 17);
-            label5.TabIndex = 2;
-            label5.Text = "Usuario :";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(425, 28);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 17);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Usuario :";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(35, 67);
-            label4.Name = "label4";
-            label4.Size = new Size(74, 17);
-            label4.TabIndex = 1;
-            label4.Text = "Apellidos :";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(35, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 17);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Apellidos :";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(37, 29);
-            label3.Name = "label3";
-            label3.Size = new Size(72, 17);
-            label3.TabIndex = 0;
-            label3.Text = "Nombres :";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(37, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 17);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Nombres :";
             // 
             // txtbuscar
             // 
-            txtbuscar.ForeColor = Color.DimGray;
-            txtbuscar.Location = new Point(322, 187);
-            txtbuscar.Name = "txtbuscar";
-            txtbuscar.Size = new Size(207, 23);
-            txtbuscar.TabIndex = 5;
-            txtbuscar.TextAlign = HorizontalAlignment.Center;
-            txtbuscar.TextChanged += txtbuscar_TextChanged;
+            this.txtbuscar.ForeColor = System.Drawing.Color.DimGray;
+            this.txtbuscar.Location = new System.Drawing.Point(322, 187);
+            this.txtbuscar.Name = "txtbuscar";
+            this.txtbuscar.Size = new System.Drawing.Size(207, 23);
+            this.txtbuscar.TabIndex = 5;
+            this.txtbuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cbxBuscar
             // 
-            cbxBuscar.FormattingEnabled = true;
-            cbxBuscar.Items.AddRange(new object[] { "NOMBRE", "CARGO" });
-            cbxBuscar.Location = new Point(143, 187);
-            cbxBuscar.Name = "cbxBuscar";
-            cbxBuscar.Size = new Size(173, 23);
-            cbxBuscar.TabIndex = 4;
-            cbxBuscar.SelectedIndexChanged += cbxBuscar_SelectedIndexChanged;
+            this.cbxBuscar.FormattingEnabled = true;
+            this.cbxBuscar.Items.AddRange(new object[] {
+            "NOMBRE",
+            "CARGO"});
+            this.cbxBuscar.Location = new System.Drawing.Point(143, 187);
+            this.cbxBuscar.Name = "cbxBuscar";
+            this.cbxBuscar.Size = new System.Drawing.Size(173, 23);
+            this.cbxBuscar.TabIndex = 4;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(36, 188);
-            label1.Name = "label1";
-            label1.Size = new Size(101, 17);
-            label1.TabIndex = 3;
-            label1.Text = "Búsqueda por :";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(36, 188);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Búsqueda por :";
             // 
             // btnExportar
             // 
-            btnExportar.Cursor = Cursors.Hand;
-            btnExportar.FlatStyle = FlatStyle.Flat;
-            btnExportar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnExportar.Location = new Point(700, 548);
-            btnExportar.Name = "btnExportar";
-            btnExportar.Size = new Size(148, 30);
-            btnExportar.TabIndex = 1;
-            btnExportar.Text = "EXPORTAR";
-            btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnExportar.Location = new System.Drawing.Point(700, 548);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(148, 30);
+            this.btnExportar.TabIndex = 1;
+            this.btnExportar.Text = "EXPORTAR";
+            this.btnExportar.UseVisualStyleBackColor = true;
             // 
             // FrmListaEmpleado
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1120, 690);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
-            Name = "FrmListaEmpleado";
-            Text = "FrmListaUsusario";
-            Load += FrmListaEmpleado_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvEmpleado).EndInit();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1120, 690);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "FrmListaEmpleado";
+            this.Text = "FrmListaUsusario";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion

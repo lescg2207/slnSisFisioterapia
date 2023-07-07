@@ -83,5 +83,11 @@ namespace capaPresentacion
             FrmListaEmpleado emple = new FrmListaEmpleado(gestor, conexion);
             AbrirFrm(emple);
         }
+
+        private void btnProductos_Click_1(object sender, EventArgs e)
+        {
+            FrmProductos prod = new FrmProductos(gestor, conexion);
+            AbrirFrm(prod);
+        }
     }
 }
