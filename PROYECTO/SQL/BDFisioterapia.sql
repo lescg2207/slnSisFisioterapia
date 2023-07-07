@@ -104,6 +104,19 @@ idImpuesto int foreign key references Impuesto(idImpuesto)
 
 
 
+CREATE TABLE Descuentos (
+    idDescuento int PRIMARY KEY IDENTITY,
+    --dniPaciente char(8) REFERENCES Pacientes(dniPaciente),
+    nombreDescuento varchar(100),
+    valorDescuento decimal(4,2)
+);
+select *from Descuentos
+
+insert into Descuentos values('Mas Citas',0.10)
+insert into Descuentos values('Regular Citas',0.06)
+insert into Descuentos values('Pocas Citas',0.03)
+
+SELECT nombreDescuento,valorDescuento FROM Descuentos
 
 SELECT*FROM Cargo
 

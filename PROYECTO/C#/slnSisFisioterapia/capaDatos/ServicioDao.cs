@@ -35,5 +35,44 @@ namespace capaDatos
 
             return treeNodes;
         }
+        public void AgregarServicio(ServicioSesiones servicioSesiones)
+        {
+            // Obtener el ID correspondiente al tipo de servicio seleccionado
+            int idTipo = _dbContext.Set<Servicios>().FirstOrDefault(s => s.servicio == servicioSesiones.SERVICIO)?.IdServicio ?? 0;
+
+            // Crear una instancia de la entidad Sesiones y asignar los valores
+            Sesiones sesiones = new Sesiones
+            {
+                idTipo = idTipo,
+                sesiones = int.Parse(servicioSesiones.SESIONES),
+                precio = decimal.Parse(servicioSesiones.PRECIO)
+            };
+
+            // Agregar la entidad Sesiones y guardar los cambios en la base de datos
+            _dbContext.Set<Sesiones>().Add(sesiones);
+            _dbContext.SaveChanges();
+        }
+
+        public void ActualizarCostoSesiones(Sesiones sesiones)
+        {
+            var sesionExistente = _dbContext.Set<Sesiones>().FirstOrDefault(s => s.sesiones == sesiones.sesiones);
+
+            if (sesionExistente != null)
+            {
+                sesionExistente.precio = sesiones.precio;
+                _dbContext.SaveChanges();
+            }
+        }
+        public void ActualizarCostoServicio(string nombreServicio, decimal nuevoPrecio)
+        {
+            var servicioExistente = _dbContext.Set<Servicios>().FirstOrDefault(s => s.servicio == nombreServicio);
+
+            if (servicioExistente != null)
+            {
+                servicioExistente.precio = nuevoPrecio;
+                _dbContext.SaveChanges(); // Guardar los cambios en la base de datos
+            }
+        }
+
     }
 }

@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace capaNegocios
 {
-    public class ServicioBll:DbContext
+    public class DescuentoBll
     {
         private readonly string _providerName;
         private readonly string _connectionString;
-        private readonly ServicioDao _serviciosDao;
+        private readonly DescuentosDao _descuentosDao;
 
-        public ServicioBll(string providerName, string connectionString)
+        public DescuentoBll(string providerName, string connectionString)
         {
             _providerName = providerName;
             _connectionString = connectionString;
-            _serviciosDao = new ServicioDao(CreateDbContext());
+            _descuentosDao = new DescuentosDao(CreateDbContext());
         }
         private DbContext CreateDbContext()
         {
@@ -39,21 +39,18 @@ namespace capaNegocios
 
             return new ConexionBd(optionsBuilder.Options, _providerName, _connectionString);
         }
-        public List<ServicioSesiones> ObtenerTreeNodes()
+
+        public List<Descuento> ObtenerDescuentos()
         {
-            return _serviciosDao.ObtenerTreeNodes();
+            return _descuentosDao.ObtenerDescuentos();
         }
-        public void AgregarServicio(ServicioSesiones sesiones)
+        public void AgregarDescuento(Descuento descuento)
         {
-            _serviciosDao.AgregarServicio(sesiones);
+            _descuentosDao.AgregarDescuento(descuento);
         }
-        public void ActualizarCostoSesiones(Sesiones sesiones)
+        public void ActualizarDescuento(Descuento descuento)
         {
-            _serviciosDao.ActualizarCostoSesiones(sesiones);
-        }
-        public void ActualizarCostoServicio(string nombreServicio, decimal nuevoPrecio)
-        {
-            _serviciosDao.ActualizarCostoServicio(nombreServicio,nuevoPrecio);
+            _descuentosDao.ActualizarDescuento(descuento);
         }
     }
 }
