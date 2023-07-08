@@ -51,6 +51,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(371, 68);
@@ -72,6 +73,7 @@
             // 
             // comboBox2
             // 
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(371, 111);
@@ -82,6 +84,7 @@
             // 
             // comboBox3
             // 
+            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox3.FormattingEnabled = true;
             comboBox3.Location = new Point(371, 151);

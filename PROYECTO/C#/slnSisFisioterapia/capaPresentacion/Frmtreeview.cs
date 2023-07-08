@@ -146,12 +146,14 @@ namespace capaPresentacion
                         {
                             comboBox2.Items.Add($"{servicio.SERVICIO}");
                             paqueteAgregado = true; // Marcar el elemento "Paquete" como agregado
-                            btnagregar.Text = "Agregar";
+                            btnactualizar.Text = "Actualizar";btnactualizar.Enabled=false ; btnagregar.Text = "Agregar";
                             textBox1.Enabled = false;
                             textBox1.Text = string.Empty;
                             textBox2.Enabled = false;
                             textBox2.Text = string.Empty;
                             lbl1.Visible = false;
+                            lbl2.Visible=false;
+                            comboBox3.Items.Clear();
                         }
                     }
                     else

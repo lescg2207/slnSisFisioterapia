@@ -181,6 +181,7 @@
             btnCitas.TabIndex = 1;
             btnCitas.TextAlign = ContentAlignment.MiddleRight;
             btnCitas.UseVisualStyleBackColor = true;
+            btnCitas.Click += btnCitas_Click_1;
             // 
             // btnPacientes
             // 

@@ -58,18 +58,6 @@ namespace capaPresentacion
             lblMesAño.Text = DateTime.Now.ToString("Y");
         }
 
-        private void btnCitas_Click(object sender, EventArgs e)
-        {
-            FrmCitas citas = new FrmCitas(gestor, conexion);
-            AbrirFrm(citas);
-
-        }
-
-        private void btnProductos_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnDash_Click(object sender, EventArgs e)
         {
             Frmtreeview tre = new Frmtreeview(gestor, conexion);
@@ -94,6 +82,12 @@ namespace capaPresentacion
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnCitas_Click_1(object sender, EventArgs e)
+        {
+            FrmCitas citas = new FrmCitas(gestor, conexion);
+            AbrirFrm(citas);
         }
     }
 }
