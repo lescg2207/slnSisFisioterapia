@@ -32,7 +32,6 @@ namespace capaPresentacion
             {
                 DataGridViewButtonColumn boton = new DataGridViewButtonColumn();
                 boton.HeaderText = "MODIFICAR";
-                boton.Text = "✎";
                 boton.Name = "btnModificar";
                 boton.UseColumnTextForButtonValue = true;
                 dgvEmpleado.Columns.Add(boton);
@@ -42,7 +41,6 @@ namespace capaPresentacion
             {
                 DataGridViewButtonColumn boton = new DataGridViewButtonColumn();
                 boton.HeaderText = "ELIMINAR";
-                boton.Text = "❌";
                 boton.Name = "btnEliminar";
                 boton.UseColumnTextForButtonValue = true;
                 dgvEmpleado.Columns.Add(boton);
@@ -264,18 +262,19 @@ namespace capaPresentacion
 
         private void dgvEmpleado_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.ColumnIndex >= 0 && this.dgvEmpleado.Columns[e.ColumnIndex].Name == "btnEliminar" && e.RowIndex>=0) {
+            if (e.ColumnIndex >= 0 && this.dgvEmpleado.Columns[e.ColumnIndex].Name == "btnEliminar" && e.RowIndex >= 0)
+            {
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
                 DataGridViewButtonCell? cellBoton = this.dgvEmpleado.Rows[e.RowIndex].Cells["btnEliminar"] as DataGridViewButtonCell;
                 Icon icono = new Icon(Environment.CurrentDirectory + @"\\eliminar_b.ico");
-                e.Graphics.DrawIcon(icono,e.CellBounds.Left+25,e.CellBounds.Top+3);
+                e.Graphics.DrawIcon(icono, e.CellBounds.Left + 30, e.CellBounds.Top + 3);
 
-                this.dgvEmpleado.Rows[e.RowIndex].Height = icono.Height+6;
-                this.dgvEmpleado.Columns[e.ColumnIndex].Width = icono.Width+50;
+                this.dgvEmpleado.Rows[e.RowIndex].Height = icono.Height + 6;
+                this.dgvEmpleado.Columns[e.ColumnIndex].Width = icono.Width + 60;
 
                 e.Handled = true;
-            
+
 
             }
 
@@ -285,10 +284,10 @@ namespace capaPresentacion
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
                 DataGridViewButtonCell? cellBoton = this.dgvEmpleado.Rows[e.RowIndex].Cells["btnModificar"] as DataGridViewButtonCell;
                 Icon icono = new Icon(Environment.CurrentDirectory + @"\\editar.ico");
-                e.Graphics.DrawIcon(icono, e.CellBounds.Left + 25, e.CellBounds.Top + 3);
+                e.Graphics.DrawIcon(icono, e.CellBounds.Left + 30, e.CellBounds.Top + 3);
 
                 this.dgvEmpleado.Rows[e.RowIndex].Height = icono.Height + 6;
-                this.dgvEmpleado.Columns[e.ColumnIndex].Width = icono.Width + 50;
+                this.dgvEmpleado.Columns[e.ColumnIndex].Width = icono.Width + 60;
 
                 e.Handled = true;
 
