@@ -27,7 +27,7 @@ namespace capaDatos
 
         public void EliminarProducto(Productos idProducto)
         {
-            var producto = _dbContext.Set<Productos>().Find(idProducto);
+            var producto = _dbContext.Set<Productos>().Find(idProducto.idProducto);
             if (producto != null)
             {
                 _dbContext.Set<Productos>().Remove(producto);
