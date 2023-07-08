@@ -195,6 +195,7 @@
             btnPacientes.TabIndex = 0;
             btnPacientes.TextAlign = ContentAlignment.MiddleRight;
             btnPacientes.UseVisualStyleBackColor = true;
+            btnPacientes.Click += btnPacientes_Click;
             // 
             // pbDoctor
             // 

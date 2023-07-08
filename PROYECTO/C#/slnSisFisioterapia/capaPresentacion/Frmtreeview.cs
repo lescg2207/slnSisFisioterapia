@@ -146,6 +146,12 @@ namespace capaPresentacion
                         {
                             comboBox2.Items.Add($"{servicio.SERVICIO}");
                             paqueteAgregado = true; // Marcar el elemento "Paquete" como agregado
+                            btnagregar.Text = "Agregar";
+                            textBox1.Enabled = false;
+                            textBox1.Text = string.Empty;
+                            textBox2.Enabled = false;
+                            textBox2.Text = string.Empty;
+                            lbl1.Visible = false;
                         }
                     }
                     else
@@ -160,7 +166,12 @@ namespace capaPresentacion
                 if (opcionSeleccionada == "Descuentos")
                 {
                     comboBox2.Items.Add($"{descuento.nombreDescuento}");
-                    btnagregar.Text = "Agregar Descuento";
+                    btnagregar.Enabled = true; btnagregar.Text = "Agregar Descuento";
+                    btnactualizar.Enabled = false;
+                    textBox1.Enabled = true; textBox1.Text = string.Empty;
+                    textBox2.Enabled = true; textBox2.Text = string.Empty;
+                    lbl1.Visible = true; lbl1.Text = ": Agregue aqui el nombre del Descuento";
+                    lbl2.Visible = true; lbl2.Text = ": Agregue aqui el valor del Descuento";
                 }
 
 
@@ -194,8 +205,13 @@ namespace capaPresentacion
 
                 if (servicioDiario != null)
                 {
+                    textBox1.Enabled = true;
+                    btnagregar.Enabled = false;
                     textBox1.Text = servicioDiario.PRECIOServ.ToString();
-                    btnactualizar.Text = "Actualizar Servicio";
+                    btnactualizar.Enabled = true; btnactualizar.Text = "Actualizar Servicio";
+                    lbl1.Visible = true; lbl2.Visible = false;
+                    lbl1.Text = ": Actualice aqui el Costo del Servicio";
+                    textBox2.Enabled = false; textBox2.Text = string.Empty;
                 }
             }
             else if (opcionSeleccionada == "Domiciliario")
@@ -205,8 +221,13 @@ namespace capaPresentacion
 
                 if (servicioDomiciliario != null)
                 {
+                    textBox1.Enabled = true;
+                    btnagregar.Enabled = false;
                     textBox1.Text = servicioDomiciliario.PRECIOServ.ToString();
-                    btnactualizar.Text = "Actualizar Servicio";
+                    btnactualizar.Enabled = true; btnactualizar.Text = "Actualizar Servicio";
+                    lbl1.Visible = true; lbl2.Visible = false;
+                    lbl1.Text = ": Actualice aqui el Costo del Servicio";
+                    textBox2.Enabled = false; textBox2.Text = string.Empty;
                 }
             }
             else if (opcionSeleccionada == "Paquete")
@@ -216,8 +237,10 @@ namespace capaPresentacion
                 foreach (var servicio in serviciosPaquete)
                 {
                     comboBox3.Items.Add($"{servicio.SESIONES}");
-                    btnagregar.Text = "Agregar Paquete";
-                    textBox1.Text = string.Empty;
+                    btnagregar.Enabled = true; btnagregar.Text = "Agregar Paquete";
+                    btnactualizar.Enabled = false;
+                    textBox1.Text = string.Empty; textBox1.Enabled = true;
+                    textBox2.Text = string.Empty; textBox2.Enabled = true;
                     lbl1.Visible = true;
                     lbl1.Text = ": Agregue aqui el numero de Sesiones del Paquete Nuevo";
                     lbl2.Visible = true;
@@ -229,11 +252,11 @@ namespace capaPresentacion
                 if (descuento.nombreDescuento == opcionSeleccionada)
                 {
                     textBox1.Text = ($"{descuento.valorDescuento}");
-                    btnactualizar.Text = "Actualizar Descuento";
+                    btnactualizar.Enabled = true; btnactualizar.Text = "Actualizar Descuento";
                     btnagregar.Enabled = false;
-                    textBox2.Enabled = false;
-                    lbl1.Visible = true;
-                    lbl1.Text = ": Actualice el Descuento";
+                    textBox2.Enabled = false; textBox2.Text = string.Empty;
+                    lbl1.Visible = true; lbl1.Text = ": Actualice el Descuento";
+                    lbl2.Visible = false;
                 }
             }
         }
@@ -295,9 +318,6 @@ namespace capaPresentacion
             List<ServicioSesiones> servicios = servBll.ObtenerTreeNodes();
             string sesionSeleccionada = comboBox3.SelectedItem.ToString()!;
 
-            // Limpia el ComboBox de precios
-            comboBox4.Items.Clear();
-
             // Itera sobre la lista de objetos ServicioSesiones y encuentra los precios correspondientes
             foreach (var servicio in servicios)
             {
@@ -308,9 +328,9 @@ namespace capaPresentacion
                     textBox1.Enabled = false;
                     textBox2.Enabled = true;
                     lbl1.Visible = false;
-                    lbl2.Text = ": Actualice aqui el costo";
+                    lbl2.Text = ": Actualice aqui el costo de la Sesion";
                     btnagregar.Enabled = false;
-                    btnactualizar.Text = "Actualizar Paquete";
+                    btnactualizar.Enabled = true; btnactualizar.Text = "Actualizar Paquete";
                 }
             }
         }

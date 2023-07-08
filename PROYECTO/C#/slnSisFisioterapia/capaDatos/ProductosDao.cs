@@ -52,13 +52,13 @@ namespace capaDatos
         public List<ListaProductos> ObtenerProductos()
         {
             var prod = (from e in _dbContext.Set<Productos>()
-                                select new ListaProductos
-                                {
-                                    CODIGO = e.idProducto,
-                                    NOMBRE = e.nomProducto,
-                                    PRECIO = e.precio,
-                                    STOCK = e.stock
-                                }).ToList();
+                        select new ListaProductos
+                        {
+                            CODIGO = e.idProducto,
+                            NOMBRE = e.nomProducto,
+                            PRECIO =Convert.ToDecimal( e.precio.ToString("0.00")),
+                            STOCK = e.stock
+                        }).ToList();
 
             return prod;
         }
