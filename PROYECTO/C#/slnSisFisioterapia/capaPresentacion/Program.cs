@@ -12,7 +12,7 @@ namespace capaPresentacion
             //string cone = "Data Source=bdfisioterapia.database.windows.net;Initial Catalog=bdFisioterapia;User ID=sis;Password=proyFisio22;TrustServerCertificate=true;";
             //
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrmGestorBd());
+            Application.Run(new FrmDash());
 
         }
     }
