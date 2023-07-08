@@ -47,6 +47,11 @@ namespace capaPresentacion
             dgvPacientes.Columns["HISTORIA"].Visible = false;
             dgvPacientes.Columns["IDHistoria"].Visible = false;
             dgvPacientes.Columns["observaciones"].Visible = false;
+            dgvPacientes.Columns["ANTECEDENTES"].Visible = false;
+            //dgvPacientes.Columns["PESO"].Visible = false;
+            //dgvPacientes.Columns["TALLA"].Visible = false;
+            //dgvPacientes.Columns["DIRECCION"].Visible = false;
+            //dgvPacientes.Columns["CELULAR"].Visible = false;
 
         }
 

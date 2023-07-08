@@ -130,6 +130,8 @@
             // 
             // dgvPacientes
             // 
+            dgvPacientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvPacientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvPacientes.BackgroundColor = SystemColors.Control;
             dgvPacientes.BorderStyle = BorderStyle.None;
             dgvPacientes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
