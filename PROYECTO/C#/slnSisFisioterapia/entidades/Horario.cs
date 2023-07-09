@@ -12,6 +12,6 @@ namespace entidades
         [Key]
         public int idHorario { get; set; }
         public string horario { get; set; } = null!;
-        public int estado { get; set; }
+        public bool estado { get; set; }
     }
 }

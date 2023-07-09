@@ -21,6 +21,7 @@ namespace capaDatos
         public List<Empleado> ObtenerEmpleado()
         {
             var empleados = _dbContext.Set<Empleado>()
+        .Where(e => e.IdCargo == 1)
         .Select(e => new Empleado
         {
             IdEmpleado = e.IdEmpleado,
