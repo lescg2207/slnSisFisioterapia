@@ -11,7 +11,9 @@ namespace entidades.Vistas
     public class ListaProductos
     {
         public int CODIGO { get; set; }
-        public string NOMBRE { get; set; } = null!;
+
+        [Column("nomProducto")]
+        public string PRODUCTO { get; set; } = null!;
 
         public decimal PRECIO { get; set; } = 0!;
 

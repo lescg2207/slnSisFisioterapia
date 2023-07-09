@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 using static System.Collections.Specialized.BitVector32;
+using entidades.Vistas;
 
 namespace capaDatos
 {
@@ -35,6 +36,20 @@ namespace capaDatos
 
             return treeNodes;
         }
+
+        public List<Servicio> ObtenerServicios()
+        {
+            var serv = (from e in _dbContext.Set<Servicio>()
+                        select new Servicio
+                        {
+                            IdServicio = e.IdServicio,
+                            servicio = e.servicio,
+                            precio = Convert.ToDecimal(e.precio.ToString("0.00")),
+                        }).ToList();
+
+            return serv;
+        }
+
         public void AgregarServicio(ServicioSesiones servicioSesiones)
         {
             // Obtener el ID correspondiente al tipo de servicio seleccionado

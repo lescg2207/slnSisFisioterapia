@@ -55,7 +55,7 @@ namespace capaDatos
                         select new ListaProductos
                         {
                             CODIGO = e.idProducto,
-                            NOMBRE = e.nomProducto,
+                            PRODUCTO = e.nomProducto,
                             PRECIO =Convert.ToDecimal( e.precio.ToString("0.00")),
                             STOCK = e.stock
                         }).ToList();
@@ -71,7 +71,7 @@ namespace capaDatos
                                  select new ListaProductos
                                  {
                                      CODIGO = p.idProducto,
-                                     NOMBRE = p.nomProducto,
+                                     PRODUCTO = p.nomProducto,
                                      PRECIO = p.precio,
                                      STOCK = p.stock
                                  }).ToList();

@@ -43,6 +43,12 @@ namespace capaNegocios
         {
             return _serviciosDao.ObtenerTreeNodes();
         }
+
+        public List<Servicio> ObtenerServicios()
+        {
+            return _serviciosDao.ObtenerServicios();
+        }
+
         public void AgregarServicio(ServicioSesiones sesiones)
         {
             _serviciosDao.AgregarServicio(sesiones);

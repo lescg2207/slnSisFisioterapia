@@ -1,6 +1,5 @@
 ﻿using capaDatos;
 using entidades;
-using entidades.Vistas;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace capaNegocios
 {
-    public class CitasBll
+    public class DetalleCitaBll
     {
         private readonly string _providerName;
         private readonly string _connectionString;
-        private readonly CitasDao _CitasDao;
+        private readonly DetalleCitaDao _detalleDao;
 
-        public CitasBll(string providerName, string connectionString)
+        public DetalleCitaBll(string providerName, string connectionString)
         {
             _providerName = providerName;
             _connectionString = connectionString;
-            _CitasDao = new CitasDao(CreateDbContext());
+            _detalleDao = new DetalleCitaDao(CreateDbContext());
         }
         private DbContext CreateDbContext()
         {
@@ -41,19 +40,10 @@ namespace capaNegocios
             return new ConexionBd(optionsBuilder.Options, _providerName, _connectionString);
         }
 
-        public List<Horario> ObtenerHorario()
+        public void InsertarDetalle(DetalleCita detCita)
         {
-          return _CitasDao.ObtenerHorario();
+            _detalleDao.InsertarDetalle(detCita);
         }
 
-        public void InsertarCitas(Cita citas)
-        {
-            _CitasDao.InsertarCita(citas);
-        }
-
-        public List<Cita> ObtenerCita()
-        {
-            return _CitasDao.ObtenerCita();
-        }
     }
 }
