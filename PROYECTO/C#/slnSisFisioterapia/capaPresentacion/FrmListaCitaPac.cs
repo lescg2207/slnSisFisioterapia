@@ -41,6 +41,7 @@ namespace capaPresentacion
 
         }
 
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             FrmCitas citas = new FrmCitas(gestor, conexion);
@@ -50,6 +51,19 @@ namespace capaPresentacion
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void dgvCitas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvCitas.Columns[e.ColumnIndex].Name == "btnEditar")
+            {
+                int index = e.RowIndex;
+                if (index >= 0)
+                {
+                    FrmDetalleDeCita detalleDeCita = new FrmDetalleDeCita(gestor,conexion);
+                    detalleDeCita.Show();
+                }
+            }
         }
     }
 }

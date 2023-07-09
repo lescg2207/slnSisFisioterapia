@@ -103,6 +103,7 @@
             dgvCitas.RowTemplate.Height = 25;
             dgvCitas.Size = new Size(1014, 405);
             dgvCitas.TabIndex = 3;
+            dgvCitas.CellContentClick += dgvCitas_CellContentClick;
             // 
             // panel1
             // 

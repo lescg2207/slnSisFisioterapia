@@ -10,6 +10,7 @@ namespace entidades.Vistas
     [Table("Productos")]
     public class ListaProductos
     {
+
         public int CODIGO { get; set; }
         public string NOMBRE { get; set; } = null!;
 
