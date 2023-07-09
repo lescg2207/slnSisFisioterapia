@@ -54,6 +54,11 @@ idTipo int foreign key references Servicio(idServicio),
 sesiones int,
 precio money
 )
+create table Impuesto(
+idImpuesto int primary key identity,
+impuesto varchar(20),
+porcentaje decimal(4,2)
+)go
 
 create table Citas(
 idCita int primary key identity,
@@ -62,11 +67,11 @@ idEmpleado int foreign key references Empleado(idEmpleado),
 fCita date,
 hCita int foreign key references Horario(idHorario),
 estadoPago int,
-descuento decimal(4,2),
 total money,
+idImpuesto int foreign key references Impuesto(idImpuesto),
 estadoCita bit
 
-)
+)go
 
 create table Pago(
 idPago int primary key identity,
@@ -84,11 +89,12 @@ stock int
 )
 
 
-create table Impuesto(
-idImpuesto int primary key identity,
-impuesto varchar(20),
-porcentaje decimal(4,2)
-)
+CREATE TABLE Descuentos (
+    idDescuento int PRIMARY KEY IDENTITY,
+    --dniPaciente char(8) REFERENCES Pacientes(dniPaciente),
+    nombreDescuento varchar(100),
+    valorDescuento decimal(4,2)
+);
 
 create table DetalleCita(
 idDetalle int primary key identity,
@@ -98,17 +104,9 @@ idProducto int foreign key references Productos(idProducto),
 cantidad int,
 precioU money,
 subtotal money,
-idImpuesto int foreign key references Impuesto(idImpuesto)
+descuento int foreign key references Descuentos(idDescuento)
 );
 
-
-
-CREATE TABLE Descuentos (
-    idDescuento int PRIMARY KEY IDENTITY,
-    --dniPaciente char(8) REFERENCES Pacientes(dniPaciente),
-    nombreDescuento varchar(100),
-    valorDescuento decimal(4,2)
-);
 select *from Descuentos
 
 insert into Descuentos values('Mas Citas',0.10)
