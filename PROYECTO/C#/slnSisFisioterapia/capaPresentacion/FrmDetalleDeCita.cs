@@ -213,10 +213,10 @@ namespace capaPresentacion
             if (e.Node != null)
             {
                 // Verificar si el nodo seleccionado tiene un precio asociado
-                if (e.Node.Nodes.Count == 0 && e.Node.Parent != null && e.Node.Parent.Text.StartsWith("Precio: "))
+                if (e.Node.Text.StartsWith("Precio: "))
                 {
                     // Extraer el precio del nodo seleccionado
-                    string precioTexto = e.Node.Parent.Text.Replace("Precio: ", "");
+                    string precioTexto = e.Node.Text.Replace("Precio: ", "");
                     decimal precio = decimal.Parse(precioTexto);
 
                     // Hacer algo con el precio (por ejemplo, mostrarlo en un TextBox)
