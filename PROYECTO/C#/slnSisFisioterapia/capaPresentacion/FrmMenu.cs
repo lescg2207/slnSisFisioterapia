@@ -93,7 +93,7 @@ namespace capaPresentacion
             AbrirFrm(frmPaciente);
 
         }
-     
+
         private void btnDash_Click(object sender, EventArgs e)
         {
             FrmDash tre = new FrmDash();

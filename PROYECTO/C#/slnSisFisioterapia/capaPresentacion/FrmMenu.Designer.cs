@@ -152,58 +152,6 @@
             btnCita.UseVisualStyleBackColor = true;
             btnCita.Visible = false;
             btnCita.Click += btnCitas_Click;
-            btnCitas.Cursor = Cursors.Hand;
-            btnCitas.Dock = DockStyle.Top;
-            btnCitas.FlatAppearance.BorderSize = 0;
-            btnCitas.FlatStyle = FlatStyle.Flat;
-            btnCitas.Image = Properties.Resources.citas;
-            btnCitas.Location = new Point(0, 64);
-            btnCitas.Name = "btnCitas";
-            btnCitas.Size = new Size(80, 64);
-            btnCitas.TabIndex = 1;
-            btnCitas.TextAlign = ContentAlignment.MiddleRight;
-            btnCitas.UseVisualStyleBackColor = true;
-            btnCitas.Click += btnCitas_Click_1;
-            // 
-            // btnPacientes
-            // 
-            btnPacientes.Cursor = Cursors.Hand;
-            btnPacientes.Dock = DockStyle.Top;
-            btnPacientes.FlatAppearance.BorderSize = 0;
-            btnPacientes.FlatStyle = FlatStyle.Flat;
-            btnPacientes.Image = Properties.Resources.user;
-            btnPacientes.Location = new Point(0, 0);
-            btnPacientes.Name = "btnPacientes";
-            btnPacientes.Size = new Size(80, 64);
-            btnPacientes.TabIndex = 0;
-            btnPacientes.TextAlign = ContentAlignment.MiddleRight;
-            btnPacientes.UseVisualStyleBackColor = true;
-            btnPacientes.Click += btnPacientes_Click;
-            // 
-            // pbDoctor
-            // 
-            pbDoctor.Controls.Add(btnHorario);
-            pbDoctor.Controls.Add(btnReceta);
-            pbDoctor.Controls.Add(btnDash);
-            pbDoctor.Dock = DockStyle.Top;
-            pbDoctor.Location = new Point(0, 172);
-            pbDoctor.Name = "pbDoctor";
-            pbDoctor.Size = new Size(80, 209);
-            pbDoctor.TabIndex = 2;
-            pbDoctor.Visible = false;
-            // 
-            // btnHorario
-            // 
-            btnHorario.Cursor = Cursors.Hand;
-            btnHorario.Dock = DockStyle.Top;
-            btnHorario.FlatAppearance.BorderSize = 0;
-            btnHorario.FlatStyle = FlatStyle.Flat;
-            btnHorario.Image = Properties.Resources.horario;
-            btnHorario.Location = new Point(0, 128);
-            btnHorario.Name = "btnHorario";
-            btnHorario.Size = new Size(80, 64);
-            btnHorario.TabIndex = 2;
-            btnHorario.UseVisualStyleBackColor = true;
             // 
             // btnPaciente
             // 

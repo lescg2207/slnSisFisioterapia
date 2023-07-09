@@ -51,35 +51,19 @@
             this.lblIdEmp = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblEstadopago = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.lblEstadoCita = new System.Windows.Forms.Label();
-            this.dgvCitas = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            
             this.cbxDoctor = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.txtDniPaciente = new System.Windows.Forms.TextBox();
+  
             this.cbxHorario = new System.Windows.Forms.ComboBox();
             this.dtpfecha = new System.Windows.Forms.DateTimePicker();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
+           
             this.label2 = new System.Windows.Forms.Label();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
+          
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panelIzquierda = new System.Windows.Forms.Panel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCitas)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panelIzquierda.SuspendLayout();
+         
             this.SuspendLayout();
             // 
             // label1
@@ -152,67 +136,7 @@
             // 
             // lblEstadopago
             // 
-            this.lblEstadopago.AutoSize = true;
-            this.lblEstadopago.Location = new System.Drawing.Point(526, 37);
-            this.lblEstadopago.Name = "lblEstadopago";
-            this.lblEstadopago.Size = new System.Drawing.Size(13, 15);
-            this.lblEstadopago.TabIndex = 4;
-            this.lblEstadopago.Text = "0";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(55, 37);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(28, 15);
-            this.lblTotal.TabIndex = 5;
-            this.lblTotal.Text = "0.00";
-            // 
-            // lblEstadoCita
-            // 
-            this.lblEstadoCita.AutoSize = true;
-            this.lblEstadoCita.Location = new System.Drawing.Point(273, 37);
-            this.lblEstadoCita.Name = "lblEstadoCita";
-            this.lblEstadoCita.Size = new System.Drawing.Size(13, 15);
-            this.lblEstadoCita.TabIndex = 6;
-            this.lblEstadoCita.Text = "1";
-            // 
-            // dgvCitas
-            // 
-            this.dgvCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCitas.Location = new System.Drawing.Point(25, 403);
-            this.dgvCitas.Name = "dgvCitas";
-            this.dgvCitas.RowTemplate.Height = 25;
-            this.dgvCitas.Size = new System.Drawing.Size(605, 193);
-            this.dgvCitas.TabIndex = 10;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.lblEstadopago);
-            this.panel3.Controls.Add(this.lblTotal);
-            this.panel3.Controls.Add(this.lblEstadoCita);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 200);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(667, 84);
-            this.panel3.TabIndex = 9;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.cbxDoctor);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.btnBuscar);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.txtDniPaciente);
-            this.panel2.Controls.Add(this.lblIdEmp);
-            this.panel2.Controls.Add(this.cbxHorario);
-            this.panel2.Controls.Add(this.dtpfecha);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(667, 200);
-            this.panel2.TabIndex = 8;
+           
             // 
             // cbxDoctor
             // 
@@ -239,10 +163,7 @@
             // 
             // txtDniPaciente
             // 
-            this.txtDniPaciente.Location = new System.Drawing.Point(55, 64);
-            this.txtDniPaciente.Name = "txtDniPaciente";
-            this.txtDniPaciente.Size = new System.Drawing.Size(150, 23);
-            this.txtDniPaciente.TabIndex = 5;
+            
             // 
             // cbxHorario
             // 
@@ -280,7 +201,7 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(450, 55);
             panel4.TabIndex = 8;
-            panel4.MouseDown += panel4_MouseDown;
+            
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
             this.panel4.Location = new System.Drawing.Point(12, 12);
             this.panel4.Name = "panel4";
@@ -317,9 +238,7 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(450, 250);
             panel5.TabIndex = 9;
-            this.panel5.Controls.Add(this.panel6);
-            this.panel5.Controls.Add(this.panel1);
-            this.panel5.Controls.Add(this.panelIzquierda);
+            
             this.panel5.Location = new System.Drawing.Point(12, 62);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1096, 616);
@@ -343,21 +262,7 @@
             lblDniPac.Size = new Size(55, 15);
             lblDniPac.TabIndex = 23;
             lblDniPac.Text = "71125560";
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(173)))), ((int)(((byte)(138)))));
-            this.panel6.Controls.Add(this.label8);
-            this.panel6.Controls.Add(this.label2);
-            this.panel6.Controls.Add(this.txtBuscar);
-            this.panel6.Controls.Add(this.btnGuardar);
-            this.panel6.Controls.Add(this.button1);
-            this.panel6.Controls.Add(this.button2);
-            this.panel6.Controls.Add(this.panel3);
-            this.panel6.Controls.Add(this.panel2);
-            this.panel6.Controls.Add(this.dgvCitas);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(296, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(667, 616);
-            this.panel6.TabIndex = 11;
+            
             // 
             // lblNombre
             // 
@@ -367,13 +272,7 @@
             lblNombre.Size = new Size(82, 15);
             lblNombre.TabIndex = 22;
             lblNombre.Text = "Leslie Cardoza";
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(33, 306);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(156, 21);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Lista de cita del dia";
+            
             // 
             // label5
             // 
@@ -399,13 +298,7 @@
             btnSalir.TabIndex = 18;
             btnSalir.Text = "ATRAS";
             btnSalir.UseVisualStyleBackColor = true;
-            btnSalir.Click += btnSalir_Click;
-            this.txtBuscar.ForeColor = System.Drawing.Color.DimGray;
-            this.txtBuscar.Location = new System.Drawing.Point(87, 356);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(165, 23);
-            this.txtBuscar.TabIndex = 22;
-            this.txtBuscar.Text = "Ingresa nombre del doctor";
+            
             // 
             // btnGuardar
             // 
@@ -425,46 +318,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(555, 355);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "LIMPIAR";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(461, 355);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(88, 23);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "ACTUALIZAR";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(963, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(133, 616);
-            this.panel1.TabIndex = 10;
-            // 
-            // panelIzquierda
-            // 
-            this.panelIzquierda.Controls.Add(this.treeView1);
-            this.panelIzquierda.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelIzquierda.Location = new System.Drawing.Point(0, 0);
-            this.panelIzquierda.Name = "panelIzquierda";
-            this.panelIzquierda.Size = new System.Drawing.Size(296, 616);
-            this.panelIzquierda.TabIndex = 8;
-            // 
-            // treeView1
-            // 
-            this.treeView1.Location = new System.Drawing.Point(14, 13);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(266, 583);
-            this.treeView1.TabIndex = 0;
-            // 
+            
             // FrmCitas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -476,7 +330,7 @@
             Name = "FrmCitas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmCitas";
-            Load += FrmCitas_Load;
+            
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel5.ResumeLayout(false);
@@ -490,16 +344,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmCitas";
             this.Text = "FrmCitas";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCitas)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panelIzquierda.ResumeLayout(false);
-            this.ResumeLayout(false);
+           
 
         }
 

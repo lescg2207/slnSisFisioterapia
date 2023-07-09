@@ -175,7 +175,7 @@ namespace capaPresentacion
                 decimal subtotal = productoSeleccionado.PRECIO * cantidad;
 
                 // Agregar la fila al DataGridView
-                dgvListaProductos.Rows.Add(productoSeleccionado.NOMBRE, productoSeleccionado.PRECIO, cantidad, subtotal);
+                dgvListaProductos.Rows.Add(productoSeleccionado.PRODUCTO, productoSeleccionado.PRECIO, cantidad, subtotal);
 
                 // Calcular el total
                 total = 0;
