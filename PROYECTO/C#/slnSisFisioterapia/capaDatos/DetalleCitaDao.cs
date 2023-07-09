@@ -21,37 +21,7 @@ namespace capaDatos
         {
             _dbContext.Set<DetalleCita>().Add(detCita);
             _dbContext.SaveChanges();
-        }
-
-       
-        /* public void RealizarTransaccion(List<Servicio> servicios, List<Productos> productos)
-        {
-            using (var transaction = _dbContext.Database.BeginTransaction())
-            {
-                try
-                {
-                    // Insertar servicios en la tabla Servicio
-                    _dbContext.Set<Servicio>().AddRange(servicios);
-
-                    // Insertar productos en la tabla Producto
-                    _dbContext.Set<Productos>().AddRange(productos);
-
-                    // Guardar cambios en la base de datos
-                    _dbContext.SaveChanges();
-
-                    // Confirmar la transacción
-                    transaction.Commit();
-                }
-                catch (Exception ex)
-                {
-                    // Manejar errores y revertir la transacción en caso de excepción
-                    transaction.Rollback();
-                    throw;
-                }
-            }
-
-        }
-    */
+        }   
 
         public void InsertarDetalleProducto(DetalleProductos productos)
         {
@@ -79,5 +49,7 @@ namespace capaDatos
             return Productos;
             
         }
+
+        
     }
 }
