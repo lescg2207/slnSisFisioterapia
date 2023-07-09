@@ -13,8 +13,8 @@ namespace entidades
         public int idDetalle { get; set; }
         public int idCita { get; set; }
         public int idProducto { get; set; }
-        public int cantidad { get; set; }
         public decimal precioU { get; set; } = 0!;
+        public int cantidad { get; set; }        
         public decimal subtotal { get; set;} =0!;
 
 

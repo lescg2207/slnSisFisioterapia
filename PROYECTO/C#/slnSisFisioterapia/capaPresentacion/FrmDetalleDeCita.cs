@@ -22,6 +22,7 @@ namespace capaPresentacion
         private PacienteBll pacBll;
         private ServicioBll servBll;
         private DescuentoBll descBll;
+        private DetalleCitaBll detCita;
         decimal subtotal2;
         public FrmDetalleDeCita(string get, string con)
         {
@@ -31,6 +32,7 @@ namespace capaPresentacion
             pacBll = new PacienteBll(get, con);
             servBll = new ServicioBll(get, con);
             descBll = new DescuentoBll(get, con);
+            detCita = new DetalleCitaBll(get, con);
             InitializeComponent();
             this.Load += FrmDetalleDeCita_Load!;
             ListarProducto();
@@ -38,6 +40,7 @@ namespace capaPresentacion
             lbltotalCita.Text = subtotal2.ToString();
             CargarDatosTreeView(tServicio);
             tServicio.AfterSelect += tServicio_AfterSelect!;
+            //ListarProductos();
 
 
         }
@@ -130,12 +133,12 @@ namespace capaPresentacion
             {
                 pProductos.Visible = false;
                 dgvListaProductos.Rows.Clear();
-                decimal total = decimal.Parse(lbltotal.Text);lbltotal.Text = "0.00";
+                decimal total = decimal.Parse(lbltotal.Text); lbltotal.Text = "0.00";
                 decimal totalCita = decimal.Parse(lbltotalCita.Text);
-                txtCantidad.Text=string.Empty;
-                decimal valorResta =  totalCita- total;
+                txtCantidad.Text = string.Empty;
+                decimal valorResta = totalCita - total;
                 lbltotalCita.Text = valorResta.ToString();
-                
+
             }
             else
             {
@@ -156,43 +159,30 @@ namespace capaPresentacion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            decimal total;
 
-            if (dgvListaProductos.RowCount > 0)
+            ListaProductos productoSeleccionado = (ListaProductos)comboBoxProductos.SelectedItem;
+            int cantidad = int.Parse(txtCantidad.Text);
+            decimal precioUnitario = productoSeleccionado.PRECIO;
+            decimal subtotal = cantidad * precioUnitario;
+
+            var DetProducto = new DetalleProductos
             {
-                // Obtener el producto seleccionado del ComboBox
-                ListaProductos productoSeleccionado = (ListaProductos)comboBoxProductos.SelectedItem;
+                idCita = int.Parse(lblIdCita.Text),
+                idProducto = productoSeleccionado.CODIGO,
+                cantidad = cantidad,
+                precioU = precioUnitario,
+                subtotal = subtotal,
+            };
 
-                // Obtener la cantidad del TextBox
-                int cantidad = Convert.ToInt32(txtCantidad.Text);
+            detCita.InsertarDetalleProducto(DetProducto);
+            ListarProductos(int.Parse(lblIdCita.Text));
 
-                // Calcular el subtotal
-                decimal subtotal = productoSeleccionado.PRECIO * cantidad;
-
-                // Agregar la fila al DataGridView
-                dgvListaProductos.Rows.Add(productoSeleccionado.PRODUCTO, productoSeleccionado.PRECIO, cantidad, subtotal);
-
-                // Calcular el total
-                total = 0;
-                foreach (DataGridViewRow fila in dgvListaProductos.Rows)
-                {
-                    total += Convert.ToDecimal(fila.Cells["Subtotal"].Value);
-                }
-
-                // Actualizar el total en el TextBox
-                lbltotal.Text = total.ToString();
-
-            }
-            else
-            {
-                total = 0;
-                lbltotal.Text = total.ToString();
-            }
-            decimal totalCita = total + 100;
-
-            // Actualizar el valor en el TextBox
-            lbltotalCita.Text = totalCita.ToString();
-            // lbltotalCita.Text = lbltotal+ subtotal2.ToString();
+        }
+        void ListarProductos(int idCita)
+        {
+            List<DetalleProductos> listaProductos = detCita.ListarProductos(idCita);
+            dgvListaProductos.DataSource = listaProductos;
+            dgvListaProductos.Columns["idCita"].Visible = false;
         }
 
         private void ckbServicio_CheckedChanged(object sender, EventArgs e)
@@ -231,6 +221,39 @@ namespace capaPresentacion
                     // Si el nodo seleccionado no tiene un precio asociado, limpiar el TextBox
                     txtPrecio.Text = "";
                 }
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (ckbPruductos.Checked)
+            {
+
+            }
+            else
+            {
+
+            }
+            if (ckbServicio.Checked)
+            {
+
+                var detServico = new DetalleServicio
+                {
+                    idCita = int.Parse(lblIdCita.Text),
+                    idServicio = 2,
+                    cantidad = 1,
+                    precioU = decimal.Parse(txtPrecio.Text),
+                    subtotal = decimal.Parse(txtPrecio.Text),
+
+
+                };
+
+                detCita.InsertarDetalleServicio(detServico);
+
+            }
+            else
+            {
+
             }
         }
     }

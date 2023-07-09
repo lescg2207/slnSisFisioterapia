@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
             panel2 = new Panel();
             panel7 = new Panel();
-            label4 = new Label();
-            checkBox2 = new CheckBox();
+            btnGuardar = new Button();
             lbltotalCita = new Label();
             label7 = new Label();
             pServicios = new Panel();
@@ -52,15 +51,11 @@
             txtCantidad = new TextBox();
             lbltotal = new Label();
             dgvListaProductos = new DataGridView();
-            NOMBRE = new DataGridViewTextBoxColumn();
-            PRECIO = new DataGridViewTextBoxColumn();
-            CANTIDAD = new DataGridViewTextBoxColumn();
-            SUBTOTAL = new DataGridViewTextBoxColumn();
             panel4 = new Panel();
             label2 = new Label();
             ckbPruductos = new CheckBox();
             panel3 = new Panel();
-            label5 = new Label();
+            lblIdCita = new Label();
             label1 = new Label();
             ckbEstadoCita = new CheckBox();
             panel2.SuspendLayout();
@@ -95,8 +90,7 @@
             // 
             // panel7
             // 
-            panel7.Controls.Add(label4);
-            panel7.Controls.Add(checkBox2);
+            panel7.Controls.Add(btnGuardar);
             panel7.Controls.Add(lbltotalCita);
             panel7.Controls.Add(label7);
             panel7.Dock = DockStyle.Top;
@@ -105,24 +99,15 @@
             panel7.Size = new Size(647, 49);
             panel7.TabIndex = 14;
             // 
-            // label4
+            // btnGuardar
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(62, 17);
-            label4.Name = "label4";
-            label4.Size = new Size(123, 17);
-            label4.TabIndex = 8;
-            label4.Text = "Agregar Productos";
-            // 
-            // checkBox2
-            // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(41, 20);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(15, 14);
-            checkBox2.TabIndex = 7;
-            checkBox2.UseVisualStyleBackColor = true;
+            btnGuardar.Location = new Point(41, 11);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(75, 23);
+            btnGuardar.TabIndex = 13;
+            btnGuardar.Text = "GUARDAR";
+            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // lbltotalCita
             // 
@@ -155,7 +140,7 @@
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(492, 112);
+            txtPrecio.Location = new Point(492, 118);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(100, 23);
             txtPrecio.TabIndex = 1;
@@ -276,65 +261,40 @@
             dgvListaProductos.BorderStyle = BorderStyle.None;
             dgvListaProductos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvListaProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(22, 173, 138);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvListaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(22, 173, 138);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvListaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvListaProductos.ColumnHeadersHeight = 30;
-            dgvListaProductos.Columns.AddRange(new DataGridViewColumn[] { NOMBRE, PRECIO, CANTIDAD, SUBTOTAL });
             dgvListaProductos.EnableHeadersVisualStyles = false;
             dgvListaProductos.GridColor = SystemColors.Control;
-            dgvListaProductos.Location = new Point(41, 101);
+            dgvListaProductos.Location = new Point(41, 90);
             dgvListaProductos.Name = "dgvListaProductos";
             dgvListaProductos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvListaProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvListaProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvListaProductos.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = Color.DimGray;
-            dgvListaProductos.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle6.SelectionForeColor = Color.DimGray;
+            dgvListaProductos.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dgvListaProductos.RowTemplate.Height = 25;
             dgvListaProductos.Size = new Size(551, 116);
             dgvListaProductos.TabIndex = 4;
             dgvListaProductos.CellClick += dgvListaProductos_CellClick;
             dgvListaProductos.CellContentClick += dgvListaProductos_CellContentClick;
-            // 
-            // NOMBRE
-            // 
-            NOMBRE.HeaderText = "NOMBRE";
-            NOMBRE.Name = "NOMBRE";
-            NOMBRE.Width = 86;
-            // 
-            // PRECIO
-            // 
-            PRECIO.HeaderText = "PRECIO";
-            PRECIO.Name = "PRECIO";
-            PRECIO.Width = 76;
-            // 
-            // CANTIDAD
-            // 
-            CANTIDAD.HeaderText = "CANTIDAD";
-            CANTIDAD.Name = "CANTIDAD";
-            CANTIDAD.Width = 99;
-            // 
-            // SUBTOTAL
-            // 
-            SUBTOTAL.HeaderText = "SUBTOTAL";
-            SUBTOTAL.Name = "SUBTOTAL";
-            SUBTOTAL.Width = 95;
             // 
             // panel4
             // 
@@ -368,7 +328,7 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(label5);
+            panel3.Controls.Add(lblIdCita);
             panel3.Controls.Add(label1);
             panel3.Controls.Add(ckbEstadoCita);
             panel3.Dock = DockStyle.Top;
@@ -377,15 +337,15 @@
             panel3.Size = new Size(647, 50);
             panel3.TabIndex = 8;
             // 
-            // label5
+            // lblIdCita
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(417, 19);
-            label5.Name = "label5";
-            label5.Size = new Size(80, 17);
-            label5.TabIndex = 2;
-            label5.Text = "Codigo CIta";
+            lblIdCita.AutoSize = true;
+            lblIdCita.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblIdCita.Location = new Point(417, 19);
+            lblIdCita.Name = "lblIdCita";
+            lblIdCita.Size = new Size(80, 17);
+            lblIdCita.TabIndex = 2;
+            lblIdCita.Text = "Codigo CIta";
             // 
             // label1
             // 
@@ -445,11 +405,8 @@
         private Label label1;
         private CheckBox ckbEstadoCita;
         private Panel panel5;
-        private Label label4;
-        private CheckBox checkBox2;
         private Label label3;
         private CheckBox ckbServicio;
-        private Label label5;
         private Label label7;
         private Label lbltotal;
         private TextBox txtCantidad;
@@ -457,14 +414,12 @@
         private Label label9;
         private ComboBox comboBoxProductos;
         private Label label6;
-        private DataGridViewTextBoxColumn NOMBRE;
-        private DataGridViewTextBoxColumn PRECIO;
-        private DataGridViewTextBoxColumn CANTIDAD;
-        private DataGridViewTextBoxColumn SUBTOTAL;
         private Label lbltotalCita;
         private Panel pServicios;
         private Panel panel7;
         private TreeView tServicio;
         private TextBox txtPrecio;
+        private Button btnGuardar;
+        public Label lblIdCita;
     }
 }

@@ -64,5 +64,20 @@ namespace capaDatos
             _dbContext.Set<DetalleServicio>().Add(servicio);
             _dbContext.SaveChanges();
         }
+        public List<DetalleProductos> ListarProductos(int idCita)
+        {
+            var Productos=( from p in _dbContext.Set<DetalleProductos>() where p.idCita == idCita  select new DetalleProductos
+            {
+                idDetalle=p.idDetalle,
+                idCita=p.idCita,
+                idProducto=p.idProducto,
+                cantidad=p.cantidad,
+                precioU=p.precioU,
+                subtotal=p.subtotal,
+            }
+                ).ToList();
+            return Productos;
+            
+        }
     }
 }

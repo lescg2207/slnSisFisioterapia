@@ -55,5 +55,9 @@ namespace capaNegocios
             _detalleDao.InsertarDetalleServicioo(servicio);
         
         }
+        public List<DetalleProductos> ListarProductos(int idCita)
+        {
+            return _detalleDao.ListarProductos(idCita);        
+        }
     }
 }
