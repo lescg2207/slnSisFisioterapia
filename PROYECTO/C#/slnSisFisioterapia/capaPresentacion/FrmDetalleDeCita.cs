@@ -27,7 +27,7 @@ namespace capaPresentacion
             this.Load += FrmDetalleDeCita_Load!;
             ListarProducto();
             subtotal2 = 100;
-            lbltotalCita.Text=subtotal2.ToString();
+            lbltotalCita.Text = subtotal2.ToString();
 
 
         }
@@ -197,7 +197,7 @@ namespace capaPresentacion
 
             // Actualizar el valor en el TextBox
             lbltotalCita.Text = totalCita.ToString();
-           // lbltotalCita.Text = lbltotal+ subtotal2.ToString();
+            // lbltotalCita.Text = lbltotal+ subtotal2.ToString();
         }
     }
 }
