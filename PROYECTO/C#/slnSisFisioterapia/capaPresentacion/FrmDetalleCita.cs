@@ -1,4 +1,5 @@
-﻿using entidades;
+﻿using capaNegocios;
+using entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace capaPresentacion
 {
     public partial class FrmDetalleCita : Form
     {
+        private DetalleCitaBll _detalleBll;
         private ListadoProductos productos;
         private ListaCitas citas;
         private ListaServicio servicio;
@@ -21,12 +23,29 @@ namespace capaPresentacion
 
     public FrmDetalleCita(string gest, string con)
         {
+            _detalleBll = new DetalleCitaBll(gest, con);
             InitializeComponent();
             productos = new ListadoProductos(gest, con);
             citas = new ListaCitas(gest, con);
             servicio = new ListaServicio(gest, con);
         }
 
+        private void InsertarDetalle()
+        {
+            var det = new DetalleCita
+            {
+                idCita = int.Parse(txtIDcita.Text),
+                idServicio = int.Parse(lblservicios.Text),
+                idProducto = int.Parse(txtidProd.Text),
+                cantidad = int.Parse(txtcantidad.Text),
+                precioU = decimal.Parse(txtprec.Text),
+                subtotal = decimal.Parse(lblsubtotal.Text),
+                //idImpuesto = int.Parse(txtstock.Text)
+            };
+
+            _detalleBll.InsertarDetalle(det);
+            MessageBox.Show("Detalle de Cita agregado");
+        }
 
         private void btnproducto_Click(object sender, EventArgs e)
         {

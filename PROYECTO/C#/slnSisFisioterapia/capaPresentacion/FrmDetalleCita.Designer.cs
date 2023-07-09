@@ -33,7 +33,7 @@
             this.lblservicios = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnregistrar = new System.Windows.Forms.Button();
             this.btncitas = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -98,7 +98,7 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.btnregistrar);
             this.groupBox1.Controls.Add(this.btncitas);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.panel2);
@@ -127,14 +127,14 @@
             this.button5.Text = "LIMPIAR";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnregistrar
             // 
-            this.button4.Location = new System.Drawing.Point(25, 442);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(144, 23);
-            this.button4.TabIndex = 36;
-            this.button4.Text = "REGISTRAR";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnregistrar.Location = new System.Drawing.Point(25, 442);
+            this.btnregistrar.Name = "btnregistrar";
+            this.btnregistrar.Size = new System.Drawing.Size(144, 23);
+            this.btnregistrar.TabIndex = 36;
+            this.btnregistrar.Text = "REGISTRAR";
+            this.btnregistrar.UseVisualStyleBackColor = true;
             // 
             // btncitas
             // 
@@ -410,7 +410,7 @@
         private Label label10;
         private TextBox txtcantidad;
         private Button button5;
-        private Button button4;
+        private Button btnregistrar;
         private Label txtidProd;
         private Label lblservicios;
     }
