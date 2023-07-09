@@ -91,7 +91,6 @@ stock int
 
 CREATE TABLE Descuentos (
     idDescuento int PRIMARY KEY IDENTITY,
-    --dniPaciente char(8) REFERENCES Pacientes(dniPaciente),
     nombreDescuento varchar(100),
     valorDescuento decimal(4,2)
 );

@@ -44,6 +44,16 @@ namespace capaNegocios
         {
             _detalleDao.InsertarDetalle(detCita);
         }
+        public void InsertarDetalleProducto(DetalleProductos productos)
+        {
 
+            _detalleDao.InsertarDetalleProducto(productos);
+        }
+
+        public void InsertarDetalleServicio(DetalleServicio servicio)
+        {
+            _detalleDao.InsertarDetalleServicioo(servicio);
+        
+        }
     }
 }

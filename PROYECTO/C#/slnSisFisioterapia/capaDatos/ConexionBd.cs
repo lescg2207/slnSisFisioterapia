@@ -23,6 +23,8 @@ namespace capaDatos
         public DbSet<Cargo> Cargo { get; set; }
         public DbSet<Descuento> Descuentos { get; set; }
         public DbSet<Productos> Producto { get; set; }
+        public DbSet<DetalleProductos> DetalleProducto { get; set; }
+        public DbSet<DetalleServicio> DetalleServicio { get; set; }
 
         public ConexionBd(DbContextOptions<ConexionBd> options, string providerName) : base(options)
         {
