@@ -130,9 +130,12 @@ namespace capaPresentacion
             {
                 pProductos.Visible = false;
                 dgvListaProductos.Rows.Clear();
-                decimal total = 0;
-
-                lbltotal.Text = total.ToString();
+                decimal total = decimal.Parse(lbltotal.Text);lbltotal.Text = "0.00";
+                decimal totalCita = decimal.Parse(lbltotalCita.Text);
+                txtCantidad.Text=string.Empty;
+                decimal valorResta =  totalCita- total;
+                lbltotalCita.Text = valorResta.ToString();
+                
             }
             else
             {
@@ -221,6 +224,7 @@ namespace capaPresentacion
 
                     // Hacer algo con el precio (por ejemplo, mostrarlo en un TextBox)
                     txtPrecio.Text = precio.ToString();
+
                 }
                 else
                 {
