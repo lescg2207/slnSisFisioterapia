@@ -30,7 +30,7 @@ namespace capaPresentacion
             servicio = new ListaServicio(gest, con);
         }
 
-        private void InsertarDetalle()
+       /* private void InsertarDetalle()
         {
             var det = new DetalleCita
             {
@@ -45,7 +45,7 @@ namespace capaPresentacion
 
             _detalleBll.InsertarDetalle(det);
             MessageBox.Show("Detalle de Cita agregado");
-        }
+        }*/
 
         private void btnproducto_Click(object sender, EventArgs e)
         {
