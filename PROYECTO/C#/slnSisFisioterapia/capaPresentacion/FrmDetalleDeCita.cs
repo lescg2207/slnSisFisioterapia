@@ -7,9 +7,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace capaPresentacion
 {
@@ -17,17 +19,25 @@ namespace capaPresentacion
     {
         string gestor, conexion;
         private ProductosBll _productoBll;
+        private PacienteBll pacBll;
+        private ServicioBll servBll;
+        private DescuentoBll descBll;
         decimal subtotal2;
         public FrmDetalleDeCita(string get, string con)
         {
             this.gestor = get;
             this.conexion = con;
             _productoBll = new ProductosBll(get, con);
+            pacBll = new PacienteBll(get, con);
+            servBll = new ServicioBll(get, con);
+            descBll = new DescuentoBll(get, con);
             InitializeComponent();
             this.Load += FrmDetalleDeCita_Load!;
             ListarProducto();
             subtotal2 = 100;
             lbltotalCita.Text = subtotal2.ToString();
+            CargarDatosTreeView(tServicio);
+            tServicio.AfterSelect += tServicio_AfterSelect!;
 
 
         }
@@ -43,40 +53,74 @@ namespace capaPresentacion
             }
             else
             {
-                pProductos.Visible = true;
+                pServicios.Visible = true;
+            }
+            if (ckbServicio.Checked == false)
+            {
+
+                pServicios.Visible = false;
+            }
+            else
+            {
+                pServicios.Visible = true;
             }
 
         }
 
+        public void CargarDatosTreeView(System.Windows.Forms.TreeView treeView)
+        {
+            List<TreeNode> nodosServicios = new List<TreeNode>();
+            List<ServicioSesiones> servicios = servBll.ObtenerTreeNodes();
+            TreeNode paqueteNode = new TreeNode("Paquete");
+            var sesionesPaquete = servicios.Where(servicio => servicio.SERVICIO == "Paquete");
+
+            foreach (var sesion in sesionesPaquete)
+            {
+                TreeNode sesionNode = new TreeNode($"Sesiones: {sesion.SESIONES}");
+                TreeNode precioNode = new TreeNode($"Precio: {sesion.PRECIO}");
+
+                sesionNode.Nodes.Add(precioNode);
+                paqueteNode.Nodes.Add(sesionNode);
+            }
+
+            nodosServicios.Add(paqueteNode);
+
+            foreach (var servicio in servicios)
+            {
+                if (servicio.SERVICIO != "Paquete")
+                {
+                    TreeNode servicioNode = new TreeNode(servicio.SERVICIO);
+
+                    if (servicios.IndexOf(servicio) < 2)
+                    {
+                        TreeNode precioNodeS = new TreeNode($"Precio: {servicio.PRECIOServ}");
+                        servicioNode.Nodes.Add(precioNodeS);
+                    }
+                    else
+                    {
+                        TreeNode sesionesNode = new TreeNode($"Sesiones: {servicio.SESIONES}");
+                        TreeNode precioNode = new TreeNode($"Precio: {servicio.PRECIO}");
+
+                        servicioNode.Nodes.Add(sesionesNode);
+                        servicioNode.Nodes.Add(precioNode);
+                    }
+
+                    nodosServicios.Add(servicioNode);
+                }
+            }
+
+            treeView.Nodes.Clear();
+            TreeNode nodoPadreserv = new TreeNode("Servicios", nodosServicios.ToArray());
+            treeView.Nodes.Add(nodoPadreserv);
+
+        }
         private void ListarProducto()
         {
-            /* List<ListaProductos> prod = _productoBll.ObtenerProductos();
-             dgvListaProductos.DataSource = prod;
-
-             DataGridViewTextBoxColumn columnaCantidad = new DataGridViewTextBoxColumn();
-             columnaCantidad.HeaderText = "Cantidad";
-             columnaCantidad.Name = "Cantidad";
-             columnaCantidad.DefaultCellStyle.NullValue = "0"; // Valor por defecto de 0
-             dgvListaProductos.Columns.Add(columnaCantidad);
-
-             DataGridViewButtonColumn boton = new DataGridViewButtonColumn();
-             boton.HeaderText = "AGREGAR";
-             boton.Name = "btnAgregar";
-             boton.UseColumnTextForButtonValue = true;
-             dgvListaProductos.Columns.Add(boton);
-
-             DataGridViewButtonColumn boton2 = new DataGridViewButtonColumn();
-             boton2.HeaderText = "QUITAR";
-             boton2.Name = "btnQuitar";
-             boton2.UseColumnTextForButtonValue = true;
-             dgvListaProductos.Columns.Add(boton2);*/
 
             List<ListaProductos> prod = _productoBll.ObtenerProductos();
-
-            // Asignar la lista de productos como origen de datos del ComboBox
             comboBoxProductos.DataSource = prod;
-            comboBoxProductos.DisplayMember = "NOMBRE"; // Mostrar el nombre del producto en el ComboBox
-            comboBoxProductos.ValueMember = "PRECIO"; // El precio del producto se utilizará para calcular el subtotal en el DataGridView
+            comboBoxProductos.DisplayMember = "PRODUCTO";
+            comboBoxProductos.ValueMember = "PRECIO";
 
         }
 
@@ -98,59 +142,7 @@ namespace capaPresentacion
 
         private void dgvListaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            /* if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-             {
-                 DataGridViewRow filaSeleccionada = dgvListaProductos.Rows[e.RowIndex];
 
-                 int cantidad = Convert.ToInt32(filaSeleccionada.Cells["Cantidad"].Value);
-
-                 if (dgvListaProductos.Columns[e.ColumnIndex].Name == "btnAgregar")
-                 {
-                     if (cantidad <= 0)
-                     {
-                         MessageBox.Show("La cantidad debe ser mayor a 0.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                         return; // Detener la operación si la cantidad es menor o igual a 0
-                     }
-
-                     // Obtener los datos necesarios de la fila seleccionada
-                     int idProducto = Convert.ToInt32(filaSeleccionada.Cells["CODIGO"].Value);
-                     decimal precioUnitario = Convert.ToDecimal(filaSeleccionada.Cells["Precio"].Value);
-
-                     // Calcular el subtotal
-                     decimal subtotal = precioUnitario * cantidad;
-
-                     // Insertar los datos en la tabla DetalleCita
-                     // ... Aquí puedes usar el código para insertar los datos en la base de datos o en la capa de acceso a datos
-
-                     // Actualizar el valor total en el formulario
-                     decimal total = Convert.ToDecimal(lbltotal.Text) + subtotal;
-                     lbltotal.Text = total.ToString();
-                 }
-                 else if (dgvListaProductos.Columns[e.ColumnIndex].Name == "btnQuitar")
-                 {
-                     // Verificar si el total es mayor a cero antes de quitar el producto
-                     decimal total = Convert.ToDecimal(lbltotal.Text);
-                     if (total <= 0)
-                     {
-                         MessageBox.Show("No se puede quitar un producto si el total es igual a 0.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                         return; // Detener la operación si el total es igual o menor a 0
-                     }
-
-                     // Obtener los datos necesarios de la fila seleccionada
-                     int idProducto = Convert.ToInt32(filaSeleccionada.Cells["CODIGO"].Value);
-                     decimal precioUnitario = Convert.ToDecimal(filaSeleccionada.Cells["Precio"].Value);
-
-                     // Calcular el subtotal
-                     decimal subtotal = precioUnitario * cantidad;
-
-                     // Eliminar los datos de la tabla DetalleCita
-                     // ... Aquí puedes usar el código para eliminar los datos de la base de datos o en la capa de acceso a datos
-
-                     // Actualizar el valor total en el formulario
-                     total -= subtotal;
-                     lbltotal.Text = total.ToString();
-                 }
-             }*/
 
         }
 
@@ -198,6 +190,44 @@ namespace capaPresentacion
             // Actualizar el valor en el TextBox
             lbltotalCita.Text = totalCita.ToString();
             // lbltotalCita.Text = lbltotal+ subtotal2.ToString();
+        }
+
+        private void ckbServicio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbServicio.Checked == false)
+            {
+                pServicios.Visible = false;
+                //dgvListaProductos.Rows.Clear();
+                //decimal total = 0;
+
+                // lbltotal.Text = total.ToString();
+            }
+            else
+            {
+                pServicios.Visible = true;
+            }
+        }
+
+        private void tServicio_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node != null)
+            {
+                // Verificar si el nodo seleccionado tiene un precio asociado
+                if (e.Node.Nodes.Count == 0 && e.Node.Parent != null && e.Node.Parent.Text.StartsWith("Precio: "))
+                {
+                    // Extraer el precio del nodo seleccionado
+                    string precioTexto = e.Node.Parent.Text.Replace("Precio: ", "");
+                    decimal precio = decimal.Parse(precioTexto);
+
+                    // Hacer algo con el precio (por ejemplo, mostrarlo en un TextBox)
+                    txtPrecio.Text = precio.ToString();
+                }
+                else
+                {
+                    // Si el nodo seleccionado no tiene un precio asociado, limpiar el TextBox
+                    txtPrecio.Text = "";
+                }
+            }
         }
     }
 }
