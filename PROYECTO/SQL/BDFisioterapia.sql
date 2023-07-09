@@ -123,6 +123,8 @@ insert into Cargo values('Doctor'),('Enfermera'),('Admin')
 
 insert into Empleado values('Camila','Lopez','maria','123',2,1),('Ernesto','Jimenez','juan','12',1,1),('Gisela','Ramirez','gise','123',3,1)
 
+insert into horario(horario,estado) values('10:00',1),('11:00',1),('12:00',1),('13:00',1),('14:00',1),('15:00',1),('16:00',1),('17:00',1),('18:00',1)
+
 SELECT*FROM Pacientes
 go
 
