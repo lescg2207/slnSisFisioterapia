@@ -146,13 +146,13 @@ namespace capaPresentacion
                         {
                             comboBox2.Items.Add($"{servicio.SERVICIO}");
                             paqueteAgregado = true; // Marcar el elemento "Paquete" como agregado
-                            btnactualizar.Text = "Actualizar";btnactualizar.Enabled=false ; btnagregar.Text = "Agregar";
+                            btnactualizar.Text = "Actualizar"; btnactualizar.Enabled = false; btnagregar.Text = "Agregar";
                             textBox1.Enabled = false;
                             textBox1.Text = string.Empty;
                             textBox2.Enabled = false;
                             textBox2.Text = string.Empty;
                             lbl1.Visible = false;
-                            lbl2.Visible=false;
+                            lbl2.Visible = false;
                             comboBox3.Items.Clear();
                         }
                     }
@@ -178,11 +178,16 @@ namespace capaPresentacion
 
 
 
-                //else if (opcionSeleccionada == "Productos")
-                //{
-                //    comboBox2.Items.Add("Dato 6");
-                //    comboBox2.Items.Add("Dato 7");
-                //}
+                else if (opcionSeleccionada == "Selecciones")
+                {
+                    comboBox2.Items.Clear();
+                    comboBox3.Items.Clear();
+                    label1.Visible = false; label2.Visible = false;
+                    textBox1.Text = string.Empty; textBox2.Text = string.Empty;
+                    btnagregar.Text = "Agregar"; btnagregar.Enabled = false;
+                    btnactualizar.Text = "Actualizar"; btnactualizar.Enabled = false;
+
+                }
             }
             // Agregar más casos según las opciones del primer ComboBox y los datos correspondientes para el segundo ComboBox
         }
@@ -278,7 +283,8 @@ namespace capaPresentacion
             descBll.AgregarDescuento(nuevoDescuento);
 
             // Mostrar un mensaje de éxito o realizar cualquier otra acción necesaria
-            MessageBox.Show("El descuento se agregó correctamente.");
+            MostrarLabelPorUnTiempo();
+            label1.Text = "EL DESCUENTO AÑADIDO SE APLICARA GLOBALMENTE.";
         }
 
         private void AgregarServicio()
@@ -300,7 +306,8 @@ namespace capaPresentacion
             servBll.AgregarServicio(servicioSesiones);
 
             // Mostrar un mensaje de éxito o realizar cualquier otra acción necesaria
-            MessageBox.Show("El servicio se agregó correctamente.");
+            MostrarLabelPorUnTiempo();
+            label1.Text = "EL SERVICIO AÑADIDO SE APLICARA GLOBALMENTE.";
 
             // Aquí puedes agregar código adicional para actualizar el TreeView o cualquier otra acción necesaria después de agregar el servicio.
         }
@@ -348,7 +355,8 @@ namespace capaPresentacion
                     valorDescuento = Convert.ToDecimal(textBox1.Text)
                 };
                 descBll.ActualizarDescuento(descuento);
-                MessageBox.Show("El descuento se actualizó correctamente.");
+                MostrarLabelPorUnTiempo();
+                label1.Text = "EL VALOR DEL DESCUENTO SE ACTUALIZARA GLOBALMENTE.";
                 CargarDatosTreeView(tPac);
             }
             else if (btnactualizar.Text == "Actualizar Paquete")
@@ -362,12 +370,14 @@ namespace capaPresentacion
                     };
 
                     servBll.ActualizarCostoSesiones(sesionesActualizadas);
-                    MessageBox.Show("El costo de la sesión se actualizó correctamente.");
+                    MostrarLabelPorUnTiempo();
+                    label1.Text = "EL COSTO DE LA SESION SE ACTUALIZÓ GLOBALMENTE.";
                     CargarDatosTreeView(tPac);
                 }
                 else
                 {
-                    MessageBox.Show("El número de sesiones seleccionado no es válido.");
+                    MostrarLabelPorUnTiempo();
+                    MessageBox.Show("EL NUMERO DE LAS SESIONES SELECCIONADA NO ES VALIDO.");
                 }
             }
             else if (btnactualizar.Text == "Actualizar Servicio")
@@ -376,12 +386,14 @@ namespace capaPresentacion
                 if (decimal.TryParse(textBox1.Text, out decimal nuevoPrecio))
                 {
                     servBll.ActualizarCostoServicio(nombreServicio, nuevoPrecio);
-                    MessageBox.Show("El costo del servicio se actualizó correctamente.");
+                    MostrarLabelPorUnTiempo();
+                    label1.Text = "EL COSTO DEL SERVICIO SE ACTUALIZÓ GLOBALMENTE.";
                     CargarDatosTreeView(tPac);
                 }
                 else
                 {
-                    MessageBox.Show("El valor del precio no es válido. Asegúrate de ingresar un número decimal válido.");
+                    MostrarLabelPorUnTiempo();
+                    label1.Text = "ASEGÚRATE DE INGRESAR UN NUMERO DECIMAL VALIDO";
                 }
             }
         }
@@ -402,5 +414,43 @@ namespace capaPresentacion
             CargarDatosTreeView(tPac);
         }
 
+
+        //
+        private void MostrarLabelPorUnTiempo()
+        {
+            label1.Visible = true; // Hacer visible el Label
+            timer1.Start(); // Iniciar el temporizador
+        }
+
+        private void OcultarLabel()
+        {
+            label1.Visible = false; // Ocultar el Label
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            timer1.Stop(); // Detener el temporizador
+            OcultarLabel(); // Ocultar el Label
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop(); // Detener el temporizador
+            OcultarLabel(); // Ocultar el Label
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            CargarDatosTreeView(tPac);
+            comboBox1.SelectionStart = 0;
+            comboBox2.Items.Clear();
+            comboBox3.Items.Clear();
+            lbl1.Visible = false; lbl2.Visible = false;
+            textBox1.Text = string.Empty; textBox2.Text = string.Empty;
+            textBox1.Enabled = false; textBox2.Enabled = false;
+            btnagregar.Text = "Agregar"; btnagregar.Enabled = false;
+            btnactualizar.Text = "Actualizar"; btnactualizar.Enabled = false;
+
+        }
     }
 }

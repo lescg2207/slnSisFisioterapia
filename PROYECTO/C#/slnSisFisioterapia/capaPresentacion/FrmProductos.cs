@@ -2,6 +2,9 @@
 using capaNegocios;
 using entidades;
 using entidades.Vistas;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using iTextSharp.tool.xml;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -181,6 +184,65 @@ namespace capaPresentacion
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+
+            if (folderBrowser.ShowDialog() == DialogResult.OK)
+            {
+                string folderPath = folderBrowser.SelectedPath;
+                string fileName = string.Format("{0}_{1}.pdf", this.Name, DateTime.Now.ToString("ddMMyyyyHHmmss"));
+                string filePath = Path.Combine(folderPath, fileName);
+
+                string paginahtml_texto = Properties.Resources.plantillaprod.ToString();
+                paginahtml_texto = paginahtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+
+                string filas = string.Empty;
+                decimal total = 0;
+                foreach (DataGridViewRow row in dgvProducto.Rows)
+                {
+                    filas += "<tr>";
+                    filas += "<td>" + row.Cells["CODIGO"].Value.ToString() + "</td>";
+                    filas += "<td>" + row.Cells["NOMBRE"].Value.ToString() + "</td>";
+                    filas += "<td>" + row.Cells["PRECIO"].Value.ToString() + "</td>";
+                    filas += "<td>" + row.Cells["STOCK"].Value.ToString() + "</td>";
+                    filas += "</tr>";
+                }
+                paginahtml_texto = paginahtml_texto.Replace("@FILAS", filas);
+
+                try
+                {
+                    using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+                        PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                        pdfDoc.Open();
+
+                        // Agregamos la imagen del banner al documento
+                        iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoReport, System.Drawing.Imaging.ImageFormat.Png);
+                        img.ScaleToFit(160, 160);
+                        img.Alignment = iTextSharp.text.Image.UNDERLYING;
+                        img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+                        pdfDoc.Add(img);
+
+                        using (MemoryStream memStream = new MemoryStream(Encoding.UTF8.GetBytes(paginahtml_texto)))
+                        {
+                            XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, new StreamReader(memStream, Encoding.UTF8));
+                        }
+
+                        pdfDoc.Close();
+                        stream.Close();
+
+                        MessageBox.Show("PDF guardado exitosamente.", "Guardar PDF", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al guardar el PDF: " + ex.Message, "Guardar PDF", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
