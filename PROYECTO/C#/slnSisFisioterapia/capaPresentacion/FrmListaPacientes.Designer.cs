@@ -127,6 +127,7 @@
             btnExportar.TabIndex = 1;
             btnExportar.Text = "EXPORTAR";
             btnExportar.UseVisualStyleBackColor = true;
+            btnExportar.Click += btnExportar_Click;
             // 
             // dgvPacientes
             // 

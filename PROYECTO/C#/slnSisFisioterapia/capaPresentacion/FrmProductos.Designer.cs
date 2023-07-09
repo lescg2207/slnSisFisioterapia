@@ -28,30 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvProducto = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnlimpiar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblId = new System.Windows.Forms.Label();
-            this.btnregistrar = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtstock = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtprecio = new System.Windows.Forms.TextBox();
-            this.txtNombres = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProducto)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            panel2 = new Panel();
+            panel1 = new Panel();
+            dgvProducto = new DataGridView();
+            panel3 = new Panel();
+            btnlimpiar = new Button();
+            textBox1 = new TextBox();
+            label4 = new Label();
+            lblId = new Label();
+            btnregistrar = new Button();
+            label10 = new Label();
+            txtstock = new TextBox();
+            label9 = new Label();
+            txtprecio = new TextBox();
+            txtNombres = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            button1 = new Button();
+            panel2.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProducto).BeginInit();
+            panel3.SuspendLayout();
+            SuspendLayout();
             // 
             // panel2
             // 
@@ -73,56 +74,58 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.dgvProducto);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.lblId);
-            this.panel1.Location = new System.Drawing.Point(328, -9);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(792, 699);
-            this.panel1.TabIndex = 28;
+            panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(button1);
+            panel1.Controls.Add(dgvProducto);
+            panel1.Controls.Add(panel3);
+            panel1.Controls.Add(lblId);
+            panel1.Location = new Point(328, -9);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(792, 699);
+            panel1.TabIndex = 28;
             // 
             // dgvProducto
             // 
-            this.dgvProducto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvProducto.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvProducto.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvProducto.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvProducto.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(173)))), ((int)(((byte)(138)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvProducto.ColumnHeadersHeight = 30;
-            this.dgvProducto.EnableHeadersVisualStyles = false;
-            this.dgvProducto.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvProducto.Location = new System.Drawing.Point(57, 179);
-            this.dgvProducto.Name = "dgvProducto";
-            this.dgvProducto.ReadOnly = true;
-            this.dgvProducto.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducto.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvProducto.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.DimGray;
-            this.dgvProducto.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvProducto.RowTemplate.Height = 25;
-            this.dgvProducto.Size = new System.Drawing.Size(696, 453);
-            this.dgvProducto.TabIndex = 3;
+            dgvProducto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvProducto.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvProducto.BackgroundColor = SystemColors.Control;
+            dgvProducto.BorderStyle = BorderStyle.None;
+            dgvProducto.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvProducto.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(22, 173, 138);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dgvProducto.ColumnHeadersHeight = 30;
+            dgvProducto.EnableHeadersVisualStyles = false;
+            dgvProducto.GridColor = SystemColors.Control;
+            dgvProducto.Location = new Point(57, 179);
+            dgvProducto.Name = "dgvProducto";
+            dgvProducto.ReadOnly = true;
+            dgvProducto.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvProducto.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dgvProducto.RowHeadersVisible = false;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle6.SelectionForeColor = Color.DimGray;
+            dgvProducto.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dgvProducto.RowTemplate.Height = 25;
+            dgvProducto.Size = new Size(696, 453);
+            dgvProducto.TabIndex = 3;
+            dgvProducto.CellContentClick += dgvProducto_CellContentClick;
             // 
             // panel3
             // 
@@ -258,6 +261,17 @@
             this.label2.TabIndex = 17;
             this.label2.Text = "Nombres :";
             // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(650, 638);
+            button1.Name = "button1";
+            button1.Size = new Size(121, 35);
+            button1.TabIndex = 4;
+            button1.Text = "EXPORTAR";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // FrmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -296,5 +310,6 @@
         private Label lblId;
         private Button btnlimpiar;
         private DataGridView dgvProducto;
+        private Button button1;
     }
 }
