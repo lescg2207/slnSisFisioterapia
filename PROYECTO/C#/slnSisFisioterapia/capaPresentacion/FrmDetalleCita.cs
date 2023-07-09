@@ -18,7 +18,7 @@ namespace capaPresentacion
         private ListadoProductos productos;
         private ListaCitas citas;
         private ListaServicio servicio;
-        private decimal subtotalProducto;
+       
         public string accion { get; set; } = null!;
 
     public FrmDetalleCita(string gest, string con)

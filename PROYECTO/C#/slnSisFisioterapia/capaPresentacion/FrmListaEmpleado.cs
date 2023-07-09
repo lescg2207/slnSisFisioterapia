@@ -311,7 +311,7 @@ namespace capaPresentacion
                 paginahtml_texto = paginahtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
 
                 string filas = string.Empty;
-                decimal total = 0;
+                //decimal total = 0;
                 foreach (DataGridViewRow row in dgvEmpleado.Rows)
                 {
                     filas += "<tr>";

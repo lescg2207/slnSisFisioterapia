@@ -66,7 +66,7 @@ namespace capaPresentacion
                 
                 DataGridViewRow fila = dgvpoductos.Rows[e.RowIndex];
                 ListadoProductos.idSeleccionado = Convert.ToInt32(fila.Cells[0].Value);
-                ListadoProductos.ProductoSeleccionado = fila.Cells[1].Value.ToString();
+                ListadoProductos.ProductoSeleccionado = fila.Cells[1].Value.ToString()!;
                 ListadoProductos.PrecioSeleccionado = Convert.ToDecimal(fila.Cells[2].Value);
 
                 DialogResult = DialogResult.OK;

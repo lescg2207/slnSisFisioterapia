@@ -200,12 +200,12 @@ namespace capaPresentacion
                 paginahtml_texto = paginahtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
 
                 string filas = string.Empty;
-                decimal total = 0;
+                //decimal total = 0;
                 foreach (DataGridViewRow row in dgvProducto.Rows)
                 {
                     filas += "<tr>";
                     filas += "<td>" + row.Cells["CODIGO"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["NOMBRE"].Value.ToString() + "</td>";
+                    filas += "<td>" + row.Cells["PRODUCTO"].Value.ToString() + "</td>";
                     filas += "<td>" + row.Cells["PRECIO"].Value.ToString() + "</td>";
                     filas += "<td>" + row.Cells["STOCK"].Value.ToString() + "</td>";
                     filas += "</tr>";

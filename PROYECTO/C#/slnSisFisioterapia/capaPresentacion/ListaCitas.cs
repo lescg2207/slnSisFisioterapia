@@ -40,7 +40,7 @@ namespace capaPresentacion
 
                 DataGridViewRow fila = dgvcitas.Rows[e.RowIndex];
                 ListaCitas.idSeleccionado = Convert.ToInt32(fila.Cells[0].Value);
-                ListaCitas.PacienteSeleccionado = fila.Cells[1].Value.ToString();
+                ListaCitas.PacienteSeleccionado = fila.Cells[1].Value.ToString()!;
 
                 DialogResult = DialogResult.OK;
             }
