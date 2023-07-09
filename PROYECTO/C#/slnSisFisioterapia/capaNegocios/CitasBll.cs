@@ -52,7 +52,7 @@ namespace capaNegocios
         }
         public List<Cita> ObtenerCitas()
         {
-            return _CitasDao.ObtenerCita();
+            return _CitasDao.ObtenerCitas();
         }
 
         public List<ListaCitaPacHorario> ListarCitaEmPaHo()

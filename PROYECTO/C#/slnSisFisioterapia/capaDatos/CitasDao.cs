@@ -23,10 +23,10 @@ namespace capaDatos
             return _dbContext.Set<Horario>().Where(e => e.estado == true).ToList();
         }
 
-        /*public List<Cita> ObtenerCita()
+        public List<Cita> ObtenerCitas()
         {
             return _dbContext.Set<Cita>().ToList();
-        }*/
+        }
 
         public void InsertarCita(Cita Citas)
         {
@@ -76,7 +76,7 @@ namespace capaDatos
                             hCita = e.hCita,
                             estadoPago = Convert.ToInt32(e.estadoPago.ToString()),
                             descuento = Convert.ToDecimal(e.descuento.ToString("0.00")),
-                            total = Convert.ToDouble(e.total.ToString())
+                            total = Convert.ToDecimal(e.total.ToString())
                         }).ToList();
 
             return prod;
