@@ -44,32 +44,56 @@ namespace capaPresentacion
         }
         #endregion
 
-        private void btnPacientes_Click(object sender, EventArgs e)
-        {
-            FrmListaPacientes frmPaciente = new FrmListaPacientes(gestor, conexion);
-            AbrirFrm(frmPaciente);
 
-        }
-
+        #region HoraFecha
         private void fechaHora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = DateTime.Now.ToString("hh:mm tt");
             lblDia.Text = DateTime.Now.ToString("dd");
             lblMesAño.Text = DateTime.Now.ToString("Y");
         }
+        #endregion
+
+        #region Gestion de Perfiles
+
+        public void PerfilDoctor()
+        {
+            btnDash.Visible = true;
+            btnCita.Visible = true;
+            btnPaciente.Visible = true;
+        }
+
+        public void PerfilEnfermera()
+        {
+            btnCita.Visible = true;
+            btnPaciente.Visible = true;
+            btnProductos.Visible = true;
+            btnPagos.Visible = true;
+        }
+        public void PerfilAdmin()
+        {
+            btnCita.Visible = true;
+            btnPaciente.Visible = true;
+            btnProductos.Visible = true;
+            btnPagos.Visible = true;
+            btnEmpleado.Visible = true;
+        }
+
+        #endregion
 
         private void btnCitas_Click(object sender, EventArgs e)
         {
-            FrmCitas citas = new FrmCitas(gestor, conexion);
+            FrmListaCitaPac citas = new FrmListaCitaPac(gestor, conexion);
             AbrirFrm(citas);
 
         }
-
-        private void btnProductos_Click(object sender, EventArgs e)
+        private void btnPacientes_Click(object sender, EventArgs e)
         {
+            FrmListaPacientes frmPaciente = new FrmListaPacientes(gestor, conexion);
+            AbrirFrm(frmPaciente);
 
         }
-
+     
         private void btnDash_Click(object sender, EventArgs e)
         {
             Frmtreeview tre = new Frmtreeview(gestor, conexion);

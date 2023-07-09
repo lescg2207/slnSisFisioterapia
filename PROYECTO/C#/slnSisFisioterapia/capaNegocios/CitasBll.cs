@@ -42,12 +42,25 @@ namespace capaNegocios
 
         public List<Horario> ObtenerHorario()
         {
-          return _CitasDao.ObtenerHorario();
+            return _CitasDao.ObtenerHorario();
         }
 
         public void InsertarCitas(Cita citas)
         {
             _CitasDao.InsertarCita(citas);
+        }
+        public List<Cita> ObtenerCitas()
+        {
+            return _CitasDao.ObtenerCita();
+        }
+
+        public List<ListaCitaPacHorario> ListarCitaEmPaHo()
+        {
+            return _CitasDao.ListarCitaEmPaHo();
+        }
+        public void actualizarEstadoHorario(Horario hora)
+        {
+            _CitasDao.actualizarEstadoHorario(hora);
         }
     }
 }

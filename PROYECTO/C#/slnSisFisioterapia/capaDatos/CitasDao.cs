@@ -19,7 +19,12 @@ namespace capaDatos
 
         public List<Horario> ObtenerHorario()
         {
-            return _dbContext.Set<Horario>().ToList();
+            return _dbContext.Set<Horario>().Where(e => e.estado == true).ToList();
+        }
+
+        public List<Cita> ObtenerCita()
+        {
+            return _dbContext.Set<Cita>().ToList();
         }
 
         public void InsertarCita(Cita Citas)
@@ -29,6 +34,35 @@ namespace capaDatos
             _dbContext.SaveChanges();
         }
 
+        public List<ListaCitaPacHorario> ListarCitaEmPaHo()
+        {
+            var citaspac = (from c in _dbContext.Set<Cita>()join h in _dbContext.Set<Horario>()on c.hCita equals h.idHorario join e in _dbContext.Set<Empleado>()on c.idEmpleado equals e.IdEmpleado select new ListaCitaPacHorario {
+            
+                CODIGO=c.idCita,
+                PACIENTE=c.dniPaciente,
+                DOCTOR=e.Nombres+" "+e.Apellidos,
+                FECHA=c.fCita,
+                HORA=h.horario,
+                PAGO = (c.estadoPago == 0) ? "Pendiente" : "Pagado",
+                DESCUENTO =c.descuento,
+                TOTAL=c.total,
+                FINALIZADA=c.estadoCita
+            
+            }).ToList();
+            
+            return citaspac;
+        }
+        public void actualizarEstadoHorario( Horario hora)
+        {
+            var horarioEstado=_dbContext.Set<Horario>().Find(hora.idHorario);
+            if (horarioEstado != null)
+            {
+                horarioEstado.estado = hora.estado;
+                _dbContext.SaveChanges();
+            }
+
+        }
+        
 
     }
 }

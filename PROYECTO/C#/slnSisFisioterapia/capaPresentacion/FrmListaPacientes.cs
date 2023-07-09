@@ -26,16 +26,14 @@ namespace capaPresentacion
             InitializeComponent();
             cbxBuscar.Items.AddRange(new string[] { "Seleccione", "DNI", "Nombre", "Apellido" });
             cbxBuscar.SelectedIndex = 0;
-            listarPacientes();
-            if (!dgvPacientes.Columns.Contains("Accion"))
-            {
-                DataGridViewButtonColumn boton = new DataGridViewButtonColumn();
-                boton.HeaderText = "Accion";
-                boton.Text = "☑";
-                boton.Name = "btnModificar";
-                boton.UseColumnTextForButtonValue = true;
-                dgvPacientes.Columns.Add(boton);
-            }
+            listarPacientes();          
+            DataGridViewButtonColumn boton = new DataGridViewButtonColumn();
+            boton.HeaderText = "MODIFICAR";
+            boton.Text = "☑";
+            boton.Name = "btnModificar";
+            boton.UseColumnTextForButtonValue = true;
+            dgvPacientes.Columns.Add(boton);
+            
 
 
         }
