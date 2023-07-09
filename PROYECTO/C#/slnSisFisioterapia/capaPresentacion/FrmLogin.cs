@@ -56,15 +56,15 @@ namespace capaPresentacion
                         MessageBox.Show("Bienvenid@" + " " + empleado.Nombres + " ", "BIENVENIDO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (empleado.IdCargo == 2)
                         {
-                            menu.pEnfermera.Visible = true;
+                            menu.PerfilEnfermera();
                         }
                         else if (empleado.IdCargo==1)
                         {
-                            menu.pbDoctor.Visible = true;
+                            menu.PerfilDoctor();
                         }
                         else
                         {
-                            menu.pbAdmin.Visible = true;
+                            menu.PerfilAdmin();
                         }
                         menu.Show();
                         this.Hide();
