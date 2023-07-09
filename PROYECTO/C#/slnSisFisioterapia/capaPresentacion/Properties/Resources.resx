@@ -175,4 +175,16 @@
   <data name="configuraciones (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\configuraciones (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="plantilla" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plantilla.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="LogoReport" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LogoReport.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="plantillaempl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plantillaempl.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="plantillaprod" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plantillaprod.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
 </root>

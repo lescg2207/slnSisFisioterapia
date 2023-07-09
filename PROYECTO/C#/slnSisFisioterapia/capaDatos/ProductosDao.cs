@@ -72,7 +72,7 @@ namespace capaDatos
                                  {
                                      CODIGO = p.idProducto,
                                      NOMBRE = p.nomProducto,
-                                     PRECIO = p.precio,
+                                     PRECIO = Convert.ToDecimal(p.precio.ToString("0.00")),
                                      STOCK = p.stock
                                  }).ToList();
 
