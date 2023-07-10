@@ -23,10 +23,10 @@
         <tr>
             <td style="width:20%"></td>
             <td style="width:60%" align="center" valign="top">
-                <table>
-                    <tr><td align="center"><h4 style="margin:0px">BOLETA DE PAGO</h4></td></tr>
-                    <tr><td align="center">Direccion: AV. LAS LOMAS </td></tr>
-                    <tr><td align="center">Telefono: 918-742-023</td></tr>
+                <table align="center">>
+                    <tr><td align="center" colspan="2"><h2 style="margin:0px">BOLETA DE PAGO</h2></td></tr>
+                    <tr><td align="center" colspan="2">Direccion: AV. LAS LOMAS</td></tr>
+                    <tr><td align="center" colspan="2">Telefono: 918-742-023</td></tr>
                 </table>
             </td>
             <td style="width:20%">
@@ -45,7 +45,7 @@
                 <table style="width:100%">
                     <tr>
                         <td style="width:20%">DNI:</td>
-                        <td style="width:30%;border-bottom:1px solid black">@DNI</td>
+                        <td style="width:30%;border-bottom:1px solid black; padding-left: 5px;">@DNI</td> <!-- Añade padding-left -->
                     </tr>
                 </table>
                 <table style="width:100%">
@@ -82,12 +82,13 @@
                         <td>2.4</td>
                     </tr>-->
                         @FILAS
-                        <!--<tr>
-                        <td style="border: 0px !important"></td>
-                        <td style="border: 0px !important"></td>
-                        <td align="right">Total:</td>
-                        <td>@TOTAL</td>
-                    </tr>-->
+                        <tr>
+                            <td style="border: 0px !important"></td>
+                            <td style="border: 0px !important"></td>
+                            <td style="border: 0px !important"></td> <!-- Agrega una columna vacía -->
+                            <td align="right">Total:</td>
+                            <td>@TOTAL</td>
+                        </tr>
                     </tbody>
                 </table>
             </td>

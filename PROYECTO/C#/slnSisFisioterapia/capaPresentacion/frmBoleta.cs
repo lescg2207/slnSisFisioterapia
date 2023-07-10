@@ -173,7 +173,7 @@ namespace capaPresentacion
 
                     //Agregamos la imagen del banner al documento
                     iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoReport, System.Drawing.Imaging.ImageFormat.Png);
-                    img.ScaleToFit(60, 60);
+                    img.ScaleToFit(160, 160);
                     img.Alignment = iTextSharp.text.Image.UNDERLYING;
 
                     //img.SetAbsolutePosition(10,100);
