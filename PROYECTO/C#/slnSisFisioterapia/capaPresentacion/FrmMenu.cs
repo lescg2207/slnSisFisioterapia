@@ -93,7 +93,7 @@ namespace capaPresentacion
             AbrirFrm(frmPaciente);
 
         }
-     
+
         private void btnDash_Click(object sender, EventArgs e)
         {
             FrmDash tre = new FrmDash();
@@ -124,6 +124,13 @@ namespace capaPresentacion
         {
             FrmCitas citas = new FrmCitas(gestor, conexion);
             AbrirFrm(citas);
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmGestorBd Log = new FrmGestorBd();
+            Log.Show();
         }
     }
 }
