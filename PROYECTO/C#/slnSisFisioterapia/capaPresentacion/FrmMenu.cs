@@ -59,7 +59,6 @@ namespace capaPresentacion
         public void PerfilDoctor()
         {
             btnDash.Visible = true;
-            btnCita.Visible = true;
             btnPaciente.Visible = true;
         }
 
@@ -77,6 +76,7 @@ namespace capaPresentacion
             btnProductos.Visible = true;
             btnPagos.Visible = true;
             btnEmpleado.Visible = true;
+            btnTree.Visible = true;
         }
 
         #endregion
@@ -96,7 +96,7 @@ namespace capaPresentacion
 
         private void btnDash_Click(object sender, EventArgs e)
         {
-            Frmtreeview tre = new Frmtreeview(gestor,conexion);
+            FrmDash tre = new FrmDash();
             AbrirFrm(tre);
 
 
@@ -135,6 +135,12 @@ namespace capaPresentacion
                 Log.Show();
                 this.Close();
             }
+        }
+
+        private void btnTree_Click(object sender, EventArgs e)
+        {
+            Frmtreeview tre = new Frmtreeview(gestor, conexion);
+            AbrirFrm(tre);
         }
     }
 }

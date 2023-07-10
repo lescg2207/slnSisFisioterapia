@@ -69,17 +69,18 @@ hCita int foreign key references Horario(idHorario),
 estadoPago int,
 total money,
 idImpuesto int foreign key references Impuesto(idImpuesto)null,
+idDescuento int foreign key references Descuentos(idDescuento)null,
 estadoCita bit
 )
 
 create table Boleta(
 idPago int primary key identity,
 idCita int foreign key references Citas(idCita),
-dniPaciente char(8) foreign key references Pacientes(dniPaciente),
+dniPaciente char(8),
 metodoPago varchar(50),
 subtotal money,
-idImpuesto int foreign key references Impuesto(idImpuesto)null,
-idDescuento int foreign key references Descuentos(idDescuento)null,
+impuesto decimal(4,2),
+descuento decimal(4,2),
 total money,
 fpago datetime
 )
@@ -112,17 +113,25 @@ insert into Descuentos values('Mas Citas',0.10)
 insert into Descuentos values('Regular Citas',0.06)
 insert into Descuentos values('Pocas Citas',0.03)
 
-SELECT nombreDescuento,valorDescuento FROM Descuentos
 
-insert into Cargo values('Doctor'),('Enfermera'),('Admin')
+insert into Cargo(cargo) values('Doctor'),('Enfermera'),('Admin')
 
-insert into Empleado values('Camila','Lopez','maria','123',2,1),('Ernesto','Jimenez','juan','12',1,1),('Gisela','Ramirez','gise','123',3,1)
+insert into Empleado(nombres,apellidos,usuario,contraseña,idCargo,estadoEmp) values('Camila','Lopez','maria','123',2,1),('Ernesto','Jimenez','juan','12',1,1),('Gisela','Ramirez','gise','123',3,1)
 
 insert into horario(horario,estado) values('10:00',1),('11:00',1),('12:00',1),('13:00',1),('14:00',1),('15:00',1),('16:00',1),('17:00',1),('18:00',1)
 
 
-insert into Servicio values('Diario',35),('Domiciliario',40),('Paquete',0)
+insert into Servicio(sevicio,precio) values('Diario',35),('Domiciliario',40),('Paquete',0)
 
-insert into Sesiones values(3,10,315),(3,12,385),(3,15,490)
+insert into Sesiones(idTipo,sesiones,precio) values(3,10,315),(3,12,385),(3,15,490)
 
 insert into Impuesto(impuesto,porcentaje) values ('IGV','0.18')
+
+
+
+select*from citas
+
+
+
+
+

@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Runtime.InteropServices;
 
 namespace capaPresentacion
 {
@@ -22,27 +23,27 @@ namespace capaPresentacion
     {
         string gestor, conexion;
         private ProductosBll _productoBll;
-        private PacienteBll pacBll;
         private ServicioBll servBll;
-        private DescuentoBll descBll;
         private DetalleCitaBll detCita;
-        decimal totalGeneral = 0;
         private List<DetalleCita> listaProductos = new List<DetalleCita>();
+
+        #region MouseDowmn
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparan);
+        #endregion
         public FrmDetalleDeCita(string get, string con)
         {
             this.gestor = get;
             this.conexion = con;
             _productoBll = new ProductosBll(get, con);
-            pacBll = new PacienteBll(get, con);
             servBll = new ServicioBll(get, con);
-            descBll = new DescuentoBll(get, con);
             detCita = new DetalleCitaBll(get, con);
             InitializeComponent();
             this.Load += FrmDetalleDeCita_Load!;
             ListarProducto();
-
             ListarServicios();
-            //ListarProductos();
 
 
         }
@@ -129,10 +130,7 @@ namespace capaPresentacion
 
             };
 
-            // Agrega el objeto DetProducto a la lista existente en memoria
             listaProductos.Add(detProducto);
-
-            // Actualiza el DataGridView con la lista de productos en memoria
             dgvListaProductos.DataSource = null;
             dgvListaProductos.DataSource = listaProductos;
             dgvListaProductos.Columns["idCita"].Visible = false;
@@ -147,18 +145,7 @@ namespace capaPresentacion
             }
 
             lbltotal.Text = total.ToString();
-            // Calcula el total de los productos y agrégalo al total general
-            /*decimal totalProductos = 0;
 
-            foreach (DataGridViewRow fila in dgvListaProductos.Rows)
-            {
-                totalProductos += Convert.ToDecimal(fila.Cells["subtotal"].Value);
-            }*/
-
-            //totalGeneral += totalProductos;
-
-            // Actualiza el TextBox de total general
-            // lbltotalCita.Text = totalGeneral.ToString();
         }
 
         private void ckbServicio_CheckedChanged(object sender, EventArgs e)
@@ -183,16 +170,16 @@ namespace capaPresentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            // Declarar una lista para almacenar los detalles de la cita
+
             List<DetalleCita> detallesCita = new List<DetalleCita>();
 
-            // Verificar si se seleccionaron productos
+
             if (ckbPruductos.Checked)
             {
-                // Obtener los productos seleccionados del DataGridView
+
                 foreach (DataGridViewRow row in dgvListaProductos.Rows)
                 {
-                    // Crear un objeto DetalleCita para cada producto seleccionado
+
                     DetalleCita detalleProducto = new DetalleCita
                     {
                         idCita = int.Parse(lblIdCita.Text),
@@ -203,7 +190,6 @@ namespace capaPresentacion
 
                     };
 
-                    // Agregar el detalle del producto a la lista
                     detallesCita.Add(detalleProducto);
                 }
             }
@@ -220,29 +206,24 @@ namespace capaPresentacion
                 precio = servicioSelecc.precio;
             }
 
-
-
-            // Verificar si se seleccionó el servicio
             if (ckbServicio.Checked)
             {
-                // Crear un objeto DetalleCita para el servicio seleccionado
+
                 DetalleCita detalleServicio = new DetalleCita
                 {
                     idCita = int.Parse(lblIdCita.Text),
-                    idServicio = servicioSelecc.IdServicio, // Reemplazar con el ID correcto del servicio
+                    idServicio = servicioSelecc.IdServicio,
                     cantidad = 1,
                     precioU = precio,
                     subtotal = precio,
 
                 };
 
-                // Agregar el detalle del servicio a la lista
                 detallesCita.Add(detalleServicio);
 
 
             }
 
-            // Insertar los detalles de la cita en la base de datos
             foreach (DetalleCita detalle in detallesCita)
             {
                 detCita.InsertarDetalle(detalle);
@@ -253,25 +234,14 @@ namespace capaPresentacion
             {
                 idCita = int.Parse(lblIdCita.Text),
                 total = decimal.Parse(lbltotalCita.Text),
-                estadoCita=ckbEstadoCita.Checked,
+                estadoCita = ckbEstadoCita.Checked,
 
             };
             detCita.ActualizarTotalCita(cita);
             MessageBox.Show("Detalles de cita guardados correctamente.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //int index = e.RowIndex;
-            //if (index >= 0)
-            //{
-                //frmBoleta boleta = new frmBoleta(gestor,conexion);
-                //string idDetcita = lblIdCita.Text;
-                //boleta.lblid.Text = idDetcita.ToString();
-                //boleta.ShowDialog();
-
-            //}
-        }
         void CargarSesion(int idTipo)
         {
 
@@ -281,10 +251,7 @@ namespace capaPresentacion
             cbxSesiones.DataSource = sesiones;
             cbxSesiones.DisplayMember = "sesiones";
             cbxSesiones.ValueMember = "precio";
-            // Obtener el precio del servicio seleccionado
             decimal precioServicio = Convert.ToDecimal(sesiones.FirstOrDefault()?.precio ?? 0);
-
-            // Asignar el precio al TextBox correspondiente
             lblPrecio.Text = precioServicio.ToString("0.00");
 
 
@@ -307,32 +274,20 @@ namespace capaPresentacion
         {
 
             Sesiones sesionSeleccionada = (Sesiones)cbxSesiones.SelectedItem;
-            //decimal precioSesion = sesionSeleccionada.precio;
-            //
             decimal precioSesion = sesionSeleccionada.precio;
-            ///totalGeneral += precioSesion;
+
             lblPrecio.Text = precioSesion.ToString("0.00");
-            // Actualiza el TextBox de total general
-            //lbltotalCita.Text = totalGeneral.ToString();
 
-            // Obtiene el precio de la sesión seleccionada y agrégalo al total general
-
-
-            // Actualiza el TextBox de total general
 
         }
 
         private void cbxServicio_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-
             Servicio servicioSeleccionado = (Servicio)cbxServicio.SelectedItem;
-            //decimal precioServicio = servicioSeleccionado.precio;
             decimal precioServicio = servicioSeleccionado.precio;
-            //totalGeneral += precioServicio;
             lblPrecio.Text = precioServicio.ToString();
-            // Actualiza el TextBox de total general
-            //lbltotalCita.Text = totalGeneral.ToString();
+
         }
 
         private void btnTotal_Click(object sender, EventArgs e)
@@ -341,6 +296,18 @@ namespace capaPresentacion
             decimal tServicio = decimal.Parse(lblPrecio.Text);
             decimal total = tProductos + tServicio;
             lbltotalCita.Text = total.ToString();
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

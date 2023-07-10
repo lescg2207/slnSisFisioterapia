@@ -71,7 +71,7 @@ namespace capaPresentacion
 
                 // Paso 8: Obtener los nombres y apellidos del paciente correspondiente al dniPaciente
                 List<ListaPacienteHistoria> pacientes = _pacienteBll.ObtenerListaPacientes();
-                ListaPacienteHistoria paciente = pacientes.FirstOrDefault(p => p.DNI == dniPaciente);
+                ListaPacienteHistoria paciente = pacientes.FirstOrDefault(p => p.DNI == dniPaciente)!;
 
                 if (paciente != null)
                 {

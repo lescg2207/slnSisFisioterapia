@@ -32,10 +32,10 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            label4 = new Label();
             panel2 = new Panel();
             panel7 = new Panel();
-            button1 = new Button();
-            btnGuardar = new Button();
+            btnAtras = new Button();
             btnTotal = new Button();
             btnGuardar = new Button();
             lbltotalCita = new Label();
@@ -66,6 +66,7 @@
             lblIdCita = new Label();
             label1 = new Label();
             ckbEstadoCita = new CheckBox();
+            panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel7.SuspendLayout();
             pServicios.SuspendLayout();
@@ -78,13 +79,28 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(21, 60, 77);
+            panel1.Controls.Add(label4);
             panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(837, 46);
+            panel1.Size = new Size(647, 46);
             panel1.TabIndex = 1;
+            panel1.MouseDown += panel1_MouseDown;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(41, 12);
+            label4.Name = "label4";
+            label4.Size = new Size(136, 25);
+            label4.TabIndex = 0;
+            label4.Text = "Detalle de cita";
             // 
             // panel2
             // 
+            panel2.BackColor = Color.White;
             panel2.Controls.Add(panel7);
             panel2.Controls.Add(pServicios);
             panel2.Controls.Add(panel5);
@@ -93,47 +109,43 @@
             panel2.Controls.Add(panel3);
             panel2.Location = new Point(12, 64);
             panel2.Name = "panel2";
-            panel2.Size = new Size(647, 664);
+            panel2.Size = new Size(647, 560);
             panel2.TabIndex = 2;
             // 
             // panel7
             // 
-            panel7.Controls.Add(button1);
+            panel7.Controls.Add(btnAtras);
             panel7.Controls.Add(btnTotal);
             panel7.Controls.Add(btnGuardar);
             panel7.Controls.Add(lbltotalCita);
             panel7.Controls.Add(label7);
             panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(0, 584);
+            panel7.Location = new Point(0, 473);
             panel7.Name = "panel7";
-            panel7.Size = new Size(647, 75);
+            panel7.Size = new Size(647, 87);
             panel7.TabIndex = 14;
             // 
-            // button1
+            // btnAtras
             // 
-            button1.Location = new Point(141, 15);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 14;
-            button1.Text = "BOLETA";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.Location = new Point(38, 15);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(75, 23);
-            btnGuardar.TabIndex = 13;
-            btnGuardar.Text = "GUARDAR";
-            btnGuardar.UseVisualStyleBackColor = true;
-            btnGuardar.Click += btnGuardar_Click;
+            btnAtras.Cursor = Cursors.Hand;
+            btnAtras.FlatStyle = FlatStyle.Flat;
+            btnAtras.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAtras.Location = new Point(41, 29);
+            btnAtras.Name = "btnAtras";
+            btnAtras.Size = new Size(99, 30);
+            btnAtras.TabIndex = 15;
+            btnAtras.Text = "REGRESAR";
+            btnAtras.UseVisualStyleBackColor = true;
+            btnAtras.Click += btnAtras_Click;
             // 
             // btnTotal
             // 
-            btnTotal.Location = new Point(325, 15);
+            btnTotal.Cursor = Cursors.Hand;
+            btnTotal.FlatStyle = FlatStyle.Flat;
+            btnTotal.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnTotal.Location = new Point(300, 29);
             btnTotal.Name = "btnTotal";
-            btnTotal.Size = new Size(122, 23);
+            btnTotal.Size = new Size(130, 30);
             btnTotal.TabIndex = 14;
             btnTotal.Text = "CALCULAR TOTAL";
             btnTotal.UseVisualStyleBackColor = true;
@@ -141,9 +153,12 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(238, 15);
+            btnGuardar.Cursor = Cursors.Hand;
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardar.Location = new Point(171, 29);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(75, 23);
+            btnGuardar.Size = new Size(99, 30);
             btnGuardar.TabIndex = 13;
             btnGuardar.Text = "GUARDAR";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -152,7 +167,7 @@
             // lbltotalCita
             // 
             lbltotalCita.AutoSize = true;
-            lbltotalCita.Location = new Point(547, 19);
+            lbltotalCita.Location = new Point(547, 38);
             lbltotalCita.Name = "lbltotalCita";
             lbltotalCita.Size = new Size(13, 15);
             lbltotalCita.TabIndex = 12;
@@ -162,7 +177,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(494, 17);
+            label7.Location = new Point(494, 36);
             label7.Name = "label7";
             label7.Size = new Size(47, 17);
             label7.TabIndex = 5;
@@ -177,9 +192,9 @@
             pServicios.Controls.Add(cbxServicio);
             pServicios.Controls.Add(label5);
             pServicios.Dock = DockStyle.Top;
-            pServicios.Location = new Point(0, 438);
+            pServicios.Location = new Point(0, 396);
             pServicios.Name = "pServicios";
-            pServicios.Size = new Size(647, 146);
+            pServicios.Size = new Size(647, 77);
             pServicios.TabIndex = 13;
             // 
             // cbxSesiones
@@ -200,6 +215,7 @@
             lblPrecio.Size = new Size(28, 15);
             lblPrecio.TabIndex = 18;
             lblPrecio.Text = "0.00";
+            lblPrecio.Visible = false;
             // 
             // label10
             // 
@@ -241,13 +257,14 @@
             label5.Size = new Size(100, 17);
             label5.TabIndex = 15;
             label5.Text = "Total Servicio :";
+            label5.Visible = false;
             // 
             // panel5
             // 
             panel5.Controls.Add(label3);
             panel5.Controls.Add(ckbServicio);
             panel5.Dock = DockStyle.Top;
-            panel5.Location = new Point(0, 381);
+            panel5.Location = new Point(0, 339);
             panel5.Name = "panel5";
             panel5.Size = new Size(647, 57);
             panel5.TabIndex = 11;
@@ -274,7 +291,7 @@
             // 
             // pProductos
             // 
-            pProductos.BackColor = SystemColors.ActiveBorder;
+            pProductos.BackColor = Color.White;
             pProductos.Controls.Add(label11);
             pProductos.Controls.Add(btnAgregar);
             pProductos.Controls.Add(label9);
@@ -286,7 +303,7 @@
             pProductos.Dock = DockStyle.Top;
             pProductos.Location = new Point(0, 111);
             pProductos.Name = "pProductos";
-            pProductos.Size = new Size(647, 270);
+            pProductos.Size = new Size(647, 228);
             pProductos.TabIndex = 10;
             // 
             // label11
@@ -298,10 +315,12 @@
             label11.Size = new Size(113, 17);
             label11.TabIndex = 19;
             label11.Text = "Total Productos :";
+            label11.Visible = false;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(517, 51);
+            btnAgregar.Cursor = Cursors.Hand;
+            btnAgregar.Location = new Point(517, 37);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 11;
@@ -313,7 +332,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(300, 52);
+            label9.Location = new Point(300, 39);
             label9.Name = "label9";
             label9.Size = new Size(71, 17);
             label9.TabIndex = 10;
@@ -321,8 +340,9 @@
             // 
             // comboBoxProductos
             // 
+            comboBoxProductos.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxProductos.FormattingEnabled = true;
-            comboBoxProductos.Location = new Point(119, 51);
+            comboBoxProductos.Location = new Point(119, 38);
             comboBoxProductos.Name = "comboBoxProductos";
             comboBoxProductos.Size = new Size(145, 23);
             comboBoxProductos.TabIndex = 8;
@@ -331,7 +351,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(41, 52);
+            label6.Location = new Point(41, 39);
             label6.Name = "label6";
             label6.Size = new Size(72, 17);
             label6.TabIndex = 7;
@@ -339,7 +359,7 @@
             // 
             // txtCantidad
             // 
-            txtCantidad.Location = new Point(377, 51);
+            txtCantidad.Location = new Point(377, 38);
             txtCantidad.Name = "txtCantidad";
             txtCantidad.Size = new Size(100, 23);
             txtCantidad.TabIndex = 6;
@@ -352,6 +372,7 @@
             lbltotal.Size = new Size(28, 15);
             lbltotal.TabIndex = 5;
             lbltotal.Text = "0.00";
+            lbltotal.Visible = false;
             // 
             // dgvListaProductos
             // 
@@ -372,7 +393,7 @@
             dgvListaProductos.ColumnHeadersHeight = 30;
             dgvListaProductos.EnableHeadersVisualStyles = false;
             dgvListaProductos.GridColor = SystemColors.Control;
-            dgvListaProductos.Location = new Point(41, 90);
+            dgvListaProductos.Location = new Point(41, 77);
             dgvListaProductos.Name = "dgvListaProductos";
             dgvListaProductos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -469,12 +490,17 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(671, 735);
+            BackColor = Color.FromArgb(22, 173, 138);
+            ClientSize = new Size(671, 636);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FrmDetalleDeCita";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmDetalleDeCita";
             Load += FrmDetalleDeCita_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
@@ -519,7 +545,6 @@
         public Label lblIdCita;
         private Label label5;
         private Label label4;
-        private Button button1;
         private Label label10;
         private Label label8;
         private ComboBox cbxServicio;
@@ -528,5 +553,6 @@
         private ComboBox cbxSesiones;
         private Button btnTotal;
         public CheckBox ckbEstadoCita;
+        private Button btnAtras;
     }
 }

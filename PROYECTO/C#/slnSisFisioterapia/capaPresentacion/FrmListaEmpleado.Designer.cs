@@ -316,6 +316,7 @@
             // 
             // cbxBuscar
             // 
+            cbxBuscar.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxBuscar.FormattingEnabled = true;
             cbxBuscar.Items.AddRange(new object[] { "NOMBRE", "CARGO" });
             cbxBuscar.Location = new Point(143, 187);

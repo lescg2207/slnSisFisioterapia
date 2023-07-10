@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenu));
             panel1 = new Panel();
-            button5 = new Button();
+            btnTree = new Button();
             btnEmpleado = new Button();
             btnProductos = new Button();
             btnPagos = new Button();
@@ -64,7 +64,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(21, 60, 77);
-            panel1.Controls.Add(button5);
+            panel1.Controls.Add(btnTree);
             panel1.Controls.Add(btnEmpleado);
             panel1.Controls.Add(btnProductos);
             panel1.Controls.Add(btnPagos);
@@ -80,18 +80,20 @@
             panel1.Size = new Size(80, 788);
             panel1.TabIndex = 0;
             // 
-            // button5
+            // btnTree
             // 
-            button5.Cursor = Cursors.Hand;
-            button5.Dock = DockStyle.Top;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Location = new Point(0, 532);
-            button5.Name = "button5";
-            button5.Size = new Size(80, 64);
-            button5.TabIndex = 7;
-            button5.UseVisualStyleBackColor = true;
-            button5.Visible = false;
+            btnTree.Cursor = Cursors.Hand;
+            btnTree.Dock = DockStyle.Top;
+            btnTree.FlatAppearance.BorderSize = 0;
+            btnTree.FlatStyle = FlatStyle.Flat;
+            btnTree.Image = Properties.Resources.configuraciones__1_;
+            btnTree.Location = new Point(0, 532);
+            btnTree.Name = "btnTree";
+            btnTree.Size = new Size(80, 64);
+            btnTree.TabIndex = 7;
+            btnTree.UseVisualStyleBackColor = true;
+            btnTree.Visible = false;
+            btnTree.Click += btnTree_Click;
             // 
             // btnEmpleado
             // 
@@ -198,7 +200,6 @@
             btnconfig.Dock = DockStyle.Bottom;
             btnconfig.FlatAppearance.BorderSize = 0;
             btnconfig.FlatStyle = FlatStyle.Flat;
-            btnconfig.Image = Properties.Resources.configuraciones__1_;
             btnconfig.Location = new Point(0, -5);
             btnconfig.Name = "btnconfig";
             btnconfig.Size = new Size(80, 64);
@@ -379,7 +380,7 @@
         private Button btnconfig;
         private Button btnDash;
         private Button btnPaciente;
-        private Button button5;
+        private Button btnTree;
         private Button btnEmpleado;
         private Button btnProductos;
         private Button btnPagos;

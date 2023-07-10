@@ -19,6 +19,8 @@ namespace entidades
         public int hCita { get; set; } 
         public int estadoPago { get; set; }
         public decimal total { get; set; }
+        public int? idImpuesto { get; set; }
+        public int? idDescuento { get; set; }
         public bool estadoCita { get; set; }
 
     }

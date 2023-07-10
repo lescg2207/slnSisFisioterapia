@@ -169,18 +169,18 @@
             lblDniPac.AutoSize = true;
             lblDniPac.Location = new Point(225, 60);
             lblDniPac.Name = "lblDniPac";
-            lblDniPac.Size = new Size(55, 15);
+            lblDniPac.Size = new Size(27, 15);
             lblDniPac.TabIndex = 23;
-            lblDniPac.Text = "71125560";
+            lblDniPac.Text = "DNI";
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
             lblNombre.Location = new Point(32, 60);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(82, 15);
+            lblNombre.Size = new Size(51, 15);
             lblNombre.TabIndex = 22;
-            lblNombre.Text = "Leslie Cardoza";
+            lblNombre.Text = "Nombre";
             // 
             // label5
             // 
@@ -194,9 +194,11 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(327, 179);
+            btnSalir.FlatStyle = FlatStyle.Flat;
+            btnSalir.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSalir.Location = new Point(327, 174);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(75, 23);
+            btnSalir.Size = new Size(75, 30);
             btnSalir.TabIndex = 18;
             btnSalir.Text = "ATRAS";
             btnSalir.UseVisualStyleBackColor = true;
@@ -204,9 +206,11 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(225, 179);
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardar.Location = new Point(225, 175);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(75, 23);
+            btnGuardar.Size = new Size(96, 30);
             btnGuardar.TabIndex = 20;
             btnGuardar.Text = "GUARDAR";
             btnGuardar.UseVisualStyleBackColor = true;

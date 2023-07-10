@@ -87,6 +87,7 @@
             // 
             // cbxBuscar
             // 
+            cbxBuscar.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxBuscar.FormattingEnabled = true;
             cbxBuscar.Location = new Point(703, 50);
             cbxBuscar.Name = "cbxBuscar";

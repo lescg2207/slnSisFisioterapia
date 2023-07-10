@@ -32,14 +32,14 @@ namespace capaPresentacion
             InitializeComponent();
             cbxBuscar.Items.AddRange(new string[] { "Seleccione", "DNI", "Nombre", "Apellido" });
             cbxBuscar.SelectedIndex = 0;
-            listarPacientes();          
+            listarPacientes();
             DataGridViewButtonColumn boton = new DataGridViewButtonColumn();
             boton.HeaderText = "MODIFICAR";
             boton.Text = "☑";
             boton.Name = "btnModificar";
             boton.UseColumnTextForButtonValue = true;
             dgvPacientes.Columns.Add(boton);
-            
+
 
 
         }
@@ -145,7 +145,7 @@ namespace capaPresentacion
                 paginahtml_texto = paginahtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
 
                 string filas = string.Empty;
-               // decimal total = 0;
+                // decimal total = 0;
                 foreach (DataGridViewRow row in dgvPacientes.Rows)
                 {
                     filas += "<tr>";

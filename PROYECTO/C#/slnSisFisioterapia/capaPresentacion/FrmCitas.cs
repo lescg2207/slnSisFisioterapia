@@ -81,7 +81,10 @@ namespace capaPresentacion
                 estadoPago = 0,
                 total = 0,
                 estadoCita = false,
-                hCita = int.Parse(cbxHorario.SelectedValue.ToString()!)
+                hCita = int.Parse(cbxHorario.SelectedValue.ToString()!),
+                idImpuesto=1,
+                idDescuento=1,
+
             };
             var horari = new Horario
             {
@@ -113,7 +116,7 @@ namespace capaPresentacion
 
         }
 
-       
+
 
         private void panel4_MouseDown(object sender, MouseEventArgs e)
         {

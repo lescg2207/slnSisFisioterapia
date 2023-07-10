@@ -15,7 +15,6 @@ namespace entidades
         public DateTime FECHA { get; set; }
         public string HORA { get; set; } = null!;
         public string PAGO { get; set; } = null!;
-        public decimal DESCUENTO { get; set; }
         public decimal TOTAL { get; set; }
         public bool FINALIZADA { get; set; }
 
