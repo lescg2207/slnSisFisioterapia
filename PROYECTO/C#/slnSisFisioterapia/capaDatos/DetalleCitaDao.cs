@@ -23,20 +23,20 @@ namespace capaDatos
             _dbContext.SaveChanges();
         }   
 
-        public void InsertarDetalleProducto(DetalleProductos productos)
+        public void InsertarDetalleProducto(DetalleCita productos)
         {
-            _dbContext.Set<DetalleProductos>().Add(productos);
+            _dbContext.Set<DetalleCita>().Add(productos);
             _dbContext.SaveChanges();
         }
 
-        public void InsertarDetalleServicioo(DetalleServicio servicio)
+        public void InsertarDetalleServicioo(DetalleCita servicio)
         {
-            _dbContext.Set<DetalleServicio>().Add(servicio);
+            _dbContext.Set<DetalleCita>().Add(servicio);
             _dbContext.SaveChanges();
         }
-        public List<DetalleProductos> ListarProductos(int idCita)
+        public List<DetalleCita> ListarProductos(int idCita)
         {
-            var Productos=( from p in _dbContext.Set<DetalleProductos>() where p.idCita == idCita  select new DetalleProductos
+            var Productos=( from p in _dbContext.Set<DetalleCita>() where p.idCita == idCita  select new DetalleCita
             {
                 idDetalle=p.idDetalle,
                 idCita=p.idCita,

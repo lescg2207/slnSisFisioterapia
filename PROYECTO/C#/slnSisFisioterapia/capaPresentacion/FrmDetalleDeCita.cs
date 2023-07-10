@@ -165,13 +165,14 @@ namespace capaPresentacion
             decimal precioUnitario = productoSeleccionado.PRECIO;
             decimal subtotal = cantidad * precioUnitario;
 
-            var DetProducto = new DetalleProductos
+            var DetProducto = new DetalleCita
             {
                 idCita = int.Parse(lblIdCita.Text),
                 idProducto = productoSeleccionado.CODIGO,
                 cantidad = cantidad,
                 precioU = precioUnitario,
                 subtotal = subtotal,
+                estado = true,
             };
 
             detCita.InsertarDetalleProducto(DetProducto);
@@ -180,7 +181,7 @@ namespace capaPresentacion
         }
         void ListarProductos(int idCita)
         {
-            List<DetalleProductos> listaProductos = detCita.ListarProductos(idCita);
+            List<DetalleCita> listaProductos = detCita.ListarProductos(idCita);
             dgvListaProductos.DataSource = listaProductos;
             dgvListaProductos.Columns["idCita"].Visible = false;
         }
@@ -219,7 +220,7 @@ namespace capaPresentacion
                 else
                 {
                     // Si el nodo seleccionado no tiene un precio asociado, limpiar el TextBox
-                    txtPrecio.Text = "";
+                    txtPrecio.Text = "0.00";
                 }
             }
         }
@@ -237,7 +238,7 @@ namespace capaPresentacion
             if (ckbServicio.Checked)
             {
 
-                var detServico = new DetalleServicio
+                var detServico = new DetalleCita
                 {
                     idCita = int.Parse(lblIdCita.Text),
                     idServicio = 2,

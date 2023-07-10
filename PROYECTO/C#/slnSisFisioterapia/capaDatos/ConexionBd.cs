@@ -26,6 +26,8 @@ namespace capaDatos
         public DbSet<DetalleProductos> detalleCita_Producto { get; set; }
         public DbSet<DetalleServicio> detalleCita_Servicio { get; set; }
 
+        public DbSet<DetalleCita> DetalleCita { get; set; }
+
         public ConexionBd(DbContextOptions<ConexionBd> options, string providerName) : base(options)
         {
             _providerName = providerName;
