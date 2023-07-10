@@ -243,26 +243,6 @@ namespace capaPresentacion
             }
         }
 
-        public void GenerarReporteEmpleados()
-        {
-            List<ListaEmpleadoCargo> empleados = _empleadoBll.ListaEmpleadoCargo(); // Obtén la lista de empleados desde tu método existente
-
-            // Crear un nuevo objeto ReportDataSource con los datos de empleados
-            /* ReportDataSource rds = new ReportDataSource("DataSetEmpleados", empleados);
-
-             // Limpiar el control ReportViewer
-             reportViewer1.LocalReport.DataSources.Clear();
-
-             // Asignar el objeto ReportDataSource al control ReportViewer
-             reportViewer1.LocalReport.DataSources.Add(rds);
-
-             // Establecer la ruta del archivo de diseño del informe (.rdlc)
-             reportViewer1.LocalReport.ReportPath = "ruta_del_archivo_de_diseno_del_informe.rdlc";
-
-             // Actualizar el informe en el control ReportViewer
-             reportViewer1.RefreshReport();*/
-        }
-
         private void dgvEmpleado_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex >= 0 && this.dgvEmpleado.Columns[e.ColumnIndex].Name == "btnEliminar" && e.RowIndex >= 0)

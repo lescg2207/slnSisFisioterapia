@@ -133,6 +133,9 @@ namespace capaPresentacion
             dgvListaProductos.DataSource = null;
             dgvListaProductos.DataSource = listaProductos;
             dgvListaProductos.Columns["idCita"].Visible = false;
+            dgvListaProductos.Columns["idDetalle"].Visible = false;
+            dgvListaProductos.Columns["idServicio"].Visible = false;
+            dgvListaProductos.Columns["estado"].Visible = false;
         }
 
         private void ckbServicio_CheckedChanged(object sender, EventArgs e)
