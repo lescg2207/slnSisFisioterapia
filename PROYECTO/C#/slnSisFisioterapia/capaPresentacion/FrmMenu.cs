@@ -128,9 +128,13 @@ namespace capaPresentacion
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Close();
-            FrmGestorBd Log = new FrmGestorBd();
-            Log.Show();
+            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas salir?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                FrmGestorBd Log = new FrmGestorBd();
+                Log.Show();
+                this.Close();
+            }
         }
     }
 }

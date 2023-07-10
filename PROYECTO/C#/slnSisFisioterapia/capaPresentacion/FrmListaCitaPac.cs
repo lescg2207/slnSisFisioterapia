@@ -62,7 +62,7 @@ namespace capaPresentacion
                 int index = e.RowIndex;
                 if (index >= 0)
                 {
-                    FrmDetalleDeCita detalleDeCita = new FrmDetalleDeCita(gestor,conexion);
+                    FrmDetalleDeCita detalleDeCita = new FrmDetalleDeCita(gestor, conexion);
                     detalleDeCita.lblIdCita.Text = dgvCitas.CurrentRow.Cells[1].Value.ToString();
                     detalleDeCita.ckbEstadoCita.Checked = true;
                     detalleDeCita.ShowDialog();
