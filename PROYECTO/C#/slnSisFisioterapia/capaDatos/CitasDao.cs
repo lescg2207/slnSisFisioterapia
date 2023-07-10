@@ -37,7 +37,7 @@ namespace capaDatos
 
         public List<ListaCitaPacHorario> ListarCitaEmPaHo()
         {
-            var citaspac = (from c in _dbContext.Set<Cita>()join h in _dbContext.Set<Horario>()on c.hCita equals h.idHorario join e in _dbContext.Set<Empleado>()on c.idEmpleado equals e.IdEmpleado select new ListaCitaPacHorario {
+            var citaspac = (from c in _dbContext.Set<Cita>()join h in _dbContext.Set<Horario>()on c.hCita equals h.idHorario join e in _dbContext.Set<Empleado>()on c.idEmpleado equals e.IdEmpleado join des in _dbContext.Set<Descuento>() on c.idDescuento equals des.idDescuento join im in _dbContext.Set<Impuesto>() on c.idDescuento equals im.idImpuesto select new ListaCitaPacHorario {
             
                 CODIGO=c.idCita,
                 PACIENTE=c.dniPaciente,
@@ -46,6 +46,8 @@ namespace capaDatos
                 HORA=h.horario,
                 PAGO = (c.estadoPago == 0) ? "Pendiente" : "Pagado",
                 TOTAL=Convert.ToDecimal(c.total.ToString("0.00")),
+                IMPUESTO=des.valorDescuento,
+                DESCUENTO=im.porcentaje,                
                 FINALIZADA=c.estadoCita
             
             }).ToList();

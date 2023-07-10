@@ -18,7 +18,7 @@ namespace capaPresentacion
         private CitasBll _citaBll;
         private string gestor, conexion;
 
-
+        public decimal total;
         public FrmListaCitaPac(string gest, string cone)
         {
             _citaBll = new CitasBll(gest, cone);
@@ -43,7 +43,9 @@ namespace capaPresentacion
         {
             List<ListaCitaPacHorario> tabla = _citaBll.ListarCitaEmPaHo();
             dgvCitas.DataSource = tabla;
-            
+            dgvCitas.Columns["DESCUENTO"].Visible = false;
+            dgvCitas.Columns["IMPUESTO"].Visible = false;
+
 
 
         }
@@ -80,9 +82,24 @@ namespace capaPresentacion
                 int index = e.RowIndex;
                 if (index >= 0)
                 {
+                    decimal subtotal;
+                    decimal descuento;
+                    decimal impuesto;
                     frmBoleta Boleta = new frmBoleta(gestor, conexion);
                     Boleta.lblid.Text = dgvCitas.CurrentRow.Cells[2].Value.ToString();
-                    Boleta.lblTOtalCIta.Text = dgvCitas.CurrentRow.Cells[9].Value.ToString();
+                    subtotal = decimal.Parse(dgvCitas.CurrentRow.Cells[8].Value.ToString()!);
+                    impuesto = decimal.Parse(dgvCitas.CurrentRow.Cells[10].Value.ToString()!);
+                    descuento = decimal.Parse(dgvCitas.CurrentRow.Cells[9].Value.ToString()!);
+                    Boleta.lblTOtalCIta.Text = subtotal.ToString();
+                    Boleta.lbldescuento.Text = descuento.ToString();
+                    Boleta.lblImpuesto.Text = impuesto.ToString();
+
+                    decimal total1;
+                    total1=((subtotal*impuesto)+subtotal);
+                    total = (total1 - (total1 * descuento));
+
+                    Boleta.lbltotal.Text = total.ToString();
+
                     Boleta.ShowDialog();
                 }
             }

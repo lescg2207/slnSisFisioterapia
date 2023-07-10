@@ -45,13 +45,13 @@
             button2 = new Button();
             lblid = new Label();
             label8 = new Label();
-            label9 = new Label();
+            lbltotal = new Label();
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
             lblTOtalCIta = new Label();
-            label10 = new Label();
-            label15 = new Label();
+            lblImpuesto = new Label();
+            lbldescuento = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -221,14 +221,14 @@
             label8.TabIndex = 16;
             label8.Text = "Total :";
             // 
-            // label9
+            // lbltotal
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(731, 366);
-            label9.Name = "label9";
-            label9.Size = new Size(28, 15);
-            label9.TabIndex = 17;
-            label9.Text = "0.00";
+            lbltotal.AutoSize = true;
+            lbltotal.Location = new Point(727, 366);
+            lbltotal.Name = "lbltotal";
+            lbltotal.Size = new Size(28, 15);
+            lbltotal.TabIndex = 17;
+            lbltotal.Text = "0.00";
             // 
             // label11
             // 
@@ -269,36 +269,36 @@
             lblTOtalCIta.TabIndex = 22;
             lblTOtalCIta.Text = "0.00";
             // 
-            // label10
+            // lblImpuesto
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(727, 298);
-            label10.Name = "label10";
-            label10.Size = new Size(32, 15);
-            label10.TabIndex = 23;
-            label10.Text = "18 %";
+            lblImpuesto.AutoSize = true;
+            lblImpuesto.Location = new Point(727, 298);
+            lblImpuesto.Name = "lblImpuesto";
+            lblImpuesto.Size = new Size(28, 15);
+            lblImpuesto.TabIndex = 23;
+            lblImpuesto.Text = "0.00";
             // 
-            // label15
+            // lbldescuento
             // 
-            label15.AutoSize = true;
-            label15.Location = new Point(729, 331);
-            label15.Name = "label15";
-            label15.Size = new Size(28, 15);
-            label15.TabIndex = 24;
-            label15.Text = "0.00";
+            lbldescuento.AutoSize = true;
+            lbldescuento.Location = new Point(727, 331);
+            lbldescuento.Name = "lbldescuento";
+            lbldescuento.Size = new Size(28, 15);
+            lbldescuento.TabIndex = 24;
+            lbldescuento.Text = "0.00";
             // 
             // frmBoleta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(813, 491);
-            Controls.Add(label15);
-            Controls.Add(label10);
+            Controls.Add(lbldescuento);
+            Controls.Add(lblImpuesto);
             Controls.Add(lblTOtalCIta);
             Controls.Add(label13);
             Controls.Add(label12);
             Controls.Add(label11);
-            Controls.Add(label9);
+            Controls.Add(lbltotal);
             Controls.Add(label8);
             Controls.Add(lblid);
             Controls.Add(button2);
@@ -344,12 +344,12 @@
         public Label lblid;
         public TextBox txtnombres;
         private Label label8;
-        private Label label9;
         private Label label11;
         private Label label12;
         private Label label13;
-        private Label label10;
-        private Label label15;
         public Label lblTOtalCIta;
+        public Label lblImpuesto;
+        public Label lbldescuento;
+        public Label lbltotal;
     }
 }
