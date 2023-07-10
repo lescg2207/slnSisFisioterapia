@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using entidades;
 using System.Windows.Forms;
 using capaDatos;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using iTextSharp.tool.xml;
 
 namespace capaPresentacion
 {
@@ -109,6 +112,86 @@ namespace capaPresentacion
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.FileName = string.Format("{0}.pdf", DateTime.Now.ToString("ddMMyyyyHHmmss"));
+
+
+
+            //string PaginaHTML_Texto = "<table border=\"1\"><tr><td>HOLA MUNDO</td></tr></table>";
+            string PaginaHTML_Texto = Properties.Resources.reporte_plantilla.ToString();
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DNI", txtdni.Text);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NOMBRES", txtnombres.Text);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@APELLIDOS", txtapellidos.Text);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", txtfecha.Text.ToString());
+
+            string filas = string.Empty;
+            decimal total = 0;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                filas += "<tr>";
+                filas += "<td>" + row.Cells["CODIGO"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["SERVICIO"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["CANTIDAD"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["PRECIO"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["SUBTOTAL"].Value.ToString() + "</td>";
+                filas += "</tr>";
+                total += decimal.Parse(row.Cells["SUBTOTAL"].Value.ToString());
+            }
+
+            filas += "<tr><td colspan='5'></td></tr>"; // Agrega una fila vacía para separar las tablas
+
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                filas += "<tr>";
+                filas += "<td>" + row.Cells["CODIGO"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["PRODUCTO"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["CANTIDAD"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["PRECIO"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["SUBTOTAL"].Value.ToString() + "</td>";
+                filas += "</tr>";
+                total += decimal.Parse(row.Cells["SUBTOTAL"].Value.ToString());
+            }
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", total.ToString());
+
+
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
+                {
+                    //Creamos un nuevo documento y lo definimos como PDF
+                    Document pdfDoc = new Document(PageSize.A3, 25, 25, 25, 25);
+
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+                    pdfDoc.Add(new Phrase(""));
+
+                    //Agregamos la imagen del banner al documento
+                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoReport, System.Drawing.Imaging.ImageFormat.Png);
+                    img.ScaleToFit(160, 160);
+                    img.Alignment = iTextSharp.text.Image.UNDERLYING;
+
+                    //img.SetAbsolutePosition(10,100);
+                    img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+                    pdfDoc.Add(img);
+
+
+                    //pdfDoc.Add(new Phrase("Hola Mundo"));
+                    using (StringReader sr = new StringReader(PaginaHTML_Texto))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                    }
+
+                    pdfDoc.Close();
+                    stream.Close();
+                }
+
+            }
         }
     }
 }

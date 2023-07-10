@@ -191,6 +191,7 @@
             button1.TabIndex = 13;
             button1.Text = "GENERAR";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
