@@ -98,12 +98,13 @@ CREATE TABLE Descuentos (
 create table DetalleCita(
 idDetalle int primary key identity,
 idCita int foreign key references Citas(idCita),
-idServicio int foreign key references Servicio(idServicio),
-idProducto int foreign key references Productos(idProducto),
+idServicio int foreign key references Servicio(idServicio) null,
+idProducto int foreign key references Productos(idProducto) null,
 cantidad int,
 precioU money,
 subtotal money,
-descuento int foreign key references Descuentos(idDescuento)
+descuento int foreign key references Descuentos(idDescuento)null,
+estado bit
 );
 
 select *from Descuentos
