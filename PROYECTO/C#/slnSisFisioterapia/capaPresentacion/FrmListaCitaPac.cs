@@ -85,20 +85,24 @@ namespace capaPresentacion
                     decimal subtotal;
                     decimal descuento;
                     decimal impuesto;
+                    decimal descuento2;
+                    decimal impuesto3;
                     frmBoleta Boleta = new frmBoleta(gestor, conexion);
                     Boleta.lblid.Text = dgvCitas.CurrentRow.Cells[2].Value.ToString();
                     subtotal = decimal.Parse(dgvCitas.CurrentRow.Cells[8].Value.ToString()!);
                     impuesto = decimal.Parse(dgvCitas.CurrentRow.Cells[10].Value.ToString()!);
                     descuento = decimal.Parse(dgvCitas.CurrentRow.Cells[9].Value.ToString()!);
-                    Boleta.lblTOtalCIta.Text = subtotal.ToString();
-                    Boleta.lbldescuento.Text = descuento.ToString();
-                    Boleta.lblImpuesto.Text = impuesto.ToString();
+                    
 
-                    decimal total1;
-                    total1=((subtotal*impuesto)+subtotal);
-                    total = (total1 - (total1 * descuento));
-
-                    Boleta.lbltotal.Text = total.ToString();
+                    decimal total1;                                      
+                    impuesto3 = subtotal * impuesto;                   
+                    total1 = impuesto3 + subtotal;
+                    descuento2 = total1 * descuento;
+                    total=total1-descuento2;
+                    Boleta.lblTOtalCIta.Text = subtotal.ToString("0.00");
+                    Boleta.lbldescuento.Text = descuento2.ToString("0.00");
+                    Boleta.lblImpuesto.Text = impuesto3.ToString("0.00");
+                    Boleta.lbltotal.Text = total.ToString("0.00");
 
                     Boleta.ShowDialog();
                 }
