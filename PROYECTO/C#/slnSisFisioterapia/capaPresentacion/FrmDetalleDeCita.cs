@@ -1,6 +1,9 @@
 ﻿using capaNegocios;
 using entidades;
 using entidades.Vistas;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using iTextSharp.tool.xml;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -255,6 +258,19 @@ namespace capaPresentacion
             };
             detCita.ActualizarTotalCita(cita);
             MessageBox.Show("Detalles de cita guardados correctamente.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //int index = e.RowIndex;
+            //if (index >= 0)
+            //{
+                frmBoleta boleta = new frmBoleta(gestor,conexion);
+                string idDetcita = lblIdCita.Text;
+                boleta.lblid.Text = idDetcita.ToString();
+                boleta.ShowDialog();
+
+            //}
         }
         void CargarSesion(int idTipo)
         {

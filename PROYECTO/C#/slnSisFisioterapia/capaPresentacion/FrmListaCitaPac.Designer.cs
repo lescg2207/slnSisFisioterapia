@@ -149,6 +149,6 @@
         private Panel panel1;
         private Label label2;
         private Button btnNuevo;
-        private DataGridView dgvCitas;
+        public DataGridView dgvCitas;
     }
 }

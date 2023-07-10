@@ -34,6 +34,8 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel7 = new Panel();
+            button1 = new Button();
+            btnGuardar = new Button();
             btnTotal = new Button();
             btnGuardar = new Button();
             lbltotalCita = new Label();
@@ -96,6 +98,7 @@
             // 
             // panel7
             // 
+            panel7.Controls.Add(button1);
             panel7.Controls.Add(btnTotal);
             panel7.Controls.Add(btnGuardar);
             panel7.Controls.Add(lbltotalCita);
@@ -105,6 +108,26 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(647, 75);
             panel7.TabIndex = 14;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(141, 15);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 14;
+            button1.Text = "BOLETA";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.Location = new Point(38, 15);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(75, 23);
+            btnGuardar.TabIndex = 13;
+            btnGuardar.Text = "GUARDAR";
+            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnTotal
             // 
@@ -495,6 +518,8 @@
         private Button btnGuardar;
         public Label lblIdCita;
         private Label label5;
+        private Label label4;
+        private Button button1;
         private Label label10;
         private Label label8;
         private ComboBox cbxServicio;
