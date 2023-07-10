@@ -53,6 +53,8 @@ namespace capaPresentacion
         {
             FrmCitas citas = new FrmCitas(gestor, conexion);
             citas.ShowDialog();
+            CargarCitas();
+            
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -82,7 +84,6 @@ namespace capaPresentacion
                     Boleta.lblid.Text = dgvCitas.CurrentRow.Cells[2].Value.ToString();
                     Boleta.lblTOtalCIta.Text = dgvCitas.CurrentRow.Cells[9].Value.ToString();
                     Boleta.ShowDialog();
-                    //CargarCitas();
                 }
             }
         }

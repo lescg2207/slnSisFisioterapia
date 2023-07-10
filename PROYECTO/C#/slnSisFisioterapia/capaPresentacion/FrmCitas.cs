@@ -71,27 +71,6 @@ namespace capaPresentacion
             }
         }
 
-
-
-
-
-        /*private void txtBuscar_Enter(object sender, EventArgs e)
-        {
-            if (txtBuscar.Text == "Ingresa nombre del doctor")
-            {
-                txtBuscar.Text = "";
-                txtBuscar.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtBuscar_Leave(object sender, EventArgs e)
-        {
-            if (txtBuscar.Text == "")
-            {
-                txtBuscar.Text = "Ingresa nombre del doctor";
-                txtBuscar.ForeColor = Color.DimGray;
-            }
-        }*/
         private void InsertarCitas()
         {
             var citas = new Cita
@@ -118,6 +97,8 @@ namespace capaPresentacion
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             InsertarCitas();
+            MessageBox.Show("Cita guardada correctamente");
+            this.Close();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
