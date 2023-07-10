@@ -86,7 +86,6 @@
             button5.Dock = DockStyle.Top;
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
-            button5.Image = Properties.Resources.paciente;
             button5.Location = new Point(0, 532);
             button5.Name = "button5";
             button5.Size = new Size(80, 64);
@@ -100,7 +99,6 @@
             btnEmpleado.Dock = DockStyle.Top;
             btnEmpleado.FlatAppearance.BorderSize = 0;
             btnEmpleado.FlatStyle = FlatStyle.Flat;
-            btnEmpleado.Image = Properties.Resources.empleado;
             btnEmpleado.Location = new Point(0, 468);
             btnEmpleado.Name = "btnEmpleado";
             btnEmpleado.Size = new Size(80, 64);
@@ -115,7 +113,6 @@
             btnProductos.Dock = DockStyle.Top;
             btnProductos.FlatAppearance.BorderSize = 0;
             btnProductos.FlatStyle = FlatStyle.Flat;
-            btnProductos.Image = Properties.Resources.caja;
             btnProductos.Location = new Point(0, 404);
             btnProductos.Name = "btnProductos";
             btnProductos.Size = new Size(80, 64);
@@ -130,7 +127,6 @@
             btnPagos.Dock = DockStyle.Top;
             btnPagos.FlatAppearance.BorderSize = 0;
             btnPagos.FlatStyle = FlatStyle.Flat;
-            btnPagos.Image = Properties.Resources.dolar;
             btnPagos.Location = new Point(0, 340);
             btnPagos.Name = "btnPagos";
             btnPagos.Size = new Size(80, 64);
@@ -144,7 +140,6 @@
             btnCita.Dock = DockStyle.Top;
             btnCita.FlatAppearance.BorderSize = 0;
             btnCita.FlatStyle = FlatStyle.Flat;
-            btnCita.Image = Properties.Resources.calendario__2_;
             btnCita.Location = new Point(0, 276);
             btnCita.Name = "btnCita";
             btnCita.Size = new Size(80, 64);
@@ -159,7 +154,6 @@
             btnPaciente.Dock = DockStyle.Top;
             btnPaciente.FlatAppearance.BorderSize = 0;
             btnPaciente.FlatStyle = FlatStyle.Flat;
-            btnPaciente.Image = Properties.Resources.paciente;
             btnPaciente.Location = new Point(0, 212);
             btnPaciente.Name = "btnPaciente";
             btnPaciente.Size = new Size(80, 64);
@@ -218,6 +212,7 @@
             btnLogout.Size = new Size(80, 64);
             btnLogout.TabIndex = 0;
             btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // panel6
             // 
