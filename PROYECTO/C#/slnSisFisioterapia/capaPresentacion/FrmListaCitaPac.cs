@@ -25,18 +25,20 @@ namespace capaPresentacion
             this.gestor = gest;
             this.conexion = cone;
             InitializeComponent();
+
             CargarCitas();
+            DataGridViewButtonColumn boton = new DataGridViewButtonColumn();
+            boton.HeaderText = "EDITAR";
+            boton.Name = "btnEditar";
+            boton.UseColumnTextForButtonValue = true;
+            dgvCitas.Columns.Add(boton);
         }
 
         void CargarCitas()
         {
             List<ListaCitaPacHorario> tabla = _citaBll.ListarCitaEmPaHo();
             dgvCitas.DataSource = tabla;
-            DataGridViewButtonColumn boton = new DataGridViewButtonColumn();
-            boton.HeaderText = "EDITAR";
-            boton.Name = "btnEditar";
-            boton.UseColumnTextForButtonValue = true;
-            dgvCitas.Columns.Add(boton);
+            
 
 
         }
@@ -62,7 +64,9 @@ namespace capaPresentacion
                 {
                     FrmDetalleDeCita detalleDeCita = new FrmDetalleDeCita(gestor,conexion);
                     detalleDeCita.lblIdCita.Text = dgvCitas.CurrentRow.Cells[1].Value.ToString();
-                    detalleDeCita.Show();
+                    detalleDeCita.ckbEstadoCita.Checked = true;
+                    detalleDeCita.ShowDialog();
+                    CargarCitas();
                 }
             }
         }

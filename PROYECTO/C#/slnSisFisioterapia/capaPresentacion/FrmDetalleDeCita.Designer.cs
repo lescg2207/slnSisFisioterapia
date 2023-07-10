@@ -34,6 +34,7 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel7 = new Panel();
+            btnTotal = new Button();
             btnGuardar = new Button();
             lbltotalCita = new Label();
             label7 = new Label();
@@ -95,6 +96,7 @@
             // 
             // panel7
             // 
+            panel7.Controls.Add(btnTotal);
             panel7.Controls.Add(btnGuardar);
             panel7.Controls.Add(lbltotalCita);
             panel7.Controls.Add(label7);
@@ -104,9 +106,19 @@
             panel7.Size = new Size(647, 75);
             panel7.TabIndex = 14;
             // 
+            // btnTotal
+            // 
+            btnTotal.Location = new Point(325, 15);
+            btnTotal.Name = "btnTotal";
+            btnTotal.Size = new Size(122, 23);
+            btnTotal.TabIndex = 14;
+            btnTotal.Text = "CALCULAR TOTAL";
+            btnTotal.UseVisualStyleBackColor = true;
+            btnTotal.Click += btnTotal_Click;
+            // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(338, 15);
+            btnGuardar.Location = new Point(238, 15);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(75, 23);
             btnGuardar.TabIndex = 13;
@@ -155,6 +167,7 @@
             cbxSesiones.Name = "cbxSesiones";
             cbxSesiones.Size = new Size(139, 23);
             cbxSesiones.TabIndex = 19;
+            cbxSesiones.SelectedIndexChanged += cbxSesiones_SelectedIndexChanged;
             // 
             // lblPrecio
             // 
@@ -193,6 +206,7 @@
             cbxServicio.Name = "cbxServicio";
             cbxServicio.Size = new Size(145, 23);
             cbxServicio.TabIndex = 15;
+            cbxServicio.SelectedIndexChanged += cbxServicio_SelectedIndexChanged;
             cbxServicio.SelectedValueChanged += cbxServicio_SelectedValueChanged;
             // 
             // label5
@@ -421,6 +435,7 @@
             // ckbEstadoCita
             // 
             ckbEstadoCita.AutoSize = true;
+            ckbEstadoCita.Enabled = false;
             ckbEstadoCita.Location = new Point(125, 22);
             ckbEstadoCita.Name = "ckbEstadoCita";
             ckbEstadoCita.Size = new Size(15, 14);
@@ -464,7 +479,6 @@
         private DataGridView dgvListaProductos;
         private Panel panel3;
         private Label label1;
-        private CheckBox ckbEstadoCita;
         private Panel panel5;
         private Label label3;
         private CheckBox ckbServicio;
@@ -487,5 +501,7 @@
         private Label lblPrecio;
         private Label label11;
         private ComboBox cbxSesiones;
+        private Button btnTotal;
+        public CheckBox ckbEstadoCita;
     }
 }

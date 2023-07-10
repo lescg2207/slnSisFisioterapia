@@ -50,6 +50,16 @@ namespace capaDatos
             
         }
 
+        public void ActualizarTotalCita(Cita cita)
+        {
+            var totalExistente = _dbContext.Set<Cita>().Find(cita.idCita);
+            if(totalExistente != null)
+            {
+                totalExistente.total=cita.total;
+                totalExistente.estadoCita=cita.estadoCita;
+                _dbContext.SaveChanges();
+            }
+        }
         
     }
 }

@@ -96,7 +96,7 @@ namespace capaPresentacion
 
         private void btnDash_Click(object sender, EventArgs e)
         {
-            FrmDash tre = new FrmDash();
+            Frmtreeview tre = new Frmtreeview(gestor,conexion);
             AbrirFrm(tre);
 
 

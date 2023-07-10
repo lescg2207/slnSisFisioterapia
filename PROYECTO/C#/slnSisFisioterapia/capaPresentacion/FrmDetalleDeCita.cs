@@ -23,7 +23,7 @@ namespace capaPresentacion
         private ServicioBll servBll;
         private DescuentoBll descBll;
         private DetalleCitaBll detCita;
-        decimal subtotal2;
+        decimal totalGeneral = 0;
         private List<DetalleCita> listaProductos = new List<DetalleCita>();
         public FrmDetalleDeCita(string get, string con)
         {
@@ -37,8 +37,7 @@ namespace capaPresentacion
             InitializeComponent();
             this.Load += FrmDetalleDeCita_Load!;
             ListarProducto();
-            subtotal2 = 100;
-            lbltotalCita.Text = subtotal2.ToString();
+
             ListarServicios();
             //ListarProductos();
 
@@ -66,6 +65,7 @@ namespace capaPresentacion
             else
             {
                 pServicios.Visible = true;
+                lblPrecio.Text = "0.00";
             }
 
         }
@@ -123,7 +123,7 @@ namespace capaPresentacion
                 cantidad = cantidad,
                 precioU = precioUnitario,
                 subtotal = subtotal,
-                estado = true,
+
             };
 
             // Agrega el objeto DetProducto a la lista existente en memoria
@@ -135,23 +135,45 @@ namespace capaPresentacion
             dgvListaProductos.Columns["idCita"].Visible = false;
             dgvListaProductos.Columns["idDetalle"].Visible = false;
             dgvListaProductos.Columns["idServicio"].Visible = false;
-            dgvListaProductos.Columns["estado"].Visible = false;
+
+            decimal total = 0;
+
+            foreach (DataGridViewRow fila in dgvListaProductos.Rows)
+            {
+                total += Convert.ToDecimal(fila.Cells["subtotal"].Value);
+            }
+
+            lbltotal.Text = total.ToString();
+            // Calcula el total de los productos y agrégalo al total general
+            /*decimal totalProductos = 0;
+
+            foreach (DataGridViewRow fila in dgvListaProductos.Rows)
+            {
+                totalProductos += Convert.ToDecimal(fila.Cells["subtotal"].Value);
+            }*/
+
+            //totalGeneral += totalProductos;
+
+            // Actualiza el TextBox de total general
+            // lbltotalCita.Text = totalGeneral.ToString();
         }
 
         private void ckbServicio_CheckedChanged(object sender, EventArgs e)
         {
-            if (ckbServicio.Checked == false)
+            if (ckbServicio.Checked)
             {
-                pServicios.Visible = false;
-                //dgvListaProductos.Rows.Clear();
-                //decimal total = 0;
+                pServicios.Visible = true;
 
-                // lbltotal.Text = total.ToString();
+                Servicio servicioSeleccionado = (Servicio)cbxServicio.SelectedItem;
+                decimal precioServicio = servicioSeleccionado.precio;
+                lblPrecio.Text = precioServicio.ToString();
             }
             else
             {
-                pServicios.Visible = true;
+                pServicios.Visible = false;
+                lblPrecio.Text = "0.00";
             }
+
         }
 
 
@@ -175,7 +197,7 @@ namespace capaPresentacion
                         cantidad = int.Parse(row.Cells["cantidad"].Value.ToString()!),
                         precioU = decimal.Parse(row.Cells["precioU"].Value.ToString()!),
                         subtotal = decimal.Parse(row.Cells["subtotal"].Value.ToString()!),
-                        estado = true
+
                     };
 
                     // Agregar el detalle del producto a la lista
@@ -183,7 +205,7 @@ namespace capaPresentacion
                 }
             }
             Servicio servicioSelecc = (Servicio)cbxServicio.SelectedItem;
-            Sesiones sesionselecci=(Sesiones)cbxSesiones.SelectedItem;
+            Sesiones sesionselecci = (Sesiones)cbxSesiones.SelectedItem;
             decimal precio;
 
             if (servicioSelecc.servicio == "Paquete")
@@ -192,7 +214,7 @@ namespace capaPresentacion
             }
             else
             {
-                precio=servicioSelecc.precio;
+                precio = servicioSelecc.precio;
             }
 
 
@@ -208,11 +230,13 @@ namespace capaPresentacion
                     cantidad = 1,
                     precioU = precio,
                     subtotal = precio,
-                    estado = true
+
                 };
 
                 // Agregar el detalle del servicio a la lista
                 detallesCita.Add(detalleServicio);
+
+
             }
 
             // Insertar los detalles de la cita en la base de datos
@@ -221,7 +245,15 @@ namespace capaPresentacion
                 detCita.InsertarDetalle(detalle);
             }
 
-            // Mostrar mensaje de éxito u otra acción necesaria
+
+            var cita = new Cita
+            {
+                idCita = int.Parse(lblIdCita.Text),
+                total = decimal.Parse(lbltotalCita.Text),
+                estadoCita=ckbEstadoCita.Checked,
+
+            };
+            detCita.ActualizarTotalCita(cita);
             MessageBox.Show("Detalles de cita guardados correctamente.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         void CargarSesion(int idTipo)
@@ -232,8 +264,12 @@ namespace capaPresentacion
 
             cbxSesiones.DataSource = sesiones;
             cbxSesiones.DisplayMember = "sesiones";
-            cbxSesiones.ValueMember = "idSesion";
+            cbxSesiones.ValueMember = "precio";
+            // Obtener el precio del servicio seleccionado
+            decimal precioServicio = Convert.ToDecimal(sesiones.FirstOrDefault()?.precio ?? 0);
 
+            // Asignar el precio al TextBox correspondiente
+            lblPrecio.Text = precioServicio.ToString("0.00");
 
 
         }
@@ -249,6 +285,46 @@ namespace capaPresentacion
             }
 
 
+        }
+
+        private void cbxSesiones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            Sesiones sesionSeleccionada = (Sesiones)cbxSesiones.SelectedItem;
+            //decimal precioSesion = sesionSeleccionada.precio;
+            //
+            decimal precioSesion = sesionSeleccionada.precio;
+            ///totalGeneral += precioSesion;
+            lblPrecio.Text = precioSesion.ToString("0.00");
+            // Actualiza el TextBox de total general
+            //lbltotalCita.Text = totalGeneral.ToString();
+
+            // Obtiene el precio de la sesión seleccionada y agrégalo al total general
+
+
+            // Actualiza el TextBox de total general
+
+        }
+
+        private void cbxServicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+            Servicio servicioSeleccionado = (Servicio)cbxServicio.SelectedItem;
+            //decimal precioServicio = servicioSeleccionado.precio;
+            decimal precioServicio = servicioSeleccionado.precio;
+            //totalGeneral += precioServicio;
+            lblPrecio.Text = precioServicio.ToString();
+            // Actualiza el TextBox de total general
+            //lbltotalCita.Text = totalGeneral.ToString();
+        }
+
+        private void btnTotal_Click(object sender, EventArgs e)
+        {
+            decimal tProductos = decimal.Parse(lbltotal.Text);
+            decimal tServicio = decimal.Parse(lblPrecio.Text);
+            decimal total = tProductos + tServicio;
+            lbltotalCita.Text = total.ToString();
         }
     }
 }

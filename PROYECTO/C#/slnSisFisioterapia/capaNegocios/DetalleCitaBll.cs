@@ -59,5 +59,10 @@ namespace capaNegocios
         {
             return _detalleDao.ListarProductos(idCita);        
         }
+
+        public void ActualizarTotalCita(Cita cita)
+        {
+            _detalleDao.ActualizarTotalCita(cita);
+        }
     }
 }

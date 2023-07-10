@@ -17,6 +17,5 @@ namespace entidades
         public int cantidad { get; set; }
         public decimal precioU { get; set; }
         public decimal subtotal { get; set; }       
-        public bool? estado { get; set; }
     }
 }
