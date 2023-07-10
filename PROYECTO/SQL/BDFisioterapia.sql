@@ -109,7 +109,7 @@ precioU money,
 subtotal money
 );
 
-insert into Descuentos values('Mas Citas',0.10)
+insert into Descuentos values('Todas las citas',0.05)
 insert into Descuentos values('Regular Citas',0.06)
 insert into Descuentos values('Pocas Citas',0.03)
 
@@ -121,7 +121,7 @@ insert into Empleado(nombres,apellidos,usuario,contraseña,idCargo,estadoEmp) val
 insert into horario(horario,estado) values('10:00',1),('11:00',1),('12:00',1),('13:00',1),('14:00',1),('15:00',1),('16:00',1),('17:00',1),('18:00',1)
 
 
-insert into Servicio(sevicio,precio) values('Diario',35),('Domiciliario',40),('Paquete',0)
+insert into Servicio(servicio,precio) values('Diario',35),('Domiciliario',40),('Paquete',0)
 
 insert into Sesiones(idTipo,sesiones,precio) values(3,10,315),(3,12,385),(3,15,490)
 
@@ -129,9 +129,22 @@ insert into Impuesto(impuesto,porcentaje) values ('IGV','0.18')
 
 
 
-select*from citas
+select*from Citas
 
+SELECT d.idDetalle, c.idCita, p.nomProducto AS Producto, s.servicio AS Servicio, d.cantidad, d.precioU, d.subtotal
+FROM DetalleCita d
+JOIN Citas c ON d.idCita = c.idCita
+LEFT JOIN Productos p ON d.idProducto = p.idProducto
+LEFT JOIN Servicio s ON d.idServicio = s.idServicio;
 
+SELECT d.idDetalle, c.idCita,
+    CASE
+        WHEN d.idProducto IS NOT NULL THEN (SELECT nomProducto FROM Productos WHERE idProducto = d.idProducto)
+        WHEN d.idServicio IS NOT NULL THEN (SELECT servicio FROM Servicio WHERE idServicio = d.idServicio)
+    END AS NOMBRE,
+    d.cantidad, d.precioU, d.subtotal
+FROM DetalleCita d
+JOIN Citas c ON d.idCita = c.idCita;
 
 
 
