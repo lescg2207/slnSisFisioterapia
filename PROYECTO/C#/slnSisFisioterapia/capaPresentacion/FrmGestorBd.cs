@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,18 +51,30 @@ namespace capaPresentacion
             if (comboBoxDatabase.SelectedItem.ToString() == "SqlServer")
             {
                 _gestorSeleccionado = "SqlServer";
-
             }
             else if (comboBoxDatabase.SelectedItem.ToString() == "MySql")
             {
                 _gestorSeleccionado = "MySql";
-
             }
 
             connectionString = GetConnectionString(_gestorSeleccionado, server, database, username, password);
-            FrmLogin paciente = new FrmLogin(_gestorSeleccionado, connectionString);
-            paciente.Show();
-            this.Hide();
+
+            try
+            {
+                using (var connection = new SqlConnection(connectionString)) // Cambia SqlConnection por MySqlConnection si estás utilizando MySQL
+                {
+                    connection.Open();
+                    MessageBox.Show("Conexion exitosa");
+                    FrmLogin paciente = new FrmLogin(_gestorSeleccionado, connectionString);
+                    paciente.Show();
+                    this.Hide();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Se produjo una excepción al intentar establecer la conexión
+                MessageBox.Show("Error al establecer la conexión: " + ex.Message, "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void comboBoxDatabase_SelectedIndexChanged(object sender, EventArgs e)

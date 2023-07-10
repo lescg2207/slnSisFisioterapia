@@ -61,6 +61,7 @@ namespace capaPresentacion
             txtNombres.Text = "";
             txtprecio.Text = "";
             txtstock.Text = "";
+            textBox1.Text = "";
             accion = "N";
             btnregistrar.Text = "AGREGAR";
         }
