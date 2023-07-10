@@ -34,18 +34,21 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel7 = new Panel();
+            btnGuardar = new Button();
             lbltotalCita = new Label();
             label7 = new Label();
             pServicios = new Panel();
-            btnGuardar = new Button();
+            cbxSesiones = new ComboBox();
+            lblPrecio = new Label();
+            label10 = new Label();
+            label8 = new Label();
+            cbxServicio = new ComboBox();
             label5 = new Label();
-            txtPrecio = new TextBox();
-            tServicio = new TreeView();
             panel5 = new Panel();
             label3 = new Label();
             ckbServicio = new CheckBox();
             pProductos = new Panel();
-            label4 = new Label();
+            label11 = new Label();
             btnAgregar = new Button();
             label9 = new Label();
             comboBoxProductos = new ComboBox();
@@ -87,7 +90,7 @@
             panel2.Controls.Add(panel3);
             panel2.Location = new Point(12, 64);
             panel2.Name = "panel2";
-            panel2.Size = new Size(647, 745);
+            panel2.Size = new Size(647, 664);
             panel2.TabIndex = 2;
             // 
             // panel7
@@ -96,15 +99,25 @@
             panel7.Controls.Add(lbltotalCita);
             panel7.Controls.Add(label7);
             panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(0, 678);
+            panel7.Location = new Point(0, 584);
             panel7.Name = "panel7";
-            panel7.Size = new Size(647, 49);
+            panel7.Size = new Size(647, 75);
             panel7.TabIndex = 14;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.Location = new Point(338, 15);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(75, 23);
+            btnGuardar.TabIndex = 13;
+            btnGuardar.Text = "GUARDAR";
+            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // lbltotalCita
             // 
             lbltotalCita.AutoSize = true;
-            lbltotalCita.Location = new Point(579, 19);
+            lbltotalCita.Location = new Point(547, 19);
             lbltotalCita.Name = "lbltotalCita";
             lbltotalCita.Size = new Size(13, 15);
             lbltotalCita.TabIndex = 12;
@@ -114,7 +127,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(526, 17);
+            label7.Location = new Point(494, 17);
             label7.Name = "label7";
             label7.Size = new Size(47, 17);
             label7.TabIndex = 5;
@@ -122,49 +135,75 @@
             // 
             // pServicios
             // 
+            pServicios.Controls.Add(cbxSesiones);
+            pServicios.Controls.Add(lblPrecio);
+            pServicios.Controls.Add(label10);
+            pServicios.Controls.Add(label8);
+            pServicios.Controls.Add(cbxServicio);
             pServicios.Controls.Add(label5);
-            pServicios.Controls.Add(txtPrecio);
-            pServicios.Controls.Add(tServicio);
             pServicios.Dock = DockStyle.Top;
             pServicios.Location = new Point(0, 438);
             pServicios.Name = "pServicios";
-            pServicios.Size = new Size(647, 240);
+            pServicios.Size = new Size(647, 146);
             pServicios.TabIndex = 13;
             // 
-            // btnGuardar
+            // cbxSesiones
             // 
-            btnGuardar.Location = new Point(38, 15);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(75, 23);
-            btnGuardar.TabIndex = 13;
-            btnGuardar.Text = "GUARDAR";
-            btnGuardar.UseVisualStyleBackColor = true;
-            btnGuardar.Click += btnGuardar_Click;
+            cbxSesiones.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxSesiones.FormattingEnabled = true;
+            cbxSesiones.Location = new Point(453, 30);
+            cbxSesiones.Name = "cbxSesiones";
+            cbxSesiones.Size = new Size(139, 23);
+            cbxSesiones.TabIndex = 19;
+            // 
+            // lblPrecio
+            // 
+            lblPrecio.AutoSize = true;
+            lblPrecio.Location = new Point(564, 83);
+            lblPrecio.Name = "lblPrecio";
+            lblPrecio.Size = new Size(28, 15);
+            lblPrecio.TabIndex = 18;
+            lblPrecio.Text = "0.00";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Location = new Point(359, 31);
+            label10.Name = "label10";
+            label10.Size = new Size(88, 17);
+            label10.TabIndex = 17;
+            label10.Text = "N° Sesiones :";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(41, 31);
+            label8.Name = "label8";
+            label8.Size = new Size(65, 17);
+            label8.TabIndex = 15;
+            label8.Text = "Servicio :";
+            // 
+            // cbxServicio
+            // 
+            cbxServicio.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxServicio.FormattingEnabled = true;
+            cbxServicio.Location = new Point(125, 30);
+            cbxServicio.Name = "cbxServicio";
+            cbxServicio.Size = new Size(145, 23);
+            cbxServicio.TabIndex = 15;
+            cbxServicio.SelectedValueChanged += cbxServicio_SelectedValueChanged;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(377, 97);
+            label5.Location = new Point(458, 81);
             label5.Name = "label5";
             label5.Size = new Size(100, 17);
             label5.TabIndex = 15;
             label5.Text = "Total Servicio :";
-            // 
-            // txtPrecio
-            // 
-            txtPrecio.Location = new Point(377, 131);
-            txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(100, 23);
-            txtPrecio.TabIndex = 1;
-            // 
-            // tServicio
-            // 
-            tServicio.Location = new Point(41, 6);
-            tServicio.Name = "tServicio";
-            tServicio.Size = new Size(265, 228);
-            tServicio.TabIndex = 0;
-            tServicio.AfterSelect += tServicio_AfterSelect;
             // 
             // panel5
             // 
@@ -199,7 +238,7 @@
             // pProductos
             // 
             pProductos.BackColor = SystemColors.ActiveBorder;
-            pProductos.Controls.Add(label4);
+            pProductos.Controls.Add(label11);
             pProductos.Controls.Add(btnAgregar);
             pProductos.Controls.Add(label9);
             pProductos.Controls.Add(comboBoxProductos);
@@ -213,15 +252,15 @@
             pProductos.Size = new Size(647, 270);
             pProductos.TabIndex = 10;
             // 
-            // label4
+            // label11
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(451, 223);
-            label4.Name = "label4";
-            label4.Size = new Size(113, 17);
-            label4.TabIndex = 14;
-            label4.Text = "Total Productos :";
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(428, 224);
+            label11.Name = "label11";
+            label11.Size = new Size(113, 17);
+            label11.TabIndex = 19;
+            label11.Text = "Total Productos :";
             // 
             // btnAgregar
             // 
@@ -271,11 +310,11 @@
             // lbltotal
             // 
             lbltotal.AutoSize = true;
-            lbltotal.Location = new Point(579, 225);
+            lbltotal.Location = new Point(547, 226);
             lbltotal.Name = "lbltotal";
-            lbltotal.Size = new Size(13, 15);
+            lbltotal.Size = new Size(28, 15);
             lbltotal.TabIndex = 5;
-            lbltotal.Text = "0";
+            lbltotal.Text = "0.00";
             // 
             // dgvListaProductos
             // 
@@ -317,8 +356,6 @@
             dgvListaProductos.RowTemplate.Height = 25;
             dgvListaProductos.Size = new Size(551, 116);
             dgvListaProductos.TabIndex = 4;
-            dgvListaProductos.CellClick += dgvListaProductos_CellClick;
-            dgvListaProductos.CellContentClick += dgvListaProductos_CellContentClick;
             // 
             // panel4
             // 
@@ -394,7 +431,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(671, 821);
+            ClientSize = new Size(671, 735);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "FrmDetalleDeCita";
@@ -441,11 +478,16 @@
         private Label lbltotalCita;
         private Panel pServicios;
         private Panel panel7;
-        private TreeView tServicio;
-        private TextBox txtPrecio;
         private Button btnGuardar;
         public Label lblIdCita;
         private Label label5;
         private Label label4;
+        private Label label10;
+        private ComboBox comboBox2;
+        private Label label8;
+        private ComboBox cbxServicio;
+        private Label lblPrecio;
+        private Label label11;
+        private ComboBox cbxSesiones;
     }
 }

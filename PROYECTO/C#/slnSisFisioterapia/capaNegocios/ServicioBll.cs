@@ -61,5 +61,10 @@ namespace capaNegocios
         {
             _serviciosDao.ActualizarCostoServicio(nombreServicio,nuevoPrecio);
         }
+
+        public List<Sesiones> ObtenerSesiones(int idTipo)
+        {
+            return _serviciosDao.ObtenerSesiones(idTipo);
+        }
     }
 }

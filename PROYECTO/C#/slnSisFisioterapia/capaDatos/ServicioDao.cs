@@ -89,5 +89,19 @@ namespace capaDatos
             }
         }
 
+        public List<Sesiones> ObtenerSesiones( int idTipo)
+        {
+            var sesion = (from e in _dbContext.Set<Sesiones>() where e.idTipo == idTipo
+                        select new Sesiones
+                        {
+                            idSesion = e.idSesion,
+                            sesiones=e.sesiones,
+                            precio = Convert.ToDecimal(e.precio.ToString("0.00")),
+                        }).ToList();
+
+            return sesion;
+
+        }
+
     }
 }

@@ -39,8 +39,7 @@ namespace capaPresentacion
             ListarProducto();
             subtotal2 = 100;
             lbltotalCita.Text = subtotal2.ToString();
-            CargarDatosTreeView(tServicio);
-            tServicio.AfterSelect += tServicio_AfterSelect!;
+            ListarServicios();
             //ListarProductos();
 
 
@@ -71,53 +70,6 @@ namespace capaPresentacion
 
         }
 
-        public void CargarDatosTreeView(System.Windows.Forms.TreeView treeView)
-        {
-            List<TreeNode> nodosServicios = new List<TreeNode>();
-            List<ServicioSesiones> servicios = servBll.ObtenerTreeNodes();
-            TreeNode paqueteNode = new TreeNode("Paquete");
-            var sesionesPaquete = servicios.Where(servicio => servicio.SERVICIO == "Paquete");
-
-            foreach (var sesion in sesionesPaquete)
-            {
-                TreeNode sesionNode = new TreeNode($"Sesiones: {sesion.SESIONES}");
-                TreeNode precioNode = new TreeNode($"Precio: {sesion.PRECIO}");
-
-                sesionNode.Nodes.Add(precioNode);
-                paqueteNode.Nodes.Add(sesionNode);
-            }
-
-            nodosServicios.Add(paqueteNode);
-
-            foreach (var servicio in servicios)
-            {
-                if (servicio.SERVICIO != "Paquete")
-                {
-                    TreeNode servicioNode = new TreeNode(servicio.SERVICIO);
-
-                    if (servicios.IndexOf(servicio) < 2)
-                    {
-                        TreeNode precioNodeS = new TreeNode($"Precio: {servicio.PRECIOServ}");
-                        servicioNode.Nodes.Add(precioNodeS);
-                    }
-                    else
-                    {
-                        TreeNode sesionesNode = new TreeNode($"Sesiones: {servicio.SESIONES}");
-                        TreeNode precioNode = new TreeNode($"Precio: {servicio.PRECIO}");
-
-                        servicioNode.Nodes.Add(sesionesNode);
-                        servicioNode.Nodes.Add(precioNode);
-                    }
-
-                    nodosServicios.Add(servicioNode);
-                }
-            }
-
-            treeView.Nodes.Clear();
-            TreeNode nodoPadreserv = new TreeNode("Servicios", nodosServicios.ToArray());
-            treeView.Nodes.Add(nodoPadreserv);
-
-        }
         private void ListarProducto()
         {
 
@@ -126,6 +78,15 @@ namespace capaPresentacion
             comboBoxProductos.DisplayMember = "PRODUCTO";
             comboBoxProductos.ValueMember = "PRECIO";
 
+
+
+        }
+        private void ListarServicios()
+        {
+            List<Servicio> serv = servBll.ObtenerServicios();
+            cbxServicio.DataSource = serv;
+            cbxServicio.DisplayMember = "servicio";
+            cbxServicio.ValueMember = "idServicio";
         }
 
         private void ckbPruductos_CheckedChanged(object sender, EventArgs e)
@@ -145,17 +106,6 @@ namespace capaPresentacion
             {
                 pProductos.Visible = true;
             }
-        }
-
-        private void dgvListaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-        }
-
-        private void dgvListaProductos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -201,28 +151,7 @@ namespace capaPresentacion
             }
         }
 
-        private void tServicio_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            if (e.Node != null)
-            {
-                // Verificar si el nodo seleccionado tiene un precio asociado
-                if (e.Node.Text.StartsWith("Precio: "))
-                {
-                    // Extraer el precio del nodo seleccionado
-                    string precioTexto = e.Node.Text.Replace("Precio: ", "");
-                    decimal precio = decimal.Parse(precioTexto);
 
-                    // Hacer algo con el precio (por ejemplo, mostrarlo en un TextBox)
-                    txtPrecio.Text = precio.ToString();
-
-                }
-                else
-                {
-                    // Si el nodo seleccionado no tiene un precio asociado, limpiar el TextBox
-                    txtPrecio.Text = "0.00";
-                }
-            }
-        }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -239,10 +168,10 @@ namespace capaPresentacion
                     DetalleCita detalleProducto = new DetalleCita
                     {
                         idCita = int.Parse(lblIdCita.Text),
-                        idProducto = int.Parse(row.Cells["idProducto"].Value.ToString()),
-                        cantidad = int.Parse(row.Cells["cantidad"].Value.ToString()),
-                        precioU = decimal.Parse(row.Cells["precioU"].Value.ToString()),
-                        subtotal = decimal.Parse(row.Cells["subtotal"].Value.ToString()),
+                        idProducto = int.Parse(row.Cells["idProducto"].Value.ToString()!),
+                        cantidad = int.Parse(row.Cells["cantidad"].Value.ToString()!),
+                        precioU = decimal.Parse(row.Cells["precioU"].Value.ToString()!),
+                        subtotal = decimal.Parse(row.Cells["subtotal"].Value.ToString()!),
                         estado = true
                     };
 
@@ -250,6 +179,20 @@ namespace capaPresentacion
                     detallesCita.Add(detalleProducto);
                 }
             }
+            Servicio servicioSelecc = (Servicio)cbxServicio.SelectedItem;
+            Sesiones sesionselecci=(Sesiones)cbxSesiones.SelectedItem;
+            decimal precio;
+
+            if (servicioSelecc.servicio == "Paquete")
+            {
+                precio = sesionselecci.precio;
+            }
+            else
+            {
+                precio=servicioSelecc.precio;
+            }
+
+
 
             // Verificar si se seleccionó el servicio
             if (ckbServicio.Checked)
@@ -258,10 +201,10 @@ namespace capaPresentacion
                 DetalleCita detalleServicio = new DetalleCita
                 {
                     idCita = int.Parse(lblIdCita.Text),
-                    idServicio = 2, // Reemplazar con el ID correcto del servicio
+                    idServicio = servicioSelecc.IdServicio, // Reemplazar con el ID correcto del servicio
                     cantidad = 1,
-                    precioU = decimal.Parse(txtPrecio.Text),
-                    subtotal = decimal.Parse(txtPrecio.Text),
+                    precioU = precio,
+                    subtotal = precio,
                     estado = true
                 };
 
@@ -277,6 +220,32 @@ namespace capaPresentacion
 
             // Mostrar mensaje de éxito u otra acción necesaria
             MessageBox.Show("Detalles de cita guardados correctamente.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        void CargarSesion(int idTipo)
+        {
+
+            idTipo = int.Parse(cbxServicio.SelectedValue.ToString()!);
+            var sesiones = servBll.ObtenerSesiones(idTipo);
+
+            cbxSesiones.DataSource = sesiones;
+            cbxSesiones.DisplayMember = "sesiones";
+            cbxSesiones.ValueMember = "idSesion";
+
+
+
+        }
+
+
+        private void cbxServicio_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+            int idTipo;
+            if (int.TryParse(cbxServicio.SelectedValue.ToString(), out idTipo))
+            {
+                CargarSesion(idTipo);
+            }
+
+
         }
     }
 }
