@@ -126,7 +126,7 @@ namespace capaPresentacion
        
         private void pbclose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void txtusuario_Enter_1(object sender, EventArgs e)
