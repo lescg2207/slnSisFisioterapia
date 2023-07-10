@@ -125,7 +125,7 @@ namespace capaPresentacion
             string PaginaHTML_Texto = Properties.Resources.reporte_plantilla.ToString();
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DNI", txtdni.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NOMBRES", txtnombres.Text);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@APELLIDOS", txtapellidos.Text);           
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@APELLIDOS", txtapellidos.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", txtfecha.Text.ToString());
 
             string filas = string.Empty;
@@ -133,22 +133,25 @@ namespace capaPresentacion
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 filas += "<tr>";
-                filas += "<td>" + row.Cells["CODIGO_SERV"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["CODIGO"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["SERVICIO"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["CANTIDAD_SERV"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["PRECIO_SERV"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["SUBTOTAL_SERV"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["CANTIDAD"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["PRECIO"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["SUBTOTAL"].Value.ToString() + "</td>";
                 filas += "</tr>";
                 total += decimal.Parse(row.Cells["SUBTOTAL"].Value.ToString());
             }
+
+            filas += "<tr><td colspan='5'></td></tr>"; // Agrega una fila vacía para separar las tablas
+
             foreach (DataGridViewRow row in dataGridView2.Rows)
             {
                 filas += "<tr>";
-                filas += "<td>" + row.Cells["CODIGO_PROD"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["CODIGO"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["PRODUCTO"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["CANTIDAD_PROD"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["PRECIO_PROD"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["SUBTOTAL_PROD"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["CANTIDAD"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["PRECIO"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["SUBTOTAL"].Value.ToString() + "</td>";
                 filas += "</tr>";
                 total += decimal.Parse(row.Cells["SUBTOTAL"].Value.ToString());
             }

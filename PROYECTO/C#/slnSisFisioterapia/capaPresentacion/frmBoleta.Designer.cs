@@ -345,12 +345,12 @@
         public Label lblid;
         public TextBox txtnombres;
         private Label label8;
-        private Label label9;
         private Label label11;
         private Label label12;
         private Label label13;
         private Label label10;
         private Label label15;
         public Label lblTOtalCIta;
+        public Label label9;
     }
 }

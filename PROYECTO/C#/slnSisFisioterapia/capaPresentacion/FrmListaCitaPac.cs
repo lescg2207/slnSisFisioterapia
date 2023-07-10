@@ -82,7 +82,7 @@ namespace capaPresentacion
                 {
                     frmBoleta Boleta = new frmBoleta(gestor, conexion);
                     Boleta.lblid.Text = dgvCitas.CurrentRow.Cells[2].Value.ToString();
-                    Boleta.lblTOtalCIta.Text = dgvCitas.CurrentRow.Cells[9].Value.ToString();
+                    Boleta.label9.Text = dgvCitas.CurrentRow.Cells[8].Value.ToString();
                     Boleta.ShowDialog();
                 }
             }
