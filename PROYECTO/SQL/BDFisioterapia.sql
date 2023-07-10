@@ -68,9 +68,9 @@ fCita date,
 hCita int foreign key references Horario(idHorario),
 estadoPago int,
 total money,
-idImpuesto int foreign key references Impuesto(idImpuesto),
+idImpuesto int foreign key references Impuesto(idImpuesto)null,
+descuento int foreign key references Descuentos(idDescuento)null,
 estadoCita bit
-
 )go
 
 create table Pago(
@@ -102,9 +102,7 @@ idServicio int foreign key references Servicio(idServicio) null,
 idProducto int foreign key references Productos(idProducto) null,
 cantidad int,
 precioU money,
-subtotal money,
-descuento int foreign key references Descuentos(idDescuento)null,
-estado bit
+subtotal money
 );
 
 select *from Descuentos
@@ -151,4 +149,30 @@ inner join Cargo c
 on e.idCargo=c.idCargo
 
 
-drop table servicio
+drop table detallecita
+	
+select* from detallecita	where idCita=6
+select*from servicio
+select*from sesiones
+select*from citas
+select*from productos
+
+update citas set estadocita=0
+
+
+CREATE PROCEDURE CalcularPrecio
+    @productoId INT,
+    @cantidad INT,
+    @precioUnitario DECIMAL(10,2),
+    @descuento DECIMAL(5,2) = 0,
+    @precioTotal DECIMAL(10,2) OUTPUT
+AS
+BEGIN
+    -- Realizar los cálculos necesarios
+    DECLARE @subtotal DECIMAL(10,2)
+    SET @subtotal = @cantidad * @precioUnitario
+    SET @precioTotal = @subtotal - (@subtotal * @descuento)
+
+    -- Mostrar el resultado
+    SELECT @precioTotal AS 'Precio Total'
+END
