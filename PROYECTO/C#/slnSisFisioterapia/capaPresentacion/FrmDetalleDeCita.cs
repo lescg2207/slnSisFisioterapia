@@ -24,6 +24,7 @@ namespace capaPresentacion
         private DescuentoBll descBll;
         private DetalleCitaBll detCita;
         decimal subtotal2;
+        private List<DetalleCita> listaProductos = new List<DetalleCita>();
         public FrmDetalleDeCita(string get, string con)
         {
             this.gestor = get;
@@ -165,7 +166,7 @@ namespace capaPresentacion
             decimal precioUnitario = productoSeleccionado.PRECIO;
             decimal subtotal = cantidad * precioUnitario;
 
-            var DetProducto = new DetalleCita
+            DetalleCita detProducto = new DetalleCita
             {
                 idCita = int.Parse(lblIdCita.Text),
                 idProducto = productoSeleccionado.CODIGO,
@@ -175,13 +176,11 @@ namespace capaPresentacion
                 estado = true,
             };
 
-            detCita.InsertarDetalleProducto(DetProducto);
-            ListarProductos(int.Parse(lblIdCita.Text));
+            // Agrega el objeto DetProducto a la lista existente en memoria
+            listaProductos.Add(detProducto);
 
-        }
-        void ListarProductos(int idCita)
-        {
-            List<DetalleCita> listaProductos = detCita.ListarProductos(idCita);
+            // Actualiza el DataGridView con la lista de productos en memoria
+            dgvListaProductos.DataSource = null;
             dgvListaProductos.DataSource = listaProductos;
             dgvListaProductos.Columns["idCita"].Visible = false;
         }
@@ -227,35 +226,57 @@ namespace capaPresentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            // Declarar una lista para almacenar los detalles de la cita
+            List<DetalleCita> detallesCita = new List<DetalleCita>();
+
+            // Verificar si se seleccionaron productos
             if (ckbPruductos.Checked)
             {
+                // Obtener los productos seleccionados del DataGridView
+                foreach (DataGridViewRow row in dgvListaProductos.Rows)
+                {
+                    // Crear un objeto DetalleCita para cada producto seleccionado
+                    DetalleCita detalleProducto = new DetalleCita
+                    {
+                        idCita = int.Parse(lblIdCita.Text),
+                        idProducto = int.Parse(row.Cells["idProducto"].Value.ToString()),
+                        cantidad = int.Parse(row.Cells["cantidad"].Value.ToString()),
+                        precioU = decimal.Parse(row.Cells["precioU"].Value.ToString()),
+                        subtotal = decimal.Parse(row.Cells["subtotal"].Value.ToString()),
+                        estado = true
+                    };
 
+                    // Agregar el detalle del producto a la lista
+                    detallesCita.Add(detalleProducto);
+                }
             }
-            else
-            {
 
-            }
+            // Verificar si se seleccionó el servicio
             if (ckbServicio.Checked)
             {
-
-                var detServico = new DetalleCita
+                // Crear un objeto DetalleCita para el servicio seleccionado
+                DetalleCita detalleServicio = new DetalleCita
                 {
                     idCita = int.Parse(lblIdCita.Text),
-                    idServicio = 2,
+                    idServicio = 2, // Reemplazar con el ID correcto del servicio
                     cantidad = 1,
                     precioU = decimal.Parse(txtPrecio.Text),
                     subtotal = decimal.Parse(txtPrecio.Text),
-
-
+                    estado = true
                 };
 
-                detCita.InsertarDetalleServicio(detServico);
-
+                // Agregar el detalle del servicio a la lista
+                detallesCita.Add(detalleServicio);
             }
-            else
+
+            // Insertar los detalles de la cita en la base de datos
+            foreach (DetalleCita detalle in detallesCita)
             {
-
+                detCita.InsertarDetalle(detalle);
             }
+
+            // Mostrar mensaje de éxito u otra acción necesaria
+            MessageBox.Show("Detalles de cita guardados correctamente.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

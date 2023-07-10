@@ -34,16 +34,18 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel7 = new Panel();
-            btnGuardar = new Button();
             lbltotalCita = new Label();
             label7 = new Label();
             pServicios = new Panel();
+            btnGuardar = new Button();
+            label5 = new Label();
             txtPrecio = new TextBox();
             tServicio = new TreeView();
             panel5 = new Panel();
             label3 = new Label();
             ckbServicio = new CheckBox();
             pProductos = new Panel();
+            label4 = new Label();
             btnAgregar = new Button();
             label9 = new Label();
             comboBoxProductos = new ComboBox();
@@ -58,8 +60,6 @@
             lblIdCita = new Label();
             label1 = new Label();
             ckbEstadoCita = new CheckBox();
-            label4 = new Label();
-            label5 = new Label();
             panel2.SuspendLayout();
             panel7.SuspendLayout();
             pServicios.SuspendLayout();
@@ -92,6 +92,7 @@
             // 
             // panel7
             // 
+            panel7.Controls.Add(btnGuardar);
             panel7.Controls.Add(lbltotalCita);
             panel7.Controls.Add(label7);
             panel7.Dock = DockStyle.Top;
@@ -99,16 +100,6 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(647, 49);
             panel7.TabIndex = 14;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.Location = new Point(517, 130);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(75, 23);
-            btnGuardar.TabIndex = 13;
-            btnGuardar.Text = "GUARDAR";
-            btnGuardar.UseVisualStyleBackColor = true;
-            btnGuardar.Click += btnGuardar_Click;
             // 
             // lbltotalCita
             // 
@@ -131,7 +122,6 @@
             // 
             // pServicios
             // 
-            pServicios.Controls.Add(btnGuardar);
             pServicios.Controls.Add(label5);
             pServicios.Controls.Add(txtPrecio);
             pServicios.Controls.Add(tServicio);
@@ -140,6 +130,26 @@
             pServicios.Name = "pServicios";
             pServicios.Size = new Size(647, 240);
             pServicios.TabIndex = 13;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.Location = new Point(38, 15);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(75, 23);
+            btnGuardar.TabIndex = 13;
+            btnGuardar.Text = "GUARDAR";
+            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(377, 97);
+            label5.Name = "label5";
+            label5.Size = new Size(100, 17);
+            label5.TabIndex = 15;
+            label5.Text = "Total Servicio :";
             // 
             // txtPrecio
             // 
@@ -202,6 +212,16 @@
             pProductos.Name = "pProductos";
             pProductos.Size = new Size(647, 270);
             pProductos.TabIndex = 10;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(451, 223);
+            label4.Name = "label4";
+            label4.Size = new Size(113, 17);
+            label4.TabIndex = 14;
+            label4.Text = "Total Productos :";
             // 
             // btnAgregar
             // 
@@ -369,26 +389,6 @@
             ckbEstadoCita.Size = new Size(15, 14);
             ckbEstadoCita.TabIndex = 1;
             ckbEstadoCita.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(451, 223);
-            label4.Name = "label4";
-            label4.Size = new Size(113, 17);
-            label4.TabIndex = 14;
-            label4.Text = "Total Productos :";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(377, 97);
-            label5.Name = "label5";
-            label5.Size = new Size(100, 17);
-            label5.TabIndex = 15;
-            label5.Text = "Total Servicio :";
             // 
             // FrmDetalleDeCita
             // 

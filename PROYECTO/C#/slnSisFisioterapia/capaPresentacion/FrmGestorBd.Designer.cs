@@ -43,6 +43,7 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            btncerrar = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -72,6 +73,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(22, 173, 138);
+            panel2.Controls.Add(btncerrar);
             panel2.Controls.Add(btnConectar);
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 275);
@@ -213,6 +215,21 @@
             label2.TabIndex = 0;
             label2.Text = "Gestor :";
             // 
+            // btncerrar
+            // 
+            btncerrar.Cursor = Cursors.Hand;
+            btncerrar.FlatAppearance.BorderColor = Color.White;
+            btncerrar.FlatStyle = FlatStyle.Flat;
+            btncerrar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btncerrar.ForeColor = Color.White;
+            btncerrar.Location = new Point(25, 13);
+            btncerrar.Name = "btncerrar";
+            btncerrar.Size = new Size(126, 35);
+            btncerrar.TabIndex = 1;
+            btncerrar.Text = "Salir";
+            btncerrar.UseVisualStyleBackColor = true;
+            btncerrar.Click += btncerrar_Click;
+            // 
             // FrmGestorBd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -250,5 +267,6 @@
         private Label label3;
         private Label label2;
         private Button btnConectar;
+        private Button btncerrar;
     }
 }

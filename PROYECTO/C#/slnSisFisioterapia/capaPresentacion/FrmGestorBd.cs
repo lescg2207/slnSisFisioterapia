@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +42,35 @@ namespace capaPresentacion
 
         }
 
+        string GetSqlServerConnectionString(string server, string database, string username, string password)
+        {
+            // Construye y devuelve la cadena de conexión de SQL Server
+            return string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3}", server, database, username, password);
+        }
+
+        string GetMySqlConnectionString(string server, string database, string username, string password)
+        {
+            // Construye y devuelve la cadena de conexión de MySQL
+            return string.Format("Server={0};Database={1};Uid={2};Pwd={3}", server, database, username, password);
+        }
+
+        // Método para obtener la instancia correcta de IDbConnection en función del gestor seleccionado
+        IDbConnection GetDbConnection(string selectedDatabase, string connectionString)
+        {
+            if (selectedDatabase == "SqlServer")
+            {
+                return new SqlConnection(connectionString);
+            }
+            else if (selectedDatabase == "MySql")
+            {
+                return new MySqlConnection(connectionString);
+            }
+            else
+            {
+                throw new ArgumentException("Gestor de base de datos no válido");
+            }
+        }
+
         private void btnConectar_Click(object sender, EventArgs e)
         {
             string server = textBoxServer.Text;
@@ -48,31 +78,36 @@ namespace capaPresentacion
             string username = textBoxUsername.Text;
             string password = textBoxPassword.Text.Trim();
 
-            if (comboBoxDatabase.SelectedItem.ToString() == "SqlServer")
-            {
-                _gestorSeleccionado = "SqlServer";
-            }
-            else if (comboBoxDatabase.SelectedItem.ToString() == "MySql")
-            {
-                _gestorSeleccionado = "MySql";
-            }
+            string selectedDatabase = comboBoxDatabase.SelectedItem.ToString();
+            string connectionString;
 
-            connectionString = GetConnectionString(_gestorSeleccionado, server, database, username, password);
+            if (selectedDatabase == "SqlServer")
+            {
+                connectionString = GetSqlServerConnectionString(server, database, username, password);
+            }
+            else if (selectedDatabase == "MySql")
+            {
+                connectionString = GetMySqlConnectionString(server, database, username, password);
+            }
+            else
+            {
+                MessageBox.Show("Selecciona un gestor de base de datos válido", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             try
             {
-                using (var connection = new SqlConnection(connectionString)) // Cambia SqlConnection por MySqlConnection si estás utilizando MySQL
+                using (var connection = GetDbConnection(selectedDatabase, connectionString))
                 {
                     connection.Open();
-                    MessageBox.Show("Conexion exitosa");
-                    FrmLogin paciente = new FrmLogin(_gestorSeleccionado, connectionString);
-                    paciente.Show();
+                    MessageBox.Show("Conexión exitosa");
+                    FrmLogin paciente = new FrmLogin(selectedDatabase, connectionString);
+                    paciente.ShowDialog();
                     this.Hide();
                 }
             }
             catch (Exception ex)
             {
-                // Se produjo una excepción al intentar establecer la conexión
                 MessageBox.Show("Error al establecer la conexión: " + ex.Message, "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -105,6 +140,11 @@ namespace capaPresentacion
                 textBoxPassword.Focus();
             }
 
+        }
+
+        private void btncerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
