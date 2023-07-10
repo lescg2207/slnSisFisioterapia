@@ -46,7 +46,7 @@ namespace capaDatos
                 HORA=h.horario,
                 PAGO = (c.estadoPago == 0) ? "Pendiente" : "Pagado",
                 DESCUENTO =c.descuento,
-                TOTAL=c.total,
+                TOTAL=Convert.ToDecimal(c.total.ToString("0.00")),
                 FINALIZADA=c.estadoCita
             
             }).ToList();

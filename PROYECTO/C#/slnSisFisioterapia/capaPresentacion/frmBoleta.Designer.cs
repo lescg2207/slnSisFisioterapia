@@ -44,6 +44,14 @@
             button1 = new Button();
             button2 = new Button();
             lblid = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label13 = new Label();
+            lblTOtalCIta = new Label();
+            label10 = new Label();
+            label15 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -52,7 +60,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(277, 9);
+            label1.Location = new Point(283, 24);
             label1.Name = "label1";
             label1.Size = new Size(245, 37);
             label1.TabIndex = 0;
@@ -92,7 +100,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(602, 57);
+            label5.Location = new Point(596, 102);
             label5.Name = "label5";
             label5.Size = new Size(57, 20);
             label5.TabIndex = 4;
@@ -110,7 +118,7 @@
             // 
             txtnombres.Location = new Point(320, 100);
             txtnombres.Name = "txtnombres";
-            txtnombres.Size = new Size(276, 23);
+            txtnombres.Size = new Size(247, 23);
             txtnombres.TabIndex = 6;
             txtnombres.TextChanged += textBox2_TextChanged;
             // 
@@ -118,13 +126,13 @@
             // 
             txtapellidos.Location = new Point(320, 141);
             txtapellidos.Name = "txtapellidos";
-            txtapellidos.Size = new Size(276, 23);
+            txtapellidos.Size = new Size(247, 23);
             txtapellidos.TabIndex = 7;
             txtapellidos.TextChanged += textBox3_TextChanged;
             // 
             // txtfecha
             // 
-            txtfecha.Location = new Point(655, 54);
+            txtfecha.Location = new Point(649, 99);
             txtfecha.Name = "txtfecha";
             txtfecha.Size = new Size(129, 23);
             txtfecha.TabIndex = 8;
@@ -132,18 +140,20 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(26, 227);
+            dataGridView1.Location = new Point(51, 193);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(631, 74);
+            dataGridView1.Size = new Size(516, 74);
             dataGridView1.TabIndex = 9;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(26, 200);
+            label6.Location = new Point(51, 166);
             label6.Name = "label6";
             label6.Size = new Size(74, 20);
             label6.TabIndex = 10;
@@ -153,19 +163,21 @@
             // 
             dataGridView2.AllowUserToAddRows = false;
             dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(26, 348);
+            dataGridView2.Location = new Point(51, 314);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.ReadOnly = true;
             dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(631, 125);
+            dataGridView2.Size = new Size(516, 125);
             dataGridView2.TabIndex = 11;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(26, 325);
+            label7.Location = new Point(51, 291);
             label7.Name = "label7";
             label7.Size = new Size(96, 20);
             label7.TabIndex = 12;
@@ -173,7 +185,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(695, 382);
+            button1.Location = new Point(596, 431);
             button1.Name = "button1";
             button1.Size = new Size(91, 26);
             button1.TabIndex = 13;
@@ -192,17 +204,102 @@
             // lblid
             // 
             lblid.AutoSize = true;
-            lblid.Location = new Point(40, 24);
+            lblid.Location = new Point(61, 42);
             lblid.Name = "lblid";
-            lblid.Size = new Size(18, 15);
+            lblid.Size = new Size(13, 15);
             lblid.TabIndex = 15;
-            lblid.Text = "ID";
+            lblid.Text = "2";
+            lblid.Visible = false;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(665, 361);
+            label8.Name = "label8";
+            label8.Size = new Size(56, 21);
+            label8.TabIndex = 16;
+            label8.Text = "Total :";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(731, 366);
+            label9.Name = "label9";
+            label9.Size = new Size(28, 15);
+            label9.TabIndex = 17;
+            label9.Text = "0.00";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(638, 262);
+            label11.Name = "label11";
+            label11.Size = new Size(83, 21);
+            label11.TabIndex = 19;
+            label11.Text = "Subtotal :";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Location = new Point(676, 293);
+            label12.Name = "label12";
+            label12.Size = new Size(45, 21);
+            label12.TabIndex = 20;
+            label12.Text = "IGV :";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.Location = new Point(624, 326);
+            label13.Name = "label13";
+            label13.Size = new Size(99, 21);
+            label13.TabIndex = 21;
+            label13.Text = "Descuento :";
+            // 
+            // lblTOtalCIta
+            // 
+            lblTOtalCIta.AutoSize = true;
+            lblTOtalCIta.Location = new Point(727, 267);
+            lblTOtalCIta.Name = "lblTOtalCIta";
+            lblTOtalCIta.Size = new Size(28, 15);
+            lblTOtalCIta.TabIndex = 22;
+            lblTOtalCIta.Text = "0.00";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(727, 298);
+            label10.Name = "label10";
+            label10.Size = new Size(32, 15);
+            label10.TabIndex = 23;
+            label10.Text = "18 %";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(729, 331);
+            label15.Name = "label15";
+            label15.Size = new Size(28, 15);
+            label15.TabIndex = 24;
+            label15.Text = "0.00";
             // 
             // frmBoleta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(813, 491);
+            Controls.Add(label15);
+            Controls.Add(label10);
+            Controls.Add(lblTOtalCIta);
+            Controls.Add(label13);
+            Controls.Add(label12);
+            Controls.Add(label11);
+            Controls.Add(label9);
+            Controls.Add(label8);
             Controls.Add(lblid);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -246,5 +343,13 @@
         private Button button2;
         public Label lblid;
         public TextBox txtnombres;
+        private Label label8;
+        private Label label9;
+        private Label label11;
+        private Label label12;
+        private Label label13;
+        private Label label10;
+        private Label label15;
+        public Label lblTOtalCIta;
     }
 }

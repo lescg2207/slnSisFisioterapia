@@ -58,7 +58,7 @@ create table Impuesto(
 idImpuesto int primary key identity,
 impuesto varchar(20),
 porcentaje decimal(4,2)
-)go
+)
 
 create table Citas(
 idCita int primary key identity,
@@ -69,15 +69,18 @@ hCita int foreign key references Horario(idHorario),
 estadoPago int,
 total money,
 idImpuesto int foreign key references Impuesto(idImpuesto)null,
-descuento int foreign key references Descuentos(idDescuento)null,
 estadoCita bit
-)go
+)
 
-create table Pago(
+create table Boleta(
 idPago int primary key identity,
 idCita int foreign key references Citas(idCita),
+dniPaciente char(8) foreign key references Pacientes(dniPaciente),
 metodoPago varchar(50),
-monto money,
+subtotal money,
+idImpuesto int foreign key references Impuesto(idImpuesto)null,
+idDescuento int foreign key references Descuentos(idDescuento)null,
+total money,
 fpago datetime
 )
 
@@ -90,9 +93,9 @@ stock int
 
 
 CREATE TABLE Descuentos (
-    idDescuento int PRIMARY KEY IDENTITY,
-    nombreDescuento varchar(100),
-    valorDescuento decimal(4,2)
+idDescuento int PRIMARY KEY IDENTITY,
+nombreDescuento varchar(100),
+valorDescuento decimal(4,2)
 );
 
 create table DetalleCita(
@@ -105,15 +108,11 @@ precioU money,
 subtotal money
 );
 
-select *from Descuentos
-
 insert into Descuentos values('Mas Citas',0.10)
 insert into Descuentos values('Regular Citas',0.06)
 insert into Descuentos values('Pocas Citas',0.03)
 
 SELECT nombreDescuento,valorDescuento FROM Descuentos
-
-SELECT*FROM Cargo
 
 insert into Cargo values('Doctor'),('Enfermera'),('Admin')
 
@@ -121,58 +120,9 @@ insert into Empleado values('Camila','Lopez','maria','123',2,1),('Ernesto','Jime
 
 insert into horario(horario,estado) values('10:00',1),('11:00',1),('12:00',1),('13:00',1),('14:00',1),('15:00',1),('16:00',1),('17:00',1),('18:00',1)
 
-SELECT*FROM Pacientes
-go
-
-select*from Horario
-
-insert into Horario values('01:00',1)
-
-select*from Empleado
-
-update Empleado set estadoEmp=1
-
-select*from Servicio
 
 insert into Servicio values('Diario',35),('Domiciliario',40),('Paquete',0)
 
 insert into Sesiones values(3,10,315),(3,12,385),(3,15,490)
 
-select servicio,sesiones,sesiones.precio from Servicio
-inner join Sesiones
-on sesiones.idtipo=servicio.idServicio
-
-select*from Citas
-
-select idEmpleado,nombres+apellidos as nombre,usuario,cargo from Empleado e
-inner join Cargo c
-on e.idCargo=c.idCargo
-
-
-drop table detallecita
-	
-select* from detallecita	where idCita=6
-select*from servicio
-select*from sesiones
-select*from citas
-select*from productos
-
-update citas set estadocita=0
-
-
-CREATE PROCEDURE CalcularPrecio
-    @productoId INT,
-    @cantidad INT,
-    @precioUnitario DECIMAL(10,2),
-    @descuento DECIMAL(5,2) = 0,
-    @precioTotal DECIMAL(10,2) OUTPUT
-AS
-BEGIN
-    -- Realizar los cálculos necesarios
-    DECLARE @subtotal DECIMAL(10,2)
-    SET @subtotal = @cantidad * @precioUnitario
-    SET @precioTotal = @subtotal - (@subtotal * @descuento)
-
-    -- Mostrar el resultado
-    SELECT @precioTotal AS 'Precio Total'
-END
+insert into Impuesto(impuesto,porcentaje) values ('IGV','0.18')

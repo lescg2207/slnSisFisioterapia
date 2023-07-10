@@ -18,7 +18,6 @@ namespace entidades
         public DateTime fCita { get; set; }
         public int hCita { get; set; } 
         public int estadoPago { get; set; }
-        public decimal descuento { get; set; }
         public decimal total { get; set; }
         public bool estadoCita { get; set; }
 

@@ -50,6 +50,40 @@ namespace capaDatos
             
         }
 
+        public List<DetalleCitaProductos> ListarProductosCita(int idCita)
+        {
+            var Productos = (from d in _dbContext.Set<DetalleCita>()
+                             join p in _dbContext.Set<Productos>() on d.idProducto equals p.idProducto
+                             where d.idProducto != null && d.idCita == idCita
+                             select new DetalleCitaProductos
+                             {
+                                 CODIGO=d.idDetalle,
+                                 PRODUCTO=p.nomProducto,
+                                 CANTIDAD=d.cantidad,
+                                 PRECIO= Convert.ToDecimal(d.precioU.ToString("0.00")), 
+                                 SUBTOTAL= Convert.ToDecimal(d.subtotal.ToString("0.00")),
+
+                             }).ToList();
+            return Productos;
+        }
+
+        public List<DtalleCitaServicios> ListarServiciosCita(int idCita)
+        {
+            var Productos = (from d in _dbContext.Set<DetalleCita>()
+                             join p in _dbContext.Set<Servicio>() on d.idServicio equals p.IdServicio
+                             where d.idServicio != null && d.idCita == idCita
+                             select new DtalleCitaServicios
+                             {
+                                 CODIGO = d.idDetalle,
+                                 SERVICIO = p.servicio,
+                                 CANTIDAD = d.cantidad,
+                                 PRECIO = Convert.ToDecimal(d.precioU.ToString("0.00")),
+                                 SUBTOTAL = Convert.ToDecimal(d.subtotal.ToString("0.00")),
+
+                             }).ToList();
+            return Productos;
+        }
+
         public void ActualizarTotalCita(Cita cita)
         {
             var totalExistente = _dbContext.Set<Cita>().Find(cita.idCita);

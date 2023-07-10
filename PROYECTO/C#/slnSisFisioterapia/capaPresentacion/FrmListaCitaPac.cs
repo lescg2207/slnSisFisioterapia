@@ -32,6 +32,11 @@ namespace capaPresentacion
             boton.Name = "btnEditar";
             boton.UseColumnTextForButtonValue = true;
             dgvCitas.Columns.Add(boton);
+            DataGridViewButtonColumn botonVer = new DataGridViewButtonColumn();
+            botonVer.HeaderText = "BOLETA";
+            botonVer.Name = "btnBoleta";
+            botonVer.UseColumnTextForButtonValue = true;
+            dgvCitas.Columns.Add(botonVer);
         }
 
         void CargarCitas()
@@ -63,10 +68,21 @@ namespace capaPresentacion
                 if (index >= 0)
                 {
                     FrmDetalleDeCita detalleDeCita = new FrmDetalleDeCita(gestor, conexion);
-                    detalleDeCita.lblIdCita.Text = dgvCitas.CurrentRow.Cells[1].Value.ToString();
+                    detalleDeCita.lblIdCita.Text = dgvCitas.CurrentRow.Cells[2].Value.ToString();
                     detalleDeCita.ckbEstadoCita.Checked = true;
                     detalleDeCita.ShowDialog();
                     CargarCitas();
+                }
+            }else if (dgvCitas.Columns[e.ColumnIndex].Name == "btnBoleta")
+            {
+                int index = e.RowIndex;
+                if (index >= 0)
+                {
+                    frmBoleta Boleta = new frmBoleta(gestor, conexion);
+                    Boleta.lblid.Text = dgvCitas.CurrentRow.Cells[2].Value.ToString();
+                    Boleta.lblTOtalCIta.Text = dgvCitas.CurrentRow.Cells[9].Value.ToString();
+                    Boleta.ShowDialog();
+                    //CargarCitas();
                 }
             }
         }

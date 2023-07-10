@@ -40,18 +40,20 @@ namespace capaPresentacion
             List<ListaCitaPacHorario> citasConPacientes = _citaBll.ListarCitaEmPaHo();
 
             // Paso 3: Buscar la cita con el idCita seleccionado en la lista de citas
-            ListaCitaPacHorario citaSeleccionada = citasConPacientes.FirstOrDefault(c => c.CODIGO == idCitaSeleccionada);
+            ListaCitaPacHorario citaSeleccionada = citasConPacientes.FirstOrDefault(c => c.CODIGO == idCitaSeleccionada)!;
 
 
 
             int idCita = int.Parse(lblid.Text.ToString());
 
             // Obtén la lista de productos relacionados con el idCita
-            List<DetalleCita> productos = _detalleCitaBll.ListarProductos(idCita);
+            List<DetalleCitaProductos> productos = _detalleCitaBll.ListarProductosCita(idCita);
 
             // Asigna la lista de productos al DataGridView
             dataGridView2.DataSource = productos;
 
+            List<DtalleCitaServicios> serevicios = _detalleCitaBll.ListarServiciosCita(idCita);
+            dataGridView1.DataSource = serevicios;
 
             // Paso 4: Asignar el dniPaciente al TextBox correspondiente en tu formulario
             if (citaSeleccionada != null)

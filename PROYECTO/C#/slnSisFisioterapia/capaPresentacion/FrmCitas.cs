@@ -100,7 +100,6 @@ namespace capaPresentacion
                 idEmpleado = int.Parse(cbxDoctor.SelectedValue.ToString()!),
                 fCita = dtpfecha.Value,
                 estadoPago = 0,
-                descuento = 0,
                 total = 0,
                 estadoCita = false,
                 hCita = int.Parse(cbxHorario.SelectedValue.ToString()!)

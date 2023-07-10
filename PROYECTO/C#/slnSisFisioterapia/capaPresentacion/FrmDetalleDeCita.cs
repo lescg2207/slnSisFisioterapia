@@ -265,10 +265,10 @@ namespace capaPresentacion
             //int index = e.RowIndex;
             //if (index >= 0)
             //{
-                frmBoleta boleta = new frmBoleta(gestor,conexion);
-                string idDetcita = lblIdCita.Text;
-                boleta.lblid.Text = idDetcita.ToString();
-                boleta.ShowDialog();
+                //frmBoleta boleta = new frmBoleta(gestor,conexion);
+                //string idDetcita = lblIdCita.Text;
+                //boleta.lblid.Text = idDetcita.ToString();
+                //boleta.ShowDialog();
 
             //}
         }
