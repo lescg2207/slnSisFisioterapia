@@ -45,7 +45,6 @@ namespace capaDatos
                 FECHA=c.fCita,
                 HORA=h.horario,
                 PAGO = (c.estadoPago == 0) ? "Pendiente" : "Pagado",
-                DESCUENTO =c.descuento,
                 TOTAL=Convert.ToDecimal(c.total.ToString("0.00")),
                 FINALIZADA=c.estadoCita
             
@@ -75,8 +74,7 @@ namespace capaDatos
                             fCita = Convert.ToDateTime(e.fCita.ToString()),
                             hCita = e.hCita,
                             estadoPago = Convert.ToInt32(e.estadoPago.ToString()),
-                            descuento = Convert.ToDecimal(e.descuento.ToString("0.00")),
-                            total = Convert.ToDecimal(e.total.ToString())
+                            total = Convert.ToDecimal(e.total.ToString("0.00"))
                         }).ToList();
 
             return prod;
