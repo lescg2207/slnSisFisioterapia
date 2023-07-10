@@ -481,9 +481,7 @@
         private Button btnGuardar;
         public Label lblIdCita;
         private Label label5;
-        private Label label4;
         private Label label10;
-        private ComboBox comboBox2;
         private Label label8;
         private ComboBox cbxServicio;
         private Label lblPrecio;

@@ -14,7 +14,6 @@ namespace capaPresentacion
 {
     public partial class FrmGestorBd : Form
     {
-        private string _gestorSeleccionado = null!;
         public string connectionString = null!;
         public FrmGestorBd()
         {
@@ -78,7 +77,7 @@ namespace capaPresentacion
             string username = textBoxUsername.Text;
             string password = textBoxPassword.Text.Trim();
 
-            string selectedDatabase = comboBoxDatabase.SelectedItem.ToString();
+            string selectedDatabase = comboBoxDatabase.SelectedItem.ToString()!;
             string connectionString;
 
             if (selectedDatabase == "SqlServer")

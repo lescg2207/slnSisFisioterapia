@@ -16,8 +16,7 @@ namespace entidades
         public int? idProducto { get; set; }
         public int cantidad { get; set; }
         public decimal precioU { get; set; }
-        public decimal subtotal { get; set; }
-        public int? descuento { get; set; }
+        public decimal subtotal { get; set; }       
         public bool? estado { get; set; }
     }
 }

@@ -23,8 +23,7 @@ namespace capaDatos
         public DbSet<Cargo> Cargo { get; set; }
         public DbSet<Descuento> Descuentos { get; set; }
         public DbSet<Productos> Producto { get; set; }
-        public DbSet<DetalleProductos> detalleCita_Producto { get; set; }
-        public DbSet<DetalleServicio> detalleCita_Servicio { get; set; }
+        
 
         public DbSet<DetalleCita> DetalleCita { get; set; }
 
