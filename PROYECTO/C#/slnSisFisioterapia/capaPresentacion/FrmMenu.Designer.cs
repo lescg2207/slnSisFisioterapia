@@ -34,7 +34,6 @@
             btnTree = new Button();
             btnEmpleado = new Button();
             btnProductos = new Button();
-            btnPagos = new Button();
             btnCita = new Button();
             btnPaciente = new Button();
             btnDash = new Button();
@@ -67,7 +66,6 @@
             panel1.Controls.Add(btnTree);
             panel1.Controls.Add(btnEmpleado);
             panel1.Controls.Add(btnProductos);
-            panel1.Controls.Add(btnPagos);
             panel1.Controls.Add(btnCita);
             panel1.Controls.Add(btnPaciente);
             panel1.Controls.Add(btnDash);
@@ -87,7 +85,7 @@
             btnTree.FlatAppearance.BorderSize = 0;
             btnTree.FlatStyle = FlatStyle.Flat;
             btnTree.Image = Properties.Resources.configuraciones__1_;
-            btnTree.Location = new Point(0, 532);
+            btnTree.Location = new Point(0, 468);
             btnTree.Name = "btnTree";
             btnTree.Size = new Size(80, 64);
             btnTree.TabIndex = 7;
@@ -102,7 +100,7 @@
             btnEmpleado.FlatAppearance.BorderSize = 0;
             btnEmpleado.FlatStyle = FlatStyle.Flat;
             btnEmpleado.Image = Properties.Resources.empleado;
-            btnEmpleado.Location = new Point(0, 468);
+            btnEmpleado.Location = new Point(0, 404);
             btnEmpleado.Name = "btnEmpleado";
             btnEmpleado.Size = new Size(80, 64);
             btnEmpleado.TabIndex = 6;
@@ -117,27 +115,13 @@
             btnProductos.FlatAppearance.BorderSize = 0;
             btnProductos.FlatStyle = FlatStyle.Flat;
             btnProductos.Image = Properties.Resources.caja;
-            btnProductos.Location = new Point(0, 404);
+            btnProductos.Location = new Point(0, 340);
             btnProductos.Name = "btnProductos";
             btnProductos.Size = new Size(80, 64);
             btnProductos.TabIndex = 5;
             btnProductos.UseVisualStyleBackColor = true;
             btnProductos.Visible = false;
             btnProductos.Click += btnProductos_Click_1;
-            // 
-            // btnPagos
-            // 
-            btnPagos.Cursor = Cursors.Hand;
-            btnPagos.Dock = DockStyle.Top;
-            btnPagos.FlatAppearance.BorderSize = 0;
-            btnPagos.FlatStyle = FlatStyle.Flat;
-            btnPagos.Image = Properties.Resources.dolar;
-            btnPagos.Location = new Point(0, 340);
-            btnPagos.Name = "btnPagos";
-            btnPagos.Size = new Size(80, 64);
-            btnPagos.TabIndex = 4;
-            btnPagos.UseVisualStyleBackColor = true;
-            btnPagos.Visible = false;
             // 
             // btnCita
             // 
@@ -383,7 +367,6 @@
         private Button btnTree;
         private Button btnEmpleado;
         private Button btnProductos;
-        private Button btnPagos;
         private Button btnCita;
     }
 }
