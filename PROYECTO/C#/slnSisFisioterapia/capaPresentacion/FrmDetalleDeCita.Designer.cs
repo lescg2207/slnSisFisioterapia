@@ -66,6 +66,7 @@
             lblIdCita = new Label();
             label1 = new Label();
             ckbEstadoCita = new CheckBox();
+            label12 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel7.SuspendLayout();
@@ -447,6 +448,7 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(label12);
             panel3.Controls.Add(lblIdCita);
             panel3.Controls.Add(label1);
             panel3.Controls.Add(ckbEstadoCita);
@@ -460,7 +462,7 @@
             // 
             lblIdCita.AutoSize = true;
             lblIdCita.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblIdCita.Location = new Point(417, 19);
+            lblIdCita.Location = new Point(512, 17);
             lblIdCita.Name = "lblIdCita";
             lblIdCita.Size = new Size(80, 17);
             lblIdCita.TabIndex = 2;
@@ -485,6 +487,16 @@
             ckbEstadoCita.Size = new Size(15, 14);
             ckbEstadoCita.TabIndex = 1;
             ckbEstadoCita.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Location = new Point(426, 17);
+            label12.Name = "label12";
+            label12.Size = new Size(80, 17);
+            label12.TabIndex = 3;
+            label12.Text = "Codigo CIta";
             // 
             // FrmDetalleDeCita
             // 
@@ -554,5 +566,6 @@
         private Button btnTotal;
         public CheckBox ckbEstadoCita;
         private Button btnAtras;
+        public Label label12;
     }
 }
