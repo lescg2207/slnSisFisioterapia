@@ -189,7 +189,7 @@ namespace capaPresentacion
 
                 }
             }
-            // Agregar más casos según las opciones del primer ComboBox y los datos correspondientes para el segundo ComboBox
+            
         }
 
         private void Mostrarcombohijito()
@@ -309,7 +309,7 @@ namespace capaPresentacion
             MostrarLabelPorUnTiempo();
             label1.Text = "EL SERVICIO AÑADIDO SE APLICARA GLOBALMENTE.";
 
-            // Aquí puedes agregar código adicional para actualizar el TreeView o cualquier otra acción necesaria después de agregar el servicio.
+           
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -410,7 +410,6 @@ namespace capaPresentacion
                 AgregarServicio();
             }
 
-            // Llamar al método CargarDatosTreeView solo después de agregar el descuento
             CargarDatosTreeView(tPac);
         }
 
@@ -418,25 +417,25 @@ namespace capaPresentacion
         //
         private void MostrarLabelPorUnTiempo()
         {
-            label1.Visible = true; // Hacer visible el Label
-            timer1.Start(); // Iniciar el temporizador
+            label1.Visible = true; 
+            timer1.Start(); 
         }
 
         private void OcultarLabel()
         {
-            label1.Visible = false; // Ocultar el Label
+            label1.Visible = false;
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-            timer1.Stop(); // Detener el temporizador
-            OcultarLabel(); // Ocultar el Label
+            timer1.Stop(); 
+            OcultarLabel(); 
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Stop(); // Detener el temporizador
-            OcultarLabel(); // Ocultar el Label
+            timer1.Stop(); 
+            OcultarLabel(); 
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)

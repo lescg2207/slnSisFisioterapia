@@ -67,14 +67,13 @@ namespace capaPresentacion
             btnCita.Visible = true;
             btnPaciente.Visible = true;
             btnProductos.Visible = true;
-            btnPagos.Visible = true;
+            
         }
         public void PerfilAdmin()
         {
             btnCita.Visible = true;
             btnPaciente.Visible = true;
-            btnProductos.Visible = true;
-            btnPagos.Visible = true;
+            btnProductos.Visible = true;          
             btnEmpleado.Visible = true;
             btnTree.Visible = true;
         }
