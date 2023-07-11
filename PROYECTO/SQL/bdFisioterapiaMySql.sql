@@ -62,7 +62,11 @@ CONSTRAINT `FK__Servicio_Sesiones`
     FOREIGN KEY (`idTipo`)
     REFERENCES `bdFisioterapia`.`Servicio` (`idServicio`)
 );
-
+CREATE TABLE Descuentos (
+    idDescuento int PRIMARY KEY AUTO_INCREMENT,
+    nombreDescuento varchar(100),
+    valorDescuento decimal(4,2)
+);
 create table Citas(
 idCita int primary key AUTO_INCREMENT,
 dniPaciente char(8) ,
@@ -72,6 +76,8 @@ hCita int ,
 estadoPago TINYINT,
 descuento decimal(4,2),
 total decimal(10,2),
+idImpuesto int,
+idDescuento int,
 estadoCita TINYINT,
 CONSTRAINT `FK__Paciente_Cita`
     FOREIGN KEY (`dniPaciente`)
@@ -81,17 +87,27 @@ CONSTRAINT `FK__Paciente_Cita`
     REFERENCES `bdFisioterapia`.`Empleado` (`idEmpleado`),
     CONSTRAINT `FK__Horario_Citas`
     FOREIGN KEY (`hCita`)
-    REFERENCES `bdFisioterapia`.`Horario` (`idHorario`)
+    REFERENCES `bdFisioterapia`.`Horario` (`idHorario`),
+    CONSTRAINT `FK__Citas_Impuesto`
+    FOREIGN KEY (`idImpuesto`)
+    REFERENCES `bdFisioterapia`.`Impuesto` (`idImpuesto`),
+    CONSTRAINT `FK__Citas_Descuento`
+    FOREIGN KEY (`idDescuento`)
+    REFERENCES `bdFisioterapia`.`Descuentos` (`idDescuento`)
 
 );
 
-create table Pago(
+create table Boleta(
 idPago int primary key AUTO_INCREMENT,
 idCita int,
+dniPaciente char(8),
 metodoPago varchar(50),
-monto decimal(10,2),
+subtotal decimal(10,2),
+impuesto decimal(4,2),
+descuento decimal(4,2),
+total decimal(10,2),
 fpago datetime,
-CONSTRAINT `FK__Pago_Citas`
+CONSTRAINT `FK__Citas_Boleta`
     FOREIGN KEY (`idCita`)
     REFERENCES `bdFisioterapia`.`Citas` (`idCita`)
 );
@@ -117,7 +133,6 @@ idProducto int,
 cantidad int,
 precioU decimal(10,2),
 subtotal decimal(10,2),
-idImpuesto int ,
 CONSTRAINT `FK__Dcita_Citas`
     FOREIGN KEY (`idCita`)
     REFERENCES `bdFisioterapia`.`Citas` (`idCita`),
@@ -126,29 +141,23 @@ CONSTRAINT `FK__Dcita_Citas`
     REFERENCES `bdFisioterapia`.`Servicio` (`idServicio`),
     CONSTRAINT `FK__Dcita_Producto`
     FOREIGN KEY (`idProducto`)
-    REFERENCES `bdFisioterapia`.`Productos` (`idProducto`),
-    CONSTRAINT `FK__Dcita_Impuesto`
-    FOREIGN KEY (`idImpuesto`)
-    REFERENCES `bdFisioterapia`.`Impuesto` (`idImpuesto`)
+    REFERENCES `bdFisioterapia`.`Productos` (`idProducto`)
 );
 
-insert into Cargo(cargo) values('Doctor'),('Enfermera');
+
+insert into Cargo(cargo) values('Doctor'),('Enfermera'),('Admin');
 insert into Empleado(nombres,apellidos,usuario,contraseña,idCargo,estadoEmp) values('Camila','Lopez','maria','123',2,1),('Ernesto','Jimenez','juan','12',1,1),('Gisela','Ramirez','gise','123',3,1);
+insert into Descuentos (nombreDescuento,valorDescuento) values('Todas las citas',0.05);
 
-
-CREATE TABLE Descuentos (
-    idDescuento int PRIMARY KEY AUTO_INCREMENT,
-    nombreDescuento varchar(100),
-    valorDescuento decimal(4,2)
-);
+insert into horario(horario,estado) values('10:00',1),('11:00',1),('12:00',1),('13:00',1),('14:00',1),('15:00',1),('16:00',1),('17:00',1),('18:00',1);
 
 insert into Servicio(servicio,precio) values('Diario',35),('Domiciliario',40),('Paquete',0);
 
-insert into Sesiones (idTipo,sesiones,precio) values(3,10,315),(3,12,385),(3,15,490);
+insert into Sesiones(idTipo,sesiones,precio) values(3,10,315),(3,12,385),(3,15,490);
 
-insert into Descuentos (nombreDescuento,valorDescuento) values('Regular Citas',0.06);
+insert into Impuesto(impuesto,porcentaje) values ('IGV','0.18');
 
-call MostrarPacienteHistoria();
+
 
 
 
