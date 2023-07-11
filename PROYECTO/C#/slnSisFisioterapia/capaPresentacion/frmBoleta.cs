@@ -14,6 +14,7 @@ using capaDatos;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using iTextSharp.tool.xml;
+using System.Runtime.InteropServices;
 
 namespace capaPresentacion
 {
@@ -49,30 +50,19 @@ namespace capaPresentacion
 
             int idCita = int.Parse(lblid.Text.ToString());
 
-            // Obtén la lista de productos relacionados con el idCita
             List<DetalleCitaProductos> productos = _detalleCitaBll.ListarProductosCita(idCita);
-
-            // Asigna la lista de productos al DataGridView
-            dataGridView2.DataSource = productos;
+            dgvProductos.DataSource = productos;
 
             List<DtalleCitaServicios> serevicios = _detalleCitaBll.ListarServiciosCita(idCita);
-            dataGridView1.DataSource = serevicios;
+            dgvServicio.DataSource = serevicios;
 
-            // Paso 4: Asignar el dniPaciente al TextBox correspondiente en tu formulario
             if (citaSeleccionada != null)
             {
                 txtdni.Text = citaSeleccionada.PACIENTE;
 
-                // Paso 5: Obtener los nombres y apellidos del paciente correspondiente al DNI
                 string dniPaciente = txtdni.Text;
-
-                // Paso 6: Obtener la fecha correspondiente a la cita seleccionada
                 DateTime fechaCita = citaSeleccionada.FECHA;
-
-                // Paso 7: Asignar la fecha al control correspondiente en tu formulario
                 txtfecha.Text = fechaCita.ToString("dd/MM/yyyy");
-
-                // Paso 8: Obtener los nombres y apellidos del paciente correspondiente al dniPaciente
                 List<ListaPacienteHistoria> pacientes = _pacienteBll.ObtenerListaPacientes();
                 ListaPacienteHistoria paciente = pacientes.FirstOrDefault(p => p.DNI == dniPaciente)!;
 
@@ -80,20 +70,17 @@ namespace capaPresentacion
                 {
                     string nombres = paciente.NOMBRES;
                     string apellidos = paciente.APELLIDOS;
-
-                    // Paso 9: Asignar los nombres y apellidos a los TextBox correspondientes en tu formulario
                     txtnombres.Text = nombres;
                     txtapellidos.Text = apellidos;
                 }
                 else
                 {
-                    // No se encontró ningún paciente con el DNI especificado
-                    // Realiza alguna acción de manejo de errores o muestra un mensaje al usuario
+
                 }
             }
             else
             {
-                // La cita seleccionada no se encontró en la lista, realiza alguna acción de manejo de errores
+
             }
 
         }
@@ -131,7 +118,7 @@ namespace capaPresentacion
 
             string filas = string.Empty;
             decimal total = 0;
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dgvServicio.Rows)
             {
                 filas += "<tr>";
                 filas += "<td>" + row.Cells["CODIGO"].Value.ToString() + "</td>";
@@ -140,12 +127,11 @@ namespace capaPresentacion
                 filas += "<td>" + row.Cells["PRECIO"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["SUBTOTAL"].Value.ToString() + "</td>";
                 filas += "</tr>";
-                //total += decimal.Parse(row.Cells["SUBTOTAL"].Value.ToString()!);
             }
 
-            filas += "<tr><td colspan='5'></td></tr>"; // Agrega una fila vacía para separar las tablas
+            filas += "<tr><td colspan='5'></td></tr>";
 
-            foreach (DataGridViewRow row in dataGridView2.Rows)
+            foreach (DataGridViewRow row in dgvProductos.Rows)
             {
                 filas += "<tr>";
                 filas += "<td>" + row.Cells["CODIGO"].Value.ToString() + "</td>";
@@ -201,6 +187,18 @@ namespace capaPresentacion
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        #region MouseDowmn
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparan);
+        #endregion
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+
         }
     }
 }
