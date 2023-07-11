@@ -103,6 +103,8 @@ namespace capaPresentacion
                     Boleta.lbldescuento.Text = descuento2.ToString("0.00");
                     Boleta.lblImpuesto.Text = impuesto3.ToString("0.00");
                     Boleta.lbltotal.Text = total.ToString("0.00");
+                    Boleta.lblPorDesc.Text = (descuento*100).ToString();
+                    Boleta.lblPorImp.Text = (impuesto*100).ToString();
 
                     Boleta.ShowDialog();
                 }

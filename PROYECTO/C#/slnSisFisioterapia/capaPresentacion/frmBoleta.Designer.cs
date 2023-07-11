@@ -59,6 +59,10 @@
             dgvProductos = new DataGridView();
             dgvServicio = new DataGridView();
             panel1 = new Panel();
+            lblPorImp = new Label();
+            lblPorDesc = new Label();
+            label14 = new Label();
+            label15 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvProductos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvServicio).BeginInit();
             panel1.SuspendLayout();
@@ -224,9 +228,10 @@
             // lbltotal
             // 
             lbltotal.AutoSize = true;
+            lbltotal.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbltotal.Location = new Point(724, 398);
             lbltotal.Name = "lbltotal";
-            lbltotal.Size = new Size(28, 15);
+            lbltotal.Size = new Size(32, 17);
             lbltotal.TabIndex = 17;
             lbltotal.Text = "0.00";
             // 
@@ -244,11 +249,11 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(673, 325);
+            label12.Location = new Point(628, 325);
             label12.Name = "label12";
-            label12.Size = new Size(45, 21);
+            label12.Size = new Size(90, 21);
             label12.TabIndex = 20;
-            label12.Text = "IGV :";
+            label12.Text = "Impuesto :";
             // 
             // label13
             // 
@@ -263,27 +268,30 @@
             // lblTOtalCIta
             // 
             lblTOtalCIta.AutoSize = true;
+            lblTOtalCIta.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblTOtalCIta.Location = new Point(724, 299);
             lblTOtalCIta.Name = "lblTOtalCIta";
-            lblTOtalCIta.Size = new Size(28, 15);
+            lblTOtalCIta.Size = new Size(32, 17);
             lblTOtalCIta.TabIndex = 22;
             lblTOtalCIta.Text = "0.00";
             // 
             // lblImpuesto
             // 
             lblImpuesto.AutoSize = true;
+            lblImpuesto.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblImpuesto.Location = new Point(724, 330);
             lblImpuesto.Name = "lblImpuesto";
-            lblImpuesto.Size = new Size(28, 15);
+            lblImpuesto.Size = new Size(32, 17);
             lblImpuesto.TabIndex = 23;
             lblImpuesto.Text = "0.00";
             // 
             // lbldescuento
             // 
             lbldescuento.AutoSize = true;
+            lbldescuento.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbldescuento.Location = new Point(724, 363);
             lbldescuento.Name = "lbldescuento";
-            lbldescuento.Size = new Size(28, 15);
+            lbldescuento.Size = new Size(32, 17);
             lbldescuento.TabIndex = 24;
             lbldescuento.Text = "0.00";
             // 
@@ -374,16 +382,60 @@
             panel1.Controls.Add(lblid);
             panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(789, 76);
+            panel1.Size = new Size(861, 76);
             panel1.TabIndex = 27;
             panel1.MouseDown += panel1_MouseDown;
+            // 
+            // lblPorImp
+            // 
+            lblPorImp.AutoSize = true;
+            lblPorImp.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPorImp.Location = new Point(762, 332);
+            lblPorImp.Name = "lblPorImp";
+            lblPorImp.Size = new Size(40, 15);
+            lblPorImp.TabIndex = 28;
+            lblPorImp.Text = "label9";
+            // 
+            // lblPorDesc
+            // 
+            lblPorDesc.AutoSize = true;
+            lblPorDesc.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPorDesc.Location = new Point(762, 365);
+            lblPorDesc.Name = "lblPorDesc";
+            lblPorDesc.Size = new Size(47, 15);
+            lblPorDesc.TabIndex = 29;
+            lblPorDesc.Text = "label10";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label14.Location = new Point(793, 332);
+            label14.Name = "label14";
+            label14.Size = new Size(17, 15);
+            label14.TabIndex = 30;
+            label14.Text = "%";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label15.Location = new Point(793, 365);
+            label15.Name = "label15";
+            label15.Size = new Size(17, 15);
+            label15.TabIndex = 31;
+            label15.Text = "%";
             // 
             // frmBoleta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(813, 533);
+            ClientSize = new Size(936, 533);
+            Controls.Add(label15);
+            Controls.Add(label14);
+            Controls.Add(lblPorDesc);
+            Controls.Add(lblPorImp);
             Controls.Add(panel1);
             Controls.Add(dgvServicio);
             Controls.Add(dgvProductos);
@@ -447,5 +499,9 @@
         private DataGridView dgvProductos;
         private DataGridView dgvServicio;
         private Panel panel1;
+        private Label label14;
+        private Label label15;
+        public Label lblPorImp;
+        public Label lblPorDesc;
     }
 }
