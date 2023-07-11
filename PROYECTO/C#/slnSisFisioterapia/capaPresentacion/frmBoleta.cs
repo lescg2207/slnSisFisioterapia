@@ -128,6 +128,7 @@ namespace capaPresentacion
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@APELLIDOS", txtapellidos.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", txtfecha.Text.ToString());
 
+
             string filas = string.Empty;
             decimal total = 0;
             foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -139,7 +140,7 @@ namespace capaPresentacion
                 filas += "<td>" + row.Cells["PRECIO"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["SUBTOTAL"].Value.ToString() + "</td>";
                 filas += "</tr>";
-                total += decimal.Parse(row.Cells["SUBTOTAL"].Value.ToString()!);
+                //total += decimal.Parse(row.Cells["SUBTOTAL"].Value.ToString()!);
             }
 
             filas += "<tr><td colspan='5'></td></tr>"; // Agrega una fila vacía para separar las tablas
@@ -153,10 +154,13 @@ namespace capaPresentacion
                 filas += "<td>" + row.Cells["PRECIO"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["SUBTOTAL"].Value.ToString() + "</td>";
                 filas += "</tr>";
-                total += decimal.Parse(row.Cells["SUBTOTAL"].Value.ToString()!);
+                //total += decimal.Parse(row.Cells["SUBTOTAL"].Value.ToString()!);
             }
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", total.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", lblTOtalCIta.Text.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IGV", lblImpuesto.Text.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DESCUENTO", lbldescuento.Text.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", lbltotal.Text.ToString());
 
 
 

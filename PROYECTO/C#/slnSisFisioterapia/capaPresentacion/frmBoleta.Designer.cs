@@ -110,6 +110,7 @@
             // 
             txtdni.Location = new Point(88, 102);
             txtdni.Name = "txtdni";
+            txtdni.ReadOnly = true;
             txtdni.Size = new Size(119, 23);
             txtdni.TabIndex = 5;
             txtdni.TextChanged += textBox1_TextChanged;
@@ -118,6 +119,7 @@
             // 
             txtnombres.Location = new Point(320, 100);
             txtnombres.Name = "txtnombres";
+            txtnombres.ReadOnly = true;
             txtnombres.Size = new Size(247, 23);
             txtnombres.TabIndex = 6;
             txtnombres.TextChanged += textBox2_TextChanged;
@@ -126,6 +128,7 @@
             // 
             txtapellidos.Location = new Point(320, 141);
             txtapellidos.Name = "txtapellidos";
+            txtapellidos.ReadOnly = true;
             txtapellidos.Size = new Size(247, 23);
             txtapellidos.TabIndex = 7;
             txtapellidos.TextChanged += textBox3_TextChanged;
@@ -134,6 +137,7 @@
             // 
             txtfecha.Location = new Point(649, 99);
             txtfecha.Name = "txtfecha";
+            txtfecha.ReadOnly = true;
             txtfecha.Size = new Size(129, 23);
             txtfecha.TabIndex = 8;
             txtfecha.TextChanged += textBox4_TextChanged;
@@ -318,6 +322,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "frmBoleta";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmBoleta";
             Load += frmBoleta_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
