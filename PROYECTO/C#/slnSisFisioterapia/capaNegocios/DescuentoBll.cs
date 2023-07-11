@@ -52,5 +52,19 @@ namespace capaNegocios
         {
             _descuentosDao.ActualizarDescuento(descuento);
         }
+
+        public List<Impuesto> ObtenerImpuesto()
+        {
+            return _descuentosDao.ObtenerImpuesto();
+        }
+
+        public void AgregarImpuesto(Impuesto impuesto)
+        {
+            _descuentosDao.AgregarImpuesto(impuesto);
+        }
+        public void ActualizarImpuesto(Impuesto impuesto)
+        {
+            _descuentosDao.ActualizarImpuesto(impuesto);
+        }
     }
 }

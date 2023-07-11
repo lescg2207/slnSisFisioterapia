@@ -48,5 +48,36 @@ namespace capaDatos
                 _dbContext.SaveChanges(); // Guardar los cambios en la base de datos
             }
         }
+
+        public List<Impuesto> ObtenerImpuesto()
+        {
+            var impuesto = _dbContext.Set<Impuesto>()
+                               .OrderByDescending(d => d.porcentaje)
+                               .Select(d => new Impuesto
+                               {
+                                   impuesto = d.impuesto,
+                                   porcentaje = d.porcentaje
+                               })
+                               .ToList();
+
+            return impuesto;
+        }
+
+        public void AgregarImpuesto(Impuesto impuesto)
+        {
+            _dbContext.Set<Impuesto>().Add(impuesto);
+            _dbContext.SaveChanges();
+        }
+
+        public void ActualizarImpuesto(Impuesto impuesto)
+        {
+            var descuentoExistente = _dbContext.Set<Impuesto>().FirstOrDefault(d => d.impuesto == impuesto.impuesto);
+
+            if (descuentoExistente != null)
+            {
+                descuentoExistente.porcentaje = impuesto.porcentaje;
+                _dbContext.SaveChanges(); // Guardar los cambios en la base de datos
+            }
+        }
     }
 }

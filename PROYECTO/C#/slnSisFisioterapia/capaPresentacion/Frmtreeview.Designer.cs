@@ -52,7 +52,7 @@
             tPac.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             tPac.Location = new Point(12, 111);
             tPac.Name = "tPac";
-            tPac.Size = new Size(317, 489);
+            tPac.Size = new Size(317, 462);
             tPac.TabIndex = 0;
             tPac.AfterSelect += tPac_AfterSelect;
             // 
@@ -182,7 +182,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.MidnightBlue;
-            label1.Location = new Point(12, 634);
+            label1.Location = new Point(12, 599);
             label1.Name = "label1";
             label1.Size = new Size(100, 40);
             label1.TabIndex = 15;
@@ -212,7 +212,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1188, 691);
+            ClientSize = new Size(1188, 668);
             Controls.Add(btnNuevo);
             Controls.Add(label1);
             Controls.Add(panel1);

@@ -45,10 +45,12 @@ namespace capaPresentacion
             // Crear listas de nodos para servicios y descuentos
             List<TreeNode> nodosServicios = new List<TreeNode>();
             List<TreeNode> nodosDescuentos = new List<TreeNode>();
+            List<TreeNode> nodosiMPUESTO = new List<TreeNode>();
 
             // Obtener servicios y descuentos
             List<ServicioSesiones> servicios = servBll.ObtenerTreeNodes();
             List<Descuento> descuentos = descBll.ObtenerDescuentos();
+            List<Impuesto> impuesto = descBll.ObtenerImpuesto();
 
             // Crear el nodo "Paquete"
             TreeNode paqueteNode = new TreeNode("Paquete");
@@ -99,6 +101,14 @@ namespace capaPresentacion
                 nombreNode.Nodes.Add(valorNode);
                 nodosDescuentos.Add(nombreNode);
             }
+            foreach (var impuestos in impuesto)
+            {
+                TreeNode nombreNode = new TreeNode(impuestos.impuesto);
+                TreeNode valorNode = new TreeNode($"Valor: {impuestos.porcentaje}");
+
+                nombreNode.Nodes.Add(valorNode);
+                nodosiMPUESTO.Add(nombreNode);
+            }
 
             // Limpiar el TreeView
             treeView.Nodes.Clear();
@@ -106,10 +116,12 @@ namespace capaPresentacion
             // Construir la estructura del TreeView agregando los nodos padres y sus respectivos nodos hijos
             TreeNode nodoPadreserv = new TreeNode("Servicios", nodosServicios.ToArray());
             TreeNode rootNode = new TreeNode("Descuentos", nodosDescuentos.ToArray());
+            TreeNode rootNodeImpu = new TreeNode("Impuesto", nodosiMPUESTO.ToArray());
 
             // Agregar los nodos padres al TreeView
             treeView.Nodes.Add(nodoPadreserv);
             treeView.Nodes.Add(rootNode);
+            treeView.Nodes.Add(rootNodeImpu);
         }
 
         private void tPac_AfterSelect(object sender, TreeViewEventArgs e)
@@ -118,7 +130,7 @@ namespace capaPresentacion
         }
         private void Mostrarcombopadre()
         {
-            comboBox1.Items.AddRange(new string[] { "Seleccione", "Servicios", "Descuentos", "Productos" });
+            comboBox1.Items.AddRange(new string[] { "Seleccione", "Servicios", "Descuentos", "Productos" ,"Impuesto"});
             comboBox1.SelectedIndex = 0;
         }
 
@@ -132,6 +144,7 @@ namespace capaPresentacion
 
             List<ServicioSesiones> servicios = servBll.ObtenerTreeNodes();
             List<Descuento> descuentos = descBll.ObtenerDescuentos();
+            List<Impuesto> impuestos = descBll.ObtenerImpuesto();
 
             bool paqueteAgregado = false; // Variable para controlar si se ha agregado el elemento "Paquete"
 
@@ -189,7 +202,33 @@ namespace capaPresentacion
 
                 }
             }
-            
+            foreach (var impuesto in impuestos)
+            {
+                if (opcionSeleccionada == "Impuesto")
+                {
+                    comboBox2.Items.Add($"{impuesto.impuesto}");
+                    btnagregar.Enabled = true; btnagregar.Text = "Agregar Impuesto";
+                    btnactualizar.Enabled = false;
+                    textBox1.Enabled = true; textBox1.Text = string.Empty;
+                    textBox2.Enabled = true; textBox2.Text = string.Empty;
+                    lbl1.Visible = true; lbl1.Text = ": Agregue aqui el nombre del Impuesto";
+                    lbl2.Visible = true; lbl2.Text = ": Agregue aqui el valor del Impuesto";
+                }
+
+
+
+                else if (opcionSeleccionada == "Selecciones")
+                {
+                    comboBox2.Items.Clear();
+                    comboBox3.Items.Clear();
+                    label1.Visible = false; label2.Visible = false;
+                    textBox1.Text = string.Empty; textBox2.Text = string.Empty;
+                    btnagregar.Text = "Agregar"; btnagregar.Enabled = false;
+                    btnactualizar.Text = "Actualizar"; btnactualizar.Enabled = false;
+
+                }
+            }
+
         }
 
         private void Mostrarcombohijito()
@@ -203,6 +242,8 @@ namespace capaPresentacion
 
             List<ServicioSesiones> servicios = servBll.ObtenerTreeNodes();
             List<Descuento> descuentos = descBll.ObtenerDescuentos();
+
+            List<Impuesto> impuestos = descBll.ObtenerImpuesto();
 
             // Cargar el precio correspondiente a "Diario" en el TextBox
             if (opcionSeleccionada == "Diario")
@@ -266,6 +307,18 @@ namespace capaPresentacion
                     lbl2.Visible = false;
                 }
             }
+            foreach (var impuesto in impuestos)
+            {
+                if (impuesto.impuesto == opcionSeleccionada)
+                {
+                    textBox1.Text = ($"{impuesto.porcentaje}");
+                    btnactualizar.Enabled = true; btnactualizar.Text = "Actualizar Impuesto";
+                    btnagregar.Enabled = false;
+                    textBox2.Enabled = false; textBox2.Text = string.Empty;
+                    lbl1.Visible = true; lbl1.Text = ": Actualice el Impuesto";
+                    lbl2.Visible = false;
+                }
+            }
         }
         private void AgregarDescuento()
         {
@@ -309,8 +362,29 @@ namespace capaPresentacion
             MostrarLabelPorUnTiempo();
             label1.Text = "EL SERVICIO AÑADIDO SE APLICARA GLOBALMENTE.";
 
-           
+
         }
+
+        private void AgregarImpuesto()
+        {
+            string nombreImpuesto = textBox1.Text;
+            decimal valorImpuesto = decimal.Parse(textBox2.Text);
+
+            // Crear una instancia de la clase Descuento y asignar los valores
+            Impuesto nuevoImpuesto = new Impuesto
+            {
+                impuesto = nombreImpuesto,
+                porcentaje = valorImpuesto
+            };
+
+            // Llamar al método en tu capa de acceso a datos para agregar el descuento
+            descBll.AgregarImpuesto(nuevoImpuesto);
+
+            // Mostrar un mensaje de éxito o realizar cualquier otra acción necesaria
+            MostrarLabelPorUnTiempo();
+            label1.Text = "EL IMPUESTO AÑADIDO SE APLICARA GLOBALMENTE.";
+        }
+
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -395,6 +469,17 @@ namespace capaPresentacion
                     MostrarLabelPorUnTiempo();
                     label1.Text = "ASEGÚRATE DE INGRESAR UN NUMERO DECIMAL VALIDO";
                 }
+            }else if (btnactualizar.Text == "Actualizar Impuesto")
+            {
+                var impuesto = new Impuesto
+                {
+                    impuesto = comboBox2.SelectedItem.ToString()!,
+                    porcentaje = Convert.ToDecimal(textBox1.Text)
+                };
+                descBll.ActualizarImpuesto(impuesto);
+                MostrarLabelPorUnTiempo();
+                label1.Text = "EL VALOR DEL IMPUESTO SE ACTUALIZARA GLOBALMENTE.";
+                CargarDatosTreeView(tPac);
             }
         }
 
@@ -408,6 +493,9 @@ namespace capaPresentacion
             else if (btnagregar.Text == "Agregar Paquete")
             {
                 AgregarServicio();
+            }else if(btnagregar.Text=="Agregar Impuesto")
+            { 
+                AgregarImpuesto();
             }
 
             CargarDatosTreeView(tPac);
@@ -417,8 +505,8 @@ namespace capaPresentacion
         //
         private void MostrarLabelPorUnTiempo()
         {
-            label1.Visible = true; 
-            timer1.Start(); 
+            label1.Visible = true;
+            timer1.Start();
         }
 
         private void OcultarLabel()
@@ -428,14 +516,14 @@ namespace capaPresentacion
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-            timer1.Stop(); 
-            OcultarLabel(); 
+            timer1.Stop();
+            OcultarLabel();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Stop(); 
-            OcultarLabel(); 
+            timer1.Stop();
+            OcultarLabel();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
