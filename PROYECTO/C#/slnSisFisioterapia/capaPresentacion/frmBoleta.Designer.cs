@@ -205,6 +205,7 @@
             button2.TabIndex = 14;
             button2.Text = "ATRAS";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // lblid
             // 
