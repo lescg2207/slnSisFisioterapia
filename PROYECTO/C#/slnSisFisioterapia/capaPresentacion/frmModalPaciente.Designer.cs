@@ -35,6 +35,7 @@
             label1 = new Label();
             panel2 = new Panel();
             dgvPaciente = new DataGridView();
+            button1 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPaciente).BeginInit();
@@ -63,6 +64,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(button1);
             panel2.Controls.Add(dgvPaciente);
             panel2.Location = new Point(12, 85);
             panel2.Name = "panel2";
@@ -108,9 +110,22 @@
             dataGridViewCellStyle3.SelectionForeColor = Color.DimGray;
             dgvPaciente.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvPaciente.RowTemplate.Height = 25;
-            dgvPaciente.Size = new Size(523, 325);
+            dgvPaciente.Size = new Size(523, 296);
             dgvPaciente.TabIndex = 4;
             dgvPaciente.CellContentClick += dgvPaciente_CellContentClick;
+            // 
+            // button1
+            // 
+            button1.Cursor = Cursors.Hand;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(426, 313);
+            button1.Name = "button1";
+            button1.Size = new Size(116, 30);
+            button1.TabIndex = 5;
+            button1.Text = "REGRESAR";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // frmModalPaciente
             // 
@@ -136,5 +151,6 @@
         private Label label1;
         private Panel panel2;
         private DataGridView dgvPaciente;
+        private Button button1;
     }
 }
